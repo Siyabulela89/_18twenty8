@@ -18,7 +18,6 @@
 
 
 
-
 <div role="main" class="main">
 
     <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
@@ -184,207 +183,261 @@
                     </div>
                     <div class="col-lg-9">
 
-                        <div class="overflow-hidden mb-1">
-                            <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@item.Name @item.Surname</strong>s Profile</h2>
-                        </div>
-
-
-
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
-                            <div class="col-lg-12">
-                                <p>@item.Name</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
-                            <div class="col-lg-12">
-                                <p>@item.Surname</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                            <div class="col-lg-12">
-                                <p>@item.Nickname</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
-                            <div class="col-lg-12">
-                                <p>@item.IDPassport</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
-                            <div class="col-lg-12">
-                                <p>@item.DateofBirth</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
-                            <div class="col-lg-12">
-                                <p>@item.email</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
-                            <div class="col-lg-12">
-                                <p>@item.Phonenumber</p>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
-                            <div class="col-lg-12">
-                                <p>@item.AddressStreet</p>
-                            </div>
-                        </div>
-                        @*<div class="form-group row">
-                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
-                                <div class="col-lg-8">
-                                    <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
-                                </div>
-                                <div class="col-lg-4">
-                                    @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
-
-                                </div>
-                            </div>*@
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
-                            <div class="col-lg-12">
-                                <p>@item.PostalCode</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1 name and number</label>
-                 
-                            <div class="col-lg-12">
-                                <p>@item.EmergencyContactNameone: @item.EmergencyContactNumberone</p>
-                            </div>
-
-                            
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2 name and number</label>
-               
-                            <div class="col-lg-12">
-                                <p>@item.EmergencyContactNametwo: @item.EmergencyContactNumbertwo </p>
-                            </div>
-                            
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
-                            <div class="col-lg-12">
-                                <p>@item.howdidyouhearabout</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
-                            <div class="col-lg-12">
-                                <p>@item.BackgroundQ</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentor or participated in mentor training?</label>
-                            <div class="col-lg-12">
-                                <p>@ViewBag.EvMentor</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
-                            <div class="col-lg-9">
-                                <p>@item.DetailsOnEverbeenMentorQ</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
-                            <div class="col-lg-12">
-
-                                <p>@ViewBag.Conv</p>
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
-                            <div class="col-lg-12">
-                                <p>@item.DetailsArrestedConvictedQ</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What would your 28 year-old self say to your 18 year-old self?</label>
-                            <div class="col-lg-12">
-                                <p>@item.youngerselfQ</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Little Sister?</label>
-                            <div class="col-lg-12">
-                                <p>@item.Expectationsonlittlesister</p>
-
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
-                            <div class="col-lg-12">
-                                <ul class="list list-icons">
-                                    @foreach (var items in IS)
-                                    {
-
-                                        <li><i class="fas fa-check"></i>@II.Where(x=> x.InformationofInterestID==items.InformationofInterestID).SingleOrDefault().Description</li>
-                                                         
-                              }
-                                    </ul>
-                                </div>
-                        </div>
-                        <div class="form-group row">
-                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
-                                <div class="col-lg-12">
-                                    <p>@IL.Where(x=> x.InteractionLevelID==item.Interactionlevelmeet).SingleOrDefault().Description</p>
-
-                                  
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="overflow-hidden mb-1">
+                                    <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@item.Name @item.Surname</strong>s Profile</h2>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
-                                <div class="col-lg-12">
-
-                                    <p>@IL.Where(x => x.InteractionLevelID == item.InteractionlevelDigCom).SingleOrDefault().Description</p>
+                            <div class="col-md-6">
+                                <div id="action-button-wrapper" style="margin-left:36px">
+                                    <button data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    <button data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                    <button data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 </div>
                             </div>
-                        <div class="form-group row">
-                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ADDITIONAL SUPPORT. In addition to being a Big Sister, I would also like to (please select all applicable options): </label>
-                                <div class="col-lg-12">
+                        </div>
 
-                                    <ul class="list list-icons">
-                                        @foreach (var items in ASSB)
-                                        {
+                        <div class="accordion" id="accordion">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+                                            Personal Information
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1One" class="collapse show">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.Name</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.Surname</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.Nickname</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.IDPassport</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.DateofBirth</p>
+                                            </div>
+                                        </div>
 
-                                            <li><i class="fas fa-check"></i>@ASB.Where(x => x.AdditionalSupportBigID == items.AdditionalSupportBigID).SingleOrDefault().Description</li>
 
-                                        }
-                                    </ul>
-
+                                    </div>
                                 </div>
                             </div>
-                        <div class="form-group row">
-                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
-                                <div class="col-lg-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+                                            Contact Information
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1Two" class="collapse show">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.email</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.Phonenumber</p>
+                                            </div>
+                                        </div>
 
-                                    <p>@item.ConfirmMentordurationQ</p>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.AddressStreet</p>
+                                            </div>
+                                        </div>
+                                        @*<div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
+                                                <div class="col-lg-8">
+                                                    <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
 
+                                                </div>
+                                            </div>*@
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.PostalCode</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1 name and number</label>
+
+                                            <div class="col-lg-12">
+                                                <p>@item.EmergencyContactNameone: @item.EmergencyContactNumberone</p>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2 name and number</label>
+
+                                            <div class="col-lg-12">
+                                                <p>@item.EmergencyContactNametwo: @item.EmergencyContactNumbertwo </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
+                                            Profile Questions
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1Three" class="collapse show">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.howdidyouhearabout</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.BackgroundQ</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentor or participated in mentor training?</label>
+                                            <div class="col-lg-12">
+                                                <p>@ViewBag.EvMentor</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                            <div class="col-lg-9">
+                                                <p>@item.DetailsOnEverbeenMentorQ</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
+                                            <div class="col-lg-12">
+
+                                                <p>@ViewBag.Conv</p>
 
 
 
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.DetailsArrestedConvictedQ</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What would your 28 year-old self say to your 18 year-old self?</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.youngerselfQ</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Little Sister?</label>
+                                            <div class="col-lg-12">
+                                                <p>@item.Expectationsonlittlesister</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
+                                            <div class="col-lg-12">
+                                                <ul class="list list-icons">
+                                                    @foreach (var items in IS)
+                                                    {
+
+                                                        <li><i class="fas fa-check"></i>@II.Where(x => x.InformationofInterestID == items.InformationofInterestID).SingleOrDefault().Description</li>
+
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
+                                            <div class="col-lg-12">
+                                                <p>@IL.Where(x => x.InteractionLevelID == item.Interactionlevelmeet).SingleOrDefault().Description</p>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
+                                            <div class="col-lg-12">
+
+                                                <p>@IL.Where(x => x.InteractionLevelID == item.InteractionlevelDigCom).SingleOrDefault().Description</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ADDITIONAL SUPPORT. In addition to being a Big Sister, I would also like to (please select all applicable options): </label>
+                                            <div class="col-lg-12">
+
+                                                <ul class="list list-icons">
+                                                    @foreach (var items in ASSB)
+                                                    {
+
+                                                        <li><i class="fas fa-check"></i>@ASB.Where(x => x.AdditionalSupportBigID == items.AdditionalSupportBigID).SingleOrDefault().Description</li>
+
+                                                    }
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
+                                                I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (@item.ConfirmMentordurationQ == 1)
+                                                {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
+                                                else
+                                                { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}
+                                            </label>
+                                            <!---<div class="col-lg-12">
+
+                                                <p>@item.ConfirmMentordurationQ</p>
+
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -393,3 +446,4 @@
     }
 
 </div>
+<script src="~/js/app/admin/action-profile.js"></script>
