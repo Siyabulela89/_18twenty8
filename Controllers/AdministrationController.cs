@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using _18TWENTY8.Models;
 using _18TWENTY8.Models.ViewModels;
+using _18TWENTY8.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,14 @@ namespace FSTC.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILogger<AdministrationController> logger;
         private readonly EighteentwentyeightContext _context;
-        public AdministrationController(RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, ILogger<AdministrationController> logger, EighteentwentyeightContext context)
+        private readonly AdministrationService _administrationService;
+        public AdministrationController(RoleManager<ApplicationRole> roleManager
+            , UserManager<ApplicationUser> userManager
+            , ILogger<AdministrationController> logger
+            , EighteentwentyeightContext context)
         {
             _context = context;
+            _administrationService = new AdministrationService(_context);
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.logger = logger;
@@ -225,12 +231,8 @@ namespace FSTC.Controllers
         public async Task<IActionResult> AdminStatusBigsis(string? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
-           
-          
-
+                            
             bool has = _context.SisterAssignment.Any(x => x.BigSisterID == id);
 
 
@@ -278,6 +280,13 @@ namespace FSTC.Controllers
 
             };
             return View(listfor.ToList());
+        }
+
+        [HttpPost]
+        // [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActionProfile([FromBody] ActionProfileViewModel model)
+        {
+            return Ok(await _administrationService.UpdateProfileStatus(model));
         }
 
     }
