@@ -1,0 +1,133 @@
+﻿@model _18TWENTY8.Models.Graduates
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container py-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Add <strong class="font-weight-extra-bold">Graduates</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container py-2">
+
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+             
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Graduates</strong> Capture</h2>
+                    </div>
+                    <div class="overflow-hidden mb-4 pb-3">
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group row">
+                            <label asp-for="GraduateName" class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Gradueate Name</label>
+                            <div class="col-lg-9">
+                                <input asp-for="GraduateName" class="form-control" required type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="GraduatenameandQual" class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Qualification summary</label>
+                            <div class="col-lg-9">
+                                <input asp-for="GraduatenameandQual" class="form-control" required type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="GraduateStoryname" class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Graduate Story name</label>
+                            <div class="col-lg-9">
+                                <input asp-for="GraduateStoryname" class="form-control" required type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload pdf</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Change</span>
+                                        <span class="fileupload-new">Select file</span>
+                                        <input type="file" name="Doc1" id="Doc1" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload picture</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Change</span>
+                                        <span class="fileupload-new">Select file</span>
+                                        <input type="file" name="Doc2" id="Doc2" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col-lg-9">
+
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+
+    </div>
+

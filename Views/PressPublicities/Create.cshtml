@@ -1,0 +1,135 @@
+﻿@model _18TWENTY8.Models.PressPublicity
+
+
+    
+    @{
+        ViewData["Title"] = "Create Press and Publicity";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div role="main" class="main">
+        <section class="page-header page-header-modern page-header-background page-header-background-md overlay overlay-color-dark overlay-show overlay-op-7" style="background-image: url('/img/page-header/Backgroundimg.png');">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <h1 class="text-9 font-weight-bold"> @ViewData["Title"]</h1>
+                        <span class="sub-title">Empowering young women. Personal development through education</span>
+                    </div>
+                    <div class="col-md-12 align-self-center order-1">
+
+                        <ul class="breadcrumb breadcrumb-light d-block text-center">
+                            <li> <a></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container py-2">
+
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <aside class="sidebar mt-2">
+                        <h5 class="font-weight-bold">Forms Layouts</h5>
+                        <ul class="nav nav-list flex-column">
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-basic-contact.html">Basic Contact Form</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-advanced-contact.php">Advanced Contact Form</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-contact-recaptcha-v2.html">Contact Form with Recaptcha v2</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-contact-recaptcha-v3.html">Contact Form with Recaptcha v3</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-login.html">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-signup.html">Sign Up</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-lost-password.html">Lost Password</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark active" href="elements-forms-user-profile.html">User Profile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="elements-forms-checkout.html">Checkout</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Press and Publcity</strong> Capture</h2>
+                    </div>
+                    <div class="overflow-hidden mb-4 pb-3">
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group row">
+                            <label asp-for="PressPubTypeID" class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Title</label>
+                            <div class="col-lg-9">
+                                <input asp-for="Title" class="form-control" required type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Publication Type</label>
+                            <div class="col-lg-9">
+                                <select asp-for="PressPubTypeID" id="user_time_zone" class="form-control" aria-invalid="false" size="0">
+                                    @foreach (var cat in (List<PressPubType>)ViewData["PubType"])
+                                    {
+                                        <option value="@cat.PressPubTypeID">@cat.Description</option>
+
+                                    }
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Description</label>
+                            <div class="col-lg-9">
+
+                                <textarea asp-for="Description" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Site Url / youtube link / vimeo or soundcloud (If necessary)</label>
+                            <div class="col-lg-9">
+
+                                <input asp-for="SiteUrl" class="form-control" required type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload (Video, pdf etc..)</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Change</span>
+                                        <span class="fileupload-new">Select file</span>
+                                        <input type="file"  name="Doc"  id="Doc" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col-lg-9">
+
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+
+    </div>

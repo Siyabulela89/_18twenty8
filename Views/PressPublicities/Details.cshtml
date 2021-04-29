@@ -1,0 +1,84 @@
+﻿@model _18TWENTY8.Models.PressPublicity
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="container py-4">
+
+            <div class="row">
+                <div class="col">
+                    <div class="blog-posts single-post">
+
+                        <article class="post post-large blog-single-post border-0 m-0 p-0">
+
+
+                            <div class="post-date ml-0">
+                                <span class="day">  @Html.DisplayFor(model => model.DateCreated.Day)</span>
+                                <span class="month">@Html.DisplayFor(model => model.DateCreated.Month)</span>
+                                <span class="month">@Html.DisplayFor(model => model.DateCreated.Year)</span>
+                            </div>
+
+                            <div class="post-content ml-0">
+
+                                <h2 class="font-weight-bold"><a href="blog-post.html">@Html.DisplayFor(model => model.Title)</a></h2>
+
+                                <div class="post-meta">
+                                    <span><i class="far fa-user"></i> By <a href="#">18Twenty8 Admin</a> </span>
+                                    <span><i class="far fa-folder"></i> <a href="#">Press and Publicity</a> </span>
+                                    @*<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>*@
+                                </div>
+                                @if (Model.PressPubTypeID == 2)
+                                {
+
+                                    <iframe class="img-fluid float-left mr-4 mt-2" src="@Model.SiteUrl" allowfullscreen></iframe>
+                                }
+                                else if (Model.PressPubTypeID == 3)
+                                {
+
+                                }
+                                else if (Model.PressPubTypeID == 4)
+                                { }
+                                else if (Model.PressPubTypeID == 5)
+                                { <img src="~/Uploads/PressContent/AudioPic.png" width="450" height="280" class="img-fluid float-left mr-4 mt-2" alt="" /> }
+                                else if (Model.PressPubTypeID == 6)
+                                { }
+                                else if (Model.PressPubTypeID == 7)
+                                { <iframe class="img-fluid float-left mr-4 mt-2" src="@Model.SiteUrl" allowfullscreen></iframe>}
+                                else if (Model.PressPubTypeID == 8)
+                                { <iframe class="img-fluid float-left mr-4 mt-2" src="~/Uploads/PressContent/@Model.Pathurl" allowfullscreen></iframe>}
+                                else
+                                { }
+                                @Html.DisplayFor(model => model.Description)
+
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+
+

@@ -1,0 +1,125 @@
+﻿@model _18TWENTY8.Models.BigSisterDetail
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>BigSisterDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BigSisterDetailID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nickname" class="control-label"></label>
+                <input asp-for="Nickname" class="form-control" />
+                <span asp-validation-for="Nickname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDPassport" class="control-label"></label>
+                <input asp-for="IDPassport" class="form-control" />
+                <span asp-validation-for="IDPassport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateofBirth" class="control-label"></label>
+                <input asp-for="DateofBirth" class="form-control" />
+                <span asp-validation-for="DateofBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phonenumber" class="control-label"></label>
+                <input asp-for="Phonenumber" class="form-control" />
+                <span asp-validation-for="Phonenumber" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="howdidyouhearabout" class="control-label"></label>
+                <input asp-for="howdidyouhearabout" class="form-control" />
+                <span asp-validation-for="howdidyouhearabout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackgroundQ" class="control-label"></label>
+                <input asp-for="BackgroundQ" class="form-control" />
+                <span asp-validation-for="BackgroundQ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EverbeenamentorQ" class="control-label"></label>
+                <input asp-for="EverbeenamentorQ" class="form-control" />
+                <span asp-validation-for="EverbeenamentorQ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetailsOnEverbeenMentorQ" class="control-label"></label>
+                <input asp-for="DetailsOnEverbeenMentorQ" class="form-control" />
+                <span asp-validation-for="DetailsOnEverbeenMentorQ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrestedConvictedQ" class="control-label"></label>
+                <input asp-for="ArrestedConvictedQ" class="form-control" />
+                <span asp-validation-for="ArrestedConvictedQ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetailsArrestedConvictedQ" class="control-label"></label>
+                <input asp-for="DetailsArrestedConvictedQ" class="form-control" />
+                <span asp-validation-for="DetailsArrestedConvictedQ" class="text-danger"></span>
+            </div>
+       
+            <div class="form-group">
+                <label asp-for="Interactionlevelmeet" class="control-label"></label>
+                <input asp-for="Interactionlevelmeet" class="form-control" />
+                <span asp-validation-for="Interactionlevelmeet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InteractionlevelDigCom" class="control-label"></label>
+                <input asp-for="InteractionlevelDigCom" class="form-control" />
+                <span asp-validation-for="InteractionlevelDigCom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="prefferedstudentdetails" class="control-label"></label>
+                <input asp-for="prefferedstudentdetails" class="form-control" />
+                <span asp-validation-for="prefferedstudentdetails" class="text-danger"></span>
+            </div>
+         
+        
+            <div class="form-group">
+                <label asp-for="Expectationsonlittlesister" class="control-label"></label>
+                <input asp-for="Expectationsonlittlesister" class="form-control" />
+                <span asp-validation-for="Expectationsonlittlesister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmMentordurationQ" class="control-label"></label>
+                <input asp-for="ConfirmMentordurationQ" class="form-control" />
+                <span asp-validation-for="ConfirmMentordurationQ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

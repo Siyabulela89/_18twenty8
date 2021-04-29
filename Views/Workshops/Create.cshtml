@@ -1,0 +1,122 @@
+﻿@model _18TWENTY8.Models.Workshops
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container py-2">
+
+            <div class="row">
+
+                <div class="col-lg-9 order-1 order-lg-2">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Workshop</strong> Capture</h2>
+                    </div>
+                    <div class="overflow-hidden mb-4 pb-3">
+
+                    </div>
+
+                    <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group row">
+                            <label asp-for="WorkshopTitle" class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Title</label>
+                            <div class="col-lg-9">
+                                <input asp-for="WorkshopTitle" class="form-control" required type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Supporting Image/Video</label>
+                            <div class="col-lg-9">
+                                <select asp-for="WorkshopFileTypeID" id="user_time_zone" class="form-control" aria-invalid="false" size="0">
+                                    @foreach (var cat in (List<WorkshopsupportDocType>)ViewData["wstype"])
+                                    {
+                                        <option value="@cat.WorkshopFileTypeID">@cat.FileTypeDescription</option>
+
+                                    }
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Workshop Content</label>
+
+                        </div>
+                        <div class="form-group row">
+                            <textarea asp-for="WorkshopContent" class="ckeditor"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Site Url / youtube link / vimeo or soundcloud (If necessary)</label>
+                            <div class="col-lg-9">
+
+                                <input asp-for="fileurl" class="form-control" required type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload (Upload Image)</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Change</span>
+                                        <span class="fileupload-new">Select file</span>
+                                        <input type="file" name="Doc" id="Doc" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col-lg-9">
+
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+
+    </div>
+

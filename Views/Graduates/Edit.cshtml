@@ -1,0 +1,61 @@
+﻿@model _18TWENTY8.Models.Graduates
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Graduates</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GraduateID" />
+            <div class="form-group">
+                <label asp-for="GraduateName" class="control-label"></label>
+                <input asp-for="GraduateName" class="form-control" />
+                <span asp-validation-for="GraduateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GraduatenameandQual" class="control-label"></label>
+                <input asp-for="GraduatenameandQual" class="form-control" />
+                <span asp-validation-for="GraduatenameandQual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GraduateStoryname" class="control-label"></label>
+                <input asp-for="GraduateStoryname" class="form-control" />
+                <span asp-validation-for="GraduateStoryname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pdfstoryurl" class="control-label"></label>
+                <input asp-for="pdfstoryurl" class="form-control" />
+                <span asp-validation-for="pdfstoryurl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Videourl" class="control-label"></label>
+                <input asp-for="Videourl" class="form-control" />
+                <span asp-validation-for="Videourl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imageurl" class="control-label"></label>
+                <input asp-for="imageurl" class="form-control" />
+                <span asp-validation-for="imageurl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

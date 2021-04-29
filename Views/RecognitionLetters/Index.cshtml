@@ -1,0 +1,89 @@
+﻿@model IEnumerable<_18TWENTY8.Models.RecognitionLetters>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container py-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Recognition <strong class="font-weight-extra-bold">Letters</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container py-2">
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="modal fade" id="@Html.DisplayFor(modelItem => item.popupmodalid)" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="largeModalLabel">@Html.DisplayFor(modelItem => item.RecognitionLetterName)</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="~/uploads/Recognition/@Html.DisplayFor(modelItem => item.recogurl)" allowfullscreen></iframe>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="container py-2">
+
+
+            <div class="featured-boxes featured-boxes-flat">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="featured-box featured-box-primary featured-box-effect-2">
+                                <div style="height:220px" class="box-content box-content-border-bottom">
+                                    <i class="icon-featured far fa-file-alt"></i>
+                                    <h4 class="font-weight-normal text-5 mt-0">@Html.DisplayFor(modelItem => item.RecognitionLetterName)</h4>
+                                    <ul class="list list-icons">
+                                        <li><i class="fas fa-file-alt"></i><a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.popupmodalid)"> View Letter</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+

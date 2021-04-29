@@ -1,0 +1,155 @@
+﻿@model IEnumerable<_18TWENTY8.Models.BigSisterDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nickname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDPassport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phonenumber)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.howdidyouhearabout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BackgroundQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EverbeenamentorQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetailsOnEverbeenMentorQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrestedConvictedQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetailsArrestedConvictedQ)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Interactionlevelmeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InteractionlevelDigCom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prefferedstudentdetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.youngerselfQ)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Expectationsonlittlesister)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmMentordurationQ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDPassport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phonenumber)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.howdidyouhearabout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BackgroundQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EverbeenamentorQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailsOnEverbeenMentorQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrestedConvictedQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailsArrestedConvictedQ)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Interactionlevelmeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InteractionlevelDigCom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prefferedstudentdetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.youngerselfQ)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Expectationsonlittlesister)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmMentordurationQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BigSisterDetailID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BigSisterDetailID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BigSisterDetailID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

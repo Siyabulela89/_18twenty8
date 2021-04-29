@@ -1,0 +1,319 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.LittleSisterDetail> LS = Model.ToList()[0] as List<_18TWENTY8.Models.LittleSisterDetail>;
+    List<_18TWENTY8.Models.BigSisterDetail> BS = Model.ToList()[1] as List<_18TWENTY8.Models.BigSisterDetail>;
+    List<_18TWENTY8.Models.SisterAssignment> SA = Model.ToList()[2] as List<_18TWENTY8.Models.SisterAssignment>;
+    List<_18TWENTY8.Models.AssignSisterStatus> ASS = Model.ToList()[3] as List<_18TWENTY8.Models.AssignSisterStatus>;
+    List<_18TWENTY8.Models.AssignApprove> AA = Model.ToList()[4] as List<_18TWENTY8.Models.AssignApprove>;
+    List<_18TWENTY8.Models.ProfileStatus> PS = Model.ToList()[5] as List<_18TWENTY8.Models.ProfileStatus>;
+
+
+}
+
+ 
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-4">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Administration case management</strong><strong class="font-weight-extra-bold"></strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <div class="tabs tabs-bottom tabs-center tabs-simple">
+            <ul class="nav nav-tabs">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#tabsNavigationSimple1" data-toggle="tab">Pending profile approval (Little Sister)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tabsNavigationSimple2" data-toggle="tab">Pending profile approval (Big Sister)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tabsNavigationSimple3" data-toggle="tab">Sister assignments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tabsNavigationSimple4" data-toggle="tab">Pending assignments</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tabsNavigationSimple1">
+                    <div role="main" class="main shop py-4">
+
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="featured-boxes">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="featured-box featured-box-primary text-left mt-2">
+                                                    <div class="box-content">
+                                                        <form method="post" action="">
+                                                            <table class="shop_table cart">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="product-name">
+                                                                            Picture
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Name
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Surname
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            View Profile
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Status
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @{var allowedStatus = new[]{ 5, 11};}
+                                                                    @foreach (var item in LS.Where(x => allowedStatus.Contains( x.ProfileStatusID)))
+                                                                    {
+                                                                        <tr class="cart_table_item">
+                                                                            <td class="product-name">
+                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                    <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@item.Imageurl">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                @item.Name
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                @item.Surname
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusLilSis" type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                <p><em>@PS.Where(x => x.ProfileStatusID == item.ProfileStatusID).SingleOrDefault().Description</em></p>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    }
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabsNavigationSimple2">
+                    <div role="main" class="main shop py-4">
+
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="featured-boxes">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="featured-box featured-box-secondary text-left mt-2">
+                                                    <div class="box-content">
+                                                        <form method="post" action="">
+                                                            <table class="shop_table cart">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="product-name">
+                                                                            Picture
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Name
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Surname
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            View Profile
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Status
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @{var allowedStatuss = new[] { 4, 10 };}
+                                                                    @foreach (var item in BS.Where(x => allowedStatuss.Contains(x.ProfileStatusID)))
+                                                                    { 
+                                                                        <tr class="cart_table_item">
+                                                                            <td class="product-name">
+                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                    <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesBigsis/@item.Imageurl">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                @item.Name
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                @item.Surname
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusBigsis"  type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                <p><em>@PS.Where(x => x.ProfileStatusID == item.ProfileStatusID).SingleOrDefault().Description</em></p>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabsNavigationSimple3">
+                    <div role="main" class="main shop py-4">
+
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="featured-boxes">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="featured-box featured-box-secondary text-left mt-2">
+                                                    <div class="box-content">
+                                                        <form method="post" action="">
+                                                            <table class="shop_table cart">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="product-name">
+                                                                            Mentee Picture
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                           Mentee to assign
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                           Mentor match
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                           Mentee approval status
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Mentor approval status
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Case status
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var item in SA)
+                                                                    {
+                                                                    <tr class="cart_table_item">
+                                                                        <td class="product-name">
+                                                                            <a href="shop-product-sidebar-left.html">
+                                                                                <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesBigsis/@LS.Where(x=> x.UserID==@item.LittleSisterID).SingleOrDefault().Imageurl">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            <p> @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Surname</p>
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                           
+                                                                            @if (item.BigSisterID is null)
+                                                                            {
+                                                                                <p><em>Big sister not assigned yet</em></p>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
+                                                                            }
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            <p><em> @AA.Where(x => x.AssAppID == @item.LittleApproveID).SingleOrDefault().description</em></p>
+</td>
+                                                                        <td class="product-name">
+
+                                                                            <p><em>@AA.Where(x => x.AssAppID == @item.BigApproveID).SingleOrDefault().description</em></p>
+                                                                        </td>
+                                                                        <td class="product-name">
+
+                                                                            <p><em>@ASS.Where(x => x.AssignSisterStatusID == @item.AssignSisterStatusID).SingleOrDefault().description</em></p>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabsNavigationSimple4">
+                    <div class="text-center">
+                        <h4>Colors</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia.</p>
+                        <p>Lorem ipsum dolor sit amet. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est varius diam, ac ultrices sem ante quis sem. Proin ultricies volutpat sapien, nec scelerisque ligula mollis lobortis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<_18TWENTY8.Models.ApplicationUser> SignInManager
+    @inject UserManager<_18TWENTY8.Models.ApplicationUser> UserManager
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>18twenty8</title>
+
+    <meta name="keywords" content="18twenty8" />
+    <meta name="description" content="18twenty8">
+    <meta name="author" content="okler.net">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/vendor/animate/animate.min.css">
+    <link rel="stylesheet" href="~/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/css/theme.css">
+    <link rel="stylesheet" href="~/css/theme-elements.css">
+    <link rel="stylesheet" href="~/css/theme-blog.css">
+    <link rel="stylesheet" href="~/css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="~/vendor/rs-plugin/css/navigation.css">
+
+    <!-- Demo CSS -->
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/css/skins/skin-corporate-10.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/vendor/modernizr/modernizr.min.js"></script>
+
+</head>
+<body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <div class="body">
+        <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+            <div class="header-body border-top-0 bg-dark box-shadow-none">
+                <div class="header-container container container-xl">
+                    <div class="header-row">
+                        <div class="header-column">
+                            <div class="header-row">
+                                <div class="header-logo">
+                                    <a href="index.html">
+                                        <img alt="18twenty8" width="134" height="75" src="~/img/18twenty8logo.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-column justify-content-end">
+                            <div class="header-row">
+                                <div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-main-dark-text order-2 order-lg-1">
+                                    <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-3 header-nav-main-sub-effect-1">
+                                        <nav class="collapse">
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class=""> <a href="@Url.Action("Index", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexHome" ? "class=active" : "" )>Home</a></li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        About Us
+                                                    </a>
+                                                    <ul style="background-color:white" class="dropdown-menu">
+
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Directors", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Directors</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Graduates",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexGraduates" ? "class=active" : "" )>Graduates</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "RecognitionLetters",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexRecognition" ? "class=active" : "" )>Recognition Letters</a></li>
+
+                                                    </ul>
+
+                                                </li>
+                                                <li class=""> <a href="@Url.Action("Donate", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DonateHome" ? "class=active" : "" )>Donate</a></li>
+
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Programmes
+                                                    </a>
+                                                    <ul style="background-color:white" class="dropdown-menu">
+
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexWorkshops" ? "class=active" : "" )>Workshops</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("LeadershipCamp", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "LeadershipCampWorkshops" ? "class=active" : "" )>Leadership Camp</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("FinancialAssistance", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Financial Assistance</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Bam", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "BamWorkshops" ? "class=active" : "" )>BAM Forum</a></li>
+                                                    </ul>
+
+                                                </li>
+
+
+                                                <li class=""> <a href="@Url.Action("BBBEE", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "indexsPressPublicities" ? "class=active" : "")>BBBEE</a></li>
+                                                <li class=""> <a href="@Url.Action("Index", "PressPublicities",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexPressPublicities" ? "class=active" : "")>Press and Publicity</a></li>
+                                                <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "VolunteerHome" ? "class=active" : "" )>Volunteer or work with us</a></li>                                 
+                                                    <li class=""> <a href="@Url.Action("Contact", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "ContactHome" ? "class=active" : "")>Contact Us</a></li>
+                                                <li class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                                <li class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                            </ul>
+                                                </nav>
+                                    </div>
+                                    <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
+                                </div>
+                                <div class="header-nav-features header-nav-features-light header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
+
+                                    <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2">
+                                        <img style="height:90px; width:150px" src="~/img/Anniversary/102.png" />
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        @RenderBody()
+        <footer id="footer" style="bottom: 0;" class="bg-color-light border-0 pt-5 mt-0">
+
+            <div class="footer-copyright curved-border curved-border-top d-flex align-items-center">
+
+                <div class="container">
+                    <div class="row py-4">
+                        <div class="col text-center">
+                            <p class="text-3">
+                                Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8</strong>
+                                Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | PBO Reg No.: 930 036 859
+                                96 on Fourth Street, Parkmore, Sandton, 2196, South Africa
+                                Tel: +27 11 064 4810 | Cell: +27 60 798 7683
+                                “18twenty8” is a Registered Trademark.
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <ul class="social-icons">
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
+    </div>
+
+    <!-- Vendor -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="~/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/vendor/common/common.min.js"></script>
+    <script src="~/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/vendor/vide/jquery.vide.min.js"></script>
+    <script src="~/vendor/vivus/vivus.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/js/views/view.contact.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/js/theme.init.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
+
+    <script>
+
+        /*
+        Map Settings
+
+            Find the Latitude and Longitude of your address:
+                - https://www.latlong.net/
+                - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+        */
+
+        // Map Markers
+        var mapMarkers = [{
+            address: "18Twenty8 , Sandton",
+            html: "<strong>Sandton Office</strong><br> 18Twenty8",
+            icon: {
+                image: "/img/pin-light.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46]
+            },
+            popup: true
+        }];
+
+        // Map Initial Location
+        var initLatitude = -26.1008;
+        var initLongitude = 28.0389;
+
+        // Map Extended Settings
+        var mapSettings = {
+            controls: {
+                draggable: (($.browser.mobile) ? false : true),
+                panControl: true,
+                zoomControl: true,
+                mapTypeControl: true,
+                scaleControl: true,
+                streetViewControl: true,
+                overviewMapControl: true
+            },
+            scrollwheel: false,
+            markers: mapMarkers,
+            latitude: initLatitude,
+            longitude: initLongitude,
+            zoom: 12
+        };
+
+        var map = $('#googlemaps').gMap(mapSettings),
+            mapRef = $('#googlemaps').data('gMap.reference');
+
+        // Map text-center At
+        var mapCenterAt = function (options, e) {
+            e.preventDefault();
+            $('#googlemaps').gMap("centerAt", options);
+        }
+
+        // Styles from https://snazzymaps.com/
+        var styles = [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }];
+
+        var styledMap = new google.maps.StyledMapType(styles, {
+            name: 'Styled Map'
+        });
+
+        mapRef.mapTypes.set('map_style', styledMap);
+        mapRef.setMapTypeId('map_style');
+
+    </script>
+    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-12345678-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+     -->
+
+</body>
+@if (IsSectionDefined("Scripts"))
+{
+    @RenderSection("Scripts", required: true)
+
+}
+
+</html>

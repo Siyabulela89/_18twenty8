@@ -1,0 +1,145 @@
+﻿@model _18TWENTY8.Models.BigSisterDetail
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BigSisterDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPassport)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IDPassport)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phonenumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phonenumber)
+        </dd>
+      
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.howdidyouhearabout)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.howdidyouhearabout)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BackgroundQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BackgroundQ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EverbeenamentorQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EverbeenamentorQ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DetailsOnEverbeenMentorQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DetailsOnEverbeenMentorQ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArrestedConvictedQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArrestedConvictedQ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DetailsArrestedConvictedQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DetailsArrestedConvictedQ)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Interactionlevelmeet)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Interactionlevelmeet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InteractionlevelDigCom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InteractionlevelDigCom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.prefferedstudentdetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.prefferedstudentdetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.youngerselfQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.youngerselfQ)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Expectationsonlittlesister)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Expectationsonlittlesister)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmMentordurationQ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmMentordurationQ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BigSisterDetailID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

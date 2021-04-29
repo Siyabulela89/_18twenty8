@@ -1,0 +1,63 @@
+﻿@model _18TWENTY8.Models.Graduates
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Graduates</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GraduateName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GraduateName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GraduatenameandQual)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GraduatenameandQual)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GraduateStoryname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GraduateStoryname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pdfstoryurl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pdfstoryurl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Videourl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Videourl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imageurl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imageurl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GraduateID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

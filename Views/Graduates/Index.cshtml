@@ -1,0 +1,95 @@
+﻿@model IEnumerable<_18TWENTY8.Models.Graduates>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div role="main" class="main">
+    <div class="container py-2">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="modal fade" id="@Html.DisplayFor(modelItem => item.Modalpopupid)" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="largeModalLabel">@Html.DisplayFor(modelItem => item.GraduateStoryname)</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                               
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="~/uploads/GraduateStories/@Html.DisplayFor(modelItem => item.pdfstoryurl)" allowfullscreen></iframe>
+                                    </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+        </div>
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-4">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 style="color:#a62237" class="font-weight-normal mb-5">Our <strong class="font-weight-extra-bold">Graduates</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-4">
+
+        <div class="row py-3 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-8 col-md-4 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeIn">
+                    <article>
+                        <div class="row">
+                            <div class="col">
+                                <a href="# data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)" class="text-decoration-none">
+                                    <img src="~/uploads/GraduateStories/@Html.DisplayFor(modelItem => item.imageurl)" class="img-fluid hover-effect-2 mb-3" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="mb-0"><a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)" class="text-2 text-uppercase font-weight-bold pt-2 d-block text-dark text-decoration-none">@Html.DisplayFor(modelItem => item.GraduateName)</a></h4>
+                                <p class="mb-2 lead text-4">@Html.DisplayFor(modelItem => item.GraduatenameandQual)</p>
+                                <ul class="list list-icons">
+                                    <li><i class="fas fa-file-alt"></i><a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)"> Read Story</a></li>
+                                    </ul>
+
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            }
+            </div>
+
+    </div>
+</div>
+

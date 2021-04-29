@@ -1,0 +1,262 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.PressPubType> Dtype = Model.ToList()[0] as List<_18TWENTY8.Models.PressPubType>;
+    List<_18TWENTY8.Models.PressPublicity> Art = Model.ToList()[1] as List<_18TWENTY8.Models.PressPublicity>;
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container container-xl">
+
+            <section class="section bg-color-grey-scale-1 border-0 m-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 style="color:#a62237" class="font-weight-normal mb-5">Press & <strong class="font-weight-extra-bold">Publicity</strong></h2>
+                        </div>
+                    </div>
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col pb-4">
+                                <div class="row mt-5">
+                                    <div class="col">
+
+                                        <div class="row">
+                                            @foreach (var item in Art)
+                                            {
+                                                if (item.PressPubTypeID == 2)
+                                                {
+                                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                                        <article class="post post-large pb-5">
+                                                            <div class="post-image">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" src="@item.SiteUrl" width="640" height="360" allowfullscreen></iframe>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="post-date">
+                                                                <span class="day">@item.DateCreated.Day</span>
+                                                                <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                                <span class="month">@item.DateCreated.Year</span>
+                                                            </div>
+
+                                                            <div class="post-content">
+
+                                                                <h4><a href="blog-post.html" class="text-decoration-none">@item.Title</a></h4>
+                                                                <p class="mb-1">@item.Description.Substring(0, Math.Min(item.Description.Length, 100))...</p>
+                                                                <a asp-controller="PressPublicities" asp-action="Details" asp-route-id="@item.PressPubID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+                                                else if (item.PressPubTypeID == 7)
+                                                {
+                                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                                        <article class="post post-large pb-5">
+                                                            <div class="post-image">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" src="@item.SiteUrl" width="640" height="360" allowfullscreen></iframe>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="post-date">
+                                                                <span class="day">@item.DateCreated.Day</span>
+                                                                <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                                <span class="month">@item.DateCreated.Year</span>
+                                                            </div>
+
+                                                            <div class="post-content">
+
+                                                                <h4><a href="blog-post.html" class="text-decoration-none">@item.Title</a></h4>
+                                                                <p class="mb-1">@item.Description.Substring(0, Math.Min(item.Description.Length, 100))...</p>
+                                                                <a asp-controller="PressPublicities" asp-action="Details" asp-route-id="@item.PressPubID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+                                                else if (item.PressPubTypeID == 8)
+                                                {
+                                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                                        <article class="post post-large pb-5">
+                                                            <div class="post-image">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" src="~/Uploads/PressContent/@item.Pathurl" width="640" height="360" allowfullscreen></iframe>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="post-date">
+                                                                <span class="day">@item.DateCreated.Day</span>
+                                                                <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                                <span class="month">@item.DateCreated.Year</span>
+                                                            </div>
+
+                                                            <div class="post-content">
+
+                                                                <h4><a href="~/Uploads/PressContent/@item.Pathurl" class="text-decoration-none">@item.Title</a></h4>
+                                                                <p class="mb-1">@item.Description.Substring(0, Math.Min(item.Description.Length, 100))...</p>
+
+                                                                <a asp-controller="PressPublicities" asp-action="Details" asp-route-id="@item.PressPubID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+                                                else if (item.PressPubTypeID == 5)
+                                                {
+                                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                                        <article class="post post-large pb-5">
+                                                            <div class="post-image">
+                                                                <a href="~/Uploads/PressContent/@item.Pathurl">
+                                                                    <img src="~/Uploads/PressContent/AudioPic.png" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="post-date">
+                                                                <span class="day">@item.DateCreated.Day</span>
+                                                                <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                                <span class="month">@item.DateCreated.Year</span>
+                                                            </div>
+
+                                                            <div class="post-content">
+
+                                                                <h4><a href="~/Uploads/PressContent/@item.Pathurl" class="text-decoration-none">@item.Title</a></h4>
+                                                                <p class="mb-1">@item.Description.Substring(0, Math.Min(item.Description.Length, 100))...</p>
+                                                                <a asp-controller="PressPublicities" asp-action="Details" asp-route-id="@item.PressPubID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+                                                else if (item.PressPubTypeID == 1)
+                                                {
+
+                                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                                        <article class="post post-large pb-5">
+                                                            <div class="post-image">
+                                                                <a href="@item.SiteUrl">
+                                                                    <img src="~/Uploads/PressContent/@item.Pathurl" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="post-date">
+                                                                <span class="day">@item.DateCreated.Day</span>
+                                                                <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                                <span class="month">@item.DateCreated.Year</span>
+                                                            </div>
+
+                                                            <div class="post-content">
+
+                                                                <h4><a href="@item.SiteUrl" class="text-decoration-none">@item.Title</a></h4>
+                                                                <p class="mb-1">@item.Description.Substring(0, Math.Min(item.Description.Length, 100))...</p>
+                                                                <a asp-controller="PressPublicities" asp-action="Details" asp-route-id="@item.PressPubID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+
+                                                }
+                                            }
+
+
+
+
+                                            @*<div class="col-lg-4 mb-4 mb-lg-0">
+                                                <article class="post post-large pb-5">
+                                                    <div class="post-image">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/514321618?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="640" height="360" allowfullscreen></iframe>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="post-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Jan</span>
+                                                    </div>
+
+                                                    <div class="post-content">
+
+                                                        <h4><a href="blog-post.html" class="text-decoration-none">This is a standard embedded video post</a></h4>
+                                                        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam nisi ultricies nisi luctus, sed fermentum.</p>
+                                                        <a href="blog-post.html" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+
+                                                    </div>
+                                                </article>
+                                            </div>
+                                            <div class="col-lg-4 mb-4 mb-lg-0">
+                                                <article class="post post-large pb-5">
+                                                    <div class="post-image">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <video class="embed-responsive-item" autoplay="" muted="" loop="" controls="">
+                                                                <source src="video/memory-of-a-woman.mp4" type="video/mp4">
+                                                            </video>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="post-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Jan</span>
+                                                    </div>
+
+                                                    <div class="post-content">
+
+                                                        <h4><a href="blog-post.html" class="text-decoration-none">This is a standard HTML5 video post</a></h4>
+                                                        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam nisi ultricies nisi luctus, sed fermentum.</p>
+                                                        <a href="blog-post.html" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+
+                                                    </div>
+                                                </article>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <article class="post post-large pb-5">
+                                                    <div class="post-image">
+                                                        <div class="embed-responsive embed-soundcloud embed-responsive-21by9">
+                                                            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/398476962&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/powerfm987" title="POWERFM987" target="_blank" style="color: #cccccc; text-decoration: none;">POWERFM987</a> · <a href="https://soundcloud.com/powerfm987/siyabulela-sinqe-founder-of-vukasantewaa-digital-platform-that-provides-tangible-empowerment" title="SIYABULELA SINQE - FOUNDER OF VUKASANTEWAA - DIGITAL PLATFORM THAT PROVIDES TANGIBLE EMPOWERMENT" target="_blank" style="color: #cccccc; text-decoration: none;">SIYABULELA SINQE - FOUNDER OF VUKASANTEWAA - DIGITAL PLATFORM THAT PROVIDES TANGIBLE EMPOWERMENT</a></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="post-date">
+                                                        <span class="day">15</span>
+                                                        <span class="month">Jan</span>
+                                                    </div>
+
+                                                    <div class="post-content">
+
+                                                        <h4><a href="blog-post.html" class="text-decoration-none">This is a standard audio embedded post</a></h4>
+                                                        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur aliquam nisi ultricies nisi luctus, sed fermentum.</p>
+                                                        <a href="blog-post.html" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+
+                                                    </div>
+                                                </article>
+                                            </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>

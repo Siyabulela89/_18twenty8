@@ -1,0 +1,48 @@
+﻿
+@model _18TWENTY8.Models.ViewModels.CreateRoleViewModel
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <div class="featured-boxes">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="featured-box featured-box-primary text-left mt-5">
+                            <div class="box-content">
+                                <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Create new role</h4>
+                                <form method="post" id="SignUp" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="form-group col">
+                                            <label class="font-weight-bold text-dark text-2">Role name</label>
+
+                                            <input asp-for="RoleName" value="" class="form-control form-control-lg">
+                                            <span asp-validation-for="RoleName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="form-group col-lg-6">
+                                            <button type="submit" class="btn btn-primary btn-with-arrow mb-2">Create Role<span><i class="fas fa-chevron-right"></i></span></button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
