@@ -54,7 +54,7 @@
 
     <!-- Head Libs -->
     <script src="~/vendor/modernizr/modernizr.min.js"></script>
-    <script src="~/js/toastr.js"></script>
+
 
 </head>
 <body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
@@ -119,13 +119,13 @@
 
                                                 <li class=""> <a href="@Url.Action("BBBEE", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "indexsPressPublicities" ? "class=active" : "")>BBBEE</a></li>
                                                 <li class=""> <a href="@Url.Action("Index", "PressPublicities",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexPressPublicities" ? "class=active" : "")>Press and Publicity</a></li>
-                                                <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "VolunteerHome" ? "class=active" : "" )>Volunteer or work with us</a></li>                                 
-                                                    <li class=""> <a href="@Url.Action("Contact", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "ContactHome" ? "class=active" : "")>Contact Us</a></li>
+                                                <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "VolunteerHome" ? "class=active" : "" )>Volunteer or work with us</a></li>
+                                                <li class=""> <a href="@Url.Action("Contact", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "ContactHome" ? "class=active" : "")>Contact Us</a></li>
                                                 <li class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                                 <li class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                                 <li class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                                             </ul>
-                                                </nav>
+                                        </nav>
                                     </div>
                                     <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
                                         <i class="fas fa-bars"></i>
@@ -135,7 +135,7 @@
 
                                     <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2">
                                         <img style="height:90px; width:150px" src="~/img/Anniversary/102.png" />
-                                     
+
                                     </div>
                                 </div>
                             </div>
@@ -194,6 +194,15 @@
     <script src="~/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="~/vendor/vide/jquery.vide.min.js"></script>
     <script src="~/vendor/vivus/vivus.min.js"></script>
+    <script src="~/js/toastr.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            toastr.options.preventDuplicates = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr.options.closeButton = true;
+        });
+    </script>
 
     <!-- Theme Base, Components and Settings -->
     <script src="~/js/theme.js"></script>
@@ -212,6 +221,10 @@
     <!-- Theme Initialization Files -->
     <script src="~/js/theme.init.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
+
+    <!-- Application Scripts -->
+    
+
 
     <script>
 

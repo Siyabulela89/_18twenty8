@@ -86,7 +86,7 @@
                         </div>
                         <div class="process-step-content">
                             <ul class="list list-icons">
-                                <li><i class="fas fa-check"></i> Registration Verification</li>
+                                <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
                             </ul>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li><i class="fas fa-exclamation"></i> @ViewBag.ProStatus</li>
+                                    <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @ViewBag.ProStatus</li>
                                 </ul>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li><i class="fas fa-check"></i> @ViewBag.ProStatus</li>
+                                    <li id="big-sis-phase-2"><i class="fas fa-check"></i> @ViewBag.ProStatus</li>
                                 </ul>
                             </div>
                         </div>
@@ -191,9 +191,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div id="action-button-wrapper" style="margin-left:36px">
-                                    <button data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
-                                    <button data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
-                                    <button data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    @if (item.ProfileStatusID == 4 || item.ProfileStatusID == 10)
+                                    {
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    }
+                                    else
+                                    {
+                                        <button style="cursor:default" disabled class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    }
+
+                                    <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                    <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 </div>
                             </div>
                         </div>
@@ -437,6 +445,62 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
+                                            Documents
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1Four" class="collapse show">
+                                    <div class="card-body">
+                                        <table class="table table-sm table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Document Name</th>
+                                                    <th scope="col">Created</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Curriculum Vitae (CV)</td>
+                                                    <td>2021-04-30 18:49:09.353</td>
+                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Certified Identity Document (ID)</td>
+                                                    <td>2021-04-30 18:49:09.353</td>
+                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Qualification 1</td>
+                                                    <td>2021-04-30 18:49:09.353</td>
+                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>Qualification 2</td>
+                                                    <td>2021-04-30 18:49:09.353</td>
+                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>Qualification 3</td>
+                                                    <td>2021-04-30 18:49:09.353</td>
+                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -447,3 +511,34 @@
 
 </div>
 <script src="~/js/app/admin/action-profile.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        var btnViewDoc = document.querySelector(".btn-view-document");
+        var btnDeleteDoc = document.querySelector(".btn-delete-document");
+
+        btnViewDoc.addEventListener("click", viewDocumentHandler);
+        btnDeleteDoc.addEventListener("click", deleteDocumentHandler);
+
+
+        function viewDocumentHandler(e) {
+            e.preventDefault();
+        }
+
+        function deleteDocumentHandler(e) {
+            e.preventDefault();
+        }
+
+        function documentActionHandler(e) {
+            e.preventDefault();
+            var data = {};
+            btnApprove.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
+            data.action = btnApprove.getAttribute('data-action');
+            data.userId = btnApprove.getAttribute('data-user-id');
+            data.role = btnApprove.getAttribute('data-role');
+            submitData(data);
+        }
+
+    });
+</script>
