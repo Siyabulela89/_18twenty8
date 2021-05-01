@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using _18TWENTY8.Models;
 using _18TWENTY8.Models.ViewModels;
+using _18TWENTY8.Models.ViewModels.BigSister;
 using _18TWENTY8.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +23,16 @@ namespace FSTC.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILogger<AdministrationController> logger;
         private readonly EighteentwentyeightContext _context;
+        private readonly IMapper _mapper;
         private readonly AdministrationService _administrationService;
         public AdministrationController(RoleManager<ApplicationRole> roleManager
             , UserManager<ApplicationUser> userManager
             , ILogger<AdministrationController> logger
-            , EighteentwentyeightContext context)
+            , EighteentwentyeightContext context, IMapper mapper)
         {
             _context = context;
-            _administrationService = new AdministrationService(_context);
+            this._mapper = mapper;
+            _administrationService = new AdministrationService(_context, _mapper);
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.logger = logger;
@@ -287,6 +291,12 @@ namespace FSTC.Controllers
         public async Task<IActionResult> ActionProfile([FromBody] ActionProfileViewModel model)
         {
             return Ok(await _administrationService.UpdateProfileStatus(model));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetBigSisterProfile([FromBody] GetBigSisterProfileViewModel model)
+        {
+            return Ok(await _administrationService.GetBigSisterProfile(model.UserId));
         }
 
     }
