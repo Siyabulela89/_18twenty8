@@ -7,9 +7,6 @@
     // Stage Status
     var phase2 = document.querySelector("#big-sis-phase-2");
 
-    console.log('phase2', phase2)
-
-    // <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @ViewBag.ProStatus</li>
 
     btnApprove.addEventListener("click", approveProfileHandler);
     btnDecline.addEventListener("click", declineProfileHandler);

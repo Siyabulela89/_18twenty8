@@ -13,6 +13,7 @@ using _18TWENTY8.Data;
 using _18TWENTY8.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace _18TWENTY8
 {
@@ -49,7 +50,7 @@ namespace _18TWENTY8
                   .AddDefaultUI()
                   .AddDefaultTokenProviders();
 
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
