@@ -72,6 +72,24 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="modal fade" id="viewDocumentModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div id="docViewModal" class="modal-body">
+                            <div class="iframe-container">
+                                <iframe id="documentViewer" width="100%" height="650px"></iframe>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @foreach (var item in BS)
     {
@@ -442,6 +460,7 @@
 
                                             </div>-->
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -464,39 +483,7 @@
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="tbl-sister-documents">
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Curriculum Vitae (CV)</td>
-                                                    <td>2021-04-30 18:49:09.353</td>
-                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Certified Identity Document (ID)</td>
-                                                    <td>2021-04-30 18:49:09.353</td>
-                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Qualification 1</td>
-                                                    <td>2021-04-30 18:49:09.353</td>
-                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>Qualification 2</td>
-                                                    <td>2021-04-30 18:49:09.353</td>
-                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th scope="row">5</th>
-                                                    <td>Qualification 3</td>
-                                                    <td>2021-04-30 18:49:09.353</td>
-                                                    <td><a onclick="return false" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-                                                </tr>
-                                            </tbody>
+                                            <tbody id="tbl-sister-documents"></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -511,99 +498,4 @@
 
 </div>
 <script src="~/js/app/admin/action-profile.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        var sisterDocTableBody = document.querySelector("#tbl-sister-documents");
-
-        function getDocumentHandler() {
-            console.log('getDocumentHandler');
-            var data = {};
-            data.userId = "c9e80f5c-e611-48ca-8376-7183584b7e64"; // btnApprove.getAttribute('data-user-id');
-            getData(data);
-        }
-
-
-        function getData(data = {}) {          
-            sisterDocTableBody.innerHTML = '<tr><td colspan="4" style="text-align:center"><i class="fas fa-spinner fa-spin"></i> Busy...</td></tr>';
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-
-            fetch(`${window.location.origin}/Administration/GetBigSisterProfile`, options)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((response) => {
-                    console.log(response);
-                    renderDocTable(response);
-
-                });
-        }
-
-        function renderDocTable(response) {
-            var tableRow = "";
-            tableRow += `<tr>
-                <th scope="row">1</th>
-                <td>Curriculum Vitae (CV)</td>
-                <td>${response.profile.dateCreated}</td>
-                <td><a onclick="return false" data-doc-url="${response.profile.cvUrl}" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-            </tr>`;
-
-            tableRow += `<tr>
-                <th scope="row">2</th>
-                <td>Certified Identity Document (ID)</td>
-                <td>${response.profile.dateCreated}</td>
-                <td><a onclick="return false" data-doc-url="${response.profile.certifiedID}" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" data-doc-url="${response.profile.certifiedID}" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-            </tr>`;
-
-            var startIndex = 2;
-            response.academicRecords.forEach((item) => {
-                startIndex++;
-                tableRow += `<tr>
-                <th scope="row">${startIndex}</th>
-                <td>${item.qualificationDocname}</td>
-                <td>${item.dateCreated}</td>
-                <td><a onclick="return false" data-doc-url="${item.qualificationurl}" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" data-doc-url="${item.qualificationurl}" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
-            </tr>`;
-            });
-
-            sisterDocTableBody.innerHTML = tableRow;
-        }
-
-        getDocumentHandler();
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        var btnViewDoc = document.querySelector(".btn-view-document");
-        var btnDeleteDoc = document.querySelector(".btn-delete-document");
-
-
-        btnViewDoc.addEventListener("click", viewDocumentHandler);
-        btnDeleteDoc.addEventListener("click", deleteDocumentHandler);
-
-        function viewDocumentHandler(e) {
-            e.preventDefault();
-        }
-
-        function deleteDocumentHandler(e) {
-            e.preventDefault();
-        }
-
-        function documentActionHandler(e) {
-            e.preventDefault();
-            var data = {};
-            btnApprove.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
-            data.action = btnApprove.getAttribute('data-action');
-            data.userId = btnApprove.getAttribute('data-user-id');
-            data.role = btnApprove.getAttribute('data-role');
-            submitData(data);
-        }
-    });
-</script>
+<script src="~/js/app/admin/document-manager.js"></script>

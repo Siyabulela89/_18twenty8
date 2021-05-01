@@ -60,19 +60,24 @@
                 if (data.action == "Approved") {
                     btnApprove.innerHTML = '<i class="fas fa-thumbs-up"></i> Approve';
                     phase2.innerHTML = `<i class="fas fa-check"></i> ${data.action}`
+                    btnApprove.disabled = true;
+                    btnApprove.style.cursor = 'default';
                 }
                     
                 if (data.action == "Sent for Correction") {
                     btnCorrect.innerHTML = '<i class="fas fa-reply"></i> Send for correction';
                     phase2.innerHTML = `<i class="fas fa-exclamation"></i> ${data.action}`
+                    btnCorrect.disabled = true;
+                    btnCorrect.style.cursor = 'default';
                 }
                    
                 if (data.action == "Declined") {
                     btnDecline.innerHTML = '<i class="fas fa-thumbs-down"></i> Decline';
-                     phase2.innerHTML = `<i class="fas fa-times"></i> ${data.action}`
+                    phase2.innerHTML = `<i class="fas fa-times"></i> ${data.action}`
+                    btnDecline.disabled = true;
+                    btnDecline.style.cursor = 'default';
                 }
-                   
-
+                
                 toastr.success(`${data.action} successfully`, 'Success Message')
             });
     }
