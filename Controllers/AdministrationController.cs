@@ -24,7 +24,7 @@ namespace FSTC.Controllers
         private readonly ILogger<AdministrationController> logger;
         private readonly EighteentwentyeightContext _context;
         private readonly IMapper _mapper;
-        private readonly AdministrationService _administrationService;
+        private readonly SisterService _sisterService;
         public AdministrationController(RoleManager<ApplicationRole> roleManager
             , UserManager<ApplicationUser> userManager
             , ILogger<AdministrationController> logger
@@ -32,7 +32,7 @@ namespace FSTC.Controllers
         {
             _context = context;
             this._mapper = mapper;
-            _administrationService = new AdministrationService(_context, _mapper);
+            _sisterService = new SisterService(_context, _mapper);
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.logger = logger;
@@ -290,13 +290,13 @@ namespace FSTC.Controllers
         // [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActionProfile([FromBody] ActionProfileViewModel model)
         {
-            return Ok(await _administrationService.UpdateProfileStatus(model));
+            return Ok(await _sisterService.UpdateProfileStatus(model));
         }
 
         [HttpPost]
         public async Task<IActionResult> GetBigSisterProfile([FromBody] GetBigSisterProfileViewModel model)
         {
-            return Ok(await _administrationService.GetBigSisterProfile(model.UserId));
+            return Ok(await _sisterService.GetBigSisterProfile(model.UserId));
         }
 
     }

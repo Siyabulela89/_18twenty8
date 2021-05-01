@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace _18TWENTY8.Services
 {
-    public class AdministrationService
+    public class SisterService
     {
         private readonly EighteentwentyeightContext _context;
         private readonly IMapper _mapper;
 
-        public AdministrationService(EighteentwentyeightContext context, IMapper mapper)
+        public SisterService(EighteentwentyeightContext context, IMapper mapper)
         {
             this._context = context;
             this._mapper = mapper;
@@ -26,15 +26,15 @@ namespace _18TWENTY8.Services
             var bigSisterDetail = await GetBigSisterDetail(model.UserId);
 
             if (bigSisterDetail == null)
-                throw new Exception($"Big Sister Profile not found: UserId: {model.UserId}");
+                throw new Exception($"Sister Profile not found: UserId: {model.UserId}");
 
             var profileStatus = _context
                 .ProfileStatus
-                .FirstOrDefault(p => p.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase)
+                .FirstOrDefault(p => p.Role.Equals(model.Role, StringComparison.OrdinalIgnoreCase)
                 && p.Description.Equals(model.Action, StringComparison.OrdinalIgnoreCase));
 
             if (profileStatus == null)
-                throw new Exception($"Big Sister Profile Status not found: Status: {model.Action}");
+                throw new Exception($"Sister Profile Status not found: Status: {model.Action}");
 
 
             bigSisterDetail.ProfileStatusID = profileStatus.ProfileStatusID;

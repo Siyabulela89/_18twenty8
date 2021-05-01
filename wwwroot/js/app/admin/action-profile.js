@@ -30,6 +30,7 @@
         btnDecline.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
         data.action = btnDecline.getAttribute('data-action');
         data.userId = btnDecline.getAttribute('data-user-id');
+        data.role = btnDecline.getAttribute('data-role');
         submitData(data);
     }
 
@@ -39,6 +40,7 @@
         var data = {};
         data.action = btnCorrect.getAttribute('data-action');
         data.userId = btnCorrect.getAttribute('data-user-id');
+        data.role = btnCorrect.getAttribute('data-role');
         submitData(data);
     }
 
