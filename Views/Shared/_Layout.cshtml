@@ -210,40 +210,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             toastr.options.preventDuplicates = true;
             toastr.options.positionClass = 'toast-bottom-right';
-            toastr.options.closeButton = true;
-
-            document.body.addEventListener('click', (e) => {
-                if (e.target.parentElement.classList.contains('btn-view-document')) {
-                    var docName = e.target.parentElement.getAttribute('data-doc-url');
-                    var dir = getDocumentDirectory(docName);
-                    document.querySelector("#documentViewer").src = `${window.location.origin}/Uploads/${dir}/${docName}`;
-                    $('#viewDocumentModal').modal('show');
-                }
-
-                if (e.target.parentElement.classList.contains('btn-delete-document')) {
-                    alert('Deleted');
-                }
-            });
-
-            function getDocumentDirectory(docName) {
-
-                if (docName.substring(0, 2).toLowerCase() === "cv")
-                    return "CV";
-
-                if (docName.substring(0, 3).toLowerCase() === "cid")
-                    return "CertifiedID";
-
-                if (docName.substring(0, 4).toLowerCase() === "qual")
-                    return "Qualifications";
-
-            }
-
-            $('#viewDocumentModal').on('hidden.bs.modal', function () {
-                // $('#viewDocumentModal').val('');
-                // $('#viewDocumentModal').empty();
-                // $(this).removeData();
-                $('#viewDocumentModal').modal('dispose');
-            })
+            toastr.options.closeButton = true;        
         });
     </script>
 

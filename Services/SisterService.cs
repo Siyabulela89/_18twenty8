@@ -1,6 +1,7 @@
 ﻿using _18TWENTY8.Models;
 using _18TWENTY8.Models.ViewModels;
 using _18TWENTY8.Models.ViewModels.BigSister;
+using _18TWENTY8.Models.ViewModels.LittleSister;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,12 +37,9 @@ namespace _18TWENTY8.Services
             if (profileStatus == null)
                 throw new Exception($"Sister Profile Status not found: Status: {model.Action}");
 
-
             bigSisterDetail.ProfileStatusID = profileStatus.ProfileStatusID;
 
             return await _context.SaveChangesAsync() > 0;
-
-
         }
 
         public async Task<BigSisterProfileViewModel> GetBigSisterProfile(string userId)
@@ -60,14 +58,78 @@ namespace _18TWENTY8.Services
             };
         }
 
+        public async Task<LittleSisterProfileViewModel> GetLittleSisterProfile(string userId)
+        {
+            var profileInfo = await GetLittleSisterDetail(userId);
+
+            if (profileInfo == null)
+                throw new Exception($"Little Sister not found: UserId - {userId}");
+
+            var academicInfo = await GetLittleSisterAcademicInfo(profileInfo.LittleSisterDetailID);
+            var interests = await GetLittleSisterInformationOfInterest(profileInfo.LittleSisterDetailID);
+
+            var littleProfile = new LittleSisterProfileViewModel
+            {
+                Profile = _mapper.Map<LittleSisterDetailViewModel>(profileInfo),
+                AcademicRecords = _mapper.Map<List<LittleSisterAcademicViewModel>>(academicInfo),
+                InformationOfInterest = _mapper.Map<List<SisterInformationOfInterestViewModel>>(interests)
+            };
+
+            var profileStatus = await GetProfileStatus(profileInfo.ProfileStatusID);
+            var sisterAssignment = await GetLittleSisterAssignment(userId);
+            var assignStatus = await GetSisterAssignmentStatus(sisterAssignment.AssignSisterStatusID);
+
+            littleProfile.Profile.ProfileStatus = profileStatus.Description;
+            littleProfile.Profile.SisterAssignStatus = assignStatus.description;
+            littleProfile.Profile.SisterStatus = assignStatus.description;
+
+            return littleProfile;
+
+        }
+
         private async Task<BigSisterDetail> GetBigSisterDetail(string userId)
         {
             return await _context.BigSisterDetail.FirstOrDefaultAsync(s => s.UserID == userId);
         }
 
+        private async Task<ProfileStatus> GetProfileStatus(int profileStatusId)
+        {
+            return await _context.ProfileStatus.FirstOrDefaultAsync(ps => ps.ProfileStatusID == profileStatusId);
+        }
+
+        private async Task<SisterAssignment> GetLittleSisterAssignment(string littleSisterId)
+        {
+            return await _context.SisterAssignment.FirstOrDefaultAsync(sa => sa.LittleSisterID.Equals(littleSisterId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private async Task<AssignSisterStatus> GetSisterAssignmentStatus(int assignSisterStatusID)
+        {
+            return await _context.AssignSisterStatus.FirstOrDefaultAsync(s => s.AssignSisterStatusID == assignSisterStatusID);
+        }
+
         private async Task<List<BigSisterAcademic>> GetBigSisterAcademicInfo(int bigSisterId)
         {
             return await _context.BigSisterAcademic.Where(s => s.BigSisterUserID == bigSisterId).ToListAsync();
+        }
+
+        private async Task<LittleSisterDetail> GetLittleSisterDetail(string userId)
+        {
+            return await _context.LittleSisterDetail.FirstOrDefaultAsync(s => s.UserID == userId);
+        }
+
+        private async Task<List<LittleSisterAcademic>> GetLittleSisterAcademicInfo(int littleSisterId)
+        {
+            return await _context.LittleSisterAcademic.Where(s => s.LittleSisterUserID == littleSisterId).ToListAsync();
+        }
+
+        private async Task<List<InformationInterest>> GetLittleSisterInformationOfInterest(int littleSisterId)
+        {
+            var interestIds = await _context.InformationofStorageLittle.Where(s => s.UserID == littleSisterId).Select(i => i.InformationofInterestID).ToListAsync();
+
+            if (interestIds.Count > 0)
+                return await _context.InformationInterest.Where(i => interestIds.Contains(i.InformationofInterestID)).ToListAsync();
+
+            return new List<InformationInterest>();
         }
     }
 }

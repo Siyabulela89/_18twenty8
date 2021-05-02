@@ -71,7 +71,7 @@ namespace FSTC.Controllers
             _context.BigSisterDetail.ToList(),
             _context.SisterAssignment.ToList(),
                _context.AssignSisterStatus.ToList(),
-            
+
                     _context.AssignApprove.ToList(),
                           _context.ProfileStatus.ToList()
 
@@ -236,7 +236,7 @@ namespace FSTC.Controllers
         {
             if (id == null)
                 return NotFound();
-                            
+
             bool has = _context.SisterAssignment.Any(x => x.BigSisterID == id);
 
 
@@ -244,11 +244,11 @@ namespace FSTC.Controllers
             ViewBag.EvMentor = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.EverbeenamentorQ).SingleOrDefault().Description;
             ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).SingleOrDefault().Description;
             ViewBag.Conv = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.ArrestedConvictedQ).SingleOrDefault().Description;
-           
 
 
-            ViewBag.data = _context.InformationofStorageBig.Where(x=> x.UserID==bigSisterDetail.BigSisterDetailID).ToList();
-          
+
+            ViewBag.data = _context.InformationofStorageBig.Where(x => x.UserID == bigSisterDetail.BigSisterDetailID).ToList();
+
 
             if (has == true)
             {
@@ -266,9 +266,9 @@ namespace FSTC.Controllers
             }
             int ids = _context.BigSisterDetail.Where(x => x.UserID == id).SingleOrDefault().BigSisterDetailID;
             List<object> listfor = new List<object>
-            {    
+            {
             _context.BigSisterDetail.Where(x=>x.UserID==id).ToList(),
-           
+
                _context.InformationInterest.ToList(),
                  _context.InformationofStorageBig.Where(x=> x.UserID==ids).ToList(),
 
@@ -286,6 +286,13 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
         }
 
+        public async Task<IActionResult> AdminStatusLilsis(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest($"Little Sister ID not provided");
+          
+            return View(await _sisterService.GetLittleSisterProfile(id));
+        }
         [HttpPost]
         // [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActionProfile([FromBody] ActionProfileViewModel model)
@@ -294,9 +301,18 @@ namespace FSTC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetBigSisterProfile([FromBody] GetBigSisterProfileViewModel model)
+        public async Task<IActionResult> GetSisterProfile([FromBody] GetSisterProfileViewModel model)
         {
-            return Ok(await _sisterService.GetBigSisterProfile(model.UserId));
+            if (string.IsNullOrEmpty(model.SisterType))
+                return BadRequest($"Please provide the sister type.");
+
+            if (model.SisterType.Equals("Big", StringComparison.OrdinalIgnoreCase))
+                return Ok(await _sisterService.GetBigSisterProfile(model.UserId));
+
+            if (model.SisterType.Equals("Little", StringComparison.OrdinalIgnoreCase))
+                return Ok(await _sisterService.GetLittleSisterProfile(model.UserId));
+
+            return BadRequest($"Please specify the correct sister type. (Options are either Big or Little)");
         }
 
     }

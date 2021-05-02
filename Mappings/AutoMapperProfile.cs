@@ -1,5 +1,6 @@
 ﻿using _18TWENTY8.Models;
 using _18TWENTY8.Models.ViewModels.BigSister;
+using _18TWENTY8.Models.ViewModels.LittleSister;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace _18TWENTY8.Mappings
         {
             CreateMap<BigSisterDetail, BigSisterDetailViewModel>();
             CreateMap<BigSisterAcademic, BigSisterAcademicViewModel>();
+            CreateMap<LittleSisterDetail, LittleSisterDetailViewModel>();
+            CreateMap<LittleSisterAcademic, LittleSisterAcademicViewModel>();
+            CreateMap<InformationInterest, SisterInformationOfInterestViewModel>();
         }
     }
 }
