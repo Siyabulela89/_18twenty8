@@ -47,7 +47,7 @@
                                     </span>
                                 </div>
 
-                                <input type="file"  class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)"/>
+                                <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)"/>
                             </div>
                             @*<div class="profile-image-inner-container bg-color-primary">
                                 <label style="cursor: pointer;">
@@ -351,9 +351,7 @@
     </div>
 
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 <script>
 var loadFile = function(event) {

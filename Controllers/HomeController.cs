@@ -6,19 +6,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using _18TWENTY8.Models;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace _18TWENTY8.Controllers
 {
     public class HomeController : Controller
     {
         private readonly EighteentwentyeightContext _context;
       
-        public HomeController(EighteentwentyeightContext context)
+        public HomeController(EighteentwentyeightContext context, IConfiguration Config)
         {
+            _Configuration = Config;
             _context = context;
            
         }
+        public IConfiguration _Configuration { get; }
         public IActionResult Index()
         {
+            
+
+
             List<object> listfor = new List<object>
             {  _context.Workshops.ToList(),
                     _context.WorkshopsupportDocType.ToList()

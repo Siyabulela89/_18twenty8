@@ -14,11 +14,20 @@ using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using Twilio.TwiML;
 
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+
+using _18TWENTY8.Data;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 
 using System.Text.RegularExpressions;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
+
+using Microsoft.IdentityModel.Protocols;
+using AutoMapper;
 
 namespace _18TWENTY8.Controllers
 {
@@ -27,13 +36,15 @@ namespace _18TWENTY8.Controllers
         private readonly EighteentwentyeightContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
-        public BigSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager)
+   
+        public BigSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config)
         {
-            _userManager = userManager;
+            _Configuration = Config;
+               _userManager = userManager;
             _context = context;
             _host = host;
         }
-
+        public IConfiguration _Configuration { get; }
         public IActionResult IncorrectCode(int? id)
         {
             ViewBag.ID = id;
@@ -319,8 +330,8 @@ namespace _18TWENTY8.Controllers
                 _context.Update(Bigsister);
                 await _context.SaveChangesAsync();
                 String number = "+27" + Bigsister.Phonenumber.Substring(1);
-                string accountSid = "AC03fd2e003ee27db1f7f805883d4ee0bd";
-                string authToken = "73439f3e3973dc4515a1bce004b7fec5";
+                string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
+                string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
 
                 TwilioClient.Init(accountSid, authToken);
 

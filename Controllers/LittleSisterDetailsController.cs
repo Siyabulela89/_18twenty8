@@ -14,7 +14,8 @@ using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using Twilio.TwiML;
 using _18TWENTY8.Models.ViewModels.BigSister;
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using _18TWENTY8.Models.ViewModels;
 using System.Text.RegularExpressions;
 using System.Security.Claims;
@@ -29,12 +30,14 @@ namespace _18TWENTY8.Controllers
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
         private readonly SisterService _sisterService;
-        public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager)
+        public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config)
         {
+            _Configuration = Config;
             _userManager = userManager;
             _context = context;
             _host = host;
         }
+        public IConfiguration _Configuration { get; }
         // GET: LittleSisterDetails
         public async Task<IActionResult> Index()
         {
@@ -209,8 +212,8 @@ namespace _18TWENTY8.Controllers
                 _context.Update(LittleSister);
                 await _context.SaveChangesAsync();
                 String number = "+27" + LittleSister.Phonenumber.Substring(1);
-                string accountSid = "AC03fd2e003ee27db1f7f805883d4ee0bd";
-                string authToken = "73439f3e3973dc4515a1bce004b7fec5";
+                string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
+                string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
 
                 TwilioClient.Init(accountSid, authToken);
 

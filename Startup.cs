@@ -42,6 +42,7 @@ namespace _18TWENTY8
             services.AddDbContext<EighteentwentyeightContext>(options =>
                options.UseSqlServer(
                    Configuration.GetConnectionString("DefaultConnection")));
+          
 
 
 
