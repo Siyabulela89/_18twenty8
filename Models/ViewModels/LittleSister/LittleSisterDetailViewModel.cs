@@ -43,10 +43,14 @@ namespace _18TWENTY8.Models.ViewModels.LittleSister
         public string SisterAssignStatus { get; set; }
         public bool PreviouslyArrestedOrConvicted { get; set; }
         public bool EverBeenAMentee { get; set; }
+        public string PreviouslyArrestedOrConvictedd { get; set; }
+        public string EverBeenAMenteed { get; set; }
         public string DetailsArrestedConvictedQ { get; set; }
         public int InformationofInterest { get; set; }
         public int Interactionlevelmeet { get; set; }
         public int InteractionlevelDigCom { get; set; }
+        public string Interactionlevelmeetd { get; set; }
+        public string InteractionlevelDigComd { get; set; }
         public String prefferedMenteedetails { get; set; }
         public String CVurl { get; set; }
         public String Imageurl { get; set; }

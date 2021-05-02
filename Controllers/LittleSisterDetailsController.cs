@@ -13,12 +13,13 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using Twilio.TwiML;
+using _18TWENTY8.Models.ViewModels.BigSister;
 
-
-
+using _18TWENTY8.Models.ViewModels;
 using System.Text.RegularExpressions;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using _18TWENTY8.Services;
 
 namespace _18TWENTY8.Controllers
 {
@@ -27,6 +28,7 @@ namespace _18TWENTY8.Controllers
         private readonly EighteentwentyeightContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
+        private readonly SisterService _sisterService;
         public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
@@ -47,44 +49,10 @@ namespace _18TWENTY8.Controllers
         // GET: LittleSisterDetails/Details/5
         public async Task<IActionResult> Details(string? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            string userId;
-            if (User.Identity.IsAuthenticated)
-            {
-                userId = _userManager.GetUserId(User);
-            }
-            else
+            if (string.IsNullOrEmpty(id))
+                return BadRequest($"Little Sister ID not provided");
 
-            {
-                userId = "NOT FOUND";
-
-            }
-
-            bool has = _context.SisterAssignment.Any(x => x.LittleSisterID == userId);
-
-
-            var LittleSisterDetail = await _context.LittleSisterDetail
-                .FirstOrDefaultAsync(m => m.UserID == id);
-            ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == LittleSisterDetail.ProfileStatusID).SingleOrDefault().Description;
-            if (has == true)
-            {
-                int sistID = _context.SisterAssignment.Where(x => x.LittleSisterID == userId).SingleOrDefault().AssignSisterStatusID;
-                ViewBag.Sistatus = _context.AssignSisterStatus.Where(x => x.AssignSisterStatusID == sistID).SingleOrDefault().description;
-            }
-            else
-            {
-                ViewBag.Sistatus = "Pending Approval";
-
-            }
-            if (LittleSisterDetail == null)
-            {
-                return NotFound();
-            }
-
-            return View(LittleSisterDetail);
+            return View(await _sisterService.GetLittleSisterProfile(id));
         }
 
         // GET: LittleSisterDetails/Create

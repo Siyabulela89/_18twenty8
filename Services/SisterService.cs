@@ -76,12 +76,21 @@ namespace _18TWENTY8.Services
             };
 
             var profileStatus = await GetProfileStatus(profileInfo.ProfileStatusID);
+            var Interaction = await GetInteractionLevel(profileInfo.Interactionlevelmeet);
+            var Interactiondigi = await GetInteractionLevel(profileInfo.InteractionlevelDigCom);
             var sisterAssignment = await GetLittleSisterAssignment(userId);
             var assignStatus = await GetSisterAssignmentStatus(sisterAssignment.AssignSisterStatusID);
+            var Menteed = await GetyesnoOption(profileInfo.EverbeenamenteeQ);
+            var Convicted = await GetyesnoOption(profileInfo.ArrestedConvictedQ);
 
+            littleProfile.Profile.Interactionlevelmeetd = Interaction.Description;
+            littleProfile.Profile.InteractionlevelDigComd = Interactiondigi.Description;
             littleProfile.Profile.ProfileStatus = profileStatus.Description;
             littleProfile.Profile.SisterAssignStatus = assignStatus.description;
             littleProfile.Profile.SisterStatus = assignStatus.description;
+            littleProfile.Profile.EverBeenAMenteed = Menteed.Description;
+            littleProfile.Profile.PreviouslyArrestedOrConvictedd = Convicted.Description;
+
 
             return littleProfile;
 
@@ -96,7 +105,16 @@ namespace _18TWENTY8.Services
         {
             return await _context.ProfileStatus.FirstOrDefaultAsync(ps => ps.ProfileStatusID == profileStatusId);
         }
-
+        private async Task<OptionalBool> GetyesnoOption(int OptYN)
+            
+        {
+           int? yesn =  Convert.ToInt32(OptYN);
+            return await _context.OptionalBool.FirstOrDefaultAsync(OP => OP.YesNoID == yesn);
+        }
+        private async Task<InteractionLevel> GetInteractionLevel(int InteractionID)
+        {
+            return await _context.InteractionLevel.FirstOrDefaultAsync(il => il.InteractionLevelID == InteractionID);
+        }
         private async Task<SisterAssignment> GetLittleSisterAssignment(string littleSisterId)
         {
             return await _context.SisterAssignment.FirstOrDefaultAsync(sa => sa.LittleSisterID.Equals(littleSisterId, StringComparison.OrdinalIgnoreCase));
@@ -106,6 +124,7 @@ namespace _18TWENTY8.Services
         {
             return await _context.AssignSisterStatus.FirstOrDefaultAsync(s => s.AssignSisterStatusID == assignSisterStatusID);
         }
+
 
         private async Task<List<BigSisterAcademic>> GetBigSisterAcademicInfo(int bigSisterId)
         {
