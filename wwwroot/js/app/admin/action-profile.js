@@ -20,8 +20,6 @@
         data.userId = btnApprove.getAttribute('data-user-id');
         data.role =   btnApprove.getAttribute('data-role');
         submitData(data);
-
-
     }
 
     function declineProfileHandler(e) {
