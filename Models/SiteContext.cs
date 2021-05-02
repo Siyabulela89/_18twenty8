@@ -23,6 +23,25 @@ namespace _18TWENTY8.Models
         public DateTime DateCreated { get; set; }
 
     }
+    public class FinancialSupport
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int FinancialSupportID { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string CertifiedID { get; set; }
+
+        public string CVurl { get; set; }
+        public string SiteUrl { get; set; }
+        public string Academictranscript { get; set; }
+        public string Proofofregoistrationurl { get; set; }
+        public string LatestStatementfees { get; set; }
+        public string VideoURl { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+    }
     public class SisterAssignment
     {
         [Key]

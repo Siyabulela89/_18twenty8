@@ -17,6 +17,7 @@ namespace _18TWENTY8.Models
         }
         public object ApplicationUser { get; internal set; }
         public DbSet<Graduates> Graduates { get; set; }
+        public DbSet<FinancialSupport> FinancialSupport { get; set; }
         
                public DbSet<InformationofStorageLittle> InformationofStorageLittle { get; set; }
         public DbSet<LittleSisterAcademic> LittleSisterAcademic { get; set; }

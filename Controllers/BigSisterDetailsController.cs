@@ -115,30 +115,24 @@ namespace _18TWENTY8.Controllers
         public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
-            string userId;
-            if (User.Identity.IsAuthenticated)
-            {
-                userId = _userManager.GetUserId(User);
-            }
-            else
 
-            {
-                userId = "NOT FOUND";
-
-            }
-
-            bool has = _context.SisterAssignment.Any(x => x.BigSisterID == userId);
+            bool has = _context.SisterAssignment.Any(x => x.BigSisterID == id);
 
 
-            var bigSisterDetail = await _context.BigSisterDetail
-                .FirstOrDefaultAsync(m => m.UserID == id);
+            var bigSisterDetail = await _context.BigSisterDetail.FirstOrDefaultAsync(m => m.UserID == id);
+            ViewBag.EvMentor = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.EverbeenamentorQ).SingleOrDefault().Description;
             ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).SingleOrDefault().Description;
-            if(has==true)
-            { 
-            int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == userId).SingleOrDefault().AssignSisterStatusID;
+            ViewBag.Conv = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.ArrestedConvictedQ).SingleOrDefault().Description;
+
+
+
+            ViewBag.data = _context.InformationofStorageBig.Where(x => x.UserID == bigSisterDetail.BigSisterDetailID).ToList();
+
+
+            if (has == true)
+            {
+                int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
                 ViewBag.Sistatus = _context.AssignSisterStatus.Where(x => x.AssignSisterStatusID == sistID).SingleOrDefault().description;
             }
             else
@@ -150,8 +144,26 @@ namespace _18TWENTY8.Controllers
             {
                 return NotFound();
             }
+            int ids = _context.BigSisterDetail.Where(x => x.UserID == id).SingleOrDefault().BigSisterDetailID;
+            List<object> listfor = new List<object>
+            {
+            _context.BigSisterDetail.Where(x=>x.UserID==id).ToList(),
 
-            return View(bigSisterDetail);
+               _context.InformationInterest.ToList(),
+                 _context.InformationofStorageBig.Where(x=> x.UserID==ids).ToList(),
+
+                    _context.InteractionLevel.ToList(),
+                          _context.OptionalBool.ToList(),
+                              _context.BigSisterAcademic.Where(x=> x.BigSisterAcademicID==ids).ToList(),
+                               _context.Province.ToList(),
+                                   _context.AdditionalSupportBig.ToList(),
+                               _context.AdditionalSupportStorageBig.Where(x=> x.UserID==ids).ToList()
+
+
+
+
+            };
+            return View(listfor.ToList());
         }
 
         // GET: BigSisterDetails/Create

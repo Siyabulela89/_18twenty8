@@ -18,11 +18,13 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private UserManager<ApplicationUser> _userManager;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -81,20 +83,21 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    var Userman = await _userManager.GetRolesAsync(user);
 
 
-                    if (User.IsInRole("Big Sister (Mentor)"))
+                    if (Userman.Contains("Big Sister (Mentor)"))
                     {
 
                         return Redirect("~/BigSisterDetails/Create");
                     }
-                    else if (User.IsInRole("Little Sister (Mentee)"))
+                    else if (Userman.Contains("Little Sister (Mentee)"))
                     {
 
                         return Redirect("~/LittleSisterDetails/Create");
 
                     }
-                    else if   (User.IsInRole("Admin"))
+                    else if   (Userman.Contains("Admin"))
                     {
                         return Redirect("~/Administration/AdminLanding");
 
