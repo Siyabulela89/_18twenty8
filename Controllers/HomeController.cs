@@ -27,15 +27,7 @@ namespace _18TWENTY8.Controllers
         public IConfiguration _Configuration { get; }
         public IActionResult Index()
         {
-            string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
-            string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
-
-            TwilioClient.Init(accountSid, authToken);
-
-            var message = MessageResource.Create(
-                body: "Thank you on your application for the Little Sister program, your verification code is " + "test" + " please enter the code on the verification page to complete your registration",
-                from: new Twilio.Types.PhoneNumber("+17605482821"),
-                to: new Twilio.Types.PhoneNumber("+27762161569"));
+           
 
         List<object> listfor = new List<object>
             {  _context.Workshops.ToList(),

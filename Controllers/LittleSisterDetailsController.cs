@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using _18TWENTY8.Services;
+using AutoMapper;
 
 namespace _18TWENTY8.Controllers
 {
@@ -29,12 +30,17 @@ namespace _18TWENTY8.Controllers
         private readonly EighteentwentyeightContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
+    
+        private readonly IMapper _mapper;
         private readonly SisterService _sisterService;
-        public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config)
+        public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config, IMapper mapper)
         {
             _Configuration = Config;
             _userManager = userManager;
             _context = context;
+
+            this._mapper = mapper;
+            _sisterService = new SisterService(_context, _mapper);
             _host = host;
         }
         public IConfiguration _Configuration { get; }
@@ -50,7 +56,7 @@ namespace _18TWENTY8.Controllers
             return View();
         }
         // GET: LittleSisterDetails/Details/5
-        public async Task<IActionResult> Details(string? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (string.IsNullOrEmpty(id))
                 return BadRequest($"Little Sister ID not provided");
