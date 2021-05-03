@@ -210,7 +210,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             toastr.options.preventDuplicates = true;
             toastr.options.positionClass = 'toast-bottom-right';
-            toastr.options.closeButton = true;        
+            toastr.options.closeButton = true;
         });
     </script>
 
@@ -233,7 +233,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
 
     <!-- Application Scripts -->
-
 
 
     <script>
@@ -312,11 +311,25 @@
         ga('send', 'pageview');
     </script>
      -->
-
+    <div class="row">
+        <div class="modal fade" id="profileStatusReasonModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <textarea id="ta-profile-Status-reason" cols="4" rows="4" class="form-control"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-save-profile-status-reason" type="button" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 @if (IsSectionDefined("Scripts"))
 {
-@RenderSection("Scripts", required: true)
+    @RenderSection("Scripts", required: true)
 
 }
 

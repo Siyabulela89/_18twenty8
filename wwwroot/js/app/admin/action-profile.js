@@ -3,14 +3,34 @@
     var btnApprove = document.querySelector("#btn-approve-profile");
     var btnDecline = document.querySelector("#btn-decline-profile");
     var btnCorrect = document.querySelector("#btn-correct-profile");
+    var btnSaveProfileStatus = document.querySelector("#btn-save-profile-status-reason");
+    var taProfileStatusReason = document.querySelector("#ta-profile-Status-reason");
 
+    var action = "";
     // Stage Status
     var phase2 = document.querySelector("#big-sis-phase-2");
 
 
     btnApprove.addEventListener("click", approveProfileHandler);
-    btnDecline.addEventListener("click", declineProfileHandler);
-    btnCorrect.addEventListener("click", correctProfileHandler);
+    btnDecline.addEventListener("click", openProfileStatusReasonModalHandler);
+    btnCorrect.addEventListener("click", openProfileStatusReasonModalHandler);
+    btnSaveProfileStatus.addEventListener("click", saveProfileStatusReasonHandler);
+
+    function openProfileStatusReasonModalHandler(e) {
+        e.preventDefault();
+        action = e.target.dataset.action
+        $('#profileStatusReasonModal').modal('show');
+    }
+
+    function saveProfileStatusReasonHandler() {
+        btnSaveProfileStatus.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
+        if (action == "Declined")
+            declineProfileHandler();
+
+        if (action == "Sent for Correction")
+            correctProfileHandler();
+    }
+
 
     function approveProfileHandler(e) {
         e.preventDefault();
@@ -18,27 +38,25 @@
         btnApprove.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
         data.action = btnApprove.getAttribute('data-action');
         data.userId = btnApprove.getAttribute('data-user-id');
-        data.role =   btnApprove.getAttribute('data-role');
+        data.role = btnApprove.getAttribute('data-role');
         submitData(data);
     }
 
-    function declineProfileHandler(e) {
-        e.preventDefault();
+    function declineProfileHandler() {
         var data = {};
-        btnDecline.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
         data.action = btnDecline.getAttribute('data-action');
         data.userId = btnDecline.getAttribute('data-user-id');
         data.role = btnDecline.getAttribute('data-role');
+        data.reason = taProfileStatusReason.value;
         submitData(data);
     }
 
-    function correctProfileHandler(e) {
-        e.preventDefault();
-        btnCorrect.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
+    function correctProfileHandler() {
         var data = {};
         data.action = btnCorrect.getAttribute('data-action');
         data.userId = btnCorrect.getAttribute('data-user-id');
         data.role = btnCorrect.getAttribute('data-role');
+        data.reason = taProfileStatusReason.value;
         submitData(data);
     }
 
@@ -56,29 +74,30 @@
                 return response.json();
             })
             .then((response) => {
-                console.log(response);
                 if (data.action == "Approved") {
                     btnApprove.innerHTML = '<i class="fas fa-thumbs-up"></i> Approve';
                     phase2.innerHTML = `<i class="fas fa-check"></i> ${data.action}`
                     btnApprove.disabled = true;
                     btnApprove.style.cursor = 'default';
                 }
-                    
+
                 if (data.action == "Sent for Correction") {
-                    btnCorrect.innerHTML = '<i class="fas fa-reply"></i> Send for correction';
                     phase2.innerHTML = `<i class="fas fa-exclamation"></i> ${data.action}`
                     btnCorrect.disabled = true;
                     btnCorrect.style.cursor = 'default';
                 }
-                   
+
                 if (data.action == "Declined") {
-                    btnDecline.innerHTML = '<i class="fas fa-thumbs-down"></i> Decline';
                     phase2.innerHTML = `<i class="fas fa-times"></i> ${data.action}`
                     btnDecline.disabled = true;
                     btnDecline.style.cursor = 'default';
                 }
-                
+                btnSaveProfileStatus.innerHTML = '<i class="fas fa-save"></i> Save';
+                $('#profileStatusReasonModal').modal('hide');
                 toastr.success(`${data.action} successfully`, 'Success Message')
             });
     }
+    $('#profileStatusReasonModal').on('hidden.bs.modal', function () {
+        taProfileStatusReason.value = "";
+    });
 });
