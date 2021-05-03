@@ -209,17 +209,31 @@
                             </div>
                             <div class="col-md-6">
                                 <div id="action-button-wrapper" style="margin-left:36px">
-                                    @if (item.ProfileStatusID == 4 || item.ProfileStatusID == 10)
+                                    @if (item.ProfileStatusID == 4)
                                     {
                                         <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                     }
-                                    else
+                                    else if (item.ProfileStatusID == 6)
                                     {
                                         <button style="cursor:default" disabled class="btn btn-success mb-2" id="btn-approve-profile"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    }
+                                    else if (item.ProfileStatusID == 8)
+                                    {
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                        <button style="cursor:default" disabled id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    }
+                                    else if (item.ProfileStatusID == 10)
+                                    {
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                        <button style="cursor:default" disabled id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                        <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                     }
 
-                                    <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
-                                    <button data-role="Big Sister (Mentor)" data-user-id="@item.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 </div>
                             </div>
                         </div>
