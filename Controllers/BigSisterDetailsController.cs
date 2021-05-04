@@ -333,13 +333,13 @@ namespace _18TWENTY8.Controllers
                 string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
                 string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
 
-                TwilioClient.Init(accountSid, authToken);
+                //TwilioClient.Init(accountSid, authToken);
 
-                var message = MessageResource.Create(
-                    body: "Thank you on your application for the Big Sister program, your verification code is " + Bigsister.VerifCode +" please enter the code on the verification page to complete your registration",
-                    from: new Twilio.Types.PhoneNumber("+17605482821"),
-                    to: new Twilio.Types.PhoneNumber(number)
-                ) ;
+                //var message = MessageResource.Create(
+                //    body: "Thank you on your application for the Big Sister program, your verification code is " + Bigsister.VerifCode +" please enter the code on the verification page to complete your registration",
+                //    from: new Twilio.Types.PhoneNumber("+17605482821"),
+                //    to: new Twilio.Types.PhoneNumber(number)
+                //) ;
 
                 foreach (var id in infoint)
                 {
