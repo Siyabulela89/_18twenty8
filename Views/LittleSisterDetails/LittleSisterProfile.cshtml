@@ -1,262 +1,263 @@
 ﻿@model _18TWENTY8.Models.ViewModels.LittleSister.LittleSisterProfileViewModel
 
-@{ 
+@{
     Layout = "_ProfilesLayout";
 }
 
 <div role="main" class="main">
     <div id="little-sister-profile-wrapper" class="container" style="max-width:98%">
-            <div class="row">
+        <div class="row">
 
-                <div class="col-lg-3 mt-4 mt-lg-0">
+            <div class="col-lg-3 mt-4 mt-lg-0">
 
-                    <div class="d-flex justify-content-center mb-4">
-                        <div class="profile-image-outer-container">
-                            <div class="profile-image-inner-container bg-color-primary">
-                                <img src="~/Uploads/ProimagesLilsis/@Model.Profile.Imageurl">
-
-                            </div>
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="profile-image-outer-container">
+                        <div class="profile-image-inner-container bg-color-primary">
+                            <img src="~/Uploads/ProimagesLilsis/@Model.Profile.Imageurl">
 
                         </div>
+
                     </div>
                 </div>
-                <div class="col-lg-9 litte-sister-profile-wrapper">
+            </div>
+            <div class="col-lg-9 litte-sister-profile-wrapper">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="overflow-hidden mb-1">
-                                <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@Model.Profile.Name @Model.Profile.Surname</strong>s Profile</h2>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="overflow-hidden mb-1">
+                            <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@Model.Profile.Name @Model.Profile.Surname</strong>s Profile</h2>
                         </div>
                     </div>
+                    <div class="col-md-6">
 
-                    <div class="accordion" id="accordion">
-                        <div class="card card-default">
-                            <div class="card-header">
-                                <h4 class="card-title m-0">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
-                                        Personal Information
-                                    </a>
-                                </h4>
+                    </div>
+                </div>
+
+                <div class="accordion" id="accordion">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+                                    Personal Information
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1One" class="collapse show">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Name</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Surname</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Nickname</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.IDPassport</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.DateofBirth</p>
+                                    </div>
+                                </div>
+
+
                             </div>
-                            <div id="collapse1One" class="collapse show">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Name</p>
-                                        </div>
+                        </div>
+                    </div>
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+                                    Contact Information
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1Two" class="collapse show">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.email</p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Surname</p>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Phonenumber</p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Nickname</p>
-                                        </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.AddressStreet</p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.IDPassport</p>
+                                </div>
+                                @*<div class="form-group row">
+                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
+                                        <div class="col-lg-8">
+                                            <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
                                         </div>
+                                        <div class="col-lg-4">
+                                            @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
+
+                                        </div>
+                                    </div>*@
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.PostalCode</p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.DateofBirth</p>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1 name and number</label>
+
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.EmergencyContactNameone: @Model.Profile.EmergencyContactNumberone</p>
                                     </div>
 
 
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card card-default">
-                            <div class="card-header">
-                                <h4 class="card-title m-0">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
-                                        Contact Information
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapse1Two" class="collapse show">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.email</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Phonenumber</p>
-                                        </div>
-                                    </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2 name and number</label>
 
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.AddressStreet</p>
-                                        </div>
-                                    </div>
-                                    @*<div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
-                                            <div class="col-lg-8">
-                                                <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
-                                            </div>
-                                            <div class="col-lg-4">
-                                                @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
-
-                                            </div>
-                                        </div>*@
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.PostalCode</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1 name and number</label>
-
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.EmergencyContactNameone: @Model.Profile.EmergencyContactNumberone</p>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2 name and number</label>
-
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.EmergencyContactNametwo: @Model.Profile.EmergencyContactNumbertwo </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-default">
-                            <div class="card-header">
-                                <h4 class="card-title m-0">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
-                                        Profile Questions
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapse1Three" class="collapse show">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.howdidyouhearaboutQ</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.BackgroundQ</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentee or participated in mentor training?</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.EverBeenAMenteed</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
-                                        <div class="col-lg-9">
-                                            <p>@Model.Profile.DetailsOnEverbeenMenteeQ</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
-                                        <div class="col-lg-12">
-
-                                            <p>@Model.Profile.PreviouslyArrestedOrConvictedd</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.DetailsArrestedConvictedQ</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Details about your current study programme, year of study and where you are studying?</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.CurrentStudyQ</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Big Sister?</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Expectationsonlittlesister</p>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
-                                        <div class="col-lg-12">
-                                            <ul class="list list-icons">
-                                                @foreach (var interest in Model.InformationOfInterest)
-                                                {
-
-                                                    <li><i class="fas fa-check"></i>@interest.Description</li>
-
-                                                }
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
-                                        <div class="col-lg-12">
-                                            <p>@Model.Profile.Interactionlevelmeetd</p>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
-                                        <div class="col-lg-12">
-
-                                            <p>@Model.Profile.InteractionlevelDigComd</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                            I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (Model.Profile.ConfirmMenteedurationQ == 1)
-                                            {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
-                                            else
-                                            { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}
-                                        </label>
-                                        <!---<div class="col-lg-12">
-
-                                            <p>@Model.Profile.ConfirmMenteedurationQ</p>
-
-                                        </div>-->
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.EmergencyContactNametwo: @Model.Profile.EmergencyContactNumbertwo </p>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-default">
+                    </div>
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
+                                    Profile Questions
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse1Three" class="collapse show">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.howdidyouhearaboutQ</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.BackgroundQ</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentee or participated in mentor training?</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.EverBeenAMenteed</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                    <div class="col-lg-9">
+                                        <p>@Model.Profile.DetailsOnEverbeenMenteeQ</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
+                                    <div class="col-lg-12">
+
+                                        <p>@Model.Profile.PreviouslyArrestedOrConvictedd</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.DetailsArrestedConvictedQ</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Details about your current study programme, year of study and where you are studying?</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.CurrentStudyQ</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Big Sister?</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Expectationsonlittlesister</p>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
+                                    <div class="col-lg-12">
+                                        <ul class="list list-icons">
+                                            @foreach (var interest in Model.InformationOfInterest)
+                                            {
+
+                                                <li><i class="fas fa-check"></i>@interest.Description</li>
+
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
+                                    <div class="col-lg-12">
+                                        <p>@Model.Profile.Interactionlevelmeetd</p>
+
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
+                                    <div class="col-lg-12">
+
+                                        <p>@Model.Profile.InteractionlevelDigComd</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
+                                        I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (Model.Profile.ConfirmMenteedurationQ == 1)
+                                        {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
+                                        else
+                                        { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}
+                                    </label>
+                                    <!---<div class="col-lg-12">
+
+                                        <p>@Model.Profile.ConfirmMenteedurationQ</p>
+
+                                    </div>-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/> <br/>
+                    @*<div class="card card-default">
                             <div class="card-header">
                                 <h4 class="card-title m-0">
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
@@ -279,11 +280,11 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>*@
                 </div>
-
             </div>
+
+        </div>
     </div>
 
 </div>
