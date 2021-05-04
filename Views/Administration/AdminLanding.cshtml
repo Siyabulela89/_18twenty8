@@ -11,7 +11,7 @@
 
 }
 
- 
+
 <div role="main" class="main">
 
     <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
@@ -41,6 +41,115 @@
         </div>
     </div>
 
+</div>
+<div class="row">
+    <div class="modal fade" id="sisterAssignModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="sisterAssignModalBody" class="modal-body">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Selected little sister
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="/Uploads/ProimagesLilsis/pc269e5782-7670-464d-b8af-5a16eb93407aNathaniel Manamela.png" class="img-thumbnail" alt="...">
+                                </div>
+                                <div class="col-md-5" style="text-align:left">
+                                    <p><b>Sister Type:</b> Little Sister</p>
+                                    <p><b>Full Names:</b> Joanne Moodley</p>
+                                    <p><b>Nickname/Preferred name:</b> Moods</p>
+                                    <p><b>ID/Passport:</b> 8807085515087</p>
+                                    <p><b>Date of birth:</b> 6/20/1990</p>
+                                </div>
+                                <div class="col-md-5" style="text-align:left">
+                                    <p><b>Email:</b> Little Sister</p>
+                                    <p><b>Contact number (Cell):</b> Joanne Moodley</p>
+                                    <p><b>Physical Address:</b> Moods</p>
+                                    <p><b>Postal Code:</b> 8807085515087</p>
+                                    <p><a class="btn-view-sister-profile" data-sister-type="little" href="#" onclick="return false">Click to view profile &nbsp;<i class="fas fa-external-link-alt"></i></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card text-center">
+                        <div class="card-header">
+                            List of available big sisters
+                        </div>
+                        <div class="card-body">
+                            <table id="tbl-big-sister-assign" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Full Names</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Sister 001</td>
+                                        <td>sister@sis.com</td>
+                                        <td>sister@sis.com</td>
+                                        <td><a class="btn-view-sister-profile" data-sister-type="big" onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a class="btn-assign-big-sister" onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Sister 002</td>
+                                        <td>sister@sis.com</td>
+                                        <td>sister@sis.com</td>
+                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Sister 003</td>
+                                        <td>sister@sis.com</td>
+                                        <td>sister@sis.com</td>
+                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Sister 004</td>
+                                        <td>sister@sis.com</td>
+                                        <td>sister@sis.com</td>
+                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @*<a href="#" class="btn btn-primary btn-modern">Button</a>*@
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="modal fade" id="sisterprofileViewModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
+        <div id="sisterprofileViewModalDialog" class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="sisterprofileViewModalBody" class="modal-body">
+                    <div class="iframe-containerv">
+                        <iframe id="sisterprofileViewer" width="100%" height="650px" src="https://localhost:5001/LittleSisterDetails/Details/3bdb2b8b-09dc-45e7-94f9-ed408f670a05"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
@@ -98,8 +207,8 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @{var allowedStatus = new[]{ 5, 11};}
-                                                                    @foreach (var item in LS.Where(x => allowedStatus.Contains( x.ProfileStatusID)))
+                                                                    @{var allowedStatus = new[] { 5, 11 };}
+                                                                    @foreach (var item in LS.Where(x => allowedStatus.Contains(x.ProfileStatusID)))
                                                                     {
                                                                         <tr class="cart_table_item">
                                                                             <td class="product-name">
@@ -177,7 +286,7 @@
                                                                 <tbody>
                                                                     @{var allowedStatuss = new[] { 4, 10 };}
                                                                     @foreach (var item in BS.Where(x => allowedStatuss.Contains(x.ProfileStatusID)))
-                                                                    { 
+                                                                    {
                                                                         <tr class="cart_table_item">
                                                                             <td class="product-name">
                                                                                 <a href="shop-product-sidebar-left.html">
@@ -191,7 +300,7 @@
                                                                                 @item.Surname
                                                                             </td>
                                                                             <td class="product-name">
-                                                                                <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusBigsis"  type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>
+                                                                                <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusBigsis" type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>
                                                                             </td>
                                                                             <td class="product-name">
 
@@ -236,13 +345,13 @@
                                                                             Mentee Picture
                                                                         </th>
                                                                         <th class="product-name">
-                                                                           Mentee to assign
+                                                                            Mentee to assign
                                                                         </th>
                                                                         <th class="product-name">
-                                                                           Mentor match
+                                                                            Mentor match
                                                                         </th>
                                                                         <th class="product-name">
-                                                                           Mentee approval status
+                                                                            Mentee approval status
                                                                         </th>
                                                                         <th class="product-name">
                                                                             Mentor approval status
@@ -251,44 +360,49 @@
                                                                             Case status
                                                                         </th>
 
+                                                                        <th class="product-name"></th>
+
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     @foreach (var item in SA)
                                                                     {
-                                                                    <tr class="cart_table_item">
-                                                                        <td class="product-name">
-                                                                            <a href="shop-product-sidebar-left.html">
-                                                                                <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@LS.Where(x=> x.UserID==@item.LittleSisterID).SingleOrDefault().Imageurl">
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="product-name">
-                                                                            <p> @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Surname</p>
-                                                                        </td>
-                                                                        <td class="product-name">
-                                                                           
-                                                                            @if (item.BigSisterID is null)
-                                                                            {
-                                                                                <p><em>Big sister not assigned yet</em></p>
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
-                                                                            }
-                                                                        </td>
-                                                                        <td class="product-name">
-                                                                            <p><em> @AA.Where(x => x.AssAppID == @item.LittleApproveID).SingleOrDefault().description</em></p>
-</td>
-                                                                        <td class="product-name">
+                                                                        <tr class="cart_table_item">
+                                                                            <td class="product-name">
+                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                    <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@LS.Where(x=> x.UserID==@item.LittleSisterID).SingleOrDefault().Imageurl">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <p> @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Surname</p>
+                                                                            </td>
+                                                                            <td class="product-name">
 
-                                                                            <p><em>@AA.Where(x => x.AssAppID == @item.BigApproveID).SingleOrDefault().description</em></p>
-                                                                        </td>
-                                                                        <td class="product-name">
+                                                                                @if (item.BigSisterID is null)
+                                                                                {
+                                                                                    <p><em>Big sister not assigned yet</em></p>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
+                                                                                }
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <p><em> @AA.Where(x => x.AssAppID == @item.LittleApproveID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            <td class="product-name">
 
-                                                                            <p><em>@ASS.Where(x => x.AssignSisterStatusID == @item.AssignSisterStatusID).SingleOrDefault().description</em></p>
-                                                                        </td>
+                                                                                <p><em>@AA.Where(x => x.AssAppID == @item.BigApproveID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            <td class="product-name">
 
-                                                                    </tr>
+                                                                                <p><em>@ASS.Where(x => x.AssignSisterStatusID == @item.AssignSisterStatusID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <p><a onclick="return false" data-little-sister-id="@item.LittleSisterID" class="btn-assign-sister" href="#"><i class="fas fa-external-link-alt"></i></a></p>
+                                                                            </td>
+
+                                                                        </tr>
                                                                     }
 
                                                                 </tbody>
@@ -316,4 +430,33 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.addEventListener('click', (e) => {
+            if (e.target.parentElement.classList.contains('btn-assign-sister')) {
+                // var docName = e.target.parentElement.getAttribute('data-doc-url');
 
+                // document.querySelector("#documentViewer").src = `${window.location.origin}/Uploads/${dir}/${docName}`;
+                $('#sisterAssignModal').modal('show');
+            }
+
+            if (e.target.className === 'btn-assign-big-sister') {
+                alert('Assigned');
+            }
+
+            if (e.target.className === 'btn-view-sister-profile') {
+                $('#sisterprofileViewModal').modal('show');
+            }
+
+            //btn-view-little-sister-profile
+        });
+
+        $('#viewDocumentModal').on('hidden.bs.modal', function () {
+            $('#viewDocumentModal').modal('dispose');
+        });
+
+        $(document).ready(function () {
+            $('#tbl-big-sister-assign').DataTable();
+        });
+    });
+</script>
