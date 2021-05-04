@@ -294,10 +294,15 @@ namespace FSTC.Controllers
             return View(await _sisterService.GetLittleSisterProfile(id));
         }
         [HttpPost]
-        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> ActionProfile([FromBody] ActionProfileViewModel model)
         {
             return Ok(await _sisterService.UpdateProfileStatus(model));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetSisterAssignment([FromBody] GetSisterProfileViewModel model)
+        {
+            return Ok(await _sisterService.GetSisterAssignment(model.UserId));
         }
 
         [HttpPost]

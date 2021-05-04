@@ -42,6 +42,18 @@ namespace _18TWENTY8.Services
                 AcademicRecords = _mapper.Map<List<BigSisterAcademicViewModel>>(academicInfo)
             };
         }
+        public async Task<GetSisterAssignmentViewModel> GetSisterAssignment(string littleSisterUserId)
+        {
+            var mentee = await GetLittleSisterDetail(littleSisterUserId);
+            var mentors = await GetApprovedBigSisters();
+
+            return new GetSisterAssignmentViewModel
+            {
+                Mentee = _mapper.Map<LittleSisterDetailViewModel>(mentee),
+                Mentors = _mapper.Map<List<BigSisterDetailViewModel>>(mentors)
+            };
+
+        }
         public async Task<LittleSisterProfileViewModel> GetLittleSisterProfile(string userId)
         {
             var profileInfo = await GetLittleSisterDetail(userId);
@@ -78,7 +90,7 @@ namespace _18TWENTY8.Services
 
             return littleProfile;
 
-        }
+        }  
         private async Task<bool> UpdateBigSisterProfileStatus(ActionProfileViewModel model)
         {
             var bigSisterDetail = await GetBigSisterDetail(model.UserId);
@@ -123,6 +135,10 @@ namespace _18TWENTY8.Services
         private async Task<BigSisterDetail> GetBigSisterDetail(string userId)
         {
             return await _context.BigSisterDetail.FirstOrDefaultAsync(s => s.UserID == userId);
+        }
+        private async Task<List<BigSisterDetail>> GetApprovedBigSisters()
+        {
+            return await _context.BigSisterDetail.Where(s => s.ProfileStatusID == 6).ToListAsync();
         }
         private async Task<ProfileStatus> GetProfileStatus(int profileStatusId)
         {

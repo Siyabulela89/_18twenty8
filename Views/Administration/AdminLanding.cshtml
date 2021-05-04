@@ -49,37 +49,21 @@
                 <div id="sisterAssignModalBody" class="modal-body">
                     <div class="card text-center">
                         <div class="card-header">
-                            Selected little sister
+                            <i class="fas fa-user"></i> Selected little sister
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="/Uploads/ProimagesLilsis/pc269e5782-7670-464d-b8af-5a16eb93407aNathaniel Manamela.png" class="img-thumbnail" alt="...">
-                                </div>
-                                <div class="col-md-5" style="text-align:left">
-                                    <p><b>Sister Type:</b> Little Sister</p>
-                                    <p><b>Full Names:</b> Joanne Moodley</p>
-                                    <p><b>Nickname/Preferred name:</b> Moods</p>
-                                    <p><b>ID/Passport:</b> 8807085515087</p>
-                                    <p><b>Date of birth:</b> 6/20/1990</p>
-                                </div>
-                                <div class="col-md-5" style="text-align:left">
-                                    <p><b>Email:</b> Little Sister</p>
-                                    <p><b>Contact number (Cell):</b> Joanne Moodley</p>
-                                    <p><b>Physical Address:</b> Moods</p>
-                                    <p><b>Postal Code:</b> 8807085515087</p>
-                                    <p><a class="btn-view-sister-profile" data-sister-type="little" href="#" onclick="return false">Click to view profile &nbsp;<i class="fas fa-external-link-alt"></i></a></p>
-                                </div>
+                            <div id="mentee-profile-wrapper" class="row">
+
                             </div>
                         </div>
                     </div>
                     <br />
                     <div class="card text-center">
                         <div class="card-header">
-                            List of available big sisters
+                            <i class="fas fa-users"></i> List of available big sisters
                         </div>
                         <div class="card-body">
-                            <table id="tbl-big-sister-assign" class="table table-striped">
+                            <table id="tbl-big-sister-assign" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -89,38 +73,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Sister 001</td>
-                                        <td>sister@sis.com</td>
-                                        <td>sister@sis.com</td>
-                                        <td><a class="btn-view-sister-profile" data-sister-type="big" onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a class="btn-assign-big-sister" onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Sister 002</td>
-                                        <td>sister@sis.com</td>
-                                        <td>sister@sis.com</td>
-                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sister 003</td>
-                                        <td>sister@sis.com</td>
-                                        <td>sister@sis.com</td>
-                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Sister 004</td>
-                                        <td>sister@sis.com</td>
-                                        <td>sister@sis.com</td>
-                                        <td><a onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a>&nbsp;&nbsp;<a onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a></td>
-                                    </tr>
-                                </tbody>
+                                <tbody id="tbl-big-sister-assign-body"></tbody>
                             </table>
                             @*<a href="#" class="btn btn-primary btn-modern">Button</a>*@
                         </div>
@@ -432,11 +385,96 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        var selectedLittleSister = "";
+        var bigSisterAssignTableBody = document.querySelector("#tbl-big-sister-assign-body");
+        var littleSisterProfileWrapper = document.querySelector("#mentee-profile-wrapper");
+
+
+        function getData(data = {}) {
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            bigSisterAssignTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center"><i class="fas fa-spinner fa-spin"></i> Busy...</td></tr>';
+            littleSisterProfileWrapper.innerHTML = '<span style="width:100px; margin-left:auto; margin-right: auto"><i class="fas fa-spinner fa-spin"></i> Busy...</span>';
+            fetch(`${window.location.origin}/Administration/GetSisterAssignment`, options)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                    console.log('renderMenteeProfile(response)', response)
+                    renderMenteeProfile(response);
+                    renderMentorsTable(response);
+                });
+        }
+
+        function renderMenteeProfile(response) {
+            var menteeProfile = `<div class="col-md-2">
+                                    <img src="/Uploads/ProimagesLilsis/${response.mentee.imageurl}" class="img-thumbnail" alt="...">
+                                </div>
+                                <div class="col-md-5" style="text-align:left">
+                                    <p><b>Sister Type:</b> Little Sister</p>
+                                    <p><b>Full Names:</b> ${response.mentee.name} ${response.mentee.surname}</p>
+                                    <p><b>Nickname/Preferred name:</b> ${response.mentee.nickname}</p>
+                                    <p><b>ID/Passport:</b> ${response.mentee.idPassport}</p>
+                                    <p><b>Date of birth:</b> ${response.mentee.dateofBirth}</p>
+                                </div>
+                                <div class="col-md-5" style="text-align:left">
+                                    <p><b>Email:</b> ${response.mentee.email}</p>
+                                    <p><b>Contact number (Cell):</b> ${response.mentee.phonenumber}</p>
+                                    <p><b>Physical Address:</b> ${response.mentee.addressStreet} ${response.mentee.addressStreetlinetwo}</p>
+                                    <p><b>Postal Code:</b> ${response.mentee.postalCode}</p>
+                                    <p><a class="btn-view-sister-profile" data-sister-type="little" data-sister-id="${response.mentee.userID}" href="#" onclick="return false">Click to view profile &nbsp;<i class="fas fa-external-link-alt"></i></a></p>
+                                </div>`;
+
+            littleSisterProfileWrapper.innerHTML = menteeProfile;
+
+        }
+
+        function renderMentorsTable(response) {
+            $('#tbl-big-sister-assign').DataTable({
+                "bDestroy": true,
+                "data": response.mentors,
+                "columns": [
+                    {
+                        "data": null,
+                        render: function (data, type, full, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+
+                    },
+                    {
+                        "data": null,
+                        render: function (data, type, full, meta) {
+                            return `${full.name} ${full.surname}`;
+                        }
+                    },
+                    { "data": "phonenumber" },
+                    { "data": "email" },
+                    {
+                        "data": null,
+                        render: function (data, type, full, meta) {
+                            return `<a class="btn-view-sister-profile" data-sister-type="big" data-sister-id="${full.userID}" onclick="return false" href="#"><i class="fas fa-user"></i>&nbsp;Profile</a> &nbsp;&nbsp; <a class="btn-assign-big-sister" onclick="return false" href="#"><i class="fas fa-link"></i>&nbsp;Assign</a>`;
+                        }
+                    }
+                ]
+            });
+        }
+
+        function loadAssignmentScreen() {
+            var data = {};
+            data.userId = selectedLittleSister;
+            getData(data);
+        }
+
         document.body.addEventListener('click', (e) => {
             if (e.target.parentElement.classList.contains('btn-assign-sister')) {
-                // var docName = e.target.parentElement.getAttribute('data-doc-url');
-
-                // document.querySelector("#documentViewer").src = `${window.location.origin}/Uploads/${dir}/${docName}`;
+                selectedLittleSister = e.target.parentElement.getAttribute('data-little-sister-id');
+                loadAssignmentScreen();
                 $('#sisterAssignModal').modal('show');
             }
 
@@ -447,16 +485,11 @@
             if (e.target.className === 'btn-view-sister-profile') {
                 $('#sisterprofileViewModal').modal('show');
             }
-
-            //btn-view-little-sister-profile
         });
 
-        $('#viewDocumentModal').on('hidden.bs.modal', function () {
-            $('#viewDocumentModal').modal('dispose');
-        });
+        //$('#viewDocumentModal').on('hidden.bs.modal', function () {
+        //    $('#viewDocumentModal').modal('dispose');
+        //});
 
-        $(document).ready(function () {
-            $('#tbl-big-sister-assign').DataTable();
-        });
     });
 </script>
