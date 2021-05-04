@@ -64,6 +64,14 @@ namespace _18TWENTY8.Controllers
             return View(await _sisterService.GetLittleSisterProfile(id));
         }
 
+        public async Task<IActionResult> LittleSisterProfile(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest($"Little Sister ID not provided");
+
+            return View(await _sisterService.GetLittleSisterProfile(id));
+        }
+
         // GET: LittleSisterDetails/Create
         public IActionResult Create()
         {

@@ -1,152 +1,26 @@
-﻿@model _18TWENTY8.Models.ViewModels.LittleSister.LittleSisterProfileViewModel
+﻿@model IEnumerable<object>
+
+@{
+
+    List<_18TWENTY8.Models.BigSisterDetail> BS = Model.ToList()[0] as List<_18TWENTY8.Models.BigSisterDetail>;
+    List<_18TWENTY8.Models.InformationInterest> II = Model.ToList()[1] as List<_18TWENTY8.Models.InformationInterest>;
+    List<_18TWENTY8.Models.InformationofStorageBig> IS = Model.ToList()[2] as List<_18TWENTY8.Models.InformationofStorageBig>;
+    List<_18TWENTY8.Models.InteractionLevel> IL = Model.ToList()[3] as List<_18TWENTY8.Models.InteractionLevel>;
+    List<_18TWENTY8.Models.OptionalBool> PS = Model.ToList()[4] as List<_18TWENTY8.Models.OptionalBool>;
+    List<_18TWENTY8.Models.BigSisterAcademic> BSA = Model.ToList()[5] as List<_18TWENTY8.Models.BigSisterAcademic>;
+    List<_18TWENTY8.Models.Province> Pr = Model.ToList()[6] as List<_18TWENTY8.Models.Province>;
+    List<_18TWENTY8.Models.AdditionalSupportBig> ASB = Model.ToList()[7] as List<_18TWENTY8.Models.AdditionalSupportBig>;
+    List<_18TWENTY8.Models.AdditionalSupportStorageBig> ASSB = Model.ToList()[8] as List<_18TWENTY8.Models.AdditionalSupportStorageBig>;
+
+    Layout = "_ProfilesLayout";
+
+}
+
+
+
 <div role="main" class="main">
 
-    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 align-self-center p-static order-2 text-center">
-
-
-                </div>
-
-                <div class="col-md-12 align-self-center order-1">
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container py-4">
-            <div class="col">
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 style="color:#a62237" class="font-weight-normal">Little sister profile progress</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="container py-2">
-        <div class="row">
-            <div class="modal fade" id="largeModal" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="largeModalLabel">Refiloe Seseane</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Her financial services' career includes roles at Allan Gray, BoE Private Clients (now Nedbank Private Wealth), EduLoan (now FUNDI), Allan Gray Orbis Foundation and Alexander Forbes. Refiloe’s on-screen pursuits include lead acting roles on South Africa’s top TV soapies: Generations, Rhythm City and The Wild. She is an accomplished voice-over artist, keynote speaker, events MC, stage, radio and TV personality who has anchored business news on CNBC Africa.</p>
-
-                            <p>Refiloe participated in U.S. First Lady Michelle Obama’s 2011 Young African Women Leaders’ Forum and U.S. President Barack Obama’s 2012 Young African Leaders’ Initiative. In 2013 she met HM Queen Elizabeth II at a royal reception on Youth, Education and the Commonwealth at Buckingham Palace. Her other achievements include:</p>
-                            <div class="col-lg-12">
-
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="modal fade" id="viewDocumentModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div id="docViewModal" class="modal-body">
-                            <div class="iframe-container">
-                                <iframe id="documentViewer" width="100%" height="650px"></iframe>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-
-            <div class="row process process-connecting-line ">
-                <div class="connecting-line appear-animation" data-appear-animation="fadeIn"></div>
-                <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                    <div style="background-color:#a62237;color:white" class="process-step-circle">
-                        <strong style="color:white" class="process-step-circle-content">1</strong>
-                    </div>
-                    <div class="process-step-content">
-                        <ul class="list list-icons">
-                            <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
-                        </ul>
-                    </div>
-                </div>
-                @if (Model.Profile.ProfileStatusID == 5 || Model.Profile.ProfileStatusID == 11)
-                {
-                    <div data-toggle="modal" data-target="#largeModal" class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
-                        <div class="process-step-circle">
-                            <strong class="process-step-circle-content">2</strong>
-                        </div>
-                        <div class="process-step-content">
-                            <ul class="list list-icons">
-                                <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @Model.Profile.ProfileStatus</li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                        <div style="background-color:#a62237;color:white" class="process-step-circle">
-                            <strong style="color:white" class="process-step-circle-content">2</strong>
-                        </div>
-                        <div class="process-step-content">
-                            <ul class="list list-icons">
-                                <li id="big-sis-phase-2"><i class="fas fa-check"></i> @Model.Profile.ProfileStatus</li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-                @if (@Model.Profile.SisterStatus == "Pending Approval")
-                {
-                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
-                        <div class="process-step-circle">
-                            <strong class="process-step-circle-content">3</strong>
-                        </div>
-                        <div class="process-step-content">
-                            <ul class="list list-icons">
-                                <li><i class="fas fa-exclamation"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
-                            </ul>
-                        </div>
-                    </div>
-                }
-                else
-
-                {
-                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                        <div style="background-color:#a62237;color:white" class="process-step-circle">
-                            <strong style="color:white" class="process-step-circle-content">3</strong>
-                        </div>
-                        <div class="process-step-content">
-                            <ul class="list list-icons">
-                                <li><i class="fas fa-check"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                }
-            </div>
-        </div>
-    </div>
-
-    <div id="little-sister-profile-wrapper" class="container py-2">
+    <div class="container py-2" style="max-width:98%">
         <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
             <div class="row">
 
@@ -155,35 +29,20 @@
                     <div class="d-flex justify-content-center mb-4">
                         <div class="profile-image-outer-container">
                             <div class="profile-image-inner-container bg-color-primary">
-                                <img src="~/Uploads/ProimagesLilsis/@Model.Profile.Imageurl">
+                                <img src="~/Uploads/ProimagesBigsis/@BS[0].Imageurl">
 
                             </div>
 
                         </div>
-                        @*<div class="profile-image-inner-container bg-color-primary">
-                                <label style="cursor: pointer;">
-                                    <span for="file" class="profile-image-button bg-color-dark">
-                                        <i class="fas fa-camera text-light"></i>
-                                    </span>
-                                </label>
-                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
-
-                            </div>
-                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
-
-
                     </div>
 
-
-
-
                 </div>
-                <div class="col-lg-9 litte-sister-profile-wrapper">
+                <div class="col-lg-9">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="overflow-hidden mb-1">
-                                <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@Model.Profile.Name @Model.Profile.Surname</strong>s Profile</h2>
+                                <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@BS[0].Name @BS[0].Surname</strong>s Profile</h2>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -205,31 +64,31 @@
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Name</p>
+                                            <p>@BS[0].Name</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Surname</p>
+                                            <p>@BS[0].Surname</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Nickname</p>
+                                            <p>@BS[0].Nickname</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.IDPassport</p>
+                                            <p>@BS[0].IDPassport</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.DateofBirth</p>
+                                            <p>@BS[0].DateofBirth</p>
                                         </div>
                                     </div>
 
@@ -250,20 +109,20 @@
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.email</p>
+                                            <p>@BS[0].email</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Phonenumber</p>
+                                            <p>@BS[0].Phonenumber</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.AddressStreet</p>
+                                            <p>@BS[0].AddressStreet</p>
                                         </div>
                                     </div>
                                     @*<div class="form-group row">
@@ -279,14 +138,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.PostalCode</p>
+                                            <p>@BS[0].PostalCode</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1 name and number</label>
 
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.EmergencyContactNameone: @Model.Profile.EmergencyContactNumberone</p>
+                                            <p>@BS[0].EmergencyContactNameone: @BS[0].EmergencyContactNumberone</p>
                                         </div>
 
 
@@ -295,7 +154,7 @@
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2 name and number</label>
 
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.EmergencyContactNametwo: @Model.Profile.EmergencyContactNumbertwo </p>
+                                            <p>@BS[0].EmergencyContactNametwo: @BS[0].EmergencyContactNumbertwo </p>
                                         </div>
 
                                     </div>
@@ -315,28 +174,28 @@
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.howdidyouhearaboutQ</p>
+                                            <p>@BS[0].howdidyouhearabout</p>
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.BackgroundQ</p>
+                                            <p>@BS[0].BackgroundQ</p>
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentee or participated in mentor training?</label>
+                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentor or participated in mentor training?</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.EverBeenAMenteed</p>
+                                            <p>@ViewBag.EvMentor</p>
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
                                         <div class="col-lg-9">
-                                            <p>@Model.Profile.DetailsOnEverbeenMenteeQ</p>
+                                            <p>@BS[0].DetailsOnEverbeenMentorQ</p>
 
                                         </div>
                                     </div>
@@ -344,27 +203,30 @@
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
                                         <div class="col-lg-12">
 
-                                            <p>@Model.Profile.PreviouslyArrestedOrConvictedd</p>
+                                            <p>@ViewBag.Conv</p>
+
+
+
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.DetailsArrestedConvictedQ</p>
+                                            <p>@BS[0].DetailsArrestedConvictedQ</p>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Details about your current study programme, year of study and where you are studying?</label>
+                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What would your 28 year-old self say to your 18 year-old self?</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.CurrentStudyQ</p>
+                                            <p>@BS[0].youngerselfQ</p>
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Big Sister?</label>
+                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Little Sister?</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Expectationsonlittlesister</p>
+                                            <p>@BS[0].Expectationsonlittlesister</p>
 
                                         </div>
                                     </div>
@@ -372,10 +234,10 @@
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
                                         <div class="col-lg-12">
                                             <ul class="list list-icons">
-                                                @foreach (var interest in Model.InformationOfInterest)
+                                                @foreach (var items in IS)
                                                 {
 
-                                                    <li><i class="fas fa-check"></i>@interest.Description</li>
+                                                    <li><i class="fas fa-check"></i>@II.Where(x => x.InformationofInterestID == items.InformationofInterestID).SingleOrDefault().Description</li>
 
                                                 }
                                             </ul>
@@ -384,7 +246,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
                                         <div class="col-lg-12">
-                                            <p>@Model.Profile.Interactionlevelmeetd</p>
+                                            <p>@IL.Where(x => x.InteractionLevelID == BS[0].Interactionlevelmeet).SingleOrDefault().Description</p>
 
 
                                         </div>
@@ -393,20 +255,34 @@
                                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
                                         <div class="col-lg-12">
 
-                                            <p>@Model.Profile.InteractionlevelDigComd</p>
+                                            <p>@IL.Where(x => x.InteractionLevelID == BS[0].InteractionlevelDigCom).SingleOrDefault().Description</p>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ADDITIONAL SUPPORT. In addition to being a Big Sister, I would also like to (please select all applicable options): </label>
+                                        <div class="col-lg-12">
 
+                                            <ul class="list list-icons">
+                                                @foreach (var items in ASSB)
+                                                {
+
+                                                    <li><i class="fas fa-check"></i>@ASB.Where(x => x.AdditionalSupportBigID == items.AdditionalSupportBigID).SingleOrDefault().Description</li>
+
+                                                }
+                                            </ul>
+
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                            I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (Model.Profile.ConfirmMenteedurationQ == 1)
+                                            I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (@BS[0].ConfirmMentordurationQ == 1)
                                             {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
                                             else
                                             { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}
                                         </label>
                                         <!---<div class="col-lg-12">
 
-                                            <p>@Model.Profile.ConfirmMenteedurationQ</p>
+                                            <p>@BS[0].ConfirmMentordurationQ</p>
 
                                         </div>-->
                                     </div>
@@ -444,8 +320,8 @@
             </div>
         </form>
     </div>
-    }
+
 
 </div>
-<script src="~/js/app/admin/action-profile.js"></script>
+@*<script src="~/js/app/admin/action-profile.js"></script>*@
 <script src="~/js/app/admin/document-manager.js"></script>

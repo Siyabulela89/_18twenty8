@@ -3,7 +3,7 @@
     var userId = currentUrl.split("/").pop();
     var urlSegment = currentUrl.split("/");
     var sisterDocTableBody = document.querySelector("#tbl-sister-documents");
-
+    console.log('currentUrl', currentUrl);
     function getDocumentHandler() {
         var data = {};
         data.userId = userId;
