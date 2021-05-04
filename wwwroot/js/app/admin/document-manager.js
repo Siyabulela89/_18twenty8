@@ -3,11 +3,25 @@
     var userId = currentUrl.split("/").pop();
     var urlSegment = currentUrl.split("/");
     var sisterDocTableBody = document.querySelector("#tbl-sister-documents");
-
+   
     function getDocumentHandler() {
         var data = {};
         data.userId = userId;
-        data.sisterType = urlSegment[urlSegment.length - 2] == 'AdminStatusBigsis' ? 'Big' : 'Little';
+
+        var page = urlSegment[urlSegment.length - 2];
+        if (page === 'AdminStatusBigsis') {
+            data.sisterType = 'Big';
+        } else if (page === 'AdminStatusLilsis') {
+            data.sisterType = 'Little';
+        } else {
+            page = urlSegment[urlSegment.length - 3];
+            if (page === 'BigSisterDetails') {
+                data.sisterType = 'Big';
+            } else if (page === 'LittleSisterDetails') {
+                data.sisterType = 'Little';
+            }
+        }
+
         getData(data);
     }
 
@@ -23,7 +37,7 @@
             return "Qualifications";
 
     }
-    
+
     function getData(data = {}) {
 
         const options = {
@@ -87,7 +101,7 @@
         if (e.target.parentElement.classList.contains('btn-delete-document')) {
             alert('Deleted');
         }
-    });  
+    });
 
     $('#viewDocumentModal').on('hidden.bs.modal', function () {
         $('#viewDocumentModal').modal('dispose');
