@@ -11,7 +11,7 @@
         var page = urlSegment[urlSegment.length - 2];
         if (page === 'AdminStatusBigsis') {
             data.sisterType = 'Big';
-        } else if (page === 'AdminStatusLilsis') {
+        } else if (page === 'AdminStatusLilsis' || page === 'AdminStatusLilSis') {
             data.sisterType = 'Little';
         } else {
             page = urlSegment[urlSegment.length - 3];

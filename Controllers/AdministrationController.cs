@@ -69,7 +69,7 @@ namespace FSTC.Controllers
             List<object> listfor = new List<object>
             {     _context.LittleSisterDetail.ToList(),
             _context.BigSisterDetail.ToList(),
-            _context.SisterAssignment.ToList(),
+            _context.SisterAssignment.Where(s => string.IsNullOrEmpty(s.BigSisterID)).ToList(),
                _context.AssignSisterStatus.ToList(),
 
                     _context.AssignApprove.ToList(),
@@ -298,7 +298,16 @@ namespace FSTC.Controllers
         {
             return Ok(await _sisterService.UpdateProfileStatus(model));
         }
-
+        [HttpPost]
+        public async Task<IActionResult> ActionProfileSisterAssign([FromBody] SisterAssignmentActionViewModel model)
+        {
+            return Ok(await _sisterService.UpdateSisterAssignStatus(model));
+        }
+        [HttpPost]
+        public async Task<IActionResult> AssignSister([FromBody] AssignSisterViewModel model)
+        {
+            return Ok(await _sisterService.AssignBigSisterToLittleSister(model));
+        }
         [HttpPost]
         public async Task<IActionResult> GetSisterAssignment([FromBody] GetSisterProfileViewModel model)
         {

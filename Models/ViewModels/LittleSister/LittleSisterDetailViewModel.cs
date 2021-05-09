@@ -37,9 +37,12 @@ namespace _18TWENTY8.Models.ViewModels.LittleSister
         public String DetailsOnEverbeenMenteeQ { get; set; }
         public int ArrestedConvictedQ { get; set; }
         public string AssignedSister { get; set; }
+        public string AssignedSisterId { get; set; }
+        public string AssignedSisterStatus { get; set; }
         public int ProfileStatusID { get; set; }
         public string ProfileStatus { get; set; }
         public string SisterStatus { get; set; }
+        public int SisterAssignId { get; set; }
         public string SisterAssignStatus { get; set; }
         public bool PreviouslyArrestedOrConvicted { get; set; }
         public bool EverBeenAMentee { get; set; }

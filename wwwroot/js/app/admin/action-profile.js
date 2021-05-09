@@ -2,6 +2,7 @@
     // Action Buttons
     var btnApprove = document.querySelector("#btn-approve-profile");
     var btnDecline = document.querySelector("#btn-decline-profile");
+    var btnDeclineAssign = document.querySelector("#btn-decline-profile-assign");
     var btnCorrect = document.querySelector("#btn-correct-profile");
     var btnSaveProfileStatus = document.querySelector("#btn-save-profile-status-reason");
     var taProfileStatusReason = document.querySelector("#ta-profile-Status-reason");
@@ -10,7 +11,7 @@
     // Stage Status
     var phase2 = document.querySelector("#big-sis-phase-2");
 
-
+    btnDeclineAssign.addEventListener("click", declineProfileHandler);
     btnApprove.addEventListener("click", approveProfileHandler);
     btnDecline.addEventListener("click", openProfileStatusReasonModalHandler);
     btnCorrect.addEventListener("click", openProfileStatusReasonModalHandler);
@@ -39,7 +40,15 @@
         data.action = btnApprove.getAttribute('data-action');
         data.userId = btnApprove.getAttribute('data-user-id');
         data.role = btnApprove.getAttribute('data-role');
-        submitData(data);
+        var assignment = btnApprove.getAttribute('data-src');
+        if (assignment === "assignment-action") {
+            data.sisterAssignId = btnApprove.getAttribute('data-sister-assign-id'); //data-sister-assign-id
+            actionProfileSisterAssign(data)
+        } else {
+            submitData(data);
+        }
+
+        console.log("data", data)
     }
 
     function declineProfileHandler() {
@@ -48,7 +57,13 @@
         data.userId = btnDecline.getAttribute('data-user-id');
         data.role = btnDecline.getAttribute('data-role');
         data.reason = taProfileStatusReason.value;
-        submitData(data);
+        var assignment = btnApprove.getAttribute('data-src');
+        if (assignment === "assignment-action") {
+            data.sisterAssignId = btnDecline.getAttribute('data-sister-assign-id');
+            actionProfileSisterAssign(data)
+        } else {
+            submitData(data);
+        }
     }
 
     function correctProfileHandler() {
@@ -57,7 +72,46 @@
         data.userId = btnCorrect.getAttribute('data-user-id');
         data.role = btnCorrect.getAttribute('data-role');
         data.reason = taProfileStatusReason.value;
-        submitData(data);
+        var assignment = btnApprove.getAttribute('data-src');
+        assignment === "assignment-action" ? actionProfileSisterAssign(data) : submitData(data);
+    }
+
+    function actionProfileSisterAssign(data = {}) {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        fetch(`${window.location.origin}/Administration/ActionProfileSisterAssign`, options)
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                if (data.action == "Approved") {
+                    btnApprove.innerHTML = '<i class="fas fa-thumbs-up"></i>';
+                    phase2.innerHTML = `<i class="fas fa-check"></i>`
+                    btnApprove.disabled = true;
+                    btnApprove.style.cursor = 'default';
+                }
+
+                if (data.action == "Sent for Correction") {
+                    phase2.innerHTML = `<i class="fas fa-exclamation"></i>`
+                    btnCorrect.disabled = true;
+                    btnCorrect.style.cursor = 'default';
+                }
+
+                if (data.action == "Declined") {
+                    phase2.innerHTML = `<i class="fas fa-times"></i>`
+                    btnDecline.disabled = true;
+                    btnDecline.style.cursor = 'default';
+                }
+                btnSaveProfileStatus.innerHTML = '<i class="fas fa-save"></i> Save';
+                $('#profileStatusReasonModal').modal('hide');
+                toastr.success(`${data.action} successfully`, 'Success Message')
+            });
     }
 
     function submitData(data = {}) {

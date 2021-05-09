@@ -26,7 +26,43 @@ namespace _18TWENTY8.Services
             return model.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase)
                 ? await UpdateBigSisterProfileStatus(model)
                 : await UpdateLittleSisterProfileStatus(model);
-        }      
+        }
+
+        public async Task<bool> UpdateSisterAssignStatus(SisterAssignmentActionViewModel model)
+        {
+            var sisterAssign = await _context.SisterAssignment.FirstOrDefaultAsync(s => s.SisAssID == model.SisterAssignId);
+
+            if (sisterAssign == null)
+                throw new Exception($"Sister assignment record not found: AssignmentId - {model.SisterAssignId}");
+
+            var status = model.Action.Equals("Approved", StringComparison.OrdinalIgnoreCase) ? 2 : 1; //TODO: Confirm status
+
+            if (model.Role.Equals("Little Sister (Mentee)", StringComparison.OrdinalIgnoreCase))
+            {
+                sisterAssign.LittleApproveID = status;
+                if (sisterAssign.BigApproveID > 0)
+                    sisterAssign.AssignSisterStatusID = 2;
+            }
+            else if (model.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase))
+            {
+                sisterAssign.BigApproveID = status;
+                if (sisterAssign.LittleApproveID > 0)
+                    sisterAssign.AssignSisterStatusID = 2;
+            }
+
+            return await _context.SaveChangesAsync() > 0;
+        }
+        public async Task<bool> AssignBigSisterToLittleSister(AssignSisterViewModel model)
+        {
+            var sisterAssign = await _context.SisterAssignment.FirstOrDefaultAsync(s => s.LittleSisterID.Equals(model.LittleSisterUserId) && string.IsNullOrEmpty(s.BigSisterID));
+
+            if (sisterAssign == null)
+                throw new Exception($"Cannot find Assignment record for Little Sister - {model.LittleSisterUserId}");
+
+            sisterAssign.BigSisterID = model.BigSisterUserId;
+
+            return await _context.SaveChangesAsync() > 0;
+        }
         public async Task<BigSisterProfileViewModel> GetBigSisterProfile(string userId)
         {
             var profileInfo = await GetBigSisterDetail(userId);
@@ -79,6 +115,16 @@ namespace _18TWENTY8.Services
             var Menteed = await GetyesnoOption(profileInfo.EverbeenamenteeQ);
             var Convicted = await GetyesnoOption(profileInfo.ArrestedConvictedQ);
 
+            var assignedBigSister = !string.IsNullOrEmpty(sisterAssignment.BigSisterID) ? await GetBigSisterDetail(sisterAssignment.BigSisterID) : null;
+            if (assignedBigSister != null)
+            {
+                littleProfile.Profile.AssignedSister = $"{assignedBigSister.Name} {assignedBigSister.Surname}";
+                littleProfile.Profile.AssignedSisterId = assignedBigSister.UserID;
+                littleProfile.Profile.AssignedSisterStatus = assignStatus.description;
+                littleProfile.Profile.SisterAssignId = sisterAssignment.SisAssID;
+            }
+
+
             littleProfile.Profile.Interactionlevelmeetd = Interaction.Description;
             littleProfile.Profile.InteractionlevelDigComd = Interactiondigi.Description;
             littleProfile.Profile.ProfileStatus = profileStatus.Description;
@@ -90,7 +136,7 @@ namespace _18TWENTY8.Services
 
             return littleProfile;
 
-        }  
+        }
         private async Task<bool> UpdateBigSisterProfileStatus(ActionProfileViewModel model)
         {
             var bigSisterDetail = await GetBigSisterDetail(model.UserId);
