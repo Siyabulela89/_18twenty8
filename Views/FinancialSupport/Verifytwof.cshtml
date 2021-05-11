@@ -1,0 +1,113 @@
+﻿@model _18TWENTY8.Models.FinancialSupport
+
+
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container container-xl">
+        <div class="row justify-content-center featured-boxes featured-boxes-style-4 pb-3 mb-4">
+
+
+        </div>
+    </div>
+    <div class="container pb-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-6">
+                <h2 class="font-weight-normal text-color-dark text-center text-8 mb-4">Please enter  your <strong class="font-weight-extra-bold">verification code</strong> sent via sms below </h2>
+
+                <form asp-action="Verifytwof">
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12 pr-md-2">
+                            <input asp-for="VerifCodeComp" type="text" class="form-control" />
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" asp-for="FinancialSupportID" />
+
+                    <input type="hidden" asp-for="Name" class="form-control" />
+
+                    <input type="hidden" asp-for="Surname" class="form-control" />
+
+                    <input type="hidden" asp-for="Nickname" class="form-control" />
+
+                    <input type="hidden" asp-for="IdNr_Passport" class="form-control" />
+
+                    <input type="hidden" asp-for="DOB" class="form-control" />
+
+                    <input type="hidden" asp-for="Email" class="form-control" />
+
+                    <input type="hidden" asp-for="CellphoneNr" class="form-control" />
+
+                    <input type="hidden" asp-for="PersonalBio" class="form-control" />
+
+                    <input type="hidden" asp-for="UserID" class="form-control" />
+                    <input type="hidden" asp-for="CertifiedID" class="form-control" />
+                    <input type="hidden" asp-for="Imgurl" class="form-control" />
+                    <input type="hidden" asp-for="CVurl" class="form-control" />
+
+                    <input type="hidden" asp-for="SiteUrl" class="form-control" />
+
+                    <input type="hidden" asp-for="Academictranscript" class="form-control" />
+
+                    <input type="hidden" asp-for="Proofofregoistrationurl" class="form-control" />
+
+                    <input type="hidden" asp-for="LatestStatementfees" class="form-control" />
+
+                    <input type="hidden" asp-for="VideoURl" class="form-control" />
+
+                    <input type="hidden" asp-for="ApplicationStatusID" class="form-control" />
+
+                    <input type="hidden" asp-for="VerifCode" class="form-control" />
+                    <input type="hidden" asp-for="VerifCodeComp" class="form-control" />
+                    <input type="hidden" asp-for="verifiedRegistration" class="form-control" />
+                    <input type="hidden" asp-for="ApplicationReason" class="form-control" />
+
+
+                    <input type="hidden" asp-for="DateCreated" class="form-control" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <div class="form-row">
+                        <div class="form-group col text-center">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+<!-- Examples -->

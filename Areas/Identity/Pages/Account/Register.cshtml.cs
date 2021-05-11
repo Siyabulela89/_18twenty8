@@ -146,6 +146,11 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                         return Redirect("~/Administration/AdminLanding");
 
                     }
+                    else if (Input.UserRole == "Bursary Applicant")
+                    {
+                        return Redirect("~/FinancialSupport/Create");
+
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

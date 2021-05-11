@@ -1,0 +1,263 @@
+﻿@model _18TWENTY8.Models.FinancialSupport
+
+
+
+
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container py-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Financial <strong class="font-weight-extra-bold">Support</strong></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-2">
+        <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
+            <div class="row">
+
+                <div class="col-lg-3 mt-4 mt-lg-0">
+
+                    <div class="d-flex justify-content-center mb-4">
+                        <div class="profile-image-outer-container" data-provides="fileupload">
+                            <div class="profile-image-inner-container bg-color-primary">
+                                <img id="output" src="~/img/avatars/avatar.jpg" />
+                                <span class="profile-image-button bg-color-dark">
+                                    <i class="fas fa-camera text-dark"></i>
+                                </span>
+                            </div>
+
+                            <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+                        </div>
+                        @*<div class="profile-image-inner-container bg-color-primary">
+                                <label style="cursor: pointer;">
+                                    <span for="file" class="profile-image-button bg-color-dark">
+                                        <i class="fas fa-camera text-light"></i>
+                                    </span>
+                                </label>
+                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+
+                            </div>
+                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="col-lg-9">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">My </strong>finance application profile</h2>
+                    </div>
+                    <div class="overflow-hidden mb-4 pb-3">
+                        <p class="mb-0">Please create your big sister profile by filling in the details below.</p>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Name" class="form-control" required type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Surname" class="form-control" required type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Nickname" class="form-control" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
+                        <div class="col-lg-12">
+                            <input asp-for="IdNr_Passport" class="form-control" required type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cellphone number</label>
+                        <div class="col-lg-12">
+                            <input asp-for="CellphoneNr" class="form-control" required type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cellphone number</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Email" class="form-control" required type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                        <div class="col-lg-12">
+                            <input asp-for="DOB" class="form-control" required type="date" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Personal Bio (500 Words max)</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="DOB" class="form-control" required type="text" value=""></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV (2 pages)</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="CV" id="CV" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="CID" id="CID" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Latest Academic transcripts</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="QA" id="QA" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Latest feestatment and student loan account statement</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="QA2" id="QA2" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">1 minute motivation video</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="CVV" id="CVV" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Proof of registration</label>
+                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                                <div class="uneditable-input">
+                                    <i class="fas fa-file fileupload-exists"></i>
+                                    <span class="fileupload-preview"></span>
+                                </div>
+
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-new">Select file</span>
+                                    <input type="file" name="POR" id="POR" />
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-lg-9">
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Submitting...">
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>

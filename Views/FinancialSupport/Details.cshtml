@@ -1,0 +1,344 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.FinancialSupport> FS = Model.ToList()[0] as List<_18TWENTY8.Models.FinancialSupport>;
+    List<_18TWENTY8.Models.ApplicationStatus> AS = Model.ToList()[1] as List<_18TWENTY8.Models.ApplicationStatus>;
+}
+
+    <div role="main" class="main">
+
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container py-4">
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 style="color:#a62237" class="font-weight-normal">Financial assistance candidate rofile progress</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container py-2">
+            <div class="row">
+                <div class="modal fade" id="largeModal" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="largeModalLabel">Refiloe Seseane</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Her financial services' career includes roles at Allan Gray, BoE Private Clients (now Nedbank Private Wealth), EduLoan (now FUNDI), Allan Gray Orbis Foundation and Alexander Forbes. Refiloe’s on-screen pursuits include lead acting roles on South Africa’s top TV soapies: Generations, Rhythm City and The Wild. She is an accomplished voice-over artist, keynote speaker, events MC, stage, radio and TV personality who has anchored business news on CNBC Africa.</p>
+
+                                <p>Refiloe participated in U.S. First Lady Michelle Obama’s 2011 Young African Women Leaders’ Forum and U.S. President Barack Obama’s 2012 Young African Leaders’ Initiative. In 2013 she met HM Queen Elizabeth II at a royal reception on Youth, Education and the Commonwealth at Buckingham Palace. Her other achievements include:</p>
+                                <div class="col-lg-12">
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="modal fade" id="viewDocumentModal" tabindex="5" role="dialog" data-backdrop="static" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div id="docViewModal" class="modal-body">
+                                <div class="iframe-container">
+                                    <iframe id="documentViewer" width="100%" height="650px"></iframe>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach (var item in FS)
+        {
+            @*<div class="row">
+                <div class="col">
+
+                    <div class="row process process-connecting-line ">
+                        <div class="connecting-line appear-animation" data-appear-animation="fadeIn"></div>
+                        <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                            <div style="background-color:#a62237;color:white" class="process-step-circle">
+                                <strong style="color:white" class="process-step-circle-content">1</strong>
+                            </div>
+                            <div class="process-step-content">
+                                <ul class="list list-icons">
+                                    <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
+                                </ul>
+                            </div>
+                        </div>
+                        @if (Model.Profile.ProfileStatusID == 5 || Model.Profile.ProfileStatusID == 11)
+                        {
+                            <div data-toggle="modal" data-target="#largeModal" class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content">2</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <ul class="list list-icons">
+                                        <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @Model.Profile.ProfileStatus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                                <div style="background-color:#a62237;color:white" class="process-step-circle">
+                                    <strong style="color:white" class="process-step-circle-content">2</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <ul class="list list-icons">
+                                        <li id="big-sis-phase-2"><i class="fas fa-check"></i> @Model.Profile.ProfileStatus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        @if (@Model.Profile.SisterStatus == "Pending Approval")
+                        {
+                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                                <div class="process-step-circle">
+                                    <strong class="process-step-circle-content">3</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <ul class="list list-icons">
+                                        <li><i class="fas fa-exclamation"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        else
+
+                        {
+                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                                <div style="background-color:#a62237;color:white" class="process-step-circle">
+                                    <strong style="color:white" class="process-step-circle-content">3</strong>
+                                </div>
+                                <div class="process-step-content">
+                                    <ul class="list list-icons">
+                                        <li><i class="fas fa-check"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>*@
+
+            <div id="little-sister-profile-wrapper" class="container py-2">
+                <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="row">
+
+                                <div class="col-lg-3 mt-4 mt-lg-0">
+
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <div class="profile-image-outer-container">
+                                            <div class="profile-image-inner-container bg-color-primary">
+                                                <img src="~/Uploads/ProimagesLilsis/@item.Imgurl">
+
+                                            </div>
+
+                                        </div>
+                                       
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-lg-9 litte-sister-profile-wrapper">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="overflow-hidden mb-1">
+                                                <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@item.Name @item.Surname</strong>s Profile</h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion" id="accordion">
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h4 class="card-title m-0">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+                                                        Personal Information
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse1One" class="collapse show">
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.Name</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.Surname</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.Nickname</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.IdNr_Passport</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.DOB</p>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h4 class="card-title m-0">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+                                                        Contact Information
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse1Two" class="collapse show">
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.Email</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                                                        <div class="col-lg-12">
+                                                            <p>@item.CellphoneNr</p>
+                                                        </div>
+                                                    </div>
+
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                              
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h4 class="card-title m-0">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
+                                                        Documents
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse1Four" class="collapse show">
+                                                <div class="card-body">
+                                                    <table class="table table-sm table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Document Name</th>
+                                                                <th scope="col">Created</th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbl-sister-documents">
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Certified ID</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/CertifiedID/@item.CertifiedID">View</a></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">CV</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/CV/@item.CVurl">View</a></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Motivational Video</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/CVVideo/@item.VideoURl">View</a></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Academic Transcript</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/Qualifications/@item.Academictranscript">View</a></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Proof of registration</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/POR/@item.Proofofregoistrationurl">View</a></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Fee Statement</th>
+                                                                <th scope="col">@item.DateCreated</th>
+                                                                <th scope="col"><a href="~/Uploads/FeeStatements/@item.LatestStatementfees">View</a></th>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 50px;">
+                         
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+
+    </div>
+@*<script src="~/js/app/admin/action-profile.js"></script>
+<script src="~/js/app/admin/document-manager.js"></script>
+<script src="~/js/app/admin/sister-profile.js"></script>*@

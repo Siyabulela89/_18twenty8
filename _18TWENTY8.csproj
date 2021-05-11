@@ -24,8 +24,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Models\ViewModels\NewFolder\" />
     <Folder Include="wwwroot\Uploads\CV\" />
     <Folder Include="wwwroot\Uploads\CertifiedID\" />
+    <Folder Include="wwwroot\Uploads\CVVideo\" />
+    <Folder Include="wwwroot\Uploads\FeeStatements\" />
+    <Folder Include="wwwroot\Uploads\POR\" />
     <Folder Include="wwwroot\Uploads\ProimagesLilsis\" />
     <Folder Include="wwwroot\Uploads\Qualifications\" />
     <Folder Include="wwwroot\Uploads\Recognition\" />

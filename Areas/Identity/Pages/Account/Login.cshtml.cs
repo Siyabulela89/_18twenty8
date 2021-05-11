@@ -102,6 +102,11 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                         return Redirect("~/Administration/AdminLanding");
 
                     }
+                    else if (Userman.Contains("Bursary Applicant"))
+                    {
+                        return Redirect("~/FinancialSupport/Create");
+
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {

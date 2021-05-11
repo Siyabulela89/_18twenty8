@@ -19,7 +19,8 @@ namespace _18TWENTY8.Models
         public DbSet<Graduates> Graduates { get; set; }
         public DbSet<FinancialSupport> FinancialSupport { get; set; }
         
-               public DbSet<InformationofStorageLittle> InformationofStorageLittle { get; set; }
+             public DbSet<ApplicationStatus> ApplicationStatus { get; set; }
+        public DbSet<InformationofStorageLittle> InformationofStorageLittle { get; set; }
         public DbSet<LittleSisterAcademic> LittleSisterAcademic { get; set; }
         public DbSet<ProfileStatus> ProfileStatus { get; set; }
         public DbSet<RecognitionLetters> RecognitionLetters { get; set; }

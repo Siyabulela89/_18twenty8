@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18TWENTY8.Models;
 
 namespace _18TWENTY8.Migrations
 {
     [DbContext(typeof(EighteentwentyeightContext))]
-    partial class EighteentwentyeightContextModelSnapshot : ModelSnapshot
+    [Migration("20210511074150_FinancialAssistance")]
+    partial class FinancialAssistance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,15 +240,11 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("CVurl");
 
-                    b.Property<string>("CellphoneNr");
-
                     b.Property<string>("CertifiedID");
 
                     b.Property<DateTime>("DOB");
 
                     b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Email");
 
                     b.Property<string>("IdNr_Passport");
 
@@ -257,8 +255,6 @@ namespace _18TWENTY8.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Nickname");
-
-                    b.Property<string>("PersonalBio");
 
                     b.Property<string>("Proofofregoistrationurl");
 
