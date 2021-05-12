@@ -3,7 +3,7 @@
     var userId = currentUrl.split("/").pop();
     var urlSegment = currentUrl.split("/");
     var sisterDocTableBody = document.querySelector("#tbl-sister-documents");
-   
+
     function getDocumentHandler() {
         var data = {};
         data.userId = userId;
@@ -47,7 +47,10 @@
                 'Content-Type': 'application/json'
             }
         }
-        sisterDocTableBody.innerHTML = '<tr><td colspan="4" style="text-align:center"><i class="fas fa-spinner fa-spin"></i> Busy...</td></tr>';
+
+        if (sisterDocTableBody)
+            sisterDocTableBody.innerHTML = '<tr><td colspan="4" style="text-align:center"><i class="fas fa-spinner fa-spin"></i> Busy...</td></tr>';
+
         fetch(`${window.location.origin}/Administration/GetSisterProfile`, options)
             .then((response) => {
                 return response.json();
@@ -85,7 +88,8 @@
             </tr>`;
         });
 
-        sisterDocTableBody.innerHTML = tableRow;
+        if (sisterDocTableBody)
+            sisterDocTableBody.innerHTML = tableRow;
     }
 
     getDocumentHandler();

@@ -117,7 +117,6 @@
             var sisterType = e.target.getAttribute('data-sister-type');
             var sisterId = e.target.getAttribute('data-sister-id');
             var src = "";
-            console.log('eee', e);
             if (sisterType === "little") {
                 src = `${window.location.origin}/LittleSisterDetails/LittleSisterProfile/${sisterId}`;
             }

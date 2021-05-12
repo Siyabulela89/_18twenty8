@@ -11,15 +11,39 @@
     // Stage Status
     var phase2 = document.querySelector("#big-sis-phase-2");
 
-    btnDeclineAssign.addEventListener("click", declineProfileHandler);
-    btnApprove.addEventListener("click", approveProfileHandler);
-    btnDecline.addEventListener("click", openProfileStatusReasonModalHandler);
-    btnCorrect.addEventListener("click", openProfileStatusReasonModalHandler);
-    btnSaveProfileStatus.addEventListener("click", saveProfileStatusReasonHandler);
 
-    function openProfileStatusReasonModalHandler(e) {
-        e.preventDefault();
-        action = e.target.dataset.action
+    if (btnDeclineAssign) {
+        btnDeclineAssign.addEventListener("click", () => {
+            declineProfileHandler();
+        });
+    }
+
+    if (btnApprove) {
+        btnApprove.addEventListener("click", (e) => {
+            approveProfileHandler();
+        });
+    }
+
+    if (btnDecline) {
+        btnDecline.addEventListener("click", (e) => {
+            action = e.target.dataset.action;
+            openProfileStatusReasonModalHandler();
+        });
+    }
+
+    if (btnCorrect) {
+        btnCorrect.addEventListener("click", (e) => {
+            action = e.target.dataset.action;
+            openProfileStatusReasonModalHandler();
+        });
+    }
+    if (btnSaveProfileStatus) {
+        btnSaveProfileStatus.addEventListener("click", () => {
+            saveProfileStatusReasonHandler();
+        });
+    }
+
+    function openProfileStatusReasonModalHandler() {
         $('#profileStatusReasonModal').modal('show');
     }
 
@@ -33,8 +57,7 @@
     }
 
 
-    function approveProfileHandler(e) {
-        e.preventDefault();
+    function approveProfileHandler() {
         var data = {};
         btnApprove.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Busy...';
         data.action = btnApprove.getAttribute('data-action');
@@ -47,8 +70,6 @@
         } else {
             submitData(data);
         }
-
-        console.log("data", data)
     }
 
     function declineProfileHandler() {

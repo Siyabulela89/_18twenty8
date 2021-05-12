@@ -143,13 +143,19 @@ namespace _18TWENTY8.Controllers
 
             if (has == true)
             {
-                int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
+                // int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
+                var sisterAssign = _context.SisterAssignment.FirstOrDefault(s => s.BigSisterID == id);
+                int sistID = sisterAssign.AssignSisterStatusID;
                 ViewBag.Sistatus = _context.AssignSisterStatus.Where(x => x.AssignSisterStatusID == sistID).SingleOrDefault().description;
+                ViewBag.AssignSisterStatusID = sisterAssign.SisAssID;
+                ViewBag.AssignedSisterStatus = "Pending Approval";
+                var littleSister = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == sisterAssign.LittleSisterID);
+                ViewBag.AssignedLittleSister = littleSister.Name + " " + littleSister.Surname;
+                ViewBag.AssignedLittleSisterId = littleSister.UserID;
             }
             else
             {
                 ViewBag.Sistatus = "Pending Approval";
-
             }
             if (bigSisterDetail == null)
             {

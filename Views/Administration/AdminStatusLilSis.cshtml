@@ -147,7 +147,7 @@
     </div>
 
     <div class="container py-2">
-        <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
+        @*<form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">*@
             <div class="row">
 
                 <div class="col-lg-3 mt-4 mt-lg-0">
@@ -190,21 +190,21 @@
                             <div id="action-button-wrapper" style="margin-left:36px">
                                 @if (@Model.Profile.ProfileStatusID == 5)
                                 {
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 }
                                 else if (@Model.Profile.ProfileStatusID == 7)
                                 {
-                                    <button id="btn-approve-profile" style="cursor:default" disabled class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    <button onclick="return false" id="btn-approve-profile" style="cursor:default" disabled class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 }
                                 else if (@Model.Profile.ProfileStatusID == 9)
                                 {
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
-                                    <button data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
-                                    <button id="btn-decline-profile" style="cursor:default" disabled class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                    <button onclick="return false" data-role="Little Sister (Mentee)" data-user-id="@Model.Profile.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                    <button onclick="return false" id="btn-decline-profile" style="cursor:default" disabled class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
                                 }
                                 else if (@Model.Profile.ProfileStatusID == 11)
                                 {
@@ -468,7 +468,7 @@
                 </div>
 
             </div>
-        </form>
+        @*</form>*@
     </div>
     }
 
