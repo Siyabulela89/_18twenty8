@@ -35,18 +35,18 @@ namespace _18TWENTY8.Services
             if (sisterAssign == null)
                 throw new Exception($"Sister assignment record not found: AssignmentId - {model.SisterAssignId}");
 
-            var status = model.Action.Equals("Approved", StringComparison.OrdinalIgnoreCase) ? 2 : 1; //TODO: Confirm status
+            var status = model.Action.Equals("Approved", StringComparison.OrdinalIgnoreCase) ? 3 : 2; //TODO: Confirm status
 
             if (model.Role.Equals("Little Sister (Mentee)", StringComparison.OrdinalIgnoreCase))
             {
                 sisterAssign.LittleApproveID = status;
-                if (sisterAssign.BigApproveID > 0)
+                if (sisterAssign.BigApproveID == 3 && status==3)
                     sisterAssign.AssignSisterStatusID = 2;
             }
             else if (model.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase))
             {
                 sisterAssign.BigApproveID = status;
-                if (sisterAssign.LittleApproveID > 0)
+                if (sisterAssign.LittleApproveID ==3 && status == 3)
                     sisterAssign.AssignSisterStatusID = 2;
             }
 
