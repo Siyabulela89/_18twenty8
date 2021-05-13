@@ -91,7 +91,20 @@
 
 
 <div class="row">
-    <div class="col">
+    <div class="col-lg-2">
+        <aside class="sidebar">
+         
+            <h5 class="font-weight-semi-bold pt-4">Administration</h5>
+            <ul class="nav nav-list flex-column mb-5">
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryApplicant" >View Bursary Applications</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryCapture">Capture Bursaries</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="DetailsBurs">View Bursary list</a></li>
+                
+
+            </ul>
+           </aside>
+    </div>
+    <div class="col-lg-10">
 
         <div class="tabs tabs-bottom tabs-center tabs-simple">
             <ul class="nav nav-tabs">
@@ -102,11 +115,12 @@
                     <a class="nav-link" href="#tabsNavigationSimple2" data-toggle="tab">Pending profile approval (Big Sister)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tabsNavigationSimple3" data-toggle="tab">Sister assignments</a>
+                    <a class="nav-link" href="#tabsNavigationSimple3" data-toggle="tab">Pending assignments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tabsNavigationSimple4" data-toggle="tab">Pending assignments</a>
+                    <a class="nav-link" href="#tabsNavigationSimple4" data-toggle="tab">Assigned Sister</a>
                 </li>
+              
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tabsNavigationSimple1">
@@ -322,7 +336,7 @@
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
+                                                                                    @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
                                                                                 }
                                                                             </td>
                                                                             <td class="product-name">
@@ -365,6 +379,7 @@
                         <p>Lorem ipsum dolor sit amet. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est varius diam, ac ultrices sem ante quis sem. Proin ultricies volutpat sapien, nec scelerisque ligula mollis lobortis.</p>
                     </div>
                 </div>
+        
             </div>
         </div>
     </div>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18TWENTY8.Models;
 
 namespace _18TWENTY8.Migrations
 {
     [DbContext(typeof(EighteentwentyeightContext))]
-    partial class EighteentwentyeightContextModelSnapshot : ModelSnapshot
+    [Migration("20210513112451_eighteenburasry")]
+    partial class eighteenburasry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,63 +224,6 @@ namespace _18TWENTY8.Migrations
                     b.HasKey("BigSisterDetailID");
 
                     b.ToTable("BigSisterDetail");
-                });
-
-            modelBuilder.Entity("_18TWENTY8.Models.BursaryApplication", b =>
-                {
-                    b.Property<int>("BursaryID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ApplicationEndDate");
-
-                    b.Property<DateTime>("ApplicationStartDate");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("QualifyingCriteria");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("BursaryID");
-
-                    b.ToTable("BursaryApplication");
-                });
-
-            modelBuilder.Entity("_18TWENTY8.Models.BursaryApplicationRequest", b =>
-                {
-                    b.Property<int>("BARID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BursaryStatus");
-
-                    b.Property<string>("Comments");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("UserIDApp");
-
-                    b.HasKey("BARID");
-
-                    b.ToTable("BursaryApplicationRequest");
-                });
-
-            modelBuilder.Entity("_18TWENTY8.Models.BursaryStatus", b =>
-                {
-                    b.Property<int>("BursaryStatusID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Description");
-
-                    b.HasKey("BursaryStatusID");
-
-                    b.ToTable("BursaryStatus");
                 });
 
             modelBuilder.Entity("_18TWENTY8.Models.FinancialSupport", b =>

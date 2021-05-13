@@ -69,11 +69,27 @@ namespace FSTC.Controllers
             List<object> listfor = new List<object>
             {     _context.LittleSisterDetail.ToList(),
             _context.BigSisterDetail.ToList(),
-            _context.SisterAssignment.Where(s => string.IsNullOrEmpty(s.BigSisterID)).ToList(),
+            _context.SisterAssignment.ToList(),
                _context.AssignSisterStatus.ToList(),
 
                     _context.AssignApprove.ToList(),
                           _context.ProfileStatus.ToList()
+
+
+
+
+            };
+            return View(listfor.ToList());
+
+        }
+        public IActionResult BursaryApplicant()
+        {
+
+            List<object> listfor = new List<object>
+            {     _context.FinancialSupport.ToList(),
+            _context.BursaryApplication.ToList(),
+            _context.ApplicationStatus.ToList(),
+             
 
 
 
@@ -88,10 +104,74 @@ namespace FSTC.Controllers
             return View();
 
         }
+
+        public IActionResult BursaryCapture()
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> BursaryCapture(BursaryApplication BSA)
+        {
+            var Bursary = new BursaryApplication()
+            {
+                Title = BSA.Title,
+                Description = BSA.Description,
+                QualifyingCriteria = BSA.QualifyingCriteria,
+                ApplicationStartDate = BSA.ApplicationStartDate,
+                ApplicationEndDate = BSA.ApplicationEndDate,
+            
+
+                DateCreated = DateTime.Now,
+
+        
+
+
+
+
+            };
+            if (ModelState.IsValid)
+            {
+
+                _context.Add(Bursary);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("DetailsBurs");
+            }
+                return View();
+
+        }
         [HttpGet]
         public IActionResult CreateRole()
         {
             return View();
+        }
+        public IActionResult DetailsBurs()
+        {
+            List<object> listfor = new List<object>
+            {     _context.BursaryApplication.ToList(),
+                  
+
+
+            };
+            return View(listfor.ToList());
+        }
+        public async Task<IActionResult> DetailsBB(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var bursdet = await _context.BursaryApplication
+                .FirstOrDefaultAsync(m => m.BursaryID == id);
+            if (bursdet == null)
+            {
+                return NotFound();
+            }
+
+            return View(bursdet);
         }
         [HttpGet]
         public IActionResult ListUsers()

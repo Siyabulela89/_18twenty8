@@ -271,7 +271,7 @@ namespace _18TWENTY8.Controllers
                 if (financialSupport.VerifCodeComp == financialSupport.VerifCode)
                 {
                     financialSupport.verifiedRegistration = "Yes";
-                    financialSupport.ApplicationStatusID = 2;
+                    financialSupport.ApplicationStatusID = 3;
                     financialSupport.ApplicationReason = "Your profile is going through a review and vetting process with our administrators";
 
 

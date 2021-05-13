@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18TWENTY8.Models;
 
 namespace _18TWENTY8.Migrations
 {
     [DbContext(typeof(EighteentwentyeightContext))]
-    partial class EighteentwentyeightContextModelSnapshot : ModelSnapshot
+    [Migration("20210513112832_BursApp")]
+    partial class BursApp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -43,7 +43,10 @@ namespace _18TWENTY8.Models
         public DbSet<Workshops> Workshops { get; set; }
         public DbSet<WorkshopsupportDocType> WorkshopsupportDocType { get; set; }
         public DbSet<BigSisterAcademic> BigSisterAcademic { get; set; }
-        
+        public DbSet<BursaryApplication> BursaryApplication { get; set; }
+        public DbSet<BursaryApplicationRequest> BursaryApplicationRequest { get; set; }
+                public DbSet<BursaryStatus> BursaryStatus { get; set; }
+
 
 
 

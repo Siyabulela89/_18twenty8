@@ -1,0 +1,89 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.BursaryApplication> Dtype = Model.ToList()[0] as List<_18TWENTY8.Models.BursaryApplication>;
+
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container container-xl">
+
+        <section class="section bg-color-grey-scale-1 border-0 m-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Bursary <strong class="font-weight-extra-bold">List</strong></h2>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col pb-4">
+                            <div class="row mt-5">
+                                <div class="col">
+
+                                    <div class="row">
+                                        @foreach (var item in Dtype)
+                                        {
+                                           
+                                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                                    <article class="post post-large pb-5">
+                                                     
+
+                                                        <div class="post-date">
+                                                            <span class="day">@item.DateCreated.Day</span>
+                                                            <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                            <span class="month">@item.DateCreated.Year</span>
+                                                        </div>
+
+                                                        <div class="post-content">
+
+                                                            <h4><a href="#" class="text-decoration-none">@item.Title</a></h4>
+                                                            <p class="mb-1">@item.Description</p>
+                                                            <p class="mb-1"><strong>Application Open Date</strong> - @item.ApplicationStartDate.ToString("yyyyMMMdd") </p>
+                                                            <p class="mb-1"><strong>Application Close Date</strong> -  @item.ApplicationEndDate.ToString("yyyyMMMdd") </p>
+                                                            <p class="mb-1">@item.QualifyingCriteria</p>
+                                                            <a asp-controller="Administration" asp-action="DetailsBB" asp-route-id="@item.BursaryID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            }
+                                        
+                                       
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

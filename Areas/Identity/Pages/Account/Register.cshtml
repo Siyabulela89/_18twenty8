@@ -81,7 +81,7 @@
                                                     <button type="submit" class="btn btn-primary btn-with-arrow mb-2">Submit<span><i class="fas fa-chevron-right"></i></span></button>
                                                 </div>
                                                 <p>
-                                                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Already have an account</a>
+                                                    <a asp-page="./Login" asp-route-id="@ViewData["Role"]" asp-route-returnUrl="@Model.ReturnUrl">Already have an account</a>
                                                 </p>
                                             </div>
                                         </form>

@@ -69,6 +69,46 @@ namespace _18TWENTY8.Models
         public DateTime DateCreated { get; set; }
 
     }
+    public class BursaryApplication
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BursaryID { get; set; }
+        public string Title { get; set; }
+        public DateTime ApplicationStartDate { get; set; }
+        public DateTime ApplicationEndDate { get; set; }
+        public string Description { get; set; }
+        public string QualifyingCriteria { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+    }
+
+    public class BursaryApplicationRequest
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BARID { get; set; }
+        public string UserIDApp { get; set; }
+        public int BursaryStatus { get; set; }
+
+
+        public string Comments { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+    }
+    public class BursaryStatus
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BursaryStatusID { get; set; }
+        public string Description { get; set; }
+      
+
+        public DateTime DateCreated { get; set; }
+
+    }
     public class AssignSisterStatus
     {
         [Key]

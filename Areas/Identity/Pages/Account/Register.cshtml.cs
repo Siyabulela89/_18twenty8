@@ -76,7 +76,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
 
         }
 
-        public void OnGet(string returnUrl = null, int Id=0)
+        public void OnGet( int Id, string returnUrl = null)
         {
             if(Id==1)
             {
@@ -108,7 +108,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(int id, string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
@@ -151,7 +151,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                         return Redirect("~/FinancialSupport/Create");
 
                     }
-                    return LocalRedirect(returnUrl);
+                    return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id });
                 }
                 foreach (var error in result.Errors)
                 {
