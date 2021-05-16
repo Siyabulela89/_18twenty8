@@ -60,6 +60,8 @@ namespace _18TWENTY8.Services
                 throw new Exception($"Cannot find Assignment record for Little Sister - {model.LittleSisterUserId}");
 
             sisterAssign.BigSisterID = model.BigSisterUserId;
+            sisterAssign.BigApproveID = 1;
+            sisterAssign.LittleApproveID = 1;
 
             return await _context.SaveChangesAsync() > 0;
         }

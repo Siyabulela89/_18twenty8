@@ -28,6 +28,7 @@ using System.Security.Claims;
 
 using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
+using _18TWENTY8.Models.ViewModels.BigSister;
 
 namespace _18TWENTY8.Controllers
 {
@@ -140,18 +141,38 @@ namespace _18TWENTY8.Controllers
 
             ViewBag.data = _context.InformationofStorageBig.Where(x => x.UserID == bigSisterDetail.BigSisterDetailID).ToList();
 
-
+            var assignments = new List<BigSisterAssignmentViewModel>();
             if (has == true)
             {
                 // int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
-                var sisterAssign = _context.SisterAssignment.FirstOrDefault(s => s.BigSisterID == id);
+                var bigSisterAssignments = _context.SisterAssignment.Where(s => s.BigSisterID == id).ToList();
+                var sisterAssign = bigSisterAssignments.FirstOrDefault(); //_context.SisterAssignment.FirstOrDefault(s => s.BigSisterID == id);
                 int sistID = sisterAssign.AssignSisterStatusID;
                 ViewBag.Sistatus = _context.AssignSisterStatus.Where(x => x.AssignSisterStatusID == sistID).SingleOrDefault().description;
                 ViewBag.AssignSisterStatusID = sisterAssign.SisAssID;
                 ViewBag.AssignedSisterStatus = "Pending Approval";
-                var littleSister = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == sisterAssign.LittleSisterID);
-                ViewBag.AssignedLittleSister = littleSister.Name + " " + littleSister.Surname;
-                ViewBag.AssignedLittleSisterId = littleSister.UserID;
+                //var littleSister = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == sisterAssign.LittleSisterID);
+                //ViewBag.AssignedLittleSister = littleSister.Name + " " + littleSister.Surname;
+                //ViewBag.AssignedLittleSisterId = littleSister.UserID;
+
+   
+                foreach (var assign in bigSisterAssignments)
+                {
+                    var littleSisterDetail = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == assign.LittleSisterID);
+                    var littleSisterFullname = littleSisterDetail.Name + " " + littleSisterDetail.Surname;
+                    var bigAssign = new BigSisterAssignmentViewModel
+                    {
+                        AssignSisterStatusID = assign.SisAssID,
+                        AssignedLittleSisterId =  assign.LittleSisterID,
+                        AssignedLittleSister = littleSisterFullname
+
+                    };
+
+                    assignments.Add(bigAssign);
+                   
+                }
+
+
             }
             else
             {
@@ -174,7 +195,8 @@ namespace _18TWENTY8.Controllers
                               _context.BigSisterAcademic.Where(x=> x.BigSisterAcademicID==ids).ToList(),
                                _context.Province.ToList(),
                                    _context.AdditionalSupportBig.ToList(),
-                               _context.AdditionalSupportStorageBig.Where(x=> x.UserID==ids).ToList()
+                               _context.AdditionalSupportStorageBig.Where(x=> x.UserID==ids).ToList(),
+                               assignments
 
 
 

@@ -1,6 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
     // Action Buttons
-    var btnApprove = document.querySelector("#btn-approve-profile");
+    var btnApprove = document.querySelector(".btn-approve-profile");
     var btnDecline = document.querySelector("#btn-decline-profile");
     var btnDeclineAssign = document.querySelector("#btn-decline-profile-assign");
     var btnCorrect = document.querySelector("#btn-correct-profile");
@@ -11,6 +11,11 @@
     // Stage Status
     var phase2 = document.querySelector("#big-sis-phase-2");
 
+    document.body.addEventListener('click', (e) => {
+        if (e.target.parentElement.classList.contains('btn-approve-profile')) {
+            btnApprove = e;
+        }
+    });
 
     if (btnDeclineAssign) {
         btnDeclineAssign.addEventListener("click", () => {

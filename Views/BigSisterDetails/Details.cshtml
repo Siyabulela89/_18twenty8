@@ -11,7 +11,7 @@
     List<_18TWENTY8.Models.Province> Pr = Model.ToList()[6] as List<_18TWENTY8.Models.Province>;
     List<_18TWENTY8.Models.AdditionalSupportBig> ASB = Model.ToList()[7] as List<_18TWENTY8.Models.AdditionalSupportBig>;
     List<_18TWENTY8.Models.AdditionalSupportStorageBig> ASSB = Model.ToList()[8] as List<_18TWENTY8.Models.AdditionalSupportStorageBig>;
-
+    List<_18TWENTY8.Models.ViewModels.BigSister.BigSisterAssignmentViewModel> sisterAssign = Model.ToList()[9] as List<_18TWENTY8.Models.ViewModels.BigSister.BigSisterAssignmentViewModel>;
 
 
 }
@@ -152,7 +152,7 @@
                     {
                         <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
                             <div style="background-color:#a62237;color:white" class="process-step-circle">
-                                <strong style="color:white" class="process-step-circle-content">2</strong>
+                                <strong style="color:white" class="process-step-circle-content">3</strong>
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
@@ -484,32 +484,34 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    @if (!string.IsNullOrEmpty(ViewBag.AssignedLittleSister))
+                    @if (sisterAssign.Count > 0)
                     {
-                        <div class="row">
-                            <div class="col-md-12">
+                        foreach (var assign in sisterAssign)
+                        {
+                            <div class="bigAssignWrapper">
+                                <div class="row">
+                                    <div class="col-md-12">
 
-                                <div class="alert alert-success" role="alert">
-                                    <h4 style="font-size: 1.0rem;" class="alert-heading"><i class="fa fa-users"></i> Little Sister Alert</h4>
-                                    <p><b>@ViewBag.AssignedLittleSister</b> has been assigned to be your mentee. Please review and action accordingly.</p>
-                                    <hr>
-                                    <p class="mb-0" style="text-align:center"><a class="btn-view-sister-profile" data-sister-id="@ViewBag.AssignedLittleSisterId" data-sister-type="little" onclick="return false" href="#">View profile. <i class="fa fa-external-link-alt"></i></a></p>
+                                        <div class="alert alert-success" role="alert">
+                                            <h4 style="font-size: 1.0rem;" class="alert-heading"><i class="fa fa-users"></i> Little Sister Alert</h4>
+                                            <p><b>@assign.AssignedLittleSister</b> has been assigned to be your mentee. Please review and action accordingly.</p>
+                                            <hr>
+                                            <p class="mb-0" style="text-align:center"><a class="btn-view-sister-profile" data-sister-id="@assign.AssignedLittleSisterId" data-sister-type="little" onclick="return false" href="#">View profile. <i class="fa fa-external-link-alt"></i></a></p>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="action-button-wrapper" style="margin-right: 50px;margin-left: 50px;">
-                                    @if (ViewBag.AssignedSisterStatus == "Pending Approval")
-                                    {
-                                        <button onclick="return false" data-role="Big Sister (Mentor)" data-sister-assign-id="@ViewBag.AssignSisterStatusID" data-action="Approved" data-src="assignment-action" id="btn-approve-profile" class="btn btn-success btn-sm mb-2" data-toggle="tooltip" title="Approve"><i class="fas fa-thumbs-up"></i></button>
-                                        <button onclick="return false" data-role="Big Sister (Mentor)" data-sister-assign-id="@ViewBag.AssignSisterStatusID" data-action="Declined" data-src="assignment-action" id="btn-decline-profile-assign" class="btn btn-primary btn-sm mb-2" data-toggle="tooltip" title="Decline"><i class="fas fa-thumbs-down"></i></button>
-                                    }
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="action-button-wrapper" style="margin-right: 50px;margin-left: 50px;">
+                                            <button onclick="return false" data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-action="Approved" data-src="assignment-action"  class="btn btn-success btn-sm mb-2 btn-approve-profile" data-toggle="tooltip" title="Approve"><i class="fas fa-thumbs-up"></i></button>
+                                            <button onclick="return false" data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-action="Declined" data-src="assignment-action"  class="btn btn-primary btn-sm mb-2 btn-decline-profile-assig" data-toggle="tooltip" title="Decline"><i class="fas fa-thumbs-down"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             </div>

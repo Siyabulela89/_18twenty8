@@ -4649,6 +4649,9 @@ html .featured-box-primary .box-content-border-bottom {
 html .featured-box-secondary .icon-featured {
 	background-color: #e36159;
 }
+html .featured-box-secondary .icon-featuredsd {
+	background-color: #bbaeae;
+}
 
 html .featured-box-secondary h4 {
 	color: #e36159;

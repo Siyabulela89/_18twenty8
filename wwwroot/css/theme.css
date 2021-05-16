@@ -2093,7 +2093,7 @@ html.sticky-header-enabled.sticky-header-active #header .header-logo-sticky-chan
 	#header .header-nav.header-nav-links nav > ul > li > a, #header .header-nav.header-nav-links nav > ul > li:hover > a, #header .header-nav.header-nav-line nav > ul > li > a, #header .header-nav.header-nav-line nav > ul > li:hover > a {
 		position: relative;
 		background: transparent !important;
-		padding: 0 .9rem;
+		padding: 0 .5rem;
 		margin: 1px 0 0;
 		min-height: 60px;
 		height: 100%;
