@@ -133,12 +133,14 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     await _signInManager.SignInAsync(user, isPersistent: false);
                      if(Input.UserRole== "Big Sister (Mentor)")
                     {
+                        return RedirectToAction("create", "BigSisterDetails", new { email = Input.Email, userId = user.Id });
+
                       
-                        return Redirect("~/BigSisterDetails/create");
                     }
                      else if (Input.UserRole == "Little Sister (Mentee)")
                     {
-                        return Redirect("~/LittleSisterDetails/create");
+                     
+                        return RedirectToAction("create", "LittleSisterDetails", new { email = Input.Email, userId = user.Id });
 
                     }
                     else if (Input.UserRole == "Admin")
@@ -148,7 +150,8 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     }
                     else if (Input.UserRole == "Bursary Applicant")
                     {
-                        return Redirect("~/FinancialSupport/Create");
+                       
+                        return RedirectToAction("Create", "FinancialSupport", new { email = Input.Email, userId = user.Id });
 
                     }
                     return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id });

@@ -62,19 +62,10 @@ namespace _18TWENTY8.Controllers
 
 
         // GET: FinancialSupport/Create
-        public ActionResult Create()
+        public ActionResult Create(string email, string userId)
         {
-            string userId;
-            if (User.Identity.IsAuthenticated)
-            {
-                userId = userManager.GetUserId(User);
-            }
-            else
-
-            {
-                userId = "NOT FOUND";
-
-            }
+            ViewBag.UserID = userId;
+            ViewBag.email = email;
 
             bool has = _context.FinancialSupport.Any(x => x.UserID == userId);
             if (has == true)
@@ -117,7 +108,7 @@ namespace _18TWENTY8.Controllers
         
                 DateCreated = DateTime.Now,
          
-                UserID = userManager.GetUserId(User)
+                UserID = fins.UserID
 
 
 

@@ -89,12 +89,12 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     if (Userman.Contains("Big Sister (Mentor)"))
                     {
 
-                        return Redirect("~/BigSisterDetails/Create");
+                        return RedirectToAction("create", "BigSisterDetails", new { email = Input.Email, userId = user.Id });
                     }
                     else if (Userman.Contains("Little Sister (Mentee)"))
                     {
 
-                        return Redirect("~/LittleSisterDetails/Create");
+                        return RedirectToAction("~/LittleSisterDetails/create", new { email = Input.Email, userId = user.Id });
 
                     }
                     else if   (Userman.Contains("Admin"))
@@ -104,7 +104,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     }
                     else if (Userman.Contains("Bursary Applicant"))
                     {
-                        return Redirect("~/FinancialSupport/Create");
+                        return RedirectToAction("Create", "FinancialSupport", new { email = Input.Email, userId = user.Id });
 
                     }
                 }

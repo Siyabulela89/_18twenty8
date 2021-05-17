@@ -37,7 +37,7 @@
             <section class="call-to-action featured button-centered  featured-primary mb-5">
                 <div class="col-12">
                     <div class="call-to-action-content featured featured-primary">
-                        <h5>Be <strong class="font-weight-extra-bold">part</strong>  of our <strong class="font-weight-extra-bold">Little Sister </strong>mentorship programme!</h5>
+                        <h5>Be part of our Little Sister mentorship programme!</h5>
 
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             <section class="call-to-action featured button-centered featured-secondary mb-5">
                 <div class="col-sm-12 col-lg-12">
                     <div class="call-to-action-content featured featured-primary">
-                        <h5>Become <strong class="font-weight-extra-bold"></strong>a<strong class="font-weight-extra-bold"> mentor </strong>by joining our <strong class="font-weight-extra-bold">Big sister network</strong> </h5>
+                        <h5>Become a mentor by joining our Big sister network</h5>
 
                     </div>
                 </div>
@@ -90,16 +90,17 @@
             <section class="call-to-action featured button-centered  featured-box-dark mb-5">
                 <div class="col-sm-12 col-lg-12">
                     <div class="call-to-action-content featured featured-primary">
-                        <h5><strong class="font-weight-extra-bold">Administration</strong> </h5>
+                        <h5><strong class="font-weight-extra-bold">Already have an account</strong> </h5>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="call-to-action-btn">
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Sign in</a>
 
-                        <a asp-controller="Administration" asp-action="AdminLanding" class="btn btn-modern text-2 btn-secondary">Go to admin</a>
+                   
 
-                    </div>
+                </div>
                 </div>
             </section>
 

@@ -260,20 +260,13 @@ namespace _18TWENTY8.Controllers
         }
 
         // GET: BigSisterDetails/Create
-        public IActionResult Create()
+        public IActionResult Create(string email,string userId)
 
         {
-            string userId;
-            if (User.Identity.IsAuthenticated)
-            { 
-            userId = _userManager.GetUserId(User);
-            }
-            else
 
-            {
-                userId = "NOT FOUND";
-
-            }
+            ViewBag.UserID = userId;
+            ViewBag.email = email;
+          
 
             bool has = _context.BigSisterDetail.Any(x => x.UserID == userId);
             if (has == true)
@@ -361,7 +354,7 @@ namespace _18TWENTY8.Controllers
                 EmergencyContactNumberone = bgs.EmergencyContactNumberone,
                 EmergencyContactNumbertwo = bgs.EmergencyContactNumbertwo,
                    PostalCode = bgs.PostalCode,
-                   UserID = _userManager.GetUserId(User)
+                   UserID = bgs.UserID
 
 
 

@@ -6929,6 +6929,13 @@ i.pi.pi-close:after {
 		padding-right: 100px;
 	}
 
+	.img-thumbnail.img-thumbnail-no-bordersd {
+		border: none;
+		padding: 0;
+
+
+	}
+
 /* Image Gallery */
 ul.image-gallery {
 	list-style: none;
