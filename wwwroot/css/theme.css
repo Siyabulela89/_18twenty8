@@ -10,7 +10,27 @@ html {
 	box-shadow: none !important;
 	-webkit-font-smoothing: antialiased;
 }
+@media only screen and (max-width:699px) {
 
+	.footertextp {
+		display: none !important;
+	}
+
+	.footertextpp {
+		display: block !important;
+	}
+}
+
+@media only screen and (min-width:700px) {
+
+	.footertextp {
+		display: block !important;
+	}
+
+	.footertextpp {
+		display: none !important;
+	}
+}
 body {
 	background-color: #FFF;
 	color: #777;
