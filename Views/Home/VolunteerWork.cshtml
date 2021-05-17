@@ -53,7 +53,7 @@
             <section class="call-to-action featured button-centered  featured-box-dark mb-5">
                 <div class="col-sm-12 col-lg-12">
                     <div class="call-to-action-content featured featured-primary">
-                        <h5>Apply <strong class="font-weight-extra-bold"></strong>for<strong class="font-weight-extra-bold"> our </strong>financial <strong class="font-weight-extra-bold">assistance programme</strong> </h5>
+                        <h5>Apply for our financial assistance programme</strong> </h5>
 
                     </div>
                 </div>
@@ -98,9 +98,17 @@
                     <div class="call-to-action-btn">
                         <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Sign in</a>
 
-                   
 
+
+                    </div>
                 </div>
+                <div class="col-12">
+                    <div class="call-to-action-btn">
+                        <a asp-controller="Administration" asp-action="AdminLanding" class="btn btn-modern text-2 btn-secondary">Admin</a>
+
+
+
+                    </div>
                 </div>
             </section>
 

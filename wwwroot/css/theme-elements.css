@@ -8886,7 +8886,7 @@ html[xmlns] .clearfix {
 /* Curved Border */
 .curved-border {
 	position: relative;
-	min-height: 15vw;
+	min-height: 23vw;
 }
 
 .curved-border:after {
