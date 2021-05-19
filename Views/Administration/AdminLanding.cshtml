@@ -17,7 +17,7 @@
     <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
         <div class="container">
             <div class="row">
-
+   
                 <div class="col-md-12 align-self-center p-static order-2 text-center">
 
 
@@ -164,7 +164,7 @@
                                                                     {
                                                                         <tr class="cart_table_item">
                                                                             <td class="product-name">
-                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                <a href="#">
                                                                                     <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@item.Imageurl">
                                                                                 </a>
                                                                             </td>
@@ -241,7 +241,7 @@
                                                                     {
                                                                         <tr class="cart_table_item">
                                                                             <td class="product-name">
-                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                <a href="#">
                                                                                     <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesBigsis/@item.Imageurl">
                                                                                 </a>
                                                                             </td>
@@ -317,11 +317,12 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @foreach (var item in SA)
+
+                                                                    @foreach (var item in SA.Where(x=> x.AssignSisterStatusID!=2))
                                                                     {
                                                                         <tr class="cart_table_item">
                                                                             <td class="product-name">
-                                                                                <a href="shop-product-sidebar-left.html">
+                                                                                <a href="#">
                                                                                     <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@LS.Where(x=> x.UserID==@item.LittleSisterID).SingleOrDefault().Imageurl">
                                                                                 </a>
                                                                             </td>
@@ -336,7 +337,7 @@
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname
+                                                                                    <p><em>@BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname</em></p>
                                                                                 }
                                                                             </td>
                                                                             <td class="product-name">
@@ -373,10 +374,99 @@
                 </div>
                 <div id="editor"></div>
                 <div class="tab-pane" id="tabsNavigationSimple4">
-                    <div class="text-center">
-                        <h4>Colors</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia.</p>
-                        <p>Lorem ipsum dolor sit amet. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est varius diam, ac ultrices sem ante quis sem. Proin ultricies volutpat sapien, nec scelerisque ligula mollis lobortis.</p>
+                    <div role="main" class="main shop py-4">
+
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="featured-boxes">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="featured-box featured-box-secondary text-left mt-2">
+                                                    <div class="box-content">
+                                                        <form method="post" action="">
+                                                            <table class="shop_table cart">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="product-name">
+                                                                            Mentee Picture
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Mentee to assign
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Mentor match
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Mentee approval status
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Mentor approval status
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Case status
+                                                                        </th>
+
+                                                                        <th class="product-name"></th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    @foreach (var item in SA.Where(x=> x.AssignSisterStatusID==2))
+                                                                    {
+                                                                        <tr class="cart_table_item">
+                                                                            <td class="product-name">
+                                                                                <a href="#">
+                                                                                    <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@LS.Where(x=> x.UserID==@item.LittleSisterID).SingleOrDefault().Imageurl">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <p> @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Name @LS.Where(x => x.UserID == @item.LittleSisterID).SingleOrDefault().Surname</p>
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                @if (item.BigSisterID is null)
+                                                                                {
+                                                                                    <p><em>Big sister not assigned yet</em></p>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <p><em>@BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Name @BS.Where(x => x.UserID == @item.BigSisterID).SingleOrDefault().Surname</em></p>
+                                                                                }
+                                                                            </td>
+                                                                            <td class="product-name">
+                                                                                <p><em> @AA.Where(x => x.AssAppID == @item.LittleApproveID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                <p><em>@AA.Where(x => x.AssAppID == @item.BigApproveID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            <td class="product-name">
+
+                                                                                <p><em>@ASS.Where(x => x.AssignSisterStatusID == @item.AssignSisterStatusID).SingleOrDefault().description</em></p>
+                                                                            </td>
+                                                                            @*<td class="product-name">
+                                                                                <p><a onclick="return false" data-little-sister-id="@item.LittleSisterID" class="btn-assign-sister" href="#"><i class="fas fa-external-link-alt"></i></a></p>
+                                                                            </td>*@
+
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
         

@@ -93,8 +93,8 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     }
                     else if (Userman.Contains("Little Sister (Mentee)"))
                     {
-
-                        return RedirectToAction("~/LittleSisterDetails/create", new { email = Input.Email, userId = user.Id });
+                        return RedirectToAction("create", "LittleSisterDetails", new { email = Input.Email, userId = user.Id });
+                  
 
                     }
                     else if   (Userman.Contains("Admin"))

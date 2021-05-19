@@ -8,6 +8,8 @@ namespace _18TWENTY8.Models.ViewModels.BigSister
     public class BigSisterAssignmentViewModel
     {
         public int AssignSisterStatusID { get; set; }
+        public int AssignBigApproveID { get; set; }
+        public int AssignLittleApproveID { get; set; }
         public string AssignedLittleSisterId { get; set; }
         public string AssignedLittleSister { get; set; }
     }

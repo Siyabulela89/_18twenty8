@@ -1,4 +1,5 @@
 ﻿@model _18TWENTY8.Models.LittleSisterDetail
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div role="main" class="main">
 
@@ -19,15 +20,15 @@
         </div>
     </section>
     <section>
-    <div class="container py-4">
-        <div class="col">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 style="color:#a62237" class="font-weight-normal mb-5">Little <strong class="font-weight-extra-bold">Sister Detail</strong></h2>
+        <div class="container py-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Little <strong class="font-weight-extra-bold">Sister Detail</strong></h2>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <div class="container py-2">
@@ -47,15 +48,15 @@
                             <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
                         </div>
                         @*<div class="profile-image-inner-container bg-color-primary">
-                    <label style="cursor: pointer;">
-                        <span for="file" class="profile-image-button bg-color-dark">
-                            <i class="fas fa-camera text-light"></i>
-                        </span>
-                    </label>
-                    <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+                                <label style="cursor: pointer;">
+                                    <span for="file" class="profile-image-button bg-color-dark">
+                                        <i class="fas fa-camera text-light"></i>
+                                    </span>
+                                </label>
+                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
 
-                </div>
-                <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+                            </div>
+                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
 
 
                     </div>
@@ -220,8 +221,8 @@
 
                             @for (int i = 0; i < Model.Infosbig.Count; i++)
                             {
-                                <input type="hidden" asp-for="@Model.Infosbig[i].Value" />
-                                <input asp-for="Infosbig[i].Selected" />@Model.Infosbig[i].Text <br />
+                            <input type="hidden" asp-for="@Model.Infosbig[i].Value" />
+                            <input asp-for="Infosbig[i].Selected" />@Model.Infosbig[i].Text  <br />
 
                             }
 
@@ -323,7 +324,7 @@
 
                         </div>
                         <div class="form-group col-lg-3">
-                            <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Submitting...">
+                            <input type="submit"  value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Submitting...">
                         </div>
                     </div>
 
@@ -338,9 +339,9 @@
 
 
 <script>
-var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>
 

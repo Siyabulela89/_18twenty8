@@ -8,6 +8,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace _18TWENTY8.Models
 {
+    public class Messaging
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MessageID { get; set; }
+        public string Message { get; set; }
+        public string EmptyMessage { get; set; }
+        public string SendUserId { get; set; }
+        public string ReceiveUserID { get; set; }
+        public DateTime DateSent { get; set; }
+        public int MsRead { get; set; }
+
+ 
+    }
     public class PressPublicity
     {
         [Key]
@@ -75,7 +89,11 @@ namespace _18TWENTY8.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BursaryID { get; set; }
         public string Title { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ApplicationStartDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ApplicationEndDate { get; set; }
         public string Description { get; set; }
         public string QualifyingCriteria { get; set; }
@@ -124,6 +142,8 @@ namespace _18TWENTY8.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ApplicationStatusID { get; set; }
         public string description { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateCreated { get; set; }
 
     }
@@ -217,6 +237,8 @@ namespace _18TWENTY8.Models
         public string Surname { get; set; }
         public string Nickname { get; set; }
         public string IDPassport { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateofBirth { get; set; }
         public String email { get; set; }
         public String Phonenumber { get; set; }
@@ -362,6 +384,8 @@ namespace _18TWENTY8.Models
         public string Surname { get; set; }
         public string Nickname { get; set; }
         public string IDPassport { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateofBirth { get; set; }
         public String email { get; set; }
         public String Phonenumber { get; set; }

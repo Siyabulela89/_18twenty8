@@ -22,6 +22,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using _18TWENTY8.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -45,6 +46,7 @@ namespace _18TWENTY8.Controllers
         }
         public IConfiguration _Configuration { get; }
         // GET: LittleSisterDetails
+        [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.LittleSisterDetail.ToListAsync());
@@ -56,6 +58,7 @@ namespace _18TWENTY8.Controllers
             return View();
         }
         // GET: LittleSisterDetails/Details/5
+        [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Details(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -73,6 +76,7 @@ namespace _18TWENTY8.Controllers
         }
 
         // GET: LittleSisterDetails/Create
+        [Authorize(Roles = "Little Sister (Mentee)")]
         public IActionResult Create(string email, string userId)
         {
             ViewBag.UserID = userId;
@@ -122,6 +126,8 @@ namespace _18TWENTY8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+    
+        [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Create(LittleSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
 
@@ -279,6 +285,7 @@ namespace _18TWENTY8.Controllers
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             return View(bgs);
         }
+   
         public async Task<IActionResult> Verifytwof(int? id)
         {
 
@@ -296,6 +303,7 @@ namespace _18TWENTY8.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Verifytwof(int id, LittleSisterDetail LittleSisterDetail)
         {
 
@@ -428,6 +436,7 @@ namespace _18TWENTY8.Controllers
         // POST: LittleSisterDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var littleSisterDetail = await _context.LittleSisterDetail.FindAsync(id);

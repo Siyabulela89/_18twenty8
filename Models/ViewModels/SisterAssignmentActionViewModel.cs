@@ -10,5 +10,7 @@ namespace _18TWENTY8.Models.ViewModels
         public int SisterAssignId { get; set; }
         public string Role { get; set; }
         public string Action { get; set; }
+        public string BigSisterID { get; set; }
+        public string LilSisterID { get; set; }
     }
 }

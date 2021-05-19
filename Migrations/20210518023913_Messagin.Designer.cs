@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18TWENTY8.Models;
 
 namespace _18TWENTY8.Migrations
 {
     [DbContext(typeof(EighteentwentyeightContext))]
-    partial class EighteentwentyeightContextModelSnapshot : ModelSnapshot
+    [Migration("20210518023913_Messagin")]
+    partial class Messagin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -546,8 +548,6 @@ namespace _18TWENTY8.Migrations
                     b.Property<int>("MessageID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateSent");
 
                     b.Property<string>("EmptyMessage");
 

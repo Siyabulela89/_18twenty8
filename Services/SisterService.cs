@@ -3,6 +3,7 @@ using _18TWENTY8.Models.ViewModels;
 using _18TWENTY8.Models.ViewModels.BigSister;
 using _18TWENTY8.Models.ViewModels.LittleSister;
 using AutoMapper;
+using Microsoft.AspNetCore.Rewrite.Internal.UrlActions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,7 @@ namespace _18TWENTY8.Services
                 sisterAssign.LittleApproveID = status;
                 if (sisterAssign.BigApproveID == 3 && status==3)
                     sisterAssign.AssignSisterStatusID = 2;
+                
             }
             else if (model.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase))
             {
@@ -49,7 +51,7 @@ namespace _18TWENTY8.Services
                 if (sisterAssign.LittleApproveID ==3 && status == 3)
                     sisterAssign.AssignSisterStatusID = 2;
             }
-
+    
             return await _context.SaveChangesAsync() > 0;
         }
         public async Task<bool> AssignBigSisterToLittleSister(AssignSisterViewModel model)
@@ -114,6 +116,7 @@ namespace _18TWENTY8.Services
             var Interactiondigi = await GetInteractionLevel(profileInfo.InteractionlevelDigCom);
             var sisterAssignment = await GetLittleSisterAssignment(userId);
             var assignStatus = await GetSisterAssignmentStatus(sisterAssignment.AssignSisterStatusID);
+            var assignStatusApp = await GetSisterAssignmentStatus(sisterAssignment.LittleApproveID);
             var Menteed = await GetyesnoOption(profileInfo.EverbeenamenteeQ);
             var Convicted = await GetyesnoOption(profileInfo.ArrestedConvictedQ);
 
@@ -122,18 +125,22 @@ namespace _18TWENTY8.Services
             {
                 littleProfile.Profile.AssignedSister = $"{assignedBigSister.Name} {assignedBigSister.Surname}";
                 littleProfile.Profile.AssignedSisterId = assignedBigSister.UserID;
-                littleProfile.Profile.AssignedSisterStatus = assignStatus.description;
-                littleProfile.Profile.SisterAssignId = sisterAssignment.SisAssID;
+             
+               
             }
-
-
+            littleProfile.Profile.AssignedSisterStatus = assignStatus.description;
+            littleProfile.Profile.SisterAssignId = sisterAssignment.SisAssID;
             littleProfile.Profile.Interactionlevelmeetd = Interaction.Description;
             littleProfile.Profile.InteractionlevelDigComd = Interactiondigi.Description;
             littleProfile.Profile.ProfileStatus = profileStatus.Description;
             littleProfile.Profile.SisterAssignStatus = assignStatus.description;
+            littleProfile.Profile.LittleApproveID = sisterAssignment.LittleApproveID;
+            littleProfile.Profile.BigApproveID = sisterAssignment.BigApproveID;
             littleProfile.Profile.SisterStatus = assignStatus.description;
             littleProfile.Profile.EverBeenAMenteed = Menteed.Description;
-            littleProfile.Profile.PreviouslyArrestedOrConvictedd = Convicted.Description;
+  
+    
+        littleProfile.Profile.PreviouslyArrestedOrConvictedd = Convicted.Description;
 
 
             return littleProfile;

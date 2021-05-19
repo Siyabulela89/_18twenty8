@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace _18TWENTY8.Models.ViewModels.BigSister
         public string Surname { get; set; }
         public string Nickname { get; set; }
         public string IDPassport { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateofBirth { get; set; }
         public String email { get; set; }
         public String Phonenumber { get; set; }

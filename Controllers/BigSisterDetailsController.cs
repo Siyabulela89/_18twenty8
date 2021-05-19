@@ -29,6 +29,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
 using _18TWENTY8.Models.ViewModels.BigSister;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -46,6 +47,8 @@ namespace _18TWENTY8.Controllers
             _host = host;
         }
         public IConfiguration _Configuration { get; }
+      
+        [Authorize(Roles = "Big Sister (Mentor)")]
         public IActionResult IncorrectCode(int? id)
         {
             ViewBag.ID = id;
@@ -118,12 +121,15 @@ namespace _18TWENTY8.Controllers
         }
 
         // GET: BigSisterDetails
+        [Authorize(Roles = "Big Sister (Mentor)")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.BigSisterDetail.ToListAsync());
         }
 
-        // GET: BigSisterDetails/Details/5
+
+
+        [Authorize(Roles = "Big Sister (Mentor)")]// GET: BigSisterDetails/Details/5
         public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
@@ -159,10 +165,13 @@ namespace _18TWENTY8.Controllers
                 foreach (var assign in bigSisterAssignments)
                 {
                     var littleSisterDetail = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == assign.LittleSisterID);
+        
                     var littleSisterFullname = littleSisterDetail.Name + " " + littleSisterDetail.Surname;
                     var bigAssign = new BigSisterAssignmentViewModel
                     {
                         AssignSisterStatusID = assign.SisAssID,
+                        AssignBigApproveID = assign.BigApproveID,
+                        AssignLittleApproveID=assign.LittleApproveID,
                         AssignedLittleSisterId =  assign.LittleSisterID,
                         AssignedLittleSister = littleSisterFullname
 
@@ -259,6 +268,7 @@ namespace _18TWENTY8.Controllers
             return View(listfor.ToList());
         }
 
+        [Authorize(Roles = "Big Sister (Mentor)")]
         // GET: BigSisterDetails/Create
         public IActionResult Create(string email,string userId)
 
@@ -297,7 +307,8 @@ namespace _18TWENTY8.Controllers
                 var bg = new BigSisterDetail()
                 {
                     Infosbig = listint,
-                    Addsupbig = supdoc
+                    Addsupbig = supdoc,
+                    UserID=userId
                 };
            
 
@@ -311,6 +322,7 @@ namespace _18TWENTY8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Big Sister (Mentor)")]
         public async Task<IActionResult> Create(BigSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
             string path_Root1 = _host.WebRootPath;

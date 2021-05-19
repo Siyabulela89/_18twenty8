@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using _18TWENTY8.Models;
 using _18TWENTY8.Models.ViewModels;
 using _18TWENTY8.Models.ViewModels.BigSister;
+using _18TWENTY8.Models.ViewModels.NewFolder;
 using _18TWENTY8.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -65,11 +66,14 @@ namespace FSTC.Controllers
         }
         public IActionResult AdminLanding()
         {
-
+            var posts = _context.LittleSisterDetail
+                 .Where(p => p.ProfileStatusID ==7)
+                 .Select(p => new { p.UserID});
             List<object> listfor = new List<object>
             {     _context.LittleSisterDetail.ToList(),
             _context.BigSisterDetail.ToList(),
-            _context.SisterAssignment.ToList(),
+          
+            _context.SisterAssignment.Where(x=> posts.Any(y=> y.UserID==x.LittleSisterID)).ToList(),
                _context.AssignSisterStatus.ToList(),
 
                     _context.AssignApprove.ToList(),
@@ -80,6 +84,26 @@ namespace FSTC.Controllers
 
             };
             return View(listfor.ToList());
+
+        }
+        public IActionResult AdminBursaryApplicant(String userID)
+        {
+            int ApplicationStatusid = _context.FinancialSupport.Where(x => x.UserID == userID).SingleOrDefault().ApplicationStatusID;
+            string ApplicationStatusreas = _context.FinancialSupport.Where(x => x.UserID == userID).SingleOrDefault().ApplicationReason;
+
+            var finances = _context.FinancialSupport.FirstOrDefault(x => x.UserID==userID);
+           
+     
+            string ApplicationStatus = _context.ApplicationStatus.Where(x => x.ApplicationStatusID == ApplicationStatusid).SingleOrDefault().description;
+
+            var Financeobj = new FinanceApproveview
+            {
+               finsupport= finances,
+               Appstatus=ApplicationStatus
+
+            };
+
+            return View(Financeobj);
 
         }
         public IActionResult BursaryApplicant()
@@ -382,6 +406,14 @@ namespace FSTC.Controllers
         public async Task<IActionResult> ActionProfileSisterAssign([FromBody] SisterAssignmentActionViewModel model)
         {
             return Ok(await _sisterService.UpdateSisterAssignStatus(model));
+            //if (model.Role == "Big Sister (Mentor)")
+            //{
+            //    return RedirectToAction("Details", "BigSisterDetails", new { id = model.BigSisterID });
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Details", "LittleSisterDetails", new { id = model.LilSisterID });
+            //}
         }
         [HttpPost]
         public async Task<IActionResult> AssignSister([FromBody] AssignSisterViewModel model)

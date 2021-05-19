@@ -28,6 +28,7 @@ using System.Security.Claims;
 
 using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -62,6 +63,7 @@ namespace _18TWENTY8.Controllers
 
 
         // GET: FinancialSupport/Create
+        //[Authorize(Roles = "Bursary Applicant")]
         public ActionResult Create(string email, string userId)
         {
             ViewBag.UserID = userId;
@@ -87,6 +89,7 @@ namespace _18TWENTY8.Controllers
         // POST: FinancialSupport/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Bursary Applicant")]
         public async Task<IActionResult> Create(FinancialSupport fins, IFormFile CV, IFormFile CID, IFormFile pc, IFormFile POR,IFormFile QA, IFormFile QA2, IFormFile CVV)
         {
             string path_Root1 = _host.WebRootPath;
@@ -217,7 +220,9 @@ namespace _18TWENTY8.Controllers
                 return View();
             }
         }
+        //[Authorize(Roles = "Bursary Applicant")]
         public IActionResult Details(string id)
+
         {
 
 
@@ -247,6 +252,7 @@ namespace _18TWENTY8.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Bursary Applicant")]
         public async Task<IActionResult> Verifytwof(int id, FinancialSupport financialSupport)
         {
 

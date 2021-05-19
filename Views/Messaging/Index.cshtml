@@ -1,0 +1,239 @@
+﻿@model _18TWENTY8.Models.ViewModels.SisterMessagingViewModel
+@*@model IEnumerable<object>
+
+    @{
+        //List<_18TWENTY8.Models.Messaging> MS = Model.ToList()[0] as List<_18TWENTY8.Models.Messaging>;
+        //List<_18TWENTY8.Models.LittleSisterDetail> LS = Model.ToList()[1] as List<_18TWENTY8.Models.LittleSisterDetail>;
+        //List<_18TWENTY8.Models.BigSisterDetail> BS = Model.ToList()[2] as List<_18TWENTY8.Models.BigSisterDetail>;
+
+    }*@
+
+
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 style="color:#a62237" class="font-weight-normal mb-5">Chat <strong class="font-weight-extra-bold">portal</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-2">
+
+        <div class="row">
+            <div class="modal fade" id="Compose" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="post-block mt-5 post-leave-comment">
+                            <h4 class="mb-3">Type message below</h4>
+                            <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
+
+                                <input hidden asp-for="@Model.SendUserId" class="form-control" value="@Model.SendUserId" required type="text">
+                                <input hidden asp-for="@Model.ReceiveUserID" class="form-control" required value="@Model.ReceiveUserID" type="text">
+                                <input hidden asp-for="@Model.RoleID" class="form-control" required value ="@Model.RoleID"type="text">
+                                <div class="p-2">
+
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <label class="form-label required font-weight-bold text-dark">Comment</label>
+                                            <textarea asp-for="@Model.Message" class="form-control" required type="text" value="" maxlength="5000" data-msg-required="Please enter your message." rows="8"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col mb-0">
+                                            <input type="submit" value="Send" class="btn btn-primary btn-modern" data-loading-text="Loading...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts single-post">
+
+                    <article class="post post-large blog-single-post border-0 m-0 p-0">
+
+
+                        <div class="post-content ms-0">
+
+
+
+                            <div id="comments" class="post-block post-comments">
+                  
+                                <div class="row">
+                                    <div class="form-group col mb-0">
+                                        <input type="submit" data-toggle="modal" data-target="#Compose" value="Compose Message" class="btn btn-primary btn-sm" data-loading-text="Loading...">
+                                        @if(@ViewBag.Role == "Big Sister (Mentor)")
+                                        {
+                                    <a type="submit" asp-controller="BigSisterDetails" asp-action="Details" asp-route-id="@Model.BigSisterProfile.UserID" value="Back to my profile" class="btn btn-primary btn-sm" data-loading-text="Loading...">Back to my profile</a>
+                                        }
+                                        else
+                                        {
+                                    <a type="submit" asp-controller="LittleSisterDetails" asp-action="Details" asp-route-id="@Model.LittleSisterProfile.UserID" value="Back to my profile" class="btn btn-primary btn-sm" data-loading-text="Loading...">Back to my profile</a>
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <ul class="comments">
+                                    @if (Model.Messages.Count == 0)
+                                    { }
+                                    else
+                                    {
+                                        @if (@ViewBag.Role == "Big Sister (Mentor)")
+                                        {
+                                            <li>
+                                                @foreach (var item in Model.Messages)
+                                                {
+
+                                                    @if (item.SendUserId == @ViewBag.Main)
+                                                    {
+                                                        <div class="comment">
+                                                            <div class="img-thumbnail img-thumbnail-no-bordersd d-none d-sm-block">
+                                                                <img class="avatar" alt="" src="~/Uploads/ProimagesBigsis/@Model.BigSisterProfile.Imageurl">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <div class="comment-arrow"></div>
+                                                                <span class="comment-by">
+                                                                    <strong>You</strong>
+                                                                    <span class="float-end">
+                                                                        <span> <a data-toggle="modal" data-target="#Compose"><i class="fas fa-reply"></i> Reply</a></span>
+                                                                    </span>
+                                                                </span>
+                                                                <p>@item.Message</p>
+                                                                <span class="date float-end">@item.DateSent</span>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    { <ul class="comments reply">
+                                                            <li>
+                                                                <div class="comment">
+                                                                    <div class="img-thumbnail img-thumbnail-no-bordersd d-none d-sm-block">
+                                                                        <img class="avatar" alt="" src="~/Uploads/ProimagesLilsis/@Model.LittleSisterProfile.Imageurl">
+                                                                    </div>
+                                                                    <div class="comment-block">
+                                                                        <div class="comment-arrow"></div>
+                                                                        <span class="comment-by">
+                                                                            <strong>@Model.LittleSisterProfile.Name  @Model.LittleSisterProfile.Surname</strong>
+                                                                            <span class="float-end">
+                                                                                <span> <a data-toggle="modal" data-target="#Compose"><i class="fas fa-reply"></i> Reply</a></span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <p>@item.Message</p>
+                                                                        <span class="date float-end">@item.DateSent</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>}
+
+
+                                                }
+                                            </li>
+                                        }
+                                        else
+
+                                        {
+                                            <li>
+                                                @foreach (var item in Model.Messages)
+                                                {
+
+                                                    @if (item.SendUserId == @ViewBag.Sender)
+                                                    {
+                                                        <div class="comment">
+                                                            <div class="img-thumbnail img-thumbnail-no-bordersd d-none d-sm-block">
+                                                                <img class="avatar" alt="" src="~/Uploads/ProimagesLilsis/@Model.LittleSisterProfile.Imageurl">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <div class="comment-arrow"></div>
+                                                                <span class="comment-by">
+                                                                    <strong>You</strong>
+                                                                    <span class="float-end">
+                                                                        <span> <a data-toggle="modal" data-target="#Compose"><i class="fas fa-reply"></i> Reply</a></span>
+                                                                    </span>
+                                                                </span>
+                                                                <p>@item.Message</p>
+                                                                <span class="date float-end">@item.DateSent</span>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    { <ul class="comments reply">
+                                                            <li>
+                                                                <div class="comment">
+                                                                    <div class="img-thumbnail img-thumbnail-no-bordersd d-none d-sm-block">
+                                                                        <img class="avatar" alt="" src="~/Uploads/ProimagesBigsis/@Model.BigSisterProfile.Imageurl">
+                                                                    </div>
+                                                                    <div class="comment-block">
+                                                                        <div class="comment-arrow"></div>
+                                                                        <span class="comment-by">
+                                                                            <strong>@Model.BigSisterProfile.Name  @Model.BigSisterProfile.Surname</strong>
+                                                                            <span class="float-end">
+                                                                                <span> <a data-toggle="modal" data-target="#Compose"><i class="fas fa-reply"></i> Reply</a></span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <p>@item.Message</p>
+                                                                        <span class="date float-end">@item.DateSent</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    }
+
+
+                                                }
+                                            </li>
+
+                                        }}
+
+
+
+                                </ul>
+
+                            </div>
+
+
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

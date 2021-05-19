@@ -50,20 +50,17 @@
     <div class="container py-2">
         <div class="row">
             <div class="modal fade" id="largeModal" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="largeModalLabel">Refiloe Seseane</h4>
+                            <h4 class="modal-title" id="largeModalLabel">Detailed Status reason</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Her financial services' career includes roles at Allan Gray, BoE Private Clients (now Nedbank Private Wealth), EduLoan (now FUNDI), Allan Gray Orbis Foundation and Alexander Forbes. Refiloe’s on-screen pursuits include lead acting roles on South Africa’s top TV soapies: Generations, Rhythm City and The Wild. She is an accomplished voice-over artist, keynote speaker, events MC, stage, radio and TV personality who has anchored business news on CNBC Africa.</p>
+                            <p>@BS.SingleOrDefault().profilestatusreason</p>
 
-                            <p>Refiloe participated in U.S. First Lady Michelle Obama’s 2011 Young African Women Leaders’ Forum and U.S. President Barack Obama’s 2012 Young African Leaders’ Initiative. In 2013 she met HM Queen Elizabeth II at a royal reception on Youth, Education and the Commonwealth at Buckingham Palace. Her other achievements include:</p>
-                            <div class="col-lg-12">
-
-
-                            </div>
+                           
+                        
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -252,7 +249,7 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
                                                 <div class="col-lg-12">
-                                                    <p>@item.DateofBirth</p>
+                                                    <p>@item.DateofBirth.ToString("yyyy-MMM-dd")</p>
                                                 </div>
                                             </div>
 
@@ -488,29 +485,56 @@
                     {
                         foreach (var assign in sisterAssign)
                         {
-                            <div class="bigAssignWrapper">
-                                <div class="row">
-                                    <div class="col-md-12">
+                            @if (assign.AssignBigApproveID == 3 && assign.AssignLittleApproveID == 3)
+                            {
+                                <div class="bigAssignWrapper">
+                                    <div class="row">
+                                        <div class="col-md-12">
 
-                                        <div class="alert alert-success" role="alert">
-                                            <h4 style="font-size: 1.0rem;" class="alert-heading"><i class="fa fa-users"></i> Little Sister Alert</h4>
-                                            <p><b>@assign.AssignedLittleSister</b> has been assigned to be your mentee. Please review and action accordingly.</p>
-                                            <hr>
-                                            <p class="mb-0" style="text-align:center"><a class="btn-view-sister-profile" data-sister-id="@assign.AssignedLittleSisterId" data-sister-type="little" onclick="return false" href="#">View profile. <i class="fa fa-external-link-alt"></i></a></p>
+                                            <div class="alert alert-success" role="alert">
+                                                <h4 style="font-size: 0.7rem;" class="alert-heading"><i class="fa fa-users"></i>@assign.AssignedLittleSister</h4>
+                                                <hr>
+                                                <p class="mb-0" style="text-align:center"><a style="font-size: 0.7rem;" class="btn-view-sister-profile" data-sister-id="@assign.AssignedLittleSisterId" data-sister-type="little" onclick="return false" href="#">View profile. <i class="fa fa-external-link-alt"></i></a></p>
+                                                <p class="mb-0" style="text-align:center;"><a style="font-size: 0.7rem;color:green" asp-controller="Messaging" asp-action="index" class="btn-view-sister-profile" asp-route-RoleID="Big Sister (Mentor)" asp-route-RecId="@assign.AssignedLittleSisterId" asp-route-SendID="@BS.SingleOrDefault().UserID">Chat. <i class="fa fa-comment"></i></a></p>
+                                            </div>
+
                                         </div>
 
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div id="action-button-wrapper" style="margin-right: 50px;margin-left: 50px;">
-                                            <button onclick="return false" class="btn btn-success btn-sm mb-2 btn-approve-profile" data-toggle="tooltip" title="Approve"><i data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-action="Approved" data-src="assignment-action" class="fas fa-thumbs-up"></i>&nbsp;</button>
-                                            <button onclick="return false" class="btn btn-primary btn-sm mb-2 btn-decline-profile-assig" data-toggle="tooltip" title="Decline"><i data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-action="Declined" data-src="assignment-action" class="fas fa-thumbs-down">&nbsp;</i></button>
+                                    </div>
+
+
+                                </div>
+                            }
+                            else if (assign.AssignBigApproveID == 3)
+
+                            {
+
+                            }
+                            else
+                            { <div class="bigAssignWrapper">
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div class="alert alert-success" role="alert">
+                                                <h4 style="font-size: 1.0rem;" class="alert-heading"><i class="fa fa-users"></i> Little Sister Alert</h4>
+                                                <p><b>@assign.AssignedLittleSister</b> has been assigned to be your mentee. Please review and action accordingly.</p>
+                                                <hr>
+                                                <p class="mb-0" style="text-align:center"><a class="btn-view-sister-profile" data-sister-id="@assign.AssignedLittleSisterId" data-sister-type="little" onclick="return false" href="#">View profile. <i class="fa fa-external-link-alt"></i></a></p>
+                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="action-button-wrapper" style="margin-right: 50px;margin-left: 50px;">
+                                                <button onclick="return false" class="btn btn-success btn-sm mb-2 btn-approve-profile" data-toggle="tooltip" title="Approve"><i data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-sister-UID="@BS.SingleOrDefault().UserID" data-action="Approved" data-src="assignment-action" class="fas fa-thumbs-up"></i>&nbsp;</button>
+                                                <button onclick="return false" class="btn btn-primary btn-sm mb-2 btn-decline-profile-assig" data-toggle="tooltip" title="Decline"><i data-role="Big Sister (Mentor)" data-sister-assign-id="@assign.AssignSisterStatusID" data-sister-UID="@BS.SingleOrDefault().UserID" data-action="Declined" data-src="assignment-action" class="fas fa-thumbs-down">&nbsp;</i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>}
                         }
                     }
                 </div>
@@ -535,6 +559,7 @@
                 e.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                 data.action = e.target.getAttribute('data-action');
                 data.role = e.target.getAttribute('data-role');
+                data.BigSisterID = e.target.getAttribute('data-sister-UID');
                 data.sisterAssignId = e.target.getAttribute('data-sister-assign-id');
                 actionProfileSisterAssign(data, e);
             }
@@ -545,6 +570,7 @@
                 e.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                 data.action = e.target.getAttribute('data-action');
                 data.role = e.target.getAttribute('data-role');
+                data.BigSisterID = e.target.getAttribute('data-sister-UID');
                 data.sisterAssignId = e.target.getAttribute('data-sister-assign-id');
                 actionProfileSisterAssign(data, e);
             }
@@ -575,8 +601,11 @@
                         e.target.disabled = true;
                         e.target.style.cursor = 'default';
                     }
-
-                    toastr.success(`${data.action} successfully`, 'Success Message')
+                    window.location.reload(true);
+                    toastr.success(`${data.action} successfully`, 'Success Message');{
+                   
+                    
+                    }
                 });
         }
     });

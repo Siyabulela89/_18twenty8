@@ -20,6 +20,10 @@ html {
 		display: block !important;
 	}
 }
+.img-fluidest {
+	max-width: 78%;
+	height: auto;
+}
 
 @media only screen and (min-width:700px) {
 

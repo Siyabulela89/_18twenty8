@@ -26,15 +26,22 @@
     }
 
     function renderMenteeProfile(response) {
+    
+        var currentDate = new Date(response.mentee.dateofBirth);
+        var date = currentDate.getDate();
+        var month = currentDate.getMonth();
+        var year = currentDate.getFullYear();
+        var monthDateYear = year + "-" +  (month + 1) + "-" + date ;
         var menteeProfile = `<div class="col-md-2">
                                     <img src="/Uploads/ProimagesLilsis/${response.mentee.imageurl}" class="img-thumbnail" alt="...">
                                 </div>
                                 <div class="col-md-5" style="text-align:left">
-                                    <p><b>Sister Type:</b> Little Sister</p>
+                                    <p><b>Sister Type:</b> Little Sister </p>
                                     <p><b>Full Names:</b> ${response.mentee.name} ${response.mentee.surname}</p>
                                     <p><b>Nickname/Preferred name:</b> ${response.mentee.nickname}</p>
                                     <p><b>ID/Passport:</b> ${response.mentee.idPassport}</p>
-                                    <p><b>Date of birth:</b> ${response.mentee.dateofBirth}</p>
+                                    <p><b>Date of birth:</b> ${monthDateYear}</p>
+
                                 </div>
                                 <div class="col-md-5" style="text-align:left">
                                     <p><b>Email:</b> ${response.mentee.email}</p>

@@ -8,6 +8,10 @@
   <LangVersion>8.0</LangVersion>
 
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="package-lock.json" />
+  </ItemGroup>
   
 
   <ItemGroup>
@@ -19,12 +23,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="Moment.js" Version="2.29.1" />
     <PackageReference Include="Twilio" Version="5.58.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Models\ViewModels\NewFolder\" />
     <Folder Include="wwwroot\Uploads\CV\" />
     <Folder Include="wwwroot\Uploads\CertifiedID\" />
     <Folder Include="wwwroot\Uploads\CVVideo\" />

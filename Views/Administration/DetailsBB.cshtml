@@ -40,7 +40,7 @@
 
                         <div class="post-content ml-0">
 
-                            <h2 class="font-weight-bold"><a href="blog-post.html">@Html.DisplayFor(model => model.Title)</a></h2>
+                            <h2 class="font-weight-bold"><a href="#">@Html.DisplayFor(model => model.Title)</a></h2>
 
                             <div class="post-meta">
                                 <span><i class="far fa-user"></i> By <a href="#">18Twenty8 Admin</a> </span>
@@ -52,7 +52,7 @@
                             <h5>Qualifying Criteria</h5>
                             <p>@Html.DisplayFor(model => model.Description)</p>
                             <h5>Start date - End Date</h5>
-                            <p>@Html.DisplayFor(model => model.ApplicationStartDate.Date) - @Html.DisplayFor(model => model.ApplicationEndDate.Date)</p>
+                            <p>@Model.ApplicationStartDate.ToString("yyyy-MMM-dd") <strong>to</strong> @Model.ApplicationEndDate.ToString("yyyy-MMM-dd")</p>
 
                         </div>
                     </article>

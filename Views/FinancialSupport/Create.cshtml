@@ -1,4 +1,5 @@
 ﻿@model _18TWENTY8.Models.FinancialSupport
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
 
@@ -51,15 +52,15 @@
                             <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
                         </div>
                         @*<div class="profile-image-inner-container bg-color-primary">
-                    <label style="cursor: pointer;">
-                        <span for="file" class="profile-image-button bg-color-dark">
-                            <i class="fas fa-camera text-light"></i>
-                        </span>
-                    </label>
-                    <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+                                <label style="cursor: pointer;">
+                                    <span for="file" class="profile-image-button bg-color-dark">
+                                        <i class="fas fa-camera text-light"></i>
+                                    </span>
+                                </label>
+                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
 
-                </div>
-                <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+                            </div>
+                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
 
 
                     </div>
@@ -258,8 +259,8 @@
 
 
 <script>
-var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>
