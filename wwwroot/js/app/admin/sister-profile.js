@@ -2,6 +2,8 @@
     var selectedLittleSister = "";
     var bigSisterAssignTableBody = document.querySelector("#tbl-big-sister-assign-body");
     var littleSisterProfileWrapper = document.querySelector("#mentee-profile-wrapper");
+    var sisterprofileViewerWrapper = document.querySelector("#sisterprofileViewerWrapper");
+    
 
 
     function getData(data = {}) {
@@ -124,6 +126,7 @@
             var sisterType = e.target.getAttribute('data-sister-type');
             var sisterId = e.target.getAttribute('data-sister-id');
             var src = "";
+
             if (sisterType === "little") {
                 src = `${window.location.origin}/LittleSisterDetails/LittleSisterProfile/${sisterId}`;
             }
@@ -132,13 +135,9 @@
                 src = `${window.location.origin}/BigSisterDetails/BigSisterProfile/${sisterId}`;
             }
 
-            sisterprofileViewer.src = src;
+            sisterprofileViewerWrapper.innerHTML = `<iframe src="${src}" id="sisterprofileViewer" width="100%" height="700px"></iframe>`;
             $('#sisterprofileViewModal').modal('show');
         }
     });
-
-    //$('#viewDocumentModal').on('hidden.bs.modal', function () {
-    //    $('#viewDocumentModal').modal('dispose');
-    //});
 
 });

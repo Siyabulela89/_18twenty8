@@ -223,9 +223,9 @@ namespace _18TWENTY8.Controllers
 
 
             var bigSisterDetail = await _context.BigSisterDetail.FirstOrDefaultAsync(m => m.UserID == id);
-            ViewBag.EvMentor = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.EverbeenamentorQ).SingleOrDefault().Description;
-            ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).SingleOrDefault().Description;
-            ViewBag.Conv = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.ArrestedConvictedQ).SingleOrDefault().Description;
+            ViewBag.EvMentor = _context.OptionalBool.FirstOrDefault(x => x.YesNoID == bigSisterDetail.EverbeenamentorQ).Description;
+            ViewBag.ProStatus = _context.ProfileStatus.FirstOrDefault(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).Description;
+            ViewBag.Conv = _context.OptionalBool.FirstOrDefault(x => x.YesNoID == bigSisterDetail.ArrestedConvictedQ).Description;
 
 
 
@@ -234,7 +234,8 @@ namespace _18TWENTY8.Controllers
 
             if (has == true)
             {
-                int sistID = _context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
+                var sisterAssignment = _context.SisterAssignment.FirstOrDefault(x => x.BigSisterID == id);
+                int sistID = sisterAssignment.AssignSisterStatusID; //_context.SisterAssignment.Where(x => x.BigSisterID == id).SingleOrDefault().AssignSisterStatusID;
                 ViewBag.Sistatus = _context.AssignSisterStatus.Where(x => x.AssignSisterStatusID == sistID).SingleOrDefault().description;
             }
             else
@@ -246,7 +247,7 @@ namespace _18TWENTY8.Controllers
             {
                 return NotFound();
             }
-            int ids = _context.BigSisterDetail.Where(x => x.UserID == id).SingleOrDefault().BigSisterDetailID;
+            int ids = _context.BigSisterDetail.FirstOrDefault(x => x.UserID == id).BigSisterDetailID;
             List<object> listfor = new List<object>
             {
             _context.BigSisterDetail.Where(x=>x.UserID==id).ToList(),
