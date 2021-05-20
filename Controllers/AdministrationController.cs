@@ -86,12 +86,14 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
 
         }
+
         public IActionResult AdminBursaryApplicant(String userID)
         {
             int ApplicationStatusid = _context.FinancialSupport.Where(x => x.UserID == userID).SingleOrDefault().ApplicationStatusID;
             string ApplicationStatusreas = _context.FinancialSupport.Where(x => x.UserID == userID).SingleOrDefault().ApplicationReason;
 
             var finances = _context.FinancialSupport.FirstOrDefault(x => x.UserID==userID);
+            
            
      
             string ApplicationStatus = _context.ApplicationStatus.Where(x => x.ApplicationStatusID == ApplicationStatusid).SingleOrDefault().description;
@@ -99,11 +101,59 @@ namespace FSTC.Controllers
             var Financeobj = new FinanceApproveview
             {
                finsupport= finances,
+               
                Appstatus=ApplicationStatus
 
             };
 
             return View(Financeobj);
+
+        }
+
+
+        [HttpPost]
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminBursaryCreate(int Appstatus,string reason, string reasons, string userID)
+        {
+
+
+          
+
+            var finances = _context.FinancialSupport.FirstOrDefault(x => x.UserID == userID);
+            finances.ApplicationStatusID = Appstatus;
+            if(Appstatus==6)
+            {
+                finances.ApplicationReason = reason;
+            }
+            else if(Appstatus==5)
+            {
+                finances.ApplicationReason = reasons;
+
+            }
+            else
+            {
+                finances.ApplicationReason = "Your profile has been approved, you are now able to apply for the 18twenty8 bursary schemes";
+                
+
+            }
+
+
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                
+                    _context.Update(finances);
+                    await _context.SaveChangesAsync();
+
+                return RedirectToAction("AdminBursaryApplicant", new { userID = userID });
+
+            }
+
+            return View();
 
         }
         public IActionResult BursaryApplicant()

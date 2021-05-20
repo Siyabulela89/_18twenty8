@@ -31,19 +31,51 @@
     </section>
     <div class="container py-2">
         <div class="row">
-            <div class="modal fade" id="largeModal" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+            <div class="modal fade" id="statusreasonmodelsent" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-sm">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="largeModalLabel">Refiloe Seseane</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                           
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        </div>
+                        <form asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="6" asp-controller="Administration" asp-action="AdminBursaryCreate" role="form" class="needs-validation" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="reasonreq"></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea rows="5" cols="35" id="reason" name="reason"></textarea>
+
+
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" value="Send" class="btn btn-primary">
+
+                                <button  type="reset" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="modal fade" id="statusreasonmodelDec" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <form asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="5" asp-controller="Administration" asp-action="AdminBursaryCreate" role="form" class="needs-validation" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="reasonreqs"></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea rows="5" cols="35" id="reasons" name="reasons"></textarea>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" value="Send" class="btn btn-primary">
+                                <button type="reset" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -68,265 +100,353 @@
         </div>
     </div>
 
-        @*<div class="row">
-                <div class="col">
+    <div class="row">
+        <div class="col">
 
-                    <div class="row process process-connecting-line ">
-                        <div class="connecting-line appear-animation" data-appear-animation="fadeIn"></div>
-                        <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                            <div style="background-color:#a62237;color:white" class="process-step-circle">
-                                <strong style="color:white" class="process-step-circle-content">1</strong>
-                            </div>
-                            <div class="process-step-content">
-                                <ul class="list list-icons">
-                                    <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
-                                </ul>
-                            </div>
+            <div class="row process process-connecting-line ">
+                <div class="connecting-line appear-animation" data-appear-animation="fadeIn"></div>
+                @*<div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div style="background-color:#a62237;color:white" class="process-step-circle">
+                            <strong style="color:white" class="process-step-circle-content">1</strong>
                         </div>
-                        @if (Model.Profile.ProfileStatusID == 5 || Model.Profile.ProfileStatusID == 11)
-                        {
-                            <div data-toggle="modal" data-target="#largeModal" class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
-                                <div class="process-step-circle">
-                                    <strong class="process-step-circle-content">2</strong>
-                                </div>
-                                <div class="process-step-content">
-                                    <ul class="list list-icons">
-                                        <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @Model.Profile.ProfileStatus</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                                <div style="background-color:#a62237;color:white" class="process-step-circle">
-                                    <strong style="color:white" class="process-step-circle-content">2</strong>
-                                </div>
-                                <div class="process-step-content">
-                                    <ul class="list list-icons">
-                                        <li id="big-sis-phase-2"><i class="fas fa-check"></i> @Model.Profile.ProfileStatus</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        }
-                        @if (@Model.Profile.SisterStatus == "Pending Approval")
-                        {
-                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
-                                <div class="process-step-circle">
-                                    <strong class="process-step-circle-content">3</strong>
-                                </div>
-                                <div class="process-step-content">
-                                    <ul class="list list-icons">
-                                        <li><i class="fas fa-exclamation"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        }
-                        else
-
-                        {
-                            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
-                                <div style="background-color:#a62237;color:white" class="process-step-circle">
-                                    <strong style="color:white" class="process-step-circle-content">3</strong>
-                                </div>
-                                <div class="process-step-content">
-                                    <ul class="list list-icons">
-                                        <li><i class="fas fa-check"></i> Little Sister assignment @Model.Profile.SisterStatus</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-
-                        }
-                    </div>
-                </div>
-            </div>*@
-
-        <div id="little-sister-profile-wrapper" class="container py-2">
-            <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="row">
-
-                            <div class="col-lg-3 mt-4 mt-lg-0">
-
-                                <div class="d-flex justify-content-center mb-4">
-                                    <div class="profile-image-outer-container">
-                                        <div class="profile-image-inner-container bg-color-primary">
-                                            <img src="~/Uploads/ProimagesLilsis/@Model.finsupport.Imgurl">
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-
-
-                            </div>
-                            <div class="col-lg-9 litte-sister-profile-wrapper">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="overflow-hidden mb-1">
-                                            <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@Model.finsupport.Name @Model.finsupport.Surname</strong>s Profile</h2>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-
-                                    </div>
-                                </div>
-
-                                <div class="accordion" id="accordion">
-                                    <div class="card card-default">
-                                        <div class="card-header">
-                                            <h4 class="card-title m-0">
-                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
-                                                    Personal Information
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse1One" class="collapse show">
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.Name</p>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.Surname</p>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.Nickname</p>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.IdNr_Passport</p>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.DOB</p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card card-default">
-                                        <div class="card-header">
-                                            <h4 class="card-title m-0">
-                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
-                                                    Contact Information
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse1Two" class="collapse show">
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.Email</p>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
-                                                    <div class="col-lg-12">
-                                                        <p>@Model.finsupport.CellphoneNr</p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card card-default">
-                                        <div class="card-header">
-                                            <h4 class="card-title m-0">
-                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
-                                                    Documents
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse1Four" class="collapse show">
-                                            <div class="card-body">
-                                                <table class="table table-sm table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Document Name</th>
-                                                            <th scope="col">Created</th>
-                                                            <th scope="col">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbl-sister-documents">
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Certified ID</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/CertifiedID/@Model.finsupport.CertifiedID">View</a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">CV</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/CV/@Model.finsupport.CVurl">View</a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Motivational Video</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/CVVideo/@Model.finsupport.VideoURl">View</a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Academic Transcript</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/Qualifications/@Model.finsupport.Academictranscript">View</a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Proof of registration</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/POR/@Model.finsupport.Proofofregoistrationurl">View</a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Fee Statement</th>
-                                                            <th scope="col">@Model.finsupport.DateCreated</th>
-                                                            <th scope="col"><a href="~/Uploads/FeeStatements/@Model.finsupport.LatestStatementfees">View</a></th>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
+                            </ul>
+                        </div>
+                    </div>*@
+                @if (Model.finsupport.ApplicationStatusID == 1)
+                {
+                    <div data-toggle="modal" data-target="#largeModal" class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                        <div class="process-step-circle">
+                            <strong class="process-step-circle-content">1</strong>
+                        </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i>2FA authentication required</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-md-2" style="margin-top: 50px;">
-
+                }
+                else if (Model.finsupport.ApplicationStatusID <= 3)
+                {
+                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div style="background-color:#a62237;color:white" class="process-step-circle">
+                            <strong style="color:white" class="process-step-circle-content">1</strong>
+                        </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li id="big-sis-phase-2"><i class="fas fa-check"></i> Registration Verified</li>
+                            </ul>
+                        </div>
                     </div>
+                }
+                else if (Model.finsupport.ApplicationStatusID > 3)
+                {
+                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div style="background-color:#a62237;color:white" class="process-step-circle">
+                            <strong style="color:white" class="process-step-circle-content">1</strong>
+                        </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li id="big-sis-phase-2"><i class="fas fa-check"></i> Registration incomplete</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                @if (Model.finsupport.ApplicationStatusID == 4)
+                {
+            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                <div style="background-color:#a62237;color:white" class="process-step-circle">
+                    <strong style="color:white" class="process-step-circle-content">2</strong>
                 </div>
-            </form>
+                <div class="process-step-content">
+                    <ul class="list list-icons">
+                        <li><i class="fas fa-check"></i> Profile Approved</li>
+                    </ul>
+                </div>
+            </div>
+                }
+                else
+
+                {
+                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div style="background-color:#a62237;color:white" class="process-step-circle">
+                            <strong style="color:white" class="process-step-circle-content">2</strong>
+                        </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li><i class="fas fa-exclamation"></i> @Model.Appstatus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                }
+                @if (Model.finsupport.ApplicationStatusID == 4)
+                {
+            <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                <div style="background-color:#a62237;color:white" class="process-step-circle">
+                    <strong style="color:white" class="process-step-circle-content">3</strong>
+                </div>
+                <div class="process-step-content">
+                    <ul class="list list-icons">
+                        <li><i class="fas fa-check"></i> Access to bursary schemes</li>
+                    </ul>
+                </div>
+            </div>
+                }
+                else
+
+                {
+                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div style="background-color:#a62237;color:white" class="process-step-circle">
+                            <strong style="color:white" class="process-step-circle-content">3</strong>
+                        </div>
+                        <div class="process-step-content">
+                            <ul class="list list-icons">
+                                <li><i class="fas fa-exclamation"></i> No access to bursary schemes as yet</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                }
+            </div>
         </div>
-   
+    </div>
+
+    <div id="little-sister-profile-wrapper" class="container py-2">
+        <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="row">
+
+                        <div class="col-lg-3 mt-4 mt-lg-0">
+
+                            <div class="d-flex justify-content-center mb-4">
+                                <div class="profile-image-outer-container">
+                                    <div class="profile-image-inner-container bg-color-primary">
+                                        <img src="~/Uploads/ProimagesLilsis/@Model.finsupport.Imgurl">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="col-lg-9 litte-sister-profile-wrapper">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="overflow-hidden mb-1">
+                                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@Model.finsupport.Name @Model.finsupport.Surname</strong>s Profile</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="action-button-wrapper" style="margin-left:36px">
+                                        @if (Model.finsupport.ApplicationStatusID == 3)
+                                        {
+                                            <button  asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="4" asp-controller="Administration" asp-action="AdminBursaryCreate" data-user-id="@Model.finsupport.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelsent" data-role="Big Sister (Mentor)" data-user-id="@Model.finsupport.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelDec" data-user-id="@Model.finsupport.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                        }
+                                        else if (Model.finsupport.ApplicationStatusID == 4)
+                                        {
+                                            <button  asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="4" asp-controller="Administration" asp-action="AdminBursaryCreate" style="cursor:default" disabled class="btn btn-success mb-2" id="btn-approve-profile"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelsent" data-user-id="@Model.finsupport.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelDec" data-user-id="@Model.finsupport.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                        }
+                                        else if (Model.finsupport.ApplicationStatusID == 5)
+                                        {
+                                            <button onclick="return false" asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="4" asp-controller="Administration" asp-action="AdminBursaryCreate" data-user-id="@Model.finsupport.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelsent" data-user-id="@Model.finsupport.UserID" data-action="Sent for Correction" id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                            <button onclick="return false" style="cursor:default" data-target="#statusreasonmodel" disabled id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                        }
+                                        else if (Model.finsupport.ApplicationStatusID == 6)
+                                        {
+                                            <button asp-route-userID="@Model.finsupport.UserID" asp-route-Appstatus="4" asp-controller="Administration" asp-action="AdminBursaryCreate" data-user-id="@Model.finsupport.UserID" data-action="Approved" id="btn-approve-profile" class="btn btn-success mb-2"><i class="fas fa-thumbs-up"></i> Approve</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelsent" disabled id="btn-correct-profile" class="btn btn-info mb-2"><i class="fas fa-reply"></i> Send for correction</button>
+                                            <button onclick="return false" data-toggle="modal" data-target="#statusreasonmodelDec" data-user-id="@Model.finsupport.UserID" data-action="Declined" id="btn-decline-profile" class="btn btn-primary mb-2"><i class="fas fa-thumbs-down"></i> Decline</button>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion" id="accordion">
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h4 class="card-title m-0">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+                                                Personal Information
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1One" class="collapse">
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.Name</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Surname</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.Surname</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.Nickname</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID / Passport number</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.IdNr_Passport</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.DOB</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h4 class="card-title m-0">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+                                                Contact Information
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1Two" class="collapse">
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.Email</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                                                <div class="col-lg-12">
+                                                    <p>@Model.finsupport.CellphoneNr</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h4 class="card-title m-0">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
+                                                Documents
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1Four" class="collapse">
+                                        <div class="card-body">
+                                            <table class="table table-sm table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Document Name</th>
+                                                        <th scope="col">Created</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbl-sister-documents">
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Certified ID</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/CertifiedID/@Model.finsupport.CertifiedID">View</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">CV</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/CV/@Model.finsupport.CVurl">View</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Motivational Video</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/CVVideo/@Model.finsupport.VideoURl">View</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Academic Transcript</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/Qualifications/@Model.finsupport.Academictranscript">View</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Proof of registration</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/POR/@Model.finsupport.Proofofregoistrationurl">View</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Fee Statement</th>
+                                                        <th scope="col">@Model.finsupport.DateCreated</th>
+                                                        <th scope="col"><a href="~/Uploads/FeeStatements/@Model.finsupport.LatestStatementfees">View</a></th>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-top: 50px;">
+
+                </div>
+            </div>
+        </form>
+    </div>
+
 
 </div>
+@*<script>
+    $('#statusreasonmodelsent').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find("input,textarea,select")
+           .val('')
+           .end()
+        .find("input[type=checkbox], input[type=radio]")
+           .prop("checked", "")
+           .end();
+    })
+    $('#statusreasonmodelDec').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input,textarea,select")
+            .val('')
+            .end()
+            .find("input[type=checkbox], input[type=radio]")
+            .prop("checked", "")
+            .end();
+    })
+    </script>*@
 @*<script src="~/js/app/admin/action-profile.js"></script>
     <script src="~/js/app/admin/document-manager.js"></script>
     <script src="~/js/app/admin/sister-profile.js"></script>*@
