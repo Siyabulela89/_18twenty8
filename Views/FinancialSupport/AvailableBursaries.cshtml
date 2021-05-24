@@ -1,0 +1,117 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.BursaryApplication> Dtype = Model.ToList()[0] as List<_18TWENTY8.Models.BursaryApplication>;
+    List<_18TWENTY8.Models.BursaryApplicationCandidate> App = Model.ToList()[1] as List<_18TWENTY8.Models.BursaryApplicationCandidate>;
+    
+
+}
+
+<section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+            </div>
+
+            <div class="col-md-12 align-self-center order-1">
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container py-4">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 style="color:#a62237" class="font-weight-normal">Available Bursaries</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row pb-4">
+    <div class="col-md-8">
+        <div class="container py-4">
+
+            <div class="accordion" id="accordion">
+                @foreach (var item in Dtype)
+                {
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h4 class="card-title m-0">
+                            <a class="accordion-toggle" aria-expanded="false" data-toggle="collapse" data-parent="#accordion" href="#collapse_@item.BursaryID">
+                                @item.Title
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse_@item.BursaryID" class="collapse">
+                        <div class="card-body">
+                            <div class="card-body mt-3">
+                                <p>@item.Description</p>
+                                <p></p>
+
+                                <ul class="list list-inline mt-4 mb-3 text-2">
+                                    <li class="list-inline-item">
+                                        <strong>Apllication Start Date</strong>
+                                        @item.ApplicationStartDate.ToString("yyy MMM dd")
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <strong>Apllication End Date</strong>
+                                        @item.ApplicationEndDate.ToString("yyy MMM dd")
+                                    </li>
+                                    <li class="list-inline-item ms-md-3">
+
+                                    </li>
+                                </ul>
+                                <strong>Qualifying Criteria</strong>
+                                @item.QualifyingCriteria <br />
+                                @if (App.Any(x => x.BursaryID == item.BursaryID))
+                                {<input type="submit" disabled value="Already applied" class="btn btn-modern btn-dark" />
+                                }else
+                                { 
+                                <form asp-route-UserID="@ViewBag.UserID" asp-route-BursID="@item.BursaryID" asp-controller="FinancialSupport" asp-action="CreateBursaryApp" role="form" class="needs-validation" enctype="multipart/form-data">
+                                    <input type="submit" value="Apply" class="btn btn-modern btn-dark" />
+                                </form>
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                }
+             
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="400">
+            <div class="owl-carousel owl-theme dots-inside mb-0 pb-0" data-plugin-options="{'items': 1, 'autoplay': true, 'autoplayTimeout': 4000, 'margin': 10, 'animateOut': 'fadeOut', 'dots': false}">
+                <div class="pb-5">
+                    <img alt="" class="img-fluid rounded" src="~/img/Financial-Assistance-Programme.jfif">
+                </div>
+                <div class="pb-5">
+                    <img alt="" class="img-fluid rounded" src="~/img/Financial-Assistance-Programme.jfif">
+                </div>
+            </div>
+
+            <div class="toggle toggle-primary toggle-simple" data-plugin-toggle>
+                <section class="toggle active">
+                    <a class="toggle-title">#feesmustfall</a>
+                    <div class="toggle-content">
+                        <p>Its never too late to change your reality</p>
+                    </div>
+                </section>
+          
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using _18TWENTY8.Models.ViewModels.BursaryApplicant;
 
 namespace _18TWENTY8.Controllers
 {
@@ -64,6 +65,54 @@ namespace _18TWENTY8.Controllers
 
         // GET: FinancialSupport/Create
         //[Authorize(Roles = "Bursary Applicant")]
+        
+             public ActionResult AvailableBursaries(string UserID)
+        {
+
+
+
+
+
+
+            List<object> listfor = new List<object>
+            {     _context.BursaryApplication.ToList(),
+            _context.BursaryApplicationCandidate.Where(x=> x.UserID==UserID).ToList()
+
+
+
+            };
+
+            ViewBag.UserID = UserID;
+            return View(listfor.ToList());
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBursaryApp(string UserID, int BursID)
+        {
+            var BursaryApp = new BursaryApplicationCandidate
+            {
+                BursaryID = BursID,
+                UserID = UserID,
+                Status = 1,
+                ReceiveUserID = UserID,
+                DateApplied = DateTime.Now
+
+            };
+            if (ModelState.IsValid)
+            {
+
+                _context.Add(BursaryApp);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = UserID });
+
+
+            }
+            return RedirectToAction("AvailableBursaries", new { id = UserID });
+
+
+        }
         public ActionResult Create(string email, string userId)
         {
             ViewBag.UserID = userId;
@@ -126,6 +175,15 @@ namespace _18TWENTY8.Controllers
                 fs.Flush();
             }
             FinancialS.CVurl = unq2;
+            unq2 = "QAS" + Guid.NewGuid() + QA.FileName;
+            string pathtofiledd = path_Root1 + "\\Uploads\\Qualifications\\" + unq2;
+            using (FileStream fs = System.IO.File.Create(pathtofiledd))
+
+            {
+                CV.CopyTo(fs);
+                fs.Flush();
+            }
+            FinancialS.Academictranscript = unq2;
 
 
             unq2 = "CID" + Guid.NewGuid() + CID.FileName;
@@ -148,34 +206,47 @@ namespace _18TWENTY8.Controllers
             }
 
             FinancialS.Imgurl = unq2;
-            unq2 = "Vid" + Guid.NewGuid() + CVV.FileName;
-            string pathtofiledss = path_Root1 + "\\Uploads\\CVVideo\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiledss))
+            unq2 = CVV.FileName;
+             
+           
+                if (CVV.Length > 0)
+                {
+                    var filePaths =  Path.Combine((path_Root1 + "\\Uploads\\CVVideo\\"), unq2);
 
-            {
-                pc.CopyTo(fs);
-                fs.Flush();
-            }
+                    using (var stream = System.IO.File.Create(filePaths))
+                    {
+                        await CVV.CopyToAsync(stream);
+                    }
+                }
 
             FinancialS.VideoURl = unq2;
             unq2 = "Fee" + Guid.NewGuid() + QA2.FileName;
-            string pathtofiledsfs = path_Root1 + "\\Uploads\\FeeStatements\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiledsfs))
+       
 
-            {
-                pc.CopyTo(fs);
-                fs.Flush();
-            }
 
+                if (QA2.Length > 0)
+                {
+                    var filePaths = Path.Combine((path_Root1 + "\\Uploads\\FeeStatements\\"), unq2);
+
+                    using (var stream = System.IO.File.Create(filePaths))
+                    {
+                        await QA2.CopyToAsync(stream);
+                    }
+                }
             FinancialS.LatestStatementfees = unq2;
             unq2 = "POR" + Guid.NewGuid() + POR.FileName;
-            string pathtofiledsfss = path_Root1 + "\\Uploads\\POR\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiledsfss))
+    
 
-            {
-                pc.CopyTo(fs);
-                fs.Flush();
-            }
+
+                if (POR.Length > 0)
+                {
+                    var filePaths = Path.Combine((path_Root1 + "\\Uploads\\POR\\"), unq2);
+
+                    using (var stream = System.IO.File.Create(filePaths))
+                    {
+                        await POR.CopyToAsync(stream);
+                    }
+                }
 
             FinancialS.Proofofregoistrationurl = unq2;
             if (ModelState.IsValid)
@@ -224,15 +295,30 @@ namespace _18TWENTY8.Controllers
         public IActionResult Details(string id)
 
         {
+         var finsupport  = _context.FinancialSupport.FirstOrDefault(x => x.UserID == id);
+           
+          var Appstatusprofile = _context.ApplicationStatus.FirstOrDefault(x => x.ApplicationStatusID == finsupport.ApplicationStatusID);
+            var AppliedBurs = _context.BursaryApplicationCandidate.Where(x => x.UserID == id).ToList();
 
+            //var BursarystatusaPP = _context.BursaryStatus.Where(x => x.BursaryStatusID == AppliedBurs.Result.);
+            var Bursarylist = _context.BursaryApplication.Where(x => AppliedBurs.Any(y => y.BursaryID == x.BursaryID)).ToList();
+            var BursaryStatusAppl = _context.BursaryStatus.ToList();
 
-            List<object> listfor = new List<object>
-            {  _context.FinancialSupport.Where(x=> x.UserID==id).ToList(),
-                    _context.ApplicationStatus.ToList()
-
+            var ViewmodelFinancesupport = new BursaryApplicantviewm
+            {
+                BursCand = AppliedBurs,
+                ApplicationStatusProfile = Appstatusprofile,
+                AppstatusBursary = BursaryStatusAppl,
+                FinancialsS = finsupport,
+                Bursarylist=Bursarylist
 
             };
-            return View(listfor.ToList());
+
+            //List<object> listfor = new List<object>
+            //{  
+
+                //};
+            return View(ViewmodelFinancesupport);
 
         }
         public async Task<IActionResult> Verifytwof(int? id)

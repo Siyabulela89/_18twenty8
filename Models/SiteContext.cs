@@ -22,6 +22,27 @@ namespace _18TWENTY8.Models
 
  
     }
+    public class BursaryApplicationCandidate
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BACID { get; set; }
+        public string UserID { get; set; }
+        public int BursaryID { get; set; }
+        public int Status { get; set; }
+        public string ReceiveUserID { get; set; }
+        public DateTime DateApplied { get; set; }
+      
+
+
+    }
+    public class BursaryApplicationStatusApp
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BASAID { get; set; }
+        public string Description { get; set; }
+        }
     public class PressPublicity
     {
         [Key]

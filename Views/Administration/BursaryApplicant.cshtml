@@ -4,6 +4,10 @@
     List<_18TWENTY8.Models.FinancialSupport> FS = Model.ToList()[0] as List<_18TWENTY8.Models.FinancialSupport>;
     List<_18TWENTY8.Models.BursaryApplication> BA = Model.ToList()[1] as List<_18TWENTY8.Models.BursaryApplication>;
     List<_18TWENTY8.Models.ApplicationStatus> AS = Model.ToList()[2] as List<_18TWENTY8.Models.ApplicationStatus>;
+    List<_18TWENTY8.Models.BursaryStatus> BS = Model.ToList()[3] as List<_18TWENTY8.Models.BursaryStatus>;
+    List<_18TWENTY8.Models.BursaryApplicationCandidate> BAC = Model.ToList()[4] as List<_18TWENTY8.Models.BursaryApplicationCandidate>;
+
+ 
 
 
 
@@ -153,8 +157,84 @@
 
                 <div class="tab-pane" id="tabsNavigationSimple2">
                     <div role="main" class="main shop py-4">
+                        <div class="container">
 
-          
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="featured-boxes">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="featured-box featured-box-primary text-left mt-2">
+                                                    <div class="box-content">
+                                                        <form method="post" action="">
+                                                            <table class="shop_table cart">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="product-name">
+                                                                            Picture
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Bursary
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Name
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Surname
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                       Date Applied
+                                                                        </th>
+                                                                        <th class="product-name">
+                                                                            Status
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @{var allowedStatuss = new[] { 1 };}
+                                                                    @foreach (var item in BAC.Where(x => allowedStatus.Contains(x.Status)))
+                                                                    {
+                                                                    <tr class="cart_table_item">
+                                                                        <td class="product-name">
+                                                                            <a href="#">
+                                                                                <img width="100" height="100" alt="" class="img-fluid" src="~/Uploads/ProimagesLilsis/@FS.Where(x=> x.UserID==item.UserID).SingleOrDefault().Imgurl">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            @BA.Where(x => x.BursaryID == item.BursaryID).SingleOrDefault().Title
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            @FS.Where(x => x.UserID == item.UserID).SingleOrDefault().Name
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            @FS.Where(x => x.UserID == item.UserID).SingleOrDefault().Surname
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                           @item.DateApplied.ToString("yyyy MMM dd")
+                                                                        </td>
+                                                                        <td class="product-name">
+                                                                            test
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    }
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

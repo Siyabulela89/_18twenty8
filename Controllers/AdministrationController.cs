@@ -163,6 +163,9 @@ namespace FSTC.Controllers
             {     _context.FinancialSupport.ToList(),
             _context.BursaryApplication.ToList(),
             _context.ApplicationStatus.ToList(),
+            _context.BursaryStatus.ToList(),
+            _context.BursaryApplicationCandidate.ToList()
+            
              
 
 

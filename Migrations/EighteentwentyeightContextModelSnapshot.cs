@@ -247,6 +247,27 @@ namespace _18TWENTY8.Migrations
                     b.ToTable("BursaryApplication");
                 });
 
+            modelBuilder.Entity("_18TWENTY8.Models.BursaryApplicationCandidate", b =>
+                {
+                    b.Property<int>("BACID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BursaryID");
+
+                    b.Property<DateTime>("DateApplied");
+
+                    b.Property<string>("ReceiveUserID");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("UserID");
+
+                    b.HasKey("BACID");
+
+                    b.ToTable("BursaryApplicationCandidate");
+                });
+
             modelBuilder.Entity("_18TWENTY8.Models.BursaryApplicationRequest", b =>
                 {
                     b.Property<int>("BARID")
@@ -264,6 +285,19 @@ namespace _18TWENTY8.Migrations
                     b.HasKey("BARID");
 
                     b.ToTable("BursaryApplicationRequest");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.BursaryApplicationStatusApp", b =>
+                {
+                    b.Property<int>("BASAID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("BASAID");
+
+                    b.ToTable("BursaryApplicationStatusApp");
                 });
 
             modelBuilder.Entity("_18TWENTY8.Models.BursaryStatus", b =>

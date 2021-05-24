@@ -12,6 +12,9 @@ namespace _18TWENTY8.Models.ViewModels.NewFolder
            public string Appstatus { get; set; }
            
         public FinancialSupport finsupport { get; set; }
+        public List<BursaryApplicationCandidate> BursaryApplicantCandidate { get; set; }
+        public List<BursaryStatus> BursaryStatuses { get; set; }
+        public List<BursaryApplication> Bursarylist { get; set; }
         public List<ApplicationStatus> Application { get; set; }
 
         }
