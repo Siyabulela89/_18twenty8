@@ -30,6 +30,7 @@ using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using _18TWENTY8.Models.ViewModels.BursaryApplicant;
+using System.Globalization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -113,10 +114,11 @@ namespace _18TWENTY8.Controllers
 
 
         }
-        public ActionResult Create(string email, string userId)
+        public ActionResult Create(string email, string userId, string fullnames)
         {
             ViewBag.UserID = userId;
             ViewBag.email = email;
+            ViewBag.fullname = fullnames;
 
             bool has = _context.FinancialSupport.Any(x => x.UserID == userId);
             if (has == true)
@@ -141,6 +143,15 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Bursary Applicant")]
         public async Task<IActionResult> Create(FinancialSupport fins, IFormFile CV, IFormFile CID, IFormFile pc, IFormFile POR,IFormFile QA, IFormFile QA2, IFormFile CVV)
         {
+
+            var id_date = fins.IdNr_Passport.Substring(4, 2);
+            var id_month = fins.IdNr_Passport.Substring(2, 2);
+            var id_year = fins.IdNr_Passport.Substring(0, 2);
+
+            var fullDate = id_year + id_month + id_date;
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+            DateTime DateOB = DateTime.ParseExact(fullDate, "yyMMdd", provider);
             string path_Root1 = _host.WebRootPath;
 
             string unq1;
@@ -152,7 +163,7 @@ namespace _18TWENTY8.Controllers
                 Surname = fins.Surname,
                 Nickname = fins.Nickname,
                 IdNr_Passport = fins.IdNr_Passport,
-                DOB = fins.DOB,
+                DOB = DateOB,
                 Email = fins.Email,
                 CellphoneNr = fins.CellphoneNr,
 
@@ -255,7 +266,7 @@ namespace _18TWENTY8.Controllers
                 _context.Add(FinancialS);
                 await _context.SaveChangesAsync();
                 int ids = FinancialS.FinancialSupportID;
-                FinancialS.VerifCode = "18t" + FinancialS.Surname.Substring(1, 2) + ids;
+                FinancialS.VerifCode = "18t" + FinancialS.Name.Substring(1, 2) + ids;
                 FinancialS.verifiedRegistration = "No";
                 _context.Update(FinancialS);
                 await _context.SaveChangesAsync();
@@ -354,8 +365,8 @@ namespace _18TWENTY8.Controllers
                 if (financialSupport.VerifCodeComp == financialSupport.VerifCode)
                 {
                     financialSupport.verifiedRegistration = "Yes";
-                    financialSupport.ApplicationStatusID = 3;
-                    financialSupport.ApplicationReason = "Your profile is going through a review and vetting process with our administrators";
+                    financialSupport.ApplicationStatusID = 4;
+                    financialSupport.ApplicationReason = "Approved Profile";
 
 
                     try

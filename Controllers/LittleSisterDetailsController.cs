@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Identity;
 using _18TWENTY8.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -77,11 +78,12 @@ namespace _18TWENTY8.Controllers
 
         // GET: LittleSisterDetails/Create
         [Authorize(Roles = "Little Sister (Mentee)")]
-        public IActionResult Create(string email, string userId)
+        public IActionResult Create(string email, string userId, string fullnames)
         {
             ViewBag.UserID = userId;
             ViewBag.email = email;
-          
+            ViewBag.fullname = fullnames;
+
 
             bool has = _context.LittleSisterDetail.Any(x => x.UserID == userId);
             if (has == true)
@@ -130,7 +132,13 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Create(LittleSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
+            var id_date = bgs.IDPassport.Substring(4, 2);
+            var id_month = bgs.IDPassport.Substring(2, 2);
+            var id_year = bgs.IDPassport.Substring(0, 2);
 
+            var fullDate = id_year + id_month + id_date;
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            DateTime DateOB = DateTime.ParseExact(fullDate, "yyMMdd", provider);
             string path_Root1 = _host.WebRootPath;
 
             string unq1;
@@ -146,7 +154,7 @@ namespace _18TWENTY8.Controllers
                 Surname = bgs.Surname,
                 Nickname = bgs.Nickname,
                 IDPassport = bgs.IDPassport,
-                DateofBirth = bgs.DateofBirth,
+                DateofBirth = DateOB,
                 email = bgs.email,
                 Phonenumber = bgs.Phonenumber,
                 Interactionlevelmeetother = bgs.Interactionlevelmeetother,
@@ -219,7 +227,7 @@ namespace _18TWENTY8.Controllers
                 _context.Add(LittleSister);
                 await _context.SaveChangesAsync();
                 int ids = LittleSister.LittleSisterDetailID;
-                LittleSister.VerifCode = "18t" + LittleSister.Surname.Substring(1, 2) + ids;
+                LittleSister.VerifCode = "18t" + LittleSister.Name.Substring(1, 2) + ids;
                 LittleSister.verifiedRegistration = "No";
                 _context.Update(LittleSister);
                 await _context.SaveChangesAsync();

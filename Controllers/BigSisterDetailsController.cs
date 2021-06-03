@@ -30,6 +30,7 @@ using Microsoft.IdentityModel.Protocols;
 using AutoMapper;
 using _18TWENTY8.Models.ViewModels.BigSister;
 using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 
 namespace _18TWENTY8.Controllers
 {
@@ -271,13 +272,14 @@ namespace _18TWENTY8.Controllers
 
         [Authorize(Roles = "Big Sister (Mentor)")]
         // GET: BigSisterDetails/Create
-        public IActionResult Create(string email,string userId)
+        public IActionResult Create(string email,string userId, string fullnames)
 
         {
 
             ViewBag.UserID = userId;
             ViewBag.email = email;
-          
+            ViewBag.fullname = fullnames;
+
 
             bool has = _context.BigSisterDetail.Any(x => x.UserID == userId);
             if (has == true)
@@ -326,6 +328,19 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Big Sister (Mentor)")]
         public async Task<IActionResult> Create(BigSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
+
+            // get first 6 digits as a valid date
+
+
+            var id_date = bgs.IDPassport.Substring(4, 2);
+            var id_month = bgs.IDPassport.Substring(2, 2);
+            var id_year = bgs.IDPassport.Substring(0, 2);
+
+            var fullDate = id_year+ id_month + id_date;
+            CultureInfo provider = CultureInfo.InvariantCulture;
+
+             DateTime DateOB = DateTime.ParseExact(fullDate, "yyMMdd", provider);
+    
             string path_Root1 = _host.WebRootPath;
  
             string unq1;
@@ -341,7 +356,7 @@ namespace _18TWENTY8.Controllers
                 Surname = bgs.Surname,
                 Nickname = bgs.Nickname,
                 IDPassport = bgs.IDPassport,
-                DateofBirth = bgs.DateofBirth,
+                DateofBirth = DateOB,
                 email = bgs.email,
                 Phonenumber = bgs.Phonenumber,
                 Interactionlevelmeetother = bgs.Interactionlevelmeetother,
@@ -413,7 +428,7 @@ namespace _18TWENTY8.Controllers
                 _context.Add(Bigsister);
                 await _context.SaveChangesAsync();
                 int ids = Bigsister.BigSisterDetailID;
-                Bigsister.VerifCode = "18t" + Bigsister.Surname.Substring(1,2) + ids;
+                Bigsister.VerifCode = "18t" + Bigsister.Name.Substring(1,3) +unq2.Substring(1,3)+ ids;
                 Bigsister.verifiedRegistration = "No";
                 _context.Update(Bigsister);
                 await _context.SaveChangesAsync();

@@ -8,7 +8,105 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace _18TWENTY8.Models
 {
-    public class Messaging
+
+    public class Volunteerdetail
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int VolunteerID { get; set; }
+        public string Fullnames { get; set; }
+        public DateTime DOB { get; set; }
+        public string email { get; set; }
+        public string cellnumber { get; set; }
+        public string Postalcode { get; set; }
+        public string Postaladdressline1 { get; set; }
+        public string Postaladdressline2 { get; set; }
+        public int Province { get; set; }
+        public string home_businesscontact { get; set; }
+        public int timetocall { get; set; }
+        public string Occupation { get; set; }
+        public string Employer { get; set; }
+        public int Hoursweekforprogramme { get; set; }
+        public string Otherintprogrammes { get; set; }
+        public string previousexperienceinotherorgasvolunteer { get; set; }
+        public string describewhyyouofferedtovolunteer { get; set; }
+        public string goaltoachieveinvolunteer { get; set; }
+        public string Othercommittees { get; set; }
+        public string describehobbies { get; set; }
+        public string IDurl { get; set; }
+        public string CVurl { get; set; }
+        public int indemnity { get; set; }
+       
+        [NotMapped]
+        public IList<SelectListItem> programmelist { get; set; }
+        [NotMapped]
+        public IList<SelectListItem> Commitees { get; set; }
+        [NotMapped]
+        public IList<SelectListItem> Daysofweek { get; set; }
+
+    }
+    public class Committees
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CommitteeTypeID { get; set; }
+        public string Description { get; set; }
+    }
+    public class Time
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int TimeID { get; set; }
+        public string Description { get; set; }
+    }
+    public class CommitteesStorage
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CommitteeStorageID { get; set; }
+        public int VolunteerID { get; set; }
+        public int CommitteeTypeID { get; set; }
+    }
+    public class Daysofweek
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int DayID { get; set; }
+        public string Description { get; set; }
+    }
+    public class Daysofweekstorage
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int DayStorageID { get; set; }
+        public int VolunteerID { get; set; }
+        public int DayID { get; set; }
+    }
+    public class Programmes
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProgrammeID { get; set; }
+        public string Description { get; set; }
+    }
+    public class ProgrammesStorage
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProgrammeStorageID { get; set; }
+        public int VolunteerID { get; set; }
+        public int ProgrammeID { get; set; }
+    }
+
+
+    public class BursaryType
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int BursaryTypeID { get; set; }
+        public string Description { get; set; }
+    }
+        public class Messaging
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -109,6 +207,7 @@ namespace _18TWENTY8.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BursaryID { get; set; }
+        public int BursaryTypeID { get; set; }
         public string Title { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
@@ -117,7 +216,9 @@ namespace _18TWENTY8.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ApplicationEndDate { get; set; }
         public string Description { get; set; }
+        public string externallink { get; set; }
         public string QualifyingCriteria { get; set; }
+        
 
         public DateTime DateCreated { get; set; }
 
@@ -186,6 +287,8 @@ namespace _18TWENTY8.Models
         public String RecognitionLetterName { get; set; }
         public String popupmodalid { get; set; }
         public String recogurl { get; set; }
+        public String logourl { get; set; }
+
 
 
 
@@ -312,6 +415,18 @@ namespace _18TWENTY8.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BigSisterAcademicID { get; set; }
         public int BigSisterUserID { get; set; }
+        public string QualificationDocname { get; set; }
+        public string Qualificationurl { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+    }
+    public class VolunteerAcademic
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int VolunteerAcademicID { get; set; }
+        public int VolunteerID { get; set; }
         public string QualificationDocname { get; set; }
         public string Qualificationurl { get; set; }
 

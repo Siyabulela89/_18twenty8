@@ -234,6 +234,8 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<DateTime>("ApplicationStartDate");
 
+                    b.Property<int>("BursaryTypeID");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Description");
@@ -241,6 +243,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<string>("QualifyingCriteria");
 
                     b.Property<string>("Title");
+
+                    b.Property<string>("externallink");
 
                     b.HasKey("BursaryID");
 
@@ -313,6 +317,75 @@ namespace _18TWENTY8.Migrations
                     b.HasKey("BursaryStatusID");
 
                     b.ToTable("BursaryStatus");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.BursaryType", b =>
+                {
+                    b.Property<int>("BursaryTypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("BursaryTypeID");
+
+                    b.ToTable("BursaryType");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.Committees", b =>
+                {
+                    b.Property<int>("CommitteeTypeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("CommitteeTypeID");
+
+                    b.ToTable("Committees");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.CommitteesStorage", b =>
+                {
+                    b.Property<int>("CommitteeStorageID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CommitteeTypeID");
+
+                    b.Property<int>("VolunteerID");
+
+                    b.HasKey("CommitteeStorageID");
+
+                    b.ToTable("CommitteesStorage");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.Daysofweek", b =>
+                {
+                    b.Property<int>("DayID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("DayID");
+
+                    b.ToTable("Daysofweek");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.Daysofweekstorage", b =>
+                {
+                    b.Property<int>("DayStorageID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DayID");
+
+                    b.Property<int>("VolunteerID");
+
+                    b.HasKey("DayStorageID");
+
+                    b.ToTable("Daysofweekstorage");
                 });
 
             modelBuilder.Entity("_18TWENTY8.Models.FinancialSupport", b =>
@@ -668,6 +741,34 @@ namespace _18TWENTY8.Migrations
                     b.ToTable("ProfileStatus");
                 });
 
+            modelBuilder.Entity("_18TWENTY8.Models.Programmes", b =>
+                {
+                    b.Property<int>("ProgrammeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("ProgrammeID");
+
+                    b.ToTable("Programmes");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.ProgrammesStorage", b =>
+                {
+                    b.Property<int>("ProgrammeStorageID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProgrammeID");
+
+                    b.Property<int>("VolunteerID");
+
+                    b.HasKey("ProgrammeStorageID");
+
+                    b.ToTable("ProgrammesStorage");
+                });
+
             modelBuilder.Entity("_18TWENTY8.Models.Province", b =>
                 {
                     b.Property<int>("ProvinceID")
@@ -692,6 +793,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("RecognitionLetterName");
+
+                    b.Property<string>("logourl");
 
                     b.Property<string>("popupmodalid");
 
@@ -723,6 +826,93 @@ namespace _18TWENTY8.Migrations
                     b.HasKey("SisAssID");
 
                     b.ToTable("SisterAssignment");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.Time", b =>
+                {
+                    b.Property<int>("TimeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("TimeID");
+
+                    b.ToTable("Time");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.VolunteerAcademic", b =>
+                {
+                    b.Property<int>("VolunteerAcademicID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("QualificationDocname");
+
+                    b.Property<string>("Qualificationurl");
+
+                    b.Property<int>("VolunteerID");
+
+                    b.HasKey("VolunteerAcademicID");
+
+                    b.ToTable("VolunteerAcademic");
+                });
+
+            modelBuilder.Entity("_18TWENTY8.Models.Volunteerdetail", b =>
+                {
+                    b.Property<int>("VolunteerID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CVurl");
+
+                    b.Property<DateTime>("DOB");
+
+                    b.Property<string>("Employer");
+
+                    b.Property<string>("Fullnames");
+
+                    b.Property<int>("Hoursweekforprogramme");
+
+                    b.Property<string>("IDurl");
+
+                    b.Property<string>("Occupation");
+
+                    b.Property<string>("Othercommittees");
+
+                    b.Property<string>("Otherintprogrammes");
+
+                    b.Property<string>("Postaladdressline1");
+
+                    b.Property<string>("Postaladdressline2");
+
+                    b.Property<string>("Postalcode");
+
+                    b.Property<int>("Province");
+
+                    b.Property<string>("cellnumber");
+
+                    b.Property<string>("describehobbies");
+
+                    b.Property<string>("describewhyyouofferedtovolunteer");
+
+                    b.Property<string>("email");
+
+                    b.Property<string>("goaltoachieveinvolunteer");
+
+                    b.Property<string>("home_businesscontact");
+
+                    b.Property<int>("indemnity");
+
+                    b.Property<string>("previousexperienceinotherorgasvolunteer");
+
+                    b.Property<int>("timetocall");
+
+                    b.HasKey("VolunteerID");
+
+                    b.ToTable("Volunteerdetail");
                 });
 
             modelBuilder.Entity("_18TWENTY8.Models.Workshops", b =>

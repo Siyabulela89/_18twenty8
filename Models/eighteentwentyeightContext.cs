@@ -17,6 +17,18 @@ namespace _18TWENTY8.Models
         }
         public object ApplicationUser { get; internal set; }
         public DbSet<Graduates> Graduates { get; set; }
+        public DbSet<BursaryType> BursaryType { get; set; }
+        public DbSet<Time> Time { get; set; }
+        
+                 public DbSet<VolunteerAcademic> VolunteerAcademic { get; set; }
+        public DbSet<Volunteerdetail> Volunteerdetail { get; set; }
+        public DbSet<Committees> Committees { get; set; }
+        public DbSet<CommitteesStorage> CommitteesStorage { get; set; }
+        public DbSet<Daysofweek> Daysofweek { get; set; }
+        public DbSet<Daysofweekstorage> Daysofweekstorage { get; set; }
+        public DbSet<Programmes> Programmes { get; set; }
+        public DbSet<ProgrammesStorage> ProgrammesStorage { get; set; }
+        
         public DbSet<BursaryApplicationStatusApp> BursaryApplicationStatusApp { get; set; }
         public DbSet<BursaryApplicationCandidate> BursaryApplicationCandidate { get; set; }
         

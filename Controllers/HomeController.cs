@@ -51,6 +51,14 @@ namespace _18TWENTY8.Controllers
 
         }
 
+        
+        public IActionResult RecognitionLetters()
+        {
+
+            return View();
+
+        }
+
         public IActionResult VolunteerWork()
         {
 

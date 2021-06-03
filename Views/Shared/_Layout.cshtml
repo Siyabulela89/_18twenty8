@@ -75,11 +75,14 @@
         }
 
         .container {
-            max-width: 100%;
+            max-width: 95%;
         }
 
         .containerered {
             max-width: 78%;
+        }
+        .containereredd {
+            max-width: 60%;
         }
     </style>
 
@@ -107,7 +110,7 @@
                             <div class="header-row">
                                 <div class="header-logo">
                                     <a asp-controller="Home" asp-action="Index">
-                                        <img alt="18twenty8" width="134" height="75" src="~/img/18twenty8logo.png">
+                                        <img style="padding-left:5px;padding-top:15px" alt="18twenty8" width="220" height="100" src="~/img/18twenty8logo.png">
                                     </a>
                                 </div>
                             </div>
@@ -121,21 +124,6 @@
                                                 <li class=""> <a href="@Url.Action("Index", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexHome" ? "class=active" : "" )>Home</a></li>
                                                 <li class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle" href="#">
-                                                        About Us
-                                                    </a>
-                                                    <ul style="background-color:white" class="dropdown-menu">
-
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Directors", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Directors</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Graduates",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexGraduates" ? "class=active" : "" )>Graduates</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "RecognitionLetters",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexRecognition" ? "class=active" : "" )>Recognition Letters</a></li>
-
-                                                    </ul>
-
-                                                </li>
-                                                <li class=""> <a href="@Url.Action("Donate", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DonateHome" ? "class=active" : "" )>Donate</a></li>
-
-                                                <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
                                                         Programmes
                                                     </a>
                                                     <ul style="background-color:white" class="dropdown-menu">
@@ -143,10 +131,28 @@
                                                         <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexWorkshops" ? "class=active" : "" )>Workshops</a></li>
                                                         <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("LeadershipCamp", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "LeadershipCampWorkshops" ? "class=active" : "" )>Leadership Camp</a></li>
                                                         <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("FinancialAssistance", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Financial Assistance</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Bigsisternetwork", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Big Sister Network</a></li>
                                                         <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Bam", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "BamWorkshops" ? "class=active" : "" )>BAM Forum</a></li>
                                                     </ul>
 
                                                 </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        About Us
+                                                    </a>
+                                                    <ul style="background-color:white" class="dropdown-menu">
+
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Directors", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Directors</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Graduates",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexGraduates" ? "class=active" : "" )>Graduates</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "RecognitionLetters",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexRecognition" ? "class=active" : "" )>Recognition Letters</a></li>
+                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("StatusofWomen", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Status of Women</a></li>
+
+                                                    </ul>
+
+                                                </li>
+                                                <li class=""> <a href="@Url.Action("Donate", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DonateHome" ? "class=active" : "" )>Donate</a></li>
+
+
 
 
                                                 <li class=""> <a href="@Url.Action("BBBEE", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "indexsPressPublicities" ? "class=active" : "")>BBBEE</a></li>
@@ -189,17 +195,17 @@
 
 
                     <div class="col text-center">
-                        <p style="padding-left:200px;padding-right:200px" class="text-2 footertextp">
-                            Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8</strong>
-                            Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | PBO Reg No.: 930 036 859
-                            96 on Fourth Street, Parkmore, Sandton, 2196, South Africa
-                            Tel: +27 11 064 4810 | Cell: +27 60 798 7683
-                            “18twenty8” is a Registered Trademark.
+                        <p style="color:black; padding-left:200px;padding-right:200px" class="text-4 footertextp">
+                            Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8®</strong> <br />
+                            Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | PBO Reg No.: 930 036 859<br />
+                            96 on Fourth Street, Parkmore, Sandton, 2196, South Africa<br />
+                            Tel: +27 11 064 4810 | Cell: +27 60 798 7683<br />
+                            18twenty8® is a Registered Trademark.
                         </p>
-                        <p style="padding-left:200px;padding-right:200px" class="text-2 footertextpp">
-                            Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8</strong>
-                            Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | Cell: +27 60 798 7683
-                            “18twenty8” is a Registered Trademark.
+                        <p style="color:black; padding-left:200px;padding-right:200px" class="text-4 footertextpp">
+                            Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8®</strong><br />
+                            Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise)<br /> Cell: +27 60 798 7683
+                            18twenty8® is a Registered Trademark.
                         </p>
 
                         <div class="text-center ">

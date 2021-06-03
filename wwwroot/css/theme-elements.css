@@ -6928,6 +6928,12 @@ i.pi.pi-close:after {
 		padding-left: 350px;
 		padding-right: 350px;
 	}
+	.img-thumbnail.img-thumbnail-no-bordersdd {
+		border: none;
+		padding: 0;
+
+	}
+
 
 	.img-thumbnail.img-thumbnail-no-bordersd {
 		border: none;
@@ -12749,8 +12755,8 @@ html.boxed .slider-container {
 
 .testimonial.testimonial-style-2 .testimonial-author img {
 	margin: 0 auto 15px;
-	max-width: 60px;
-	max-height: 60px;
+	max-width: 250px;
+	max-height: 250px;
 }
 
 .testimonial.testimonial-style-2 .testimonial-author p {

@@ -144,10 +144,10 @@
                                                                             Picture
                                                                         </th>
                                                                         <th class="product-name">
-                                                                            Name
+                                                                            Full Names
                                                                         </th>
                                                                         <th class="product-name">
-                                                                            Surname
+                                                                           Date
                                                                         </th>
                                                                         <th class="product-name">
                                                                             View Profile
@@ -172,7 +172,7 @@
                                                                                 @item.Name
                                                                             </td>
                                                                             <td class="product-name">
-                                                                                @item.Surname
+                                                                                @item.DateCreated.ToString("yyyy MMM dd")
                                                                             </td>
                                                                             <td class="product-name">
                                                                                 <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusLilSis" type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>
@@ -224,7 +224,7 @@
                                                                             Name
                                                                         </th>
                                                                         <th class="product-name">
-                                                                            Surname
+                                                                          Date of registration
                                                                         </th>
                                                                         <th class="product-name">
                                                                             View Profile
@@ -249,7 +249,7 @@
                                                                                 @item.Name
                                                                             </td>
                                                                             <td class="product-name">
-                                                                                @item.Surname
+                                                                                @item.DateCreated.ToString("yyyy MMM dd")
                                                                             </td>
                                                                             <td class="product-name">
                                                                                 <button asp-controller="Administration" asp-route-id="@item.UserID" asp-action="AdminStatusBigsis" type="submit" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></button>

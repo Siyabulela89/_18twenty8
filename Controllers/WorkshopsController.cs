@@ -208,5 +208,13 @@ namespace _18TWENTY8.Controllers
         {
             return _context.Workshops.Any(e => e.WorkshopID == id);
         }
+
+        public IActionResult Bigsisternetwork()
+        {
+           
+            return View();
+        }
+
+        
     }
 }

@@ -11,6 +11,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -111,6 +112,37 @@ namespace FSTC.Controllers
         }
 
 
+        
+             [HttpPost]
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DetailedBursaryAdminAppliedsave(int BursaryID, string BursaryName, string UserID, int Status)
+        {
+
+
+
+
+            var ApplicationBurs = _context.BursaryApplicationCandidate.FirstOrDefault(x => x.UserID == UserID && x.BursaryID==BursaryID);
+            ApplicationBurs.Status = Status;
+       
+            if (ModelState.IsValid)
+            {
+
+
+
+
+                _context.Update(ApplicationBurs);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("DetailedBursaryAdminApplied", new { BursaryID=BursaryID, BursaryName = BursaryName });
+
+            }
+
+
+            return RedirectToAction("DetailedBursaryAdminApplied", new { BursaryID = BursaryID, BursaryName = BursaryName });
+
+        }
+
         [HttpPost]
 
         [ValidateAntiForgeryToken]
@@ -156,6 +188,27 @@ namespace FSTC.Controllers
             return View();
 
         }
+
+        
+              public IActionResult DetailedBursaryAdminApplied(int BursaryID,string BursaryName)
+        {
+            ViewBag.Titleburs = BursaryName;
+            List<object> listfor = new List<object>
+            {     _context.FinancialSupport.ToList(),
+            _context.BursaryApplication.Where(x=> x.BursaryID==BursaryID).ToList(),
+            _context.ApplicationStatus.ToList(),
+            _context.BursaryStatus.ToList(),
+            _context.BursaryApplicationCandidate.ToList()
+
+
+
+
+
+
+            };
+            return View(listfor.ToList());
+
+        }
         public IActionResult BursaryApplicant()
         {
 
@@ -184,7 +237,7 @@ namespace FSTC.Controllers
 
         public IActionResult BursaryCapture()
         {
-
+            ViewBag.BursType = new SelectList(_context.BursaryType, "BursaryTypeID", "Description");
             return View();
 
         }
