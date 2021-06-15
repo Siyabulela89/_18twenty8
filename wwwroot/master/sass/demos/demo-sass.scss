@@ -10,7 +10,7 @@
 }
 
 /* Header */
-@media(min-width: 992px) {
+@media(min-width: 1214px) {
 	#header {
 		.header-nav-main {
 			nav {
@@ -177,7 +177,7 @@ html.sticky-header-active {
 	position: relative;
 	z-index: 30;
 	margin-top: -250px;
-	@media(max-width: 991px) {
+	@media(max-width: 1213px) {
 		margin-top: -90px;
 	}
 }
@@ -187,7 +187,7 @@ html.sticky-header-active {
 	border-radius: 35px;
 	border: 1px solid #FFF;
 	padding: 50px;
-	@media(max-width: 991px) {
+	@media(max-width: 1213px) {
 		padding: 25px;
 		border-radius: 17px;
 	}
@@ -233,14 +233,14 @@ html.sticky-header-active {
 			left: 50%;
 		}
 	}
-	@media(max-width: 991px) {
+	@media(max-width: 1213px) {
 		.carousel-ipad-camera, .carousel-ipad-home {
 			display: none;
 		}
 	}
 	&.carousel-ipad-sm {
 		padding: 40px;
-		@media(max-width: 991px) {
+		@media(max-width: 1213px) {
 			padding: 20px;
 			border-radius: 12px;
 		}

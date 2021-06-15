@@ -20,7 +20,7 @@ html.photography-demo-3 {
 
 	&.side-header .main .container,
 	&.side-header #footer .container {
-    	@media(min-width: 992px) {
+    	@media(min-width: 1214px) {
 	    	max-width: 1140px;
     	}
     }
@@ -30,7 +30,7 @@ html.photography-demo-3 {
     	z-index: 999;
     }
     
-    @media(min-width: 992px) and (max-width: 1200px) {
+    @media(min-width: 1214px) and (max-width: 1200px) {
 	    // Sticky Wrapper
 	    .sticky-wrapper {
 	    	z-index: 1000 !important;
@@ -50,7 +50,7 @@ html.photography-demo-3 {
 	}
 	
 	// IE
-	@media(min-width: 992px) {
+	@media(min-width: 1214px) {
 		&.ie {
 			#header {
 				z-index: 998;
@@ -59,7 +59,7 @@ html.photography-demo-3 {
 	}
 
 	#main {
-		@media(min-width: 992px) {
+		@media(min-width: 1214px) {
 			height: 100vh;
 			min-height: 100vh;
 		}
@@ -73,7 +73,7 @@ html.photography-demo-3 {
 			height: calc(100vh - 86px);
 			min-height: 0;
 
-			@media (max-width: 991px) {
+			@media (max-width: 1213px) {
 				height: auto !important;
 			}
 		}
@@ -479,7 +479,7 @@ html.photography-demo-3 {
 							img {
 								height: calc(100vh - 146px);
 
-								@media (max-width: 991px) {
+								@media (max-width: 1213px) {
 									height: auto !important;
 								}
 							}

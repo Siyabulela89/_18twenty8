@@ -23,59 +23,49 @@
         </div>
     </section>
     <section>
-        <div class="container py-4">
+        <div class="container">
             <div class="col">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Big <strong class="font-weight-extra-bold">Sister Detail</strong></h2>
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Some small steps for you to be a Big Sister</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container py-2">
+    <div class="container">
         <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
             <div class="row">
 
                 <input hidden asp-for="UserID" class="form-control" required type="text" value="@ViewBag.UserID">
-                <div class="col-lg-3 mt-4 mt-lg-0">
+                <div class="col-lg-12">
 
-                    <div class="d-flex justify-content-center mb-4">
+                    <div class="d-flex">
                         <div class="profile-image-outer-container" data-provides="fileupload">
                             <div class="profile-image-inner-container bg-color-primary">
-                                <img id="output" src="~/img/avatars/avatar.jpg" />
+                                <img id="output" src="~/img/avatars/avatar.png" />
                                 <span class="profile-image-button bg-color-dark">
                                     <i class="fas fa-camera text-dark"></i>
                                 </span>
+                                <p style="color:red">@ViewBag.Errorpc</p>
                             </div>
 
                             <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
                         </div>
-                        @*<div class="profile-image-inner-container bg-color-primary">
-                                <label style="cursor: pointer;">
-                                    <span for="file" class="profile-image-button bg-color-dark">
-                                        <i class="fas fa-camera text-light"></i>
-                                    </span>
-                                </label>
-                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
 
-                            </div>
-                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
-
+                        <h2 class="font-weight-normal text-7">My Big Sister Profile</h2>
 
                     </div>
 
 
 
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-12">
 
-                    <div class="overflow-hidden mb-1">
-                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">My Big</strong> Sister Profile</h2>
-                    </div>
+
                     <div class="overflow-hidden mb-4 pb-3">
-                        <p class="mb-0">Please create your big sister profile by filling in the details below.</p>
+
                     </div>
 
 
@@ -85,20 +75,15 @@
                             <input asp-for="Name" class="form-control" required type="text" value="@ViewBag.fullname">
                         </div>
                     </div>
-            
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Nickname" class="form-control" type="text" value="">
-                        </div>
-                    </div>
+
+
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID number</label>
                         <div class="col-lg-12">
-                            <input asp-for="IDPassport" class="form-control" required type="text" value="">
+                            <input asp-for="IDPassport" class="form-control" required type="text">
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
                         <div class="col-lg-12">
@@ -116,7 +101,7 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
                         <div class="col-lg-12">
-                            <input asp-for="AddressStreet" class="form-control" required type="text" value="" placeholder="Street (96 4th St)">
+                            <input asp-for="AddressStreet" class="form-control" required type="text" placeholder="Street (96 4th St)">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -132,37 +117,37 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
                         <div class="col-lg-12">
-                            <input asp-for="PostalCode" class="form-control" required type="text" value="">
+                            <input asp-for="PostalCode" class="form-control" required type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1</label>
                         <div class="col-lg-8">
-                            <input asp-for="EmergencyContactNumberone" class="form-control" required type="text" value="" placeholder="Phone Number">
+                            <input asp-for="EmergencyContactNumberone" class="form-control" required type="text" placeholder="Phone Number">
                         </div>
                         <div class="col-lg-4">
-                            <input asp-for="EmergencyContactNameone" class="form-control" required type="text" value="" placeholder="Name of Person">
+                            <input asp-for="EmergencyContactNameone" class="form-control" required type="text" placeholder="Name of Person">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2</label>
                         <div class="col-lg-8">
-                            <input asp-for="EmergencyContactNumbertwo" class="form-control" required type="text" value="" placeholder="Phone Number">
+                            <input asp-for="EmergencyContactNumbertwo" class="form-control" required type="text" placeholder="Phone Number">
                         </div>
                         <div class="col-lg-4">
-                            <input asp-for="EmergencyContactNametwo" class="form-control" required type="text" value="" placeholder="Name of Person">
+                            <input asp-for="EmergencyContactNametwo" class="form-control" required type="text" placeholder="Name of Person">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How did you hear about 18twenty8?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How did you hear about 18twenty8?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="howdidyouhearabout" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="about18Q" required></textarea>
+                            <textarea asp-for="howdidyouhearabout" maxlength="5000" data-msg-required="This is field is required." rows="4"class="form-control" id="about18Q" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Tell us more about yourself (professional, academic and personal aspirations)</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="This is field is required." rows="4"class="form-control" id="messagere" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -173,9 +158,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you ahave answered yes to the above question.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above</label>
                         <div class="col-lg-9">
-                            <textarea asp-for="DetailsOnEverbeenMentorQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
+                            <textarea asp-for="DetailsOnEverbeenMentorQ" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messaged"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -187,89 +172,103 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you ahave answered yes to the above question.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
+                            <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000"  rows="4"class="form-control" id="messagea"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What would your 28 year-old self say to your 18 year-old self?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What would your 28 year-old self say to your 18 year-old self?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="youngerselfQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            <textarea asp-for="youngerselfQ" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messageu" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Little Sister?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What expectations do you have of your Little Sister?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messagje" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details on the preferred university, degree programme and geographic area of Little Sister</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please provide details on the preferred university, degree programme and geographic area of Little Sister</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="prefferedstudentdetails" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            <textarea asp-for="prefferedstudentdetails" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="message" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Hobbies (Please select all applicable options)</label>
                         <div class="col-lg-12">
 
                             @for (int i = 0; i < Model.Infosbig.Count; i++)
-                                {
-                            <input type="hidden" asp-for="@Model.Infosbig[i].Value" />
-                            <input asp-for="Infosbig[i].Selected" />@Model.Infosbig[i].Text  <br />
+                            {
+                                <input type="hidden" asp-for="@Model.Infosbig[i].Value" />
+                                <input asp-for="Infosbig[i].Selected" /> @Model.Infosbig[i].Text <br />
 
-                                }
-
+                            }
+                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="HobbiesOther" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messhage" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">IN-PERSON MEETINGS: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
                         <div class="col-lg-12">
 
                             @Html.DropDownListFor(m => m.Interactionlevelmeet, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">If you have selected other on the above question please give us details</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
                         <div class="col-lg-12">
-                            <input asp-for="Interactionlevelmeetother" class="form-control" type="text" value="">
+
+                            <textarea asp-for="Interactionlevelmeetother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="message"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">COMMUNICATION: I anticipate being able to call / email / message my Little Sister:</label>
                         <div class="col-lg-12">
 
                             @Html.DropDownListFor(m => m.InteractionlevelDigCom, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">If you have selected other on the above question please give us details</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
                         <div class="col-lg-12">
-                            <input asp-for="InteractionlevelDigComother" class="form-control" type="text" value="">
+                            <textarea asp-for="InteractionlevelDigComother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="message"></textarea>
+
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ADDITIONAL SUPPORT. In addition to being a Big Sister, I would also like to (please select all applicable options): </label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">ADDITIONAL SUPPORT. In addition to being a Big Sister, I would also like to (please select all applicable options): </label>
                         <div class="col-lg-12">
 
                             @for (int i = 0; i < Model.Addsupbig.Count; i++)
-                                {
-                            <input type="hidden" asp-for="@Model.Addsupbig[i].Value" />
-                            <input asp-for="Addsupbig[i].Selected" />@Model.Addsupbig[i].Text  <br />
+                            {
+                                <input type="hidden" asp-for="@Model.Addsupbig[i].Value" />
+                                <input asp-for="Addsupbig[i].Selected" /> @Model.Addsupbig[i].Text <br />
 
-                                }
+                            }
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
                         <div class="col-lg-12">
-
-                            @Html.DropDownListFor(m => m.ConfirmMentordurationQ, ViewBag.Option as SelectList, htmlAttributes: new { @class = "form-control" })
-
+                            <textarea asp-for="Additionasupportother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="message"></textarea>
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
+                        <div class="col-lg-4">
+
+                            <input asp-for="ConfirmMentordurationQ" class="form-control" required type="checkbox">
+                        </div>
+
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV</label>
@@ -283,11 +282,14 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="CV" id="CV" />
+                                    <input type="file" required name="CV" id="CV" />
+
                                 </span>
+                                <p id="size"></p>
 
                             </div>
                         </div>
+                        <p style="color:red">@ViewBag.Errorcv</p> 
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
@@ -301,11 +303,14 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="CID" id="CID" />
+                                    <input type="file" required name="CID" id="CID" />
+
                                 </span>
+                                <p id="sized"></p>
 
                             </div>
                         </div>
+                        <p style="color:red"> @ViewBag.Errorid</p> 
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Qualifications</label>
@@ -319,11 +324,12 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" multiple name="QA" id="QA" />
+                                    <input type="file" required multiple name="QA" id="QA" />
                                 </span>
-
+                                <p id="sizedd"></p>
                             </div>
                         </div>
+                        <p style="color:red">@ViewBag.Errorqa</p> 
                     </div>
 
                     <div class="form-group row">
@@ -352,4 +358,11 @@
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
+    $('#CID').bind('change', function () {
+        alert('This file size is: ' + this.files[0].size / 1024 / 1024 + "MiB");
+    });
 </script>
+
+
+
+

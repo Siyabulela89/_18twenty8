@@ -31,6 +31,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using _18TWENTY8.Models.ViewModels.BursaryApplicant;
 using System.Globalization;
+using Spire.Doc;
 
 namespace _18TWENTY8.Controllers
 {
@@ -119,6 +120,13 @@ namespace _18TWENTY8.Controllers
             ViewBag.UserID = userId;
             ViewBag.email = email;
             ViewBag.fullname = fullnames;
+            ViewBag.Errorid = "";
+            ViewBag.Errorqa = "";
+            ViewBag.Errorqa2 = "";
+            ViewBag.Errorcv = "";
+            ViewBag.Errorcvv = "";
+            ViewBag.Errorpc = "";
+            ViewBag.Errorpor = "";
 
             bool has = _context.FinancialSupport.Any(x => x.UserID == userId);
             if (has == true)
@@ -143,6 +151,14 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Bursary Applicant")]
         public async Task<IActionResult> Create(FinancialSupport fins, IFormFile CV, IFormFile CID, IFormFile pc, IFormFile POR,IFormFile QA, IFormFile QA2, IFormFile CVV)
         {
+
+            long filelentghCID = CID.Length / 1000000;
+            long filelentghpc = pc.Length / 1000000;
+            long filelentghCV = CV.Length / 1000000;
+            long filelentghCVV = CVV.Length / 1000000;
+            long filelentghPOR = POR.Length / 1000000;
+            long filelentghQA = QA.Length / 1000000;
+            long filelentghQA2 = QA2.Length / 1000000;
 
             var id_date = fins.IdNr_Passport.Substring(4, 2);
             var id_month = fins.IdNr_Passport.Substring(2, 2);
@@ -177,36 +193,257 @@ namespace _18TWENTY8.Controllers
 
 
             };
-            unq2 = "CV" + Guid.NewGuid() + CV.FileName;
-            string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofile))
+
+            var extension = Path.GetExtension(pc.FileName).ToLower();
+            if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
+            {
+                ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
+                return View(FinancialS);
+            }
+            if (filelentghpc > 10)
 
             {
-                CV.CopyTo(fs);
-                fs.Flush();
+
+                ViewBag.Errorpc = "uploaded file is above the required size of 10mb";
+                return View(FinancialS);
+
             }
-            FinancialS.CVurl = unq2;
-            unq2 = "QAS" + Guid.NewGuid() + QA.FileName;
-            string pathtofiledd = path_Root1 + "\\Uploads\\Qualifications\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiledd))
+            else
 
             {
-                CV.CopyTo(fs);
-                fs.Flush();
+
             }
-            FinancialS.Academictranscript = unq2;
-
-
-            unq2 = "CID" + Guid.NewGuid() + CID.FileName;
-            string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiled))
+            if (filelentghCV > 10)
 
             {
-                CID.CopyTo(fs);
-                fs.Flush();
+
+                ViewBag.Errorcv = "uploaded file is above the required size of 10mb";
+                return View(FinancialS);
+
+            }
+            else
+
+            {
+
             }
 
-            FinancialS.CertifiedID = unq2;
+
+
+            var extensionx = Path.GetExtension(CV.FileName).ToLower();
+            if (extensionx == ".png" || extensionx == ".jpg" || extensionx == ".gif" || extensionx == ".jpeg" || extensionx == ".pdf")
+            {
+
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofile))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                FinancialS.CVurl = unq2;
+            }
+            else if (extensionx == ".doc" || extensionx == ".docx")
+            {
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "CV" + Guid.NewGuid() + ".pdf";
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofile, FileFormat.PDF);
+                FinancialS.CVurl = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorcv = "File format for the CV is incorrect, we only accept CVs in (pdf, word, png, jpg, jpeg) format";
+                return View(FinancialS);
+
+            }
+
+            var extensionid = Path.GetExtension(CID.FileName).ToLower();
+            if (extensionid == ".png" || extensionid == ".jpg" || extensionid == ".gif" || extensionid == ".jpeg" || extensionid == ".pdf")
+            {
+                unq2 = "CID" + Guid.NewGuid() + CID.FileName;
+                string pathtofiledc = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiledc))
+
+                {
+                    CID.CopyTo(fs);
+                    fs.Flush();
+                }
+                FinancialS.CertifiedID = unq2;
+            }
+            else if (extensionid == ".doc" || extensionid == ".docx")
+            {
+                unq2 = "ID" + Guid.NewGuid() + CID.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "ID" + Guid.NewGuid() + ".pdf";
+                string pathtofiledc = path_Root1 + "\\Uploads\\CertifiedID\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                   CID.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiledc, FileFormat.PDF);
+                FinancialS.CertifiedID = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorid = "File format for the Certified ID is incorrect, we only accept Certified IDs in (pdf, word, png, jpg, jpeg) format";
+                return View(FinancialS);
+
+            }
+
+
+            var extensionids = Path.GetExtension(QA.FileName).ToLower();
+            if (extensionids == ".png" || extensionids == ".jpg" || extensionids == ".gif" || extensionids == ".jpeg" || extensionids == ".pdf")
+            {
+                unq2 = "QAS" + Guid.NewGuid() + QA.FileName;
+                string pathtofiledc = path_Root1 + "\\Uploads\\Qualifications\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiledc))
+
+                {
+                    QA.CopyTo(fs);
+                    fs.Flush();
+                }
+                FinancialS.Academictranscript = unq2;
+            }
+            else if (extensionids == ".doc" || extensionids == ".docx")
+            {
+                unq2 = "QAS" + Guid.NewGuid() + QA.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "QAS" + Guid.NewGuid() + ".pdf";
+                string pathtofiledc = path_Root1 + "\\Uploads\\Qualifications\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    QA.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiledc, FileFormat.PDF);
+                FinancialS.Academictranscript = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorqa = "File format for the Qualifications is incorrect, we only accept Qualifications in (pdf, word, png, jpg, jpeg) format";
+                return View(FinancialS);
+
+            }
+
+            var extensionidsq = Path.GetExtension(QA2.FileName).ToLower();
+            if (extensionidsq == ".png" || extensionidsq == ".jpg" || extensionidsq == ".gif" || extensionidsq == ".jpeg" || extensionidsq == ".pdf")
+            {
+                unq2 = "QAS" + Guid.NewGuid() + QA2.FileName;
+                string pathtofiledc = path_Root1 + "\\Uploads\\FeeStatements\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiledc))
+
+                {
+                    QA2.CopyTo(fs);
+                    fs.Flush();
+                }
+                FinancialS.LatestStatementfees = unq2;
+            }
+            else if (extensionidsq == ".doc" || extensionidsq == ".docx")
+            {
+                unq2 = "QAS" + Guid.NewGuid() + QA2.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "QAS" + Guid.NewGuid() + ".pdf";
+                string pathtofiledc = path_Root1 + "\\Uploads\\FeeStatements\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    QA2.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiledc, FileFormat.PDF);
+                FinancialS.LatestStatementfees = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorqa2 = "File format for the fee statements is incorrect, we only accept files in (pdf, word, png, jpg, jpeg) format";
+                return View(FinancialS);
+
+            }
+
+            var extensionidsqp = Path.GetExtension(POR.FileName).ToLower();
+            if (extensionidsqp == ".png" || extensionidsqp == ".jpg" || extensionidsqp == ".gif" || extensionidsqp == ".jpeg" || extensionidsqp == ".pdf")
+            {
+                unq2 = "POR" + Guid.NewGuid() + POR.FileName;
+                string pathtofiledc = path_Root1 + "\\Uploads\\POR\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiledc))
+
+                {
+                    POR.CopyTo(fs);
+                    fs.Flush();
+                }
+                FinancialS.Proofofregoistrationurl = unq2;
+            }
+            else if (extensionidsq == ".doc" || extensionidsq == ".docx")
+            {
+                unq2 = "POR" + Guid.NewGuid() + POR.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "POR" + Guid.NewGuid() + ".pdf";
+                string pathtofiledc = path_Root1 + "\\Uploads\\POR\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    POR.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiledc, FileFormat.PDF);
+
+                FinancialS.Proofofregoistrationurl  = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorpor = "File format for proof of registration is incorrect, we only accept files in (pdf, word, png, jpg, jpeg) format";
+                return View(FinancialS);
+
+            }
+
+
+
+
+
+
+
+   
             unq2 = "pc" + Guid.NewGuid() + pc.FileName;
             string pathtofileds = path_Root1 + "\\Uploads\\ProimagesLilsis\\" + unq2;
             using (FileStream fs = System.IO.File.Create(pathtofileds))
@@ -218,48 +455,37 @@ namespace _18TWENTY8.Controllers
 
             FinancialS.Imgurl = unq2;
             unq2 = CVV.FileName;
-             
-           
-                if (CVV.Length > 0)
+
+
+            if (CVV.Length > 0)
+            {
+
+                var extensionv = Path.GetExtension(CVV.FileName).ToLower();
+                if ((extensionv == ".mpeg-4" || extensionv == ".mov" || extensionv == ".mp4" || extensionv == ".3gp") && (filelentghCVV >12))
                 {
-                    var filePaths =  Path.Combine((path_Root1 + "\\Uploads\\CVVideo\\"), unq2);
+
+                   
+                        var filePaths = Path.Combine((path_Root1 + "\\Uploads\\CVVideo\\"), unq2);
+                   
 
                     using (var stream = System.IO.File.Create(filePaths))
                     {
                         await CVV.CopyToAsync(stream);
                     }
+                    FinancialS.VideoURl = unq2;
                 }
+                else
 
-            FinancialS.VideoURl = unq2;
-            unq2 = "Fee" + Guid.NewGuid() + QA2.FileName;
-       
-
-
-                if (QA2.Length > 0)
                 {
-                    var filePaths = Path.Combine((path_Root1 + "\\Uploads\\FeeStatements\\"), unq2);
+                    ViewBag.Errorcvv = "The uploaded video is in the incorrect format please note we only accept mp4 and mpeg-4 video formats";
+                    return View(FinancialS);
 
-                    using (var stream = System.IO.File.Create(filePaths))
-                    {
-                        await QA2.CopyToAsync(stream);
-                    }
                 }
-            FinancialS.LatestStatementfees = unq2;
-            unq2 = "POR" + Guid.NewGuid() + POR.FileName;
-    
+            }
 
+        
+         
 
-                if (POR.Length > 0)
-                {
-                    var filePaths = Path.Combine((path_Root1 + "\\Uploads\\POR\\"), unq2);
-
-                    using (var stream = System.IO.File.Create(filePaths))
-                    {
-                        await POR.CopyToAsync(stream);
-                    }
-                }
-
-            FinancialS.Proofofregoistrationurl = unq2;
             if (ModelState.IsValid)
             {
              

@@ -43,7 +43,7 @@ h4 {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.col-md-5ths {
 		width: 20%;
 		float: left;
@@ -113,7 +113,7 @@ h4 {
 	padding: 45px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-position-style-2 {
 		position: static;
 	}
@@ -125,7 +125,7 @@ h4 {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-sm-margin-1 {
 		margin-top: 30px;
 	}
@@ -167,7 +167,7 @@ h4 {
 	min-height: 290px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-squared-section {
 		height: 44vw;
 		max-height: 350px;

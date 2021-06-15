@@ -27,7 +27,7 @@ p, li, input, textarea {
 }
 
 /* Header */
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header .header-nav .header-nav-line nav > ul:not(:hover) li > a.active {
 		color: #FFF !important;
 	}
@@ -76,7 +76,7 @@ p, li, input, textarea {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.custom-borders-divider-style-1 > div[class*="col"] {
 		border-left-width: 0;
 	}

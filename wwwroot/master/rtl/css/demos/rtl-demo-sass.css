@@ -7,7 +7,7 @@
 }
 
 /* Header */
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header .header-nav-main nav > ul:not(:hover) > li > a.active {
 		color: #FFF !important;
 	}
@@ -135,7 +135,7 @@ html.sticky-header-active #header .header-social-icons > li > a > i {
 	margin-top: -250px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-screens-carousel {
 		margin-top: -90px;
 	}
@@ -151,7 +151,7 @@ html.sticky-header-active #header .header-social-icons > li > a > i {
 	position: relative;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.carousel-ipad {
 		padding: 25px;
 		border-radius: 17px;
@@ -201,7 +201,7 @@ html.sticky-header-active #header .header-social-icons > li > a > i {
 	left: 50%;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.carousel-ipad .carousel-ipad-camera, .carousel-ipad .carousel-ipad-home {
 		display: none;
 	}
@@ -212,7 +212,7 @@ html.sticky-header-active #header .header-social-icons > li > a > i {
 	border-radius: 25px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.carousel-ipad.carousel-ipad-sm {
 		padding: 20px;
 		border-radius: 12px;

@@ -76,9 +76,9 @@
                     <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
                         <div class="col-sm-6 product">
                             <div class="col-12">
-                                <h2 class="font-weight-bold text-9 mb-1">You can also donate</h2>
-                          
-                                <p class="ls-0 text-default fw-400 mb-5">Donations made to 18twenty8® are tax exempt in the hands of the donor and we will issue a S18A tax exemption certificate to you. Change a young woman's future by making a donation into this account:</p>
+
+
+                                <p class="ls-0 text-default text-justify fw-400 mb-5">Donations made to 18twenty8® are tax exempt in the hands of the donor and we will issue a S18A tax exemption certificate to you. Change a young woman's future by making a donation into this account:</p>
                                 <div class="d-flex align-items-center border border-top-0 border-right-0 border-left-0 ">
 
                                     <p class="mb-0 col-6"><b class="text-color-dark">Account Holder</b></p> <p class="mb-0 col-6">18twenty8®</p>
@@ -109,36 +109,47 @@
 
 
 
-                                <form action="https://sandbox.payfast.co.za/eng/process" name="form_4847613e49944d7d78b3a1efb6375af1" onsubmit="return click_4847613e49944d7d78b3a1efb6375af1( this );" method="post">
+                                <form action="https://www.payfast.co.za/eng/process" name="form_8253a88d941c9b84a2de26dba424f763" onsubmit="return click_8253a88d941c9b84a2de26dba424f763( this );" method="post">
                                     <input type="hidden" name="cmd" value="_paynow">
-                                    <input type="hidden" name="receiver" value="10022790">
-                                    <input type="hidden" name="item_name" value="Donation">
-                                    <input type="hidden" name="amount" value="10.00">
-                                    <input type="hidden" name="item_description" value="Donaotions to 18twenty8">
-                                    <input type="hidden" name="return_url" value="http://18twenty8test.moseboadiragroup.co.za/home/SuccessfullDonation">
-                                    <input type="hidden" name="cancel_url" value="http://18twenty8test.moseboadiragroup.co.za/home/UnsuccesfullDonation">
+                                    <input type="hidden" name="receiver" value="17827513">
+                                    <input type="hidden" name="item_name" value="18twenty8 Donate">
+                                    <input type="hidden" name="amount" value="50.00">
+                                    <input type="hidden" name="item_description" value="">
+                                    <input type="hidden" name="return_url" value="http://18twenty8.org/home/SuccessfullDonation">
+                                    <input type="hidden" name="cancel_url" value="http://18twenty8.org/home/UnsuccesfullDonation">
 
                                     <table>
-                                        <tr><td><font color="red">*</font>&nbsp;Donation in ZAR:</td><td><input type="text" name="custom_amount" class="pricing" value=""></td></tr>
-                                        <tr><td colspan=2 align=center><input type="image" src="https://sandbox.payfast.co.za/images/buttons/light-large-paynow.png" width="174" height="59" alt="Pay Now" title="Pay Now with PayFast"></td></tr>
+                                        <tr><td><font color="red">*</font>&nbsp;Price</td><td><input type="text" name="custom_amount" class="pricing" value="50.00"></td></tr>
+                                        <tr><td colspan=2 align=center><input type="image" src="https://www.payfast.co.za/images/buttons/light-large-donate.png" width="174" height="59" alt="Buy Now" title="Buy Now with PayFast"></td></tr>
                                     </table>
                                 </form>
+
                             </div>
                             <div class="col-12">
                                 <img class="img-fluid" src="~/img/Donate.jpg" />
-                                </div>
-
                             </div>
+
                         </div>
                     </div>
+                </div>
+            </div>
+
+
         </div>
 
 
-    </div>
 
+
+
+
+
+
+
+
+    </div>
     <script language="JavaScript" type="text/javascript">
 
-        function click_4847613e49944d7d78b3a1efb6375af1(aform_reference) {
+        function click_8253a88d941c9b84a2de26dba424f763(aform_reference) {
             var aform = aform_reference;
             aform['amount'].value = Math.round(aform['amount'].value * Math.pow(10, 2)) / Math.pow(10, 2);
             aform['custom_amount'].value = aform['custom_amount'].value.replace(/^\s+|\s+$/g, "");
@@ -151,113 +162,4 @@
 
     </script>
 
-
-
-
-
-
-
-
-
-
-</div>
-                    <script src="https://www.paypal.com/sdk/js?client-id=AVaB2J4-xoY-3K80BrbKI8n_on4bhzscugfWY4bVvWsiyhJTYwKMojv7B55D4gtjpsID05wvYXHjObQK&currency=USD" data-sdk-integration-source="button-factory"></script>
-                    <script>
-                        function initPayPalButton() {
-                            var description = document.querySelector('#smart-button-container #description');
-                            var amount = document.querySelector('#smart-button-container #amount');
-                            var descriptionError = document.querySelector('#smart-button-container #descriptionError');
-                            var priceError = document.querySelector('#smart-button-container #priceLabelError');
-                            var invoiceid = document.querySelector('#smart-button-container #invoiceid');
-                            var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
-                            var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
-
-                            var elArr = [description, amount];
-
-                            if (invoiceidDiv.firstChild.innerHTML.length > 1) {
-                                invoiceidDiv.style.display = "block";
-                            }
-
-                            var purchase_units = [];
-                            purchase_units[0] = {};
-                            purchase_units[0].amount = {};
-
-                            function validate(event) {
-                                return event.value.length > 0;
-                            }
-
-                            paypal.Buttons({
-                                style: {
-                                    color: 'gold',
-                                    shape: 'rect',
-                                    label: 'paypal',
-                                    layout: 'vertical',
-
-                                },
-
-                                onInit: function (data, actions) {
-                                    actions.disable();
-
-                                    if (invoiceidDiv.style.display === "block") {
-                                        elArr.push(invoiceid);
-                                    }
-
-                                    elArr.forEach(function (item) {
-                                        item.addEventListener('keyup', function (event) {
-                                            var result = elArr.every(validate);
-                                            if (result) {
-                                                actions.enable();
-                                            } else {
-                                                actions.disable();
-                                            }
-                                        });
-                                    });
-                                },
-
-                                onClick: function () {
-                                    if (description.value.length < 1) {
-                                        descriptionError.style.visibility = "visible";
-                                    } else {
-                                        descriptionError.style.visibility = "hidden";
-                                    }
-
-                                    if (amount.value.length < 1) {
-                                        priceError.style.visibility = "visible";
-                                    } else {
-                                        priceError.style.visibility = "hidden";
-                                    }
-
-                                    if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
-                                        invoiceidError.style.visibility = "visible";
-                                    } else {
-                                        invoiceidError.style.visibility = "hidden";
-                                    }
-
-                                    purchase_units[0].description = description.value;
-                                    purchase_units[0].amount.value = amount.value;
-
-                                    if (invoiceid.value !== '') {
-                                        purchase_units[0].invoice_id = invoiceid.value;
-                                    }
-                                },
-
-                                createOrder: function (data, actions) {
-                                    return actions.order.create({
-                                        purchase_units: purchase_units,
-                                    });
-                                },
-
-                                onApprove: function (data, actions) {
-                                    return actions.order.capture().then(function Redirect() {
-                                        window.location = "http://18twenty8test.moseboadiragroup.co.za/home/SuccessfullDonation";
-
-                                    });
-                                },
-
-                                onError: function (err) {
-                                    console.log(err);
-                                }
-                            }).render('#paypal-button-container');
-                        }
-                        initPayPalButton();
-                    </script>
+   

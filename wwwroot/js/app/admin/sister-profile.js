@@ -39,8 +39,8 @@
                                 </div>
                                 <div class="col-md-5" style="text-align:left">
                                     <p><b>Sister Type:</b> Little Sister </p>
-                                    <p><b>Full Names:</b> ${response.mentee.name} ${response.mentee.surname}</p>
-                                    <p><b>Nickname/Preferred name:</b> ${response.mentee.nickname}</p>
+                                    <p><b>Full Names:</b> ${response.mentee.name}</p>
+                                 
                                     <p><b>ID/Passport:</b> ${response.mentee.idPassport}</p>
                                     <p><b>Date of birth:</b> ${monthDateYear}</p>
 
@@ -72,7 +72,7 @@
                 {
                     "data": null,
                     render: function (data, type, full, meta) {
-                        return `${full.name} ${full.surname}`;
+                        return `${full.name}`;
                     }
                 },
                 { "data": "phonenumber" },

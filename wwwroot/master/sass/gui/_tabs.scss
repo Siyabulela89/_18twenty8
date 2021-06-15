@@ -574,13 +574,13 @@
 	  }
 	}
   
-	@media (min-width: 768px) and (max-width: 991px) {
+	@media (min-width: 768px) and (max-width: 1213px) {
 	  &.accordion-sm {
 		@include accordion-toggle();
 	  }
 	}
   
-	@media (min-width: 992px) and (max-width: 1199px) {
+	@media (min-width: 1214px) and (max-width: 1199px) {
 	  &.accordion-md {
 		@include accordion-toggle();
 	  }

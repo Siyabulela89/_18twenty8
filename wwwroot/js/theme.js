@@ -2660,12 +2660,12 @@ window.theme.fn = {
 			});
 
 	        var wheelEvent = 'onwheel' in document ? 'wheel' : document.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll';
-	        if( $(window).width() < 992 && $('html').hasClass('touch') ) {
+	        if( $(window).width() < 1511 && $('html').hasClass('touch') ) {
 	        	wheelEvent = 'onwheel' in document ? 'wheel touchend' : document.onmousewheel !== undefined ? 'mousewheel touchend' : 'DOMMouseScroll touchend';
 	        }
 
 	        $(window).on(wheelEvent, function(e){
-	        	if( $(window).width() < 992 && $('html').hasClass('touch') ) {
+				if ($(window).width() < 1511 && $('html').hasClass('touch') ) {
 		        	if( $(e.target).closest('.section-scroll-dots-navigation').get(0) || $(e.target).closest('.header-body').get(0) || $(e.target).closest('.owl-carousel').get(0) ) {
 		        		return;
 		        	}
@@ -2677,7 +2677,7 @@ window.theme.fn = {
 		        }
 
 	        	var wheelDirection = e.originalEvent.wheelDelta == undefined ? e.originalEvent.deltaY > 0 : e.originalEvent.wheelDelta < 0;
-	        	if( $(window).width() < 992 && $('html').hasClass('touch') ) {
+				if ($(window).width() < 1511 && $('html').hasClass('touch') ) {
 		        	touchendY = event.changedTouches[0].screenY;
 	        		
 				    if( touchendY <= touchstartY ) {
@@ -2704,7 +2704,7 @@ window.theme.fn = {
             		nextSectionOffsetTop = $nextSection.offset().top;
             	}
 
-			    if( $(window).width() < 992 && $('html').hasClass('touch') ) {
+				if ($(window).width() < 1511 && $('html').hasClass('touch') ) {
 				    setTimeout(function(){
 					    if( $('.section-wrapper').eq( self.getCurrentIndex() ).find('.section-scroll').hasClass('section-scroll-scrollable') ) {
 					    	$('html').removeClass('overflow-hidden');
@@ -3506,7 +3506,7 @@ window.theme.fn = {
 	};
 
 	PluginSticky.defaults = {
-		minWidth: 991,
+		minWidth: 1510,
 		activeClass: 'sticky-active'
 	};
 
@@ -4332,7 +4332,7 @@ window.theme.fn = {
 				}
 
 				// Floating
-				if($('#header.header-floating-icons').get(0) && $(window).width() > 991) {
+				if($('#header.header-floating-icons').get(0) && $(window).width() > 1510) {
 
 					var menuFloatingAnim = {
 						$menuFloating: $('#header.header-floating-icons .header-container > .header-row'),
@@ -4434,13 +4434,13 @@ window.theme.fn = {
 
 					$(window).trigger('resize');
 					
-					if( $(window).width() > 991 ) {
+					if ($(window).width() > 1510 ) {
 						slideNavigation.build();
 					}
 
 					$(document).ready(function(){
 						$(window).afterResize(function(){
-							if( $(window).width() > 991 ) {
+							if ($(window).width() > 1510 ) {
 								slideNavigation.build();
 							}
 						});
@@ -4472,7 +4472,7 @@ window.theme.fn = {
 				
 				$header.find('.dropdown-toggle[href="#"], .dropdown-submenu a[href="#"], .dropdown-toggle[href!="#"] .fa-chevron-down, .dropdown-submenu a[href!="#"] .fa-chevron-down').on('click', function(e) {
 					e.preventDefault();
-					if ($window.width() < 992) {
+					if ($window.width() < 1511) {
 						$(this).closest('li').toggleClass('open');
 
 						// Adjust Header Body Height
@@ -4489,7 +4489,7 @@ window.theme.fn = {
 				$header.find('.header-nav-click-to-open .dropdown-toggle[href="#"], .header-nav-click-to-open .dropdown-submenu a[href="#"], .header-nav-click-to-open .dropdown-toggle > i').on('click', function(e) {
 					e.preventDefault();
 					e.stopPropagation();
-					if ($window.width() > 991) {
+					if ($window.width() > 1510) {
 
 						$header.find('li a.active').removeClass('active');
 
@@ -4624,7 +4624,7 @@ window.theme.fn = {
 
 				// Header Effect Shrink - Adjust header body height on mobile
 				$window.on('stickyHeader.activate', function(){
-					if( $window.width() < 992 && $header.hasClass('header-effect-shrink') ) {
+					if ($window.width() < 1511 && $header.hasClass('header-effect-shrink') ) {
 						if( $('.header-btn-collapse-nav').attr('aria-expanded') == 'true' ) {
 							$('.header-body').animate({
 						 		height: ( $('.header-nav-main nav').outerHeight(true) + theme.StickyHeader.options.stickyHeaderContainerHeight ) + ( ($('.header-nav-bar').get(0)) ? $('.header-nav-bar').outerHeight() : 0 ) 
@@ -4634,7 +4634,7 @@ window.theme.fn = {
 				});
 
 				$window.on('stickyHeader.deactivate', function(){
-					if( $window.width() < 992 && $header.hasClass('header-effect-shrink') ) {
+					if ($window.width() < 1511 && $header.hasClass('header-effect-shrink') ) {
 						if( $('.header-btn-collapse-nav').attr('aria-expanded') == 'true' ) {
 							$('.header-body').animate({
 						 		height: headerBodyHeight + $('.header-nav-main nav').outerHeight(true) + 10
@@ -4650,7 +4650,7 @@ window.theme.fn = {
 					}
 					
 					setTimeout(function() {
-						if( $window.width() > 991 ) {
+						if ($window.width() > 1510 ) {
 							$header.find('.dropdown.open').removeClass('open');
 						}
 					}, 100);
@@ -4658,7 +4658,7 @@ window.theme.fn = {
 
 				// Side Header - Change value of initial header body height
 				$(document).ready(function(){
-					if( $window.width() > 991 ) {
+					if ($window.width() > 1510 ) {
 						var flag = false;
 						
 						$window.on('resize', function(e) {
@@ -4668,7 +4668,7 @@ window.theme.fn = {
 
 							$header.find('.dropdown.open').removeClass('open');
 
-							if( $window.width() < 992 && flag == false ) {
+							if ($window.width() < 1511 && flag == false ) {
 								headerBodyHeight = $('.header-body').outerHeight();
 								flag = true;
 
@@ -4682,7 +4682,7 @@ window.theme.fn = {
 
 				// Side Header - Set header height on mobile
 				if( $html.hasClass('side-header') ) {
-					if( $window.width() < 992 ) {
+					if ($window.width() < 1511 ) {
 						$header.css({
 							height: $('.header-body .header-container').outerHeight() + (parseInt( $('.header-body').css('border-top-width') ) + parseInt( $('.header-body').css('border-bottom-width') ))
 						});
@@ -4690,7 +4690,7 @@ window.theme.fn = {
 
 					$(document).ready(function(){
 						$window.afterResize(function(){
-							if( $window.width() < 992 ) {
+							if ($window.width() < 1511 ) {
 								$header.css({
 									height: $('.header-body .header-container').outerHeight() + (parseInt( $('.header-body').css('border-top-width') ) + parseInt( $('.header-body').css('border-bottom-width') ))
 								});
@@ -5127,7 +5127,7 @@ window.theme.fn = {
 
 				// Boxed
 				if($html.hasClass('boxed') && self.options.stickyEffect == 'shrink') {
-					if( (parseInt(self.options.stickyStartAt) == 0) && $window.width() > 991) {
+					if ((parseInt(self.options.stickyStartAt) == 0) && $window.width() > 1510) {
 						self.options.stickyStartAt = 30;
 					}
 
@@ -5155,7 +5155,7 @@ window.theme.fn = {
 					deactivate_flag = false;
 
 				self.checkStickyHeader = function() {
-					if( $window.width() > 991 && $html.hasClass('side-header') ) {
+					if ($window.width() > 1510 && $html.hasClass('side-header') ) {
 						$html.removeClass('sticky-header-active');
 						activate_flag = true;
 						return;
@@ -5179,7 +5179,7 @@ window.theme.fn = {
 				// Activate Sticky Header
 				self.activateStickyHeader = function() {
 
-					if ($window.width() < 992) {
+					if ($window.width() < 1511) {
 						if (!self.options.stickyEnableOnMobile) {
 							self.deactivateStickyHeader();
 							return;
@@ -5383,7 +5383,7 @@ window.theme.fn = {
 					flag = false;
 
 				self.checkSideHeader = function() {
-					if($window.width() < 992 && flag == false) {
+					if ($window.width() < 1511 && flag == false) {
 						headerBodyHeight = self.options.headerBody.height();
 						flag = true;
 					}

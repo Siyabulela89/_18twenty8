@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Volunteer Application</strong></h2>
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Volunteer or Employment Application</strong></h2>
                     </div>
                 </div>
             </div>
@@ -42,17 +42,25 @@
                 <div class="col-lg-3 mt-4 mt-lg-0">
 
                     <div class="d-flex justify-content-center mb-4">
-                    
-                        @*<div class="profile-image-inner-container bg-color-primary">
-                                <label style="cursor: pointer;">
-                                    <span for="file" class="profile-image-button bg-color-dark">
-                                        <i class="fas fa-camera text-light"></i>
-                                    </span>
-                                </label>
-                                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
-
+                        <div class="profile-image-outer-container">
+                            <div class="profile-image-inner-container bg-color-primary">
+                                <img id="output" src="~/img/avatars/avatar.jpg">
+                                <span class="profile-image-button bg-color-dark">
+                                    <i class="fas fa-camera text-dark"></i>
+                                </span>
                             </div>
-                            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+                            <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+                        </div>
+                        @*<div class="profile-image-inner-container bg-color-primary">
+                <label style="cursor: pointer;">
+                    <span for="file" class="profile-image-button bg-color-dark">
+                        <i class="fas fa-camera text-light"></i>
+                    </span>
+                </label>
+                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+
+            </div>
+            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
 
 
                     </div>
@@ -63,7 +71,7 @@
                 <div class="col-lg-9">
 
                     <div class="overflow-hidden mb-1">
-                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Capture details</strong> to be part of the volunteering team</h2>
+              
                     </div>
                     <div class="overflow-hidden mb-4 pb-3">
           
@@ -80,7 +88,7 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of Birth</label>
                         <div class="col-lg-12">
-                            <input asp-for="DOB" class="form-control" type="date" value="">
+                            <input id="MyDate" asp-for="DOB" required class="form-control" placeholder="dd/mm/yyyy" type="date" value="">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -92,7 +100,7 @@
 
 
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
                         <div class="col-lg-12">
 
                             <input asp-for="cellnumber" class="form-control" required type="tel" maxlength="10" minlength="10" onblur="if(this.value == '') { this.value ='e.g. 0825660869'; }" onfocus="if(this.value =='e.g. 0825660869') { this.value = ''; }" value="e.g. 0825660869">
@@ -100,7 +108,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Postal Address</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
                         <div class="col-lg-12">
                             <input asp-for="Postaladdressline1" class="form-control" required type="text" value="" placeholder="Street (96 4th St)">
                         </div>
@@ -121,13 +129,7 @@
                             <input asp-for="Postalcode" class="form-control" required type="text" value="">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">home or business contact</label>
-                        <div class="col-lg-12">
-                            <input asp-for="home_businesscontact" class="form-control" required type="text" value="" placeholder="Phone Number">
-                        </div>
-
-                    </div>
+              
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Occupation and Employer</label>
                         <div class="col-lg-8">
@@ -137,50 +139,39 @@
                             <input asp-for="Employer" class="form-control" required type="text" value="" placeholder="Employer">
                         </div>
                     </div>
+                 
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">When is the best time to contact you?</label>
-                        <div class="col-lg-12">
-                            @Html.DropDownListFor(m => m.timetocall, ViewBag.ToContact as SelectList, htmlAttributes: new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Which programme(s) are you interested in? </label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Which programme(s) are you interested in? </label>
                         <div class="col-lg-12">
                             @for (int i = 0; i < Model.programmelist.Count; i++)
                             {
                                 <input type="hidden" asp-for="@Model.programmelist[i].Value" />
-                                <input asp-for="programmelist[i].Selected" />@Model.programmelist[i].Text <br />
+                                <input asp-for="programmelist[i].Selected" /> @Model.programmelist[i].Text<br />
 
                             }
                         </div>
                     </div>
+          
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please specify if there are other programmes not in the list you would like to contribute to</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many hours per week can you contribute to the programme(s)?</label>
                         <div class="col-lg-12">
-                            <input asp-for="Otherintprogrammes" class="form-control" required type="text" value="" placeholder="Phone Number">
-                        </div>
-
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many hours per week can you contribute to the programmes?</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Hoursweekforprogramme" class="form-control" required type="time" value="" placeholder="time">
+                            <input asp-for="Hoursweekforprogramme" class="form-control" required type="number" value="" placeholder="e.g 20">
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">How many days in the week can you dedicate to the programme(s)?.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many days can you dedicate to the programme(s)?</label>
                         <div class="col-lg-9">
                             @for (int i = 0; i < Model.Daysofweek.Count; i++)
                             {
                                 <input type="hidden" asp-for="@Model.Daysofweek[i].Value" />
-                                <input asp-for="Daysofweek[i].Selected" />@Model.Daysofweek[i].Text <br />
+                                <input asp-for="Daysofweek[i].Selected" /> @Model.Daysofweek[i].Text <br />
 
                             }
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please indicate any previous work experience as a volunteer in other organisation/s: (with contact reference/s if available)?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please indicate any previous work experience as a volunteer in other organisation/s: (with contact reference/s)</label>
                         <div class="col-lg-12">
                             
                             <textarea asp-for="previousexperienceinotherorgasvolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
@@ -190,46 +181,24 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Briefly describe why you offered to volunteer at 18twenty8:.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe why you offered to volunteer at 18twenty8:</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="describewhyyouofferedtovolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
+                            <textarea asp-for="describewhyyouofferedtovolunteer" maxlength="5000" required data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Do you have a specific achievement or goal that you plan to accomplish through volunteer experience?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Do you have a specific achievement or goal that you plan to accomplish through volunteer experience?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="goaltoachieveinvolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            <textarea asp-for="goaltoachieveinvolunteer"  maxlength="5000"  data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Briefly describe your hobbies & interests:</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe your hobbies & interests:</label>
                         <div class="col-lg-12">
                             <textarea asp-for="describehobbies" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">On which of the following committees would you like to serve?</label>
-                        <div class="col-lg-12">
-                            @for (int i = 0; i < Model.Commitees.Count; i++)
-                            {
-                                <input type="hidden" asp-for="@Model.Commitees[i].Value" />
-                                <input asp-for="Commitees[i].Selected" />@Model.Commitees[i].Text <br />
-
-                            }
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">If you would like to be involved in other committees please specify</label>
-                        <div class="col-lg-12">
-
-                            <textarea asp-for="Othercommittees" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
-
-
-
-                        </div>
-                    </div>
-                 
+                
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">18twenty8 appreciates your interest in volunteering with us. We look forward to your service for the betterment of our beneficiaries and community. However, 18twenty8 will not be held responsible for anything that happens to you while offering your volunteer services to us:</label>
                         <div class="col-lg-12">
@@ -319,4 +288,22 @@
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
+
+   
+
+</script>
+<script>
+
+    // Use datepicker on the date inputs
+    $("input[type=date]").datepicker({
+        dateFormat: 'dd/mm/yyyy',
+        onSelect: function (dateText, inst) {
+            $(inst).val(dateText); // Write the value in the input
+        }
+    });
+
+    // Code below to avoid the classic date-picker
+    $("input[type=date]").on('click', function () {
+        return false;
+    });
 </script>

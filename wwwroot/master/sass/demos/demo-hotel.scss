@@ -23,7 +23,7 @@ html.boxed {
 		left: auto !important;
 		margin-right: 75px !important;
 
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			margin-right: 0 !important;
 		    right: 50% !important;
 		    transform: translateX(160%);
@@ -49,7 +49,7 @@ html.boxed {
 
 // Header
 #header {
-	@media(min-width: 992px) {
+	@media(min-width: 1214px) {
 		top: -65px;
 		margin-bottom: -65px;
 		.header-top {
@@ -66,7 +66,7 @@ html.boxed {
 	.header-body {
 		border-bottom: 0;
 		background: transparent;
-		@media(min-width: 992px) {
+		@media(min-width: 1214px) {
 			overflow: visible !important;
 		}
 	}
@@ -82,7 +82,7 @@ html.sticky-header-active {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header {
 		.header-nav {
 			nav {
@@ -111,7 +111,7 @@ html.sticky-header-active {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#header {
 		.header-container {
 			min-height: 134px;
@@ -293,7 +293,7 @@ html .btn {
 }
 
 // Responsive
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.micro-map {
 		.micro-map-info-detail {
 			.icons {
@@ -476,7 +476,7 @@ html .btn {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.thumb-info-side-image-custom {
 		.thumb-info-side-image-wrapper {
 			float: none;
@@ -648,7 +648,7 @@ html.ie11 {
 }
 
 // Responsive
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#footer {
 		.footer-info {
 			margin-top: 20px;
@@ -690,7 +690,7 @@ html.ie11 {
 }
 
 // Responsive
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.footer-copyright {
 		margin-top: 20px;
 		text-align: center;

@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="container">
-
+                    <a asp-controller="Administration" asp-action="AdminLanding"  class="read-more text-color-dark font-weight-bold text-2">Back <i class="fas fa-chevron-right text-1 ml-1"></i></a>
                     <div class="row">
                         <div class="col pb-4">
                             <div class="row mt-5">
@@ -46,31 +46,38 @@
                                     <div class="row">
                                         @foreach (var item in Dtype)
                                         {
-                                           
-                                                <div class="col-lg-6 mb-4 mb-lg-0">
-                                                    <article class="post post-large pb-5">
-                                                     
 
-                                                        <div class="post-date">
-                                                            <span class="day">@item.DateCreated.Day</span>
-                                                            <span class="month">@item.DateCreated.ToString("MMM")</span>
-                                                            <span class="month">@item.DateCreated.Year</span>
-                                                        </div>
+                                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                                <article class="post post-large pb-5">
 
-                                                        <div class="post-content">
 
-                                                            <h4><a href="#" class="text-decoration-none">@item.Title</a></h4>
-                                                            <p class="mb-1">@item.Description</p>
-                                                            <p class="mb-1"><strong>Application Open Date</strong> - @item.ApplicationStartDate.ToString("yyyyMMMdd") </p>
-                                                            <p class="mb-1"><strong>Application Close Date</strong> -  @item.ApplicationEndDate.ToString("yyyyMMMdd") </p>
-                                                            <p class="mb-1">@item.QualifyingCriteria</p>
+                                                    <div class="post-date">
+                                                        <span class="day">@item.DateCreated.Day</span>
+                                                        <span class="month">@item.DateCreated.ToString("MMM")</span>
+                                                        <span class="month">@item.DateCreated.Year</span>
+                                                    </div>
+
+                                                    <div class="post-content">
+
+                                                        <h4><a href="#" class="text-decoration-none">@item.Title</a></h4>
+                                                        <p class="mb-1">@item.Description</p>
+                                                        <p class="mb-1"><strong>Application Open Date</strong> - @item.ApplicationStartDate.ToString("yyyyMMMdd") </p>
+                                                        <p class="mb-1"><strong>Application Close Date</strong> -  @item.ApplicationEndDate.ToString("yyyyMMMdd") </p>
+                                                        <p class="mb-1">@item.QualifyingCriteria</p>
+                                                        @if (item.BursaryTypeID == 2)
+                                                        {
+                                                            <a href="@item.externallink" class="read-more text-color-dark font-weight-bold text-2">External Link<i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                                        }
+                                                        else
+                                                        {
                                                             <a asp-controller="Administration" asp-action="DetailsBB" asp-route-id="@item.BursaryID" class="read-more text-color-dark font-weight-bold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                            }
-                                        
-                                       
+                                                        }
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        }
+
+
 
 
 

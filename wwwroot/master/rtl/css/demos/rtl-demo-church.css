@@ -203,13 +203,13 @@ p {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.custom-md-margin-bottom-1 {
 		margin-bottom: 30px !important;
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-sm-margin-bottom-1 {
 		margin-bottom: 30px !important;
 	}
@@ -345,7 +345,7 @@ p {
 	height: 155px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-cloud {
 		height: 40%;
 	}
@@ -558,7 +558,7 @@ p {
 	transform: translateX(-50%);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.owl-carousel.custom-sm-nav-bottom .owl-nav {
 		top: 100%;
 		left: 50%;

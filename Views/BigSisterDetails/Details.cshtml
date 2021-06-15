@@ -95,51 +95,51 @@
 
                 <div class="row process process-connecting-line ">
                     <div class="connecting-line appear-animation" data-appear-animation="fadeIn"></div>
-                    <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                    <div class="process-step col-sm-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
                         <div style="background-color:#a62237;color:white" class="process-step-circle">
                             <strong style="color:white" class="process-step-circle-content">1</strong>
                         </div>
                         <div class="process-step-content">
                             <ul class="list list-icons">
-                                <li id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
+                                <li style="white-space: nowrap;" id="big-sis-phase-1"><i class="fas fa-check"></i> Registration Verification</li>
                             </ul>
                         </div>
                     </div>
                     @if (item.ProfileStatusID == 4 || item.ProfileStatusID == 10)
                     {
-                        <div data-toggle="modal" data-target="#largeModal" class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                        <div data-toggle="modal" data-target="#largeModal" class="process-step col-sm-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
                             <div class="process-step-circle">
                                 <strong class="process-step-circle-content">2</strong>
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @ViewBag.ProStatus</li>
+                                    <li style="white-space: nowrap;" id="big-sis-phase-2"><i class="fas fa-exclamation"></i> @ViewBag.ProStatus</li>
                                 </ul>
                             </div>
                         </div>
                     }
                     else
                     {
-                        <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div class="process-step col-sm-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
                             <div style="background-color:#a62237;color:white" class="process-step-circle">
                                 <strong style="color:white" class="process-step-circle-content">2</strong>
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li id="big-sis-phase-2"><i class="fas fa-check"></i> @ViewBag.ProStatus</li>
+                                    <li style="white-space: nowrap;" id="big-sis-phase-2"><i class="fas fa-check"></i> @ViewBag.ProStatus</li>
                                 </ul>
                             </div>
                         </div>
                     }
                     @if (@ViewBag.Sistatus == "Pending Approval")
                     {
-                        <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
+                        <div class="process-step col-sm-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
                             <div class="process-step-circle">
                                 <strong class="process-step-circle-content">3</strong>
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li><i class="fas fa-exclamation"></i> Little Sister assignment @ViewBag.Sistatus</li>
+                                    <li style="white-space: nowrap;"><i  class="fas fa-exclamation"></i> Little Sister assignment @ViewBag.Sistatus</li>
                                 </ul>
                             </div>
                         </div>
@@ -147,19 +147,19 @@
                     else
 
                     {
-                        <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
+                        <div class="process-step col-sm-4  appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="600">
                             <div style="background-color:#a62237;color:white" class="process-step-circle">
                                 <strong style="color:white" class="process-step-circle-content">3</strong>
                             </div>
                             <div class="process-step-content">
                                 <ul class="list list-icons">
-                                    <li><i class="fas fa-check"></i> Little Sister assignment @ViewBag.Sistatus</li>
+                                    <li style="white-space: nowrap;"><i class="fas fa-check"></i> Little Sister assignment @ViewBag.Sistatus</li>
                                 </ul>
                             </div>
                         </div>
                     }
                 </div>
-                }
+             
 
             </div>
         </div>
@@ -228,13 +228,7 @@
                                                     <p>@item.Name</p>
                                                 </div>
                                             </div>
-                                      
-                                            <div class="form-group row">
-                                                <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                                                <div class="col-lg-12">
-                                                    <p>@item.Nickname</p>
-                                                </div>
-                                            </div>
+                            
                                             <div class="form-group row">
                                                 <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID number</label>
                                                 <div class="col-lg-12">
@@ -431,10 +425,9 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                                    I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (@item.ConfirmMentordurationQ == 1)
-                                                    {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
-                                                    else
-                                                    { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}
+                                                    I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @item.ConfirmMentordurationQ
+                                                    <i style="font-size:14px; color:green" class="fas fa-check-circle"></i>
+                                             
                                                 </label>
                                                 <!---<div class="col-lg-12">
 

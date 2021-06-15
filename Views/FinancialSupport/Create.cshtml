@@ -27,7 +27,7 @@
             <div class="col">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Financial <strong class="font-weight-extra-bold">Support</strong></h2>
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Let’s help fund your studies</strong></h2>
                     </div>
                 </div>
             </div>
@@ -43,13 +43,14 @@
                     <div class="d-flex justify-content-center mb-4">
                         <div class="profile-image-outer-container" data-provides="fileupload">
                             <div class="profile-image-inner-container bg-color-primary">
-                                <img id="output" src="~/img/avatars/avatar.jpg" />
+                                <img id="output" src="~/img/avatars/avatar.png" />
                                 <span class="profile-image-button bg-color-dark">
                                     <i class="fas fa-camera text-dark"></i>
                                 </span>
                             </div>
 
                             <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+                            <p>@ViewBag.Errorpc</p>
                         </div>
                         @*<div class="profile-image-inner-container bg-color-primary">
                                 <label style="cursor: pointer;">
@@ -74,7 +75,7 @@
                         <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">My </strong>finance application profile</h2>
                     </div>
                     <div class="overflow-hidden mb-4 pb-3">
-                        <p class="mb-0">Please create your big sister profile by filling in the details below.</p>
+                    
                     </div>
 
 
@@ -85,12 +86,7 @@
                         </div>
                     </div>
               
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Nickname / Preferred name</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Nickname" class="form-control" type="text" value="">
-                        </div>
-                    </div>
+          
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID number</label>
                         <div class="col-lg-12">
@@ -135,6 +131,7 @@
                                 </span>
 
                             </div>
+                            <p style="color:red">@ViewBag.Errorcv</p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -153,10 +150,11 @@
                                 </span>
 
                             </div>
+                            <p style="color:red">@ViewBag.Errorid</p>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Latest Academic transcripts</label>
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload latest Academic transcripts</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
                             <div class="input-append">
                                 <div class="uneditable-input">
@@ -167,14 +165,15 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="QA" id="QA" />
+                                    <input required type="file" name="QA" id="QA" />
                                 </span>
 
                             </div>
+                            <p style="color:red">@ViewBag.Errorqa</p>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Latest feestatment and student loan account statement</label>
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload student fees statment</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
                             <div class="input-append">
                                 <div class="uneditable-input">
@@ -185,14 +184,15 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="QA2" id="QA2" />
+                                    <input required type="file" name="QA2" id="QA2" />
                                 </span>
 
                             </div>
                         </div>
+                        <p style="color:red">@ViewBag.Errorqa2</p>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">1 minute motivation video</label>
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload 1 minute video explaining who you are, what you are studying, how the funding will help you, how you will use your qualification to help others and why you approached 18twenty8 to assist.</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
                             <div class="input-append">
                                 <div class="uneditable-input">
@@ -203,14 +203,15 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="CVV" id="CVV" />
+                                    <input required type="file" name="CVV" id="CVV" />
                                 </span>
 
                             </div>
                         </div>
+                        <p style="color:red">@ViewBag.Errorcvv</p>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Proof of registration</label>
+                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload proof of registration</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
                             <div class="input-append">
                                 <div class="uneditable-input">
@@ -221,11 +222,12 @@
                                 <span class="btn btn-default btn-file">
                                     <span class="fileupload-exists">Change</span>
                                     <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="POR" id="POR" />
+                                    <input required type="file" name="POR" id="POR" />
                                 </span>
 
                             </div>
                         </div>
+                        <p style="color:red">@ViewBag.Errorpor</p>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-lg-9">

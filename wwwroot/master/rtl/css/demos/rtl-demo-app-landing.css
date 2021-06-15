@@ -147,7 +147,7 @@ h1 {
 	letter-spacing: -3px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	h1 {
 		font-size: 4.6em;
 	}
@@ -194,7 +194,7 @@ h2.custom-bar._color-light:after {
 	border-color: #FFF !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	h2.custom-bar._right:after, h2.custom-bar._left:after {
 		right: 50% !important;
 	}
@@ -249,7 +249,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-background-style-1 {
 		padding-top: 120px !important;
 		min-height: 480px;
@@ -362,7 +362,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	transform: scaleX(-1);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-product-image-pos-2 {
 		left: 74vw;
 		right: 37vw;
@@ -385,7 +385,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	left: auto;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-product-image-pos-2._litle-small {
 		left: 86vw;
 		right: 43vw;
@@ -487,7 +487,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.owl-carousel.custom-left-pos-1 {
 		right: -85px;
 		margin-top: -50px !important;
@@ -729,7 +729,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-feature-box-style-1 .feature-box-icon {
 		margin-left: 0;
 		margin-right: 0;
@@ -747,7 +747,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-feature-box-style-1.reverse .feature-box-icon {
 		margin-right: 0;
 	}
@@ -879,7 +879,7 @@ html:not(.sticky-header-active) #header .header-nav.header-nav-links nav > ul li
 		max-width: 750px;
 	}
 }
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#footer .footer-copyright:before {
 		max-width: 970px;
 	}

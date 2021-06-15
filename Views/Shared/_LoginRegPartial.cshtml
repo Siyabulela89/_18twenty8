@@ -12,10 +12,10 @@
 
     <meta name="keywords" content="18twenty8" />
     <meta name="description" content="18twenty8">
-    <meta name="author" content="okler.net">
+    <meta name="author" content="Moseboadiragroup">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
     <!-- Mobile Metas -->
@@ -32,12 +32,14 @@
     <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="~/vendor/magnific-popup/magnific-popup.min.css">
-
+    <link rel="stylesheet" href="~/css/datatables.css">
+    <link rel="stylesheet" href="~/css/dataTables.bootstrap.css">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="~/css/theme.css">
     <link rel="stylesheet" href="~/css/theme-elements.css">
     <link rel="stylesheet" href="~/css/theme-blog.css">
     <link rel="stylesheet" href="~/css/theme-shop.css">
+    <link rel="stylesheet" href="~/css/toastr.css">
 
     <!-- Current Page CSS -->
     <link rel="stylesheet" href="~/vendor/rs-plugin/css/settings.css">
@@ -50,6 +52,37 @@
 
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="~/css/custom.css">
+    <style>
+        #docViewModal {
+            padding: 1px;
+        }
+
+        .iframe-container {
+            min-height: 100px;
+            background: #fff url("../../img/spinner.gif") no-repeat center !important;
+        }
+
+
+        .modal-lg, .modal-xl {
+            max-width: 70%;
+        }
+
+        #sisterprofileViewModalDialog {
+            max-width: 750px;
+        }
+
+        .container {
+            max-width: 95%;
+        }
+
+        .containerered {
+            max-width: 78%;
+        }
+
+        .containereredd {
+            max-width: 60%;
+        }
+    </style>
 
     <!-- Head Libs -->
     <script src="~/vendor/modernizr/modernizr.min.js"></script>
@@ -64,16 +97,22 @@
         </div>
     </div>
 
+
     <div class="body">
         <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
             <div class="header-body border-top-0 bg-dark box-shadow-none">
-                <div class="header-container container container-xl">
+                <div class="header-container container-xl">
                     <div class="header-row">
                         <div class="header-column">
                             <div class="header-row">
-                                <div class="header-logo">
-                                    <a asp-controller="Home" asp-action="index" >
-                                        <img alt="18twenty8" width="110" height="40" src="~/img/18twenty8logo.png">
+                                <div class="logophone">
+                                    <a asp-controller="Home" asp-action="Index">
+                                        <img style="padding-left:5px;padding-top:15px" alt="18twenty8" width="220" height="100" src="~/img/18twenty8logo.png">
+                                    </a>
+                                </div>
+                                <div class="header-logo logophones">
+                                    <a asp-controller="Home" asp-action="Index">
+                                        <img style="padding-left:2px;padding-top:5px" alt="18twenty8" width="110" height="50" src="~/img/18twenty8logo.png">
                                     </a>
                                 </div>
                             </div>
@@ -81,26 +120,78 @@
                         <div class="header-column justify-content-end">
                             <div class="header-row">
                                 <div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-main-dark-text order-2 order-lg-1">
-                                    <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-3 header-nav-main-sub-effect-1">
+                                    <div class="header-nav-main header-nav-main-mobile header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-6 header-nav-main-sub-effect-1">
                                         <nav class="collapse">
-                                        
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class=""> <a href="@Url.Action("Index", "Home",null)">Home</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-item dropdown-toggle">
+                                                        Programmes
+                                                    </a>
+                                                    <ul style="background-color:white" class="dropdown-menu" href="#">
+
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "Workshops",null)">Workshops</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("LeadershipCamp", "Workshops",null)">Leadership Camp</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("FinancialAssistance", "Workshops",null)">Financial Assistance</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Bigsisternetwork", "Workshops",null)">Big Sister Network</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Bam", "Workshops",null)">BAM Forum</a></li>
+                                                    </ul>
+
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="##">
+                                                        About Us
+                                                    </a>
+                                                    <ul style="background-color:white" class="dropdown-menu">
+
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Directors", "Home",null)">Directors</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "Graduates",null)">Graduates</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "RecognitionLetters",null)">Recognition Letters</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("StatusofWomen", "Home",null)">Status of Women</a></li>
+
+                                                    </ul>
+
+                                                </li>
+                                                <li class=""> <a href="@Url.Action("Donate", "Home",null)">Donate</a></li>
+
+
+
+
+                                                <li class=""> <a href="@Url.Action("BBBEE", "Home",null)">BBBEE</a></li>
+                                                <li class=""> <a href="@Url.Action("Index", "PressPublicities",null)">Press and Publicity</a></li>
+                                                <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)">Volunteer or work with us</a></li>
+                                                <li class=""> <a href="@Url.Action("Contact", "Home",null)">Contact Us</a></li>
+                                            </ul>
                                         </nav>
+
+
                                     </div>
+                                    <ul style="margin-top:15px;" class="align-items-center logophone">
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
                                     <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
                                         <i class="fas fa-bars"></i>
                                     </button>
+                                    <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2 imageipad">
+                                        <img style="height:100px; width:160px" src="~/img/Anniversary/102.png" />
+
+                                    </div>
                                 </div>
                                 <div class="header-nav-features header-nav-features-light header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
 
-                                    <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2">
-                                        <img style="height:90px; width:150px" src="~/img/Anniversary/102.png" />
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <ul class="logophones col-6" style="margin-top:-30px; z-index:999999; margin-left:-20px;  white-space: nowrap; display:inline-block">
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                </ul>
             </div>
 
         </header>
@@ -111,19 +202,28 @@
 
             <div class="footer-copyright curved-border curved-border-top d-flex align-items-center">
 
-                <div class="container">
-                    <div class="row py-4">
-                        <div class="col text-center">
-                            <p class="text-3">@DateTime.Now.Year© <strong class="font-weight-normal text-color-dark opacity-9">18twenty8</strong> - Copyright. All Rights Reserved.</p>
 
-                        </div>
 
-                    </div>
-                    <div class="text-center">
+                <div class="col text-center">
+                    <p style="color:black; padding-left:200px;padding-right:200px" class="text-4 footertextp">
+                        Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8®</strong> <br />
+                        Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | PBO Reg No.: 930 036 859<br />
+                        96 on Fourth Street, Parkmore, Sandton, 2196, South Africa<br />
+                        Tel: +27 11 064 4810 | Cell: +27 60 798 7683<br />
+                        18twenty8® is a Registered Trademark.
+                    </p>
+                    <p style="color:black;" class="text-3 footertextpp">
+                        <strong>18twenty8®</strong><br />
+                        Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise)<br /> Cell: +27 60 798 7683
+                        18twenty8® is a Registered Trademark.
+                    </p>
+
+                    <div class="text-center ">
                         <ul class="social-icons">
                         </ul>
                     </div>
                 </div>
+
 
             </div>
 
@@ -164,7 +264,7 @@
 
     <!-- Theme Initialization Files -->
     <script src="~/js/theme.init.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
 
     <script>
 
@@ -230,7 +330,7 @@
         mapRef.mapTypes.set('map_style', styledMap);
         mapRef.setMapTypeId('map_style');
 
-    </script>
+    </script>*@
     <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

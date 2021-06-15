@@ -70,7 +70,7 @@ html[xmlns] .clearfix {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.fluid-col-lg-6 {
 		min-height: 33vw; 
 		.fluid-col {
@@ -94,7 +94,7 @@ html[xmlns] .clearfix {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.fluid-col-lg-6 {
 		min-height: 64.5vw !important;
 	}
@@ -359,7 +359,7 @@ html[xmlns] .clearfix {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.sample-item {
 		.sample-item-image-wrapper, .owl-carousel {
 			height: 33vw;
@@ -535,7 +535,7 @@ html[xmlns] .clearfix {
 }
 
 /* Responsive */
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 
 	.offset-anchor {
 		top: 0;
@@ -614,7 +614,7 @@ html[xmlns] .clearfix {
 }
 
 // Grid + Sidebar
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.col-md-3 .sidebar {
 		clear: both;
 	}
@@ -642,7 +642,7 @@ html[xmlns] .clearfix {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.col-half-section {
 		max-width: 720px;
 		margin: 0 auto !important;
@@ -839,7 +839,7 @@ html[xmlns] .clearfix {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.go-to-demos {
 		display: none;
 	}

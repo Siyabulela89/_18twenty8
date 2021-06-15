@@ -29,7 +29,7 @@
 		align-items: center;
 		transition: ease height 300ms;
 		&:not(.container):not(.container-fluid) {
-			@media(max-width: 991px) {
+			@media(max-width: 1213px) {
 				.header-nav-main {
 					padding: 0 0.75rem;
 				}
@@ -491,7 +491,7 @@
 				pointer-events: all;
 			}
 
-			@media(min-width: 992px) {
+			@media(min-width: 1214px) {
 				&.header-nav-features-dropdown-reverse {
 					#{$right}: auto;
 					margin-#{$right}: 0;
@@ -909,7 +909,7 @@
 		border-bottom: 1px solid rgba(0,0,0,0.08);
 	}
 
-	@media(max-width: 991px) {
+	@media(max-width: 1213px) {
 		.header-mobile-border-top {
 			&:before {
 				content: '';
@@ -1005,7 +1005,7 @@
 }
 
 // Mobile Menu Opened
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html.mobile-menu-opened {
 		#header {
 			.header-body {
@@ -1048,7 +1048,7 @@ html:not(.boxed) {
 			}
 		}
 
-		@media(max-width: 991px) {
+		@media(max-width: 1213px) {
 			&.header-floating-bar {
 				top: 0;
 			}	
@@ -1058,7 +1058,7 @@ html:not(.boxed) {
 	&:not(.sticky-header-active) {
 
 		#header {
-			@media(max-width: 991px) {
+			@media(max-width: 1213px) {
 				&.header-floating-bar {
 					.header-body {
 						margin: 10px;
@@ -1149,7 +1149,7 @@ html {
 	}
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html {
 		#header {
 			&.header-bottom-slider {
@@ -1223,7 +1223,7 @@ html {
 	}
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html {
 		#header {
 			&.header-transparent {
@@ -1331,7 +1331,7 @@ html.sticky-header-enabled {
 @import "header-nav-main-mobile";
 
 /* Responsive */
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header {
 		// Prevent wrong header body height
 		// when resize window with mobile menu opened
@@ -1341,7 +1341,7 @@ html.sticky-header-enabled {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#header {
 
 		.header-logo {
@@ -1370,7 +1370,7 @@ html.sticky-header-enabled {
 @import "header-shop";
 
 // Side Header
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html {
 		&.side-header {
 			.main, #footer {
@@ -1733,7 +1733,7 @@ html.sticky-header-enabled {
 }
 
 // Side Header - Transform into off canvas due to container size
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 1214px) and (max-width: 1199px) {
 	html:not(.side-header-disable-offcanvas) {
 		&.side-header {
 			&:not(.side-header-above) {
@@ -1780,7 +1780,7 @@ html.sticky-header-enabled {
 }
 
 // Side Header Mobile
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	html {
 		&.side-header {
 			#header.side-header {
@@ -2238,7 +2238,7 @@ html {
 }
 
 // Mobile - Side Header Overlay Full Screen
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html {
 		&.side-header-overlay-full-screen {
 			#header {
@@ -2358,7 +2358,7 @@ html {
 	}
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html {
 		&.side-header-hamburguer-sidebar-narrow-bar {
 			.body {
@@ -2409,7 +2409,7 @@ html.ie {
 }
 
 // Safari
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html.safari #header .header-body {
 		overflow: visible !important;
 	}

@@ -4,65 +4,57 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div role="main" class="main">
-    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
-        <div class="container">
+    <div role="main" class="main">
+        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a asp-controller="Administration" asp-action="DetailsBurs" class="read-more text-color-dark font-weight-bold text-2">Back <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+        <div class="container py-4">
+
             <div class="row">
+                <div class="col">
+                    <div class="blog-posts single-post">
 
-                <div class="col-md-12 align-self-center p-static order-2 text-center">
-
-
-                </div>
-
-                <div class="col-md-12 align-self-center order-1">
+                        <article class="post post-large blog-single-post border-0 m-0 p-0">
 
 
-                </div>
-            </div>
-        </div>
-    </section>
 
 
-    <div class="container py-4">
+                            <div class="post-content ml-0">
 
-        <div class="row">
-            <div class="col">
-                <div class="blog-posts single-post">
+                                <h2 class="font-weight-bold"><a href="#">@Html.DisplayFor(model => model.Title)</a></h2>
 
-                    <article class="post post-large blog-single-post border-0 m-0 p-0">
+                              
+                                <h5>Description</h5>
+                                <p>@Html.DisplayFor(model => model.Description)</p>
+                                <h5>Qualifying Criteria</h5>
+                                <p>@Html.DisplayFor(model => model.Description)</p>
+                                <h5>Start date - End Date</h5>
+                                <p>@Model.ApplicationStartDate.ToString("yyyy-MMM-dd") <strong>to</strong> @Model.ApplicationEndDate.ToString("yyyy-MMM-dd")</p>
 
-
-                        <div class="post-date ml-0">
-                            <span class="day">  @Html.DisplayFor(model => model.DateCreated.Day)</span>
-                            <span class="month">@Html.DisplayFor(model => model.DateCreated.Month)</span>
-                            <span class="month">@Html.DisplayFor(model => model.DateCreated.Year)</span>
-                        </div>
-
-                        <div class="post-content ml-0">
-
-                            <h2 class="font-weight-bold"><a href="#">@Html.DisplayFor(model => model.Title)</a></h2>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">18Twenty8 Admin</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Bursary</a> </span>
-                                @*<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>*@
                             </div>
-                            <h5>Description</h5>
-                            <p>@Html.DisplayFor(model => model.Description)</p>
-                            <h5>Qualifying Criteria</h5>
-                            <p>@Html.DisplayFor(model => model.Description)</p>
-                            <h5>Start date - End Date</h5>
-                            <p>@Model.ApplicationStartDate.ToString("yyyy-MMM-dd") <strong>to</strong> @Model.ApplicationEndDate.ToString("yyyy-MMM-dd")</p>
+                        </article>
 
-                        </div>
-                    </article>
-
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
 
 

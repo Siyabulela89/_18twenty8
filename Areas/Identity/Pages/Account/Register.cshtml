@@ -35,10 +35,12 @@
                     <div class="featured-boxes">
                         <div class="row">
                             <div class="col-md-12">
+                                <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary2">Sign in here if you already have an account</a>
                                 <div class="featured-box featured-box-primary text-left mt-5">
                                     <div class="box-content">
-                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Register an Account</h4>
+
                                         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" id="SignUp" class="needs-validation">
+                                            <label class="text-danger">@ViewData["userex"]</label>
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Full Names</label>
@@ -53,7 +55,9 @@
 
                                                     <input asp-for="Input.Email" value="" class="form-control form-control-lg" required>
                                                     <span asp-validation-for="Input.Email" class="text-danger"></span>
+
                                                 </div>
+
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col">
@@ -76,13 +80,11 @@
                                                 <span asp-validation-for="Input.UserRole" class="text-danger"></span>
                                             </div>
                                             <div class="form-row">
-
+                                                <label class="danger" style="color:red;">Password must have at least 9 characters, 1 special character (! @@ # $ % & *), 1 number, 1 lowercase character and 1 uppercase character</label>
                                                 <div class="form-group col-lg-6">
-                                                    <button type="submit" class="btn btn-primary btn-with-arrow mb-2">Submit<span><i class="fas fa-chevron-right"></i></span></button>
+                                                    <button asp-route-id="@ViewData["id"]" type="submit" class="btn btn-primary btn-with-arrow mb-2">Submit<span><i class="fas fa-chevron-right"></i></span></button>
                                                 </div>
-                                                <p>
-                                                    <a asp-page="./Login" asp-route-id="@ViewData["Role"]" asp-route-returnUrl="@Model.ReturnUrl">Already have an account</a>
-                                                </p>
+
                                             </div>
                                         </form>
                                     </div>

@@ -52,6 +52,10 @@ namespace _18TWENTY8.Controllers
         {
             return View();
         }
+        public IActionResult Successfullapplication()
+        {
+            return View();
+        }
 
         public IActionResult Create()
         {
@@ -81,6 +85,177 @@ namespace _18TWENTY8.Controllers
 
             };
 
+            return View(vd);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+   
+        public async Task<IActionResult> Create(Volunteerdetail vs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
+        {
+
+    
+
+            string path_Root1 = _host.WebRootPath;
+
+            string unq1;
+            String unq2;
+            var filePath = Path.GetTempFileName();
+
+ 
+            var prog = vs.programmelist.Where(x => x.Selected).Select(y => y.Value);
+            var daysweek = vs.Daysofweek.Where(x => x.Selected).Select(y => y.Value);
+
+            vs.DateCreated = DateTime.Now;
+            unq2 = "CID" + Guid.NewGuid() + CID.FileName;
+            string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
+            using (FileStream fs = System.IO.File.Create(pathtofiled))
+
+            {
+                CID.CopyTo(fs);
+                fs.Flush();
+            }
+
+            vs.IDurl = unq2;
+
+
+            unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+            string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
+            using (FileStream fs = System.IO.File.Create(pathtofile))
+
+            {
+                CV.CopyTo(fs);
+                fs.Flush();
+            }
+            vs.CVurl = unq2;
+
+            var vdd = new Volunteerdetail()
+            {Fullnames=vs.Fullnames,
+            DOB=vs.DOB,
+            email=vs.email,
+            cellnumber=vs.cellnumber,
+            Postalcode=vs.Postalcode,
+            Postaladdressline1=vs.Postaladdressline1,
+            Postaladdressline2=vs.Postaladdressline2,
+            Province=vs.Province,
+            home_businesscontact=vs.home_businesscontact,
+            timetocall=vs.timetocall,
+            Occupation=vs.Occupation,
+            Employer=vs.Employer,
+            Hoursweekforprogramme=vs.Hoursweekforprogramme,
+            Otherintprogrammes=vs.Otherintprogrammes,
+            previousexperienceinotherorgasvolunteer=vs.previousexperienceinotherorgasvolunteer,
+            describewhyyouofferedtovolunteer=vs.describewhyyouofferedtovolunteer,
+            goaltoachieveinvolunteer=vs.goaltoachieveinvolunteer,
+            Othercommittees=vs.Othercommittees,
+            describehobbies=vs.describehobbies,
+            indemnity=vs.indemnity,
+            CVurl=vs.CVurl,
+            IDurl=vs.IDurl,
+            DateCreated=DateTime.Now
+
+            };
+            unq2 = "pc" + Guid.NewGuid() + pc.FileName;
+            string pathtofileds = path_Root1 + "\\Uploads\\VoluImg\\" + unq2;
+            using (FileStream fs = System.IO.File.Create(pathtofileds))
+
+            {
+                pc.CopyTo(fs);
+                fs.Flush();
+            }
+
+            vdd.imgurl = unq2;
+            if (ModelState.IsValid)
+            {
+                _context.Add(vdd);
+                await _context.SaveChangesAsync();
+
+                int id = vdd.VolunteerID;
+
+              
+
+                foreach (var ids in prog)
+                {
+                    _context.ProgrammesStorage.Add(new ProgrammesStorage()
+                    {
+                        ProgrammeID = int.Parse(ids),
+                        VolunteerID = id
+
+
+
+                    });
+                    await _context.SaveChangesAsync();
+                }
+                foreach (var ids in daysweek)
+                {
+                    _context.Daysofweekstorage.Add(new Daysofweekstorage()
+                    {
+                        DayID = int.Parse(ids),
+                        VolunteerID = id
+
+
+
+                    });
+                    await _context.SaveChangesAsync();
+                }
+
+
+                foreach (var formFile in QA)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
+                        string pathtofiles = path_Root1 + "\\Uploads\\Qualifications\\" + unq1;
+                        using (FileStream fs = System.IO.File.Create(pathtofiles))
+
+                        {
+                            formFile.CopyTo(fs);
+                            fs.Flush();
+                        }
+                        _context.VolunteerAcademic.Add(new VolunteerAcademic()
+                        {
+                            VolunteerID = id,
+                            QualificationDocname = formFile.FileName,
+                            Qualificationurl=unq1,
+                            order=1,
+                            DateCreated = DateTime.Now,
+
+
+
+                        }); ;
+                    }
+                    await _context.SaveChangesAsync();
+
+                }
+                return RedirectToAction("Successfullapplication");
+            }
+
+
+
+                var Commitees = _context.Committees.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.CommitteeTypeID.ToString()
+            }).ToList();
+            var programmes = _context.Programmes.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.ProgrammeID.ToString()
+            }).ToList();
+            var daysofweek = _context.Daysofweek.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.DayID.ToString()
+            }).ToList();
+            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.ToContact = new SelectList(_context.Time, "TimeID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
+            var vd = new Volunteerdetail()
+            {
+                Commitees = Commitees,
+                programmelist = programmes,
+                Daysofweek = daysofweek,
+
+            };
             return View(vd);
         }
     }

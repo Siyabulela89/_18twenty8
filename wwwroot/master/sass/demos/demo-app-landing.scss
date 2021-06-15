@@ -163,7 +163,7 @@ h1 {
     margin-left: -5px;
     letter-spacing: -3px;
 
-    @media (max-width: 991px) {
+    @media (max-width: 1213px) {
     	font-size: 4.6em;
     }
 }
@@ -211,7 +211,7 @@ h2 {
     }
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	h2 {
 		&.custom-bar {
 			&._right, &._left {
@@ -284,7 +284,7 @@ html:not(.sticky-header-active) {
 		min-height: 520px;
     }
 
-    @media(max-width: 991px) {
+    @media(max-width: 1213px) {
     	padding-top: 120px !important;
     	min-height: 480px;
     }
@@ -404,7 +404,7 @@ html:not(.sticky-header-active) {
     	transform: scaleX(-1);
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: 1213px) {
     	left: 74vw;
     	@include if-rtl() {
 	    	right: 37vw; 
@@ -426,7 +426,7 @@ html:not(.sticky-header-active) {
 	    	left: auto;
 	    }
 
-	    @media (max-width: 991px) {
+	    @media (max-width: 1213px) {
 	    	left: 86vw;
 	    	@include if-rtl() {
 		    	right: 43vw; 
@@ -540,7 +540,7 @@ html:not(.sticky-header-active) {
 			margin-top: 70px !important;
 		}
 
-		@media(min-width: 992px) {
+		@media(min-width: 1214px) {
 			#{$left}: -85px;
 			margin-top: -50px !important;
 		}
@@ -796,7 +796,7 @@ html:not(.sticky-header-active) {
 			margin-#{$right}: 25px;
 	    }
 
-	    @media (max-width: 991px) {
+	    @media (max-width: 1213px) {
 			margin-#{$right}: 0;
 			margin-#{$left}: 0;
 	    }
@@ -812,7 +812,7 @@ html:not(.sticky-header-active) {
 				margin-#{$left}: 0.7rem;
 		    }
 
-		    @media (max-width: 991px) {
+		    @media (max-width: 1213px) {
 				margin-#{$left}: 0;
 		    }
 		}
@@ -967,7 +967,7 @@ html:not(.sticky-header-active) {
 				max-width: 750px;
 			}
 			
-			@media (min-width: 992px) {
+			@media (min-width: 1214px) {
 				max-width: 970px;
 			}
 

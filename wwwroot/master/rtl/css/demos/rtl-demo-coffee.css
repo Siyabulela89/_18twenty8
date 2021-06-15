@@ -95,7 +95,7 @@ p, a, span, li, strong, b {
 	font-weight: 400;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html.sticky-header-active .header-logo img {
 		width: 140px;
 		height: auto;
@@ -115,7 +115,7 @@ p, a, span, li, strong, b {
 	transform: translate3d(0, -50%, 0);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-section-halfbar-bg {
 		height: 20%;
 	}

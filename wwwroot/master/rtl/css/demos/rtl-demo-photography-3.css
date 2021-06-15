@@ -29,7 +29,7 @@
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.col-lg-5ths {
 		flex: 0 0 20%;
 		max-width: 20%;
@@ -251,7 +251,7 @@ html.sticky-header-active #header .header-body {
 	box-shadow: none;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 1510px) {
 	#header .header-nav-main nav > ul > li > a {
 		background: transparent !important;
 		transition: color 0.3s ease;
@@ -836,7 +836,7 @@ html.sticky-header-active #header .header-body {
 	transform: translate3d(-50%, -50%, 0) rotate(0deg);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.portfolio-parallax {
 		height: 30vh;
 	}
@@ -992,7 +992,7 @@ html.sticky-header-active #header .header-body {
 	transform: translate3d(-50%, -50%, 0) rotate(0deg);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#portfolioGrid {
 		margin: 1.5vw;
 	}
@@ -1297,7 +1297,7 @@ html.sticky-header-active #header .header-body {
 	content: "\e605";
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#horizontalScrollBox {
 		height: auto !important;
 		overflow: visible !important;
@@ -1523,7 +1523,7 @@ html.sticky-header-active #header .header-body {
 	transform: translate3d(-50%, -50%, 0);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#photographyLightbox .thumb-gallery {
 		transform: translate3d(-50%, -50%, 0);
 	}
@@ -1623,7 +1623,7 @@ html.sticky-header-active #header .header-body {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#portfolioSliderWithThumbs #thumbGalleryDetail {
 		height: 390px;
 	}
@@ -2059,7 +2059,7 @@ section.our-blog {
 	margin-bottom: 10px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.our-blog-item.blog-post .author-info img {
 		display: block;
 	}
@@ -2153,7 +2153,7 @@ section.our-blog {
 	padding: 60px 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.leave-comment input[type="email"] {
 		margin-top: 15px;
 	}
@@ -2255,7 +2255,7 @@ html.photography-demo-3.safari .body {
 	overflow: inherit;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html.photography-demo-3.side-header .main .container, html.photography-demo-3.side-header #footer .container {
 		max-width: 1140px;
 	}
@@ -2266,7 +2266,7 @@ html.photography-demo-3.side-header #main {
 	z-index: 999;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 1214px) and (max-width: 1200px) {
 	html.photography-demo-3 .sticky-wrapper {
 		z-index: 1000 !important;
 	}
@@ -2280,7 +2280,7 @@ html.photography-demo-3 h1, html.photography-demo-3 h2, html.photography-demo-3 
 	font-family: "PT Sans", sans-serif;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html.photography-demo-3.ie #header {
 		z-index: 998;
 	}
@@ -2290,7 +2290,7 @@ html.photography-demo-3 #main {
 	transition: ease opacity 300ms;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html.photography-demo-3 #main {
 		height: 100vh;
 		min-height: 100vh;
@@ -2306,7 +2306,7 @@ html.photography-demo-3 #main.calc-height {
 	min-height: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	html.photography-demo-3 #main.calc-height {
 		height: auto !important;
 	}
@@ -2618,7 +2618,7 @@ html.photography-demo-3 #horizontalScrollBox .content li .horizontal-scroll-item
 	height: calc(100vh - 146px);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	html.photography-demo-3 #horizontalScrollBox .content li .horizontal-scroll-item .thumb-info .thumb-info-wrapper img {
 		height: auto !important;
 	}

@@ -32,17 +32,38 @@
 <div class="container py-2">
 
     <div class="row">
-        <div class="col-lg-3">
-            <section class="call-to-action featured button-centered  featured-primary mb-5">
-                <div class="col-12">
-                    <div class="call-to-action-content featured featured-primary">
-                        <h5>Volunteer application and work with us</h5>
+        <div class="col-lg-12">
+            <section class="call-to-action featured button-centered featured-secondary featured-box-dark mb-5">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="call-to-action-content featured featured-secondary">
+                        <h5><strong class="font-weight-extra-bold">Already have an account</strong> </h5>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="call-to-action-btn">
-                        <a asp-action="Create" asp-controller="Volunteer" class="btn btn-modern text-2 btn-secondary">Volunteer</a>
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary2">Sign in</a>
+
+
+
+                    </div>
+                </div>
+         
+            </section>
+
+
+        </div>
+        <div class="col-lg-3">
+            <section class="call-to-action featured button-centered">
+                <div class="col-12">
+                    <div class="call-to-action-content featured">
+                        <h5>Volunteer or Work </h5>
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="call-to-action-btn">
+                        <a asp-action="Create" asp-controller="Volunteer" class="btn btn-modern text-2 btn-secondaryg">Volunteer</a>
 
                     </div>
                 </div>
@@ -50,32 +71,32 @@
         </div>
 
         <div class="col-lg-3">
-            <section class="call-to-action featured button-centered  featured-primary mb-5">
+            <section class="call-to-action featured button-centered  featured-secondaryb">
                 <div class="col-12">
-                    <div class="call-to-action-content featured featured-primary">
-                        <h5>Be part of our Little Sister mentorship programme!</h5>
+                    <div class="call-to-action-content featured featured-secondary">
+                        <h5>Be a Little Sister (mentee)</h5>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="call-to-action-btn">
-                        <a asp-area="Identity" asp-route-id="1" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Register</a>
+                        <a asp-area="Identity" asp-route-id="1" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondaryb">Register</a>
 
                     </div>
                 </div>
             </section>
         </div>
         <div class="col-lg-3">
-            <section class="call-to-action featured button-centered  mb-5">
+            <section class="call-to-action featured button-centered featured-primary">
                 <div class="col-12">
                     <div class="call-to-action-content featured featured-primary">
-                        <h5>Apply for our financial assistance programme </h5>
+                        <h5>Fund your studies </h5>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="call-to-action-btn">
-                        <a asp-area="Identity" asp-route-id="3" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Apply</a>
+                        <a asp-area="Identity" asp-route-id="3" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-primary">Apply</a>
 
                     </div>
                 </div>
@@ -101,14 +122,14 @@
         <div class="col-lg-3">
             <section class="call-to-action featured button-centered featured-secondary mb-5">
                 <div class="col-sm-12 col-lg-12">
-                    <div class="call-to-action-content featured featured-primary">
-                        <h5>Become a mentor by joining our Big sister network</h5>
+                    <div class="call-to-action-content featured featured-secondary">
+                        <h5>Be a Big Sister (mentor)</h5>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="call-to-action-btn">
-                        <a asp-area="Identity" asp-route-id="2" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Sign up</a>
+                        <a asp-area="Identity" asp-route-id="2" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary2">Sign up</a>
 
                     </div>
                 </div>
@@ -116,33 +137,6 @@
         </div>
 
 
-        <div class="col-lg-12">
-            <section class="call-to-action featured button-centered  featured-box-dark mb-5">
-                <div class="col-sm-12 col-lg-12">
-                    <div class="call-to-action-content featured featured-primary">
-                        <h5><strong class="font-weight-extra-bold">Already have an account</strong> </h5>
-
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="call-to-action-btn">
-                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary">Sign in</a>
-
-
-
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="call-to-action-btn">
-                        <a asp-controller="Administration" asp-action="AdminLanding" class="btn btn-modern text-2 btn-secondary">Admin</a>
-
-
-
-                    </div>
-                </div>
-            </section>
-
-
-        </div>
+     
     </div>
 </div>

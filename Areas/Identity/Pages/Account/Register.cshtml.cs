@@ -76,27 +76,30 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
 
         }
 
-        public void OnGet( int Id, string returnUrl = null)
+        public void OnGet( int id, string error, string returnUrl = null)
         {
-            if(Id==1)
+            
+            ViewData["userex"] = error;
+            ViewData["id"] = id;
+            if(id==1)
             {
                 ViewData["RegType"] = "Little Sister Registration";
                 ViewData["Role"] = "Little Sister (Mentee)";
 
             }
-            else if (Id == 2)
+            else if (id == 2)
             {
                 ViewData["RegType"] = "Big Sister Registration";
                 ViewData["Role"] = "Big Sister (Mentor)";
             }
-            else if (Id==3)
+            else if (id == 3)
 
             {
                 ViewData["RegType"] = "Financial Assistance Programme application";
                 ViewData["Role"] = "Bursary Applicant";
 
             }
-            else if (Id == 4)
+            else if (id == 4)
 
             {
                 ViewData["RegType"] = "Administration Take Up";
@@ -111,12 +114,27 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(int id, string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
+            var resultuser = await _userManager.FindByEmailAsync(Input.Email);
+        
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, UserNamedisp=Input.UserNamedisp};
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                string str = "";
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                    str = str + error.Description.ToString() + "\r\n";
+                }
+                if (resultuser != null)
+                {
+                   
+                    return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id, error= str });
+                }
                 if (result.Succeeded)
                 {
+                 
+
                     _logger.LogInformation("User created a new account with password.");
                     await _userManager.AddToRoleAsync(user, Input.UserRole);
                    
@@ -156,14 +174,13 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     }
                     return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id });
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+              
             }
 
+
+
             // If we got this far, something failed, redisplay form
-            return Page();
+            return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id });
         }
     }
 }

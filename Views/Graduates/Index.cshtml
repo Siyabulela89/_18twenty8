@@ -69,15 +69,15 @@
                     <article>
                         <div class="row">
                             <div class="col">
-                                <a href="# data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)" class="text-decoration-none">
-                                    <img src="~/uploads/GraduateStories/@Html.DisplayFor(modelItem => item.imageurl)" class="img-fluid hover-effect-2 mb-3" alt="" />
+                                <a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)" class="text-decoration-none">
+                                    <img style="width:200px;height:190px;" src="~/uploads/GraduateStories/@Html.DisplayFor(modelItem => item.imageurl)" class="img-fluid hover-effect-2 mb-3" alt="" />
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h4 class="mb-0"><a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)" class="text-2 text-uppercase font-weight-bold pt-2 d-block text-dark text-decoration-none">@Html.DisplayFor(modelItem => item.GraduateName)</a></h4>
-                                <p class="mb-2 lead text-4">@Html.DisplayFor(modelItem => item.GraduatenameandQual)</p>
+                                <p class="mb-2 lead text-3">@Html.DisplayFor(modelItem => item.GraduatenameandQual)</p>
                                 <ul class="list list-icons">
                                     <li><i class="fas fa-file-alt"></i><a href="#" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.Modalpopupid)"> Read Story</a></li>
                                     </ul>

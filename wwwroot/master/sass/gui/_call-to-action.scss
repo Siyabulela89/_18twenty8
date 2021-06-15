@@ -128,18 +128,18 @@
 	&.with-button-arrow {
 		.call-to-action-btn {
 			position: relative;
-			@media (min-width: 992px) {
+			@media (min-width: 1214px) {
 				#{$left}: -80px;
 			}
 			.arrow {
 				position: absolute;
-				@media(max-width: 991px) {
+				@media(max-width: 1213px) {
 					display: none;
 				}
 			}
 			&.no-left {
 				#{$left}: 0;
-				@media (max-width: 991px) {
+				@media (max-width: 1213px) {
 				    margin-top: -25px !important;
 				}
 			}

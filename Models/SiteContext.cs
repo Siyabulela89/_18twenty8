@@ -8,7 +8,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace _18TWENTY8.Models
 {
-
+    public class EMessage
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int mesid { get; set; }
+        public string to { get; set; }
+        public string From { get; set; }
+        public string Fromemail { get; set; }
+        public string Contact { get; set; }
+        public string Name { get; set; }
+        public string Subject { get; set; }
+        public string content { get; set; }
+        public bool IsHtml { get; set; }
+        public string np { get; set; }
+        public string nt { get; set; }
+    }
     public class Volunteerdetail
     {
         [Key]
@@ -35,8 +50,10 @@ namespace _18TWENTY8.Models
         public string describehobbies { get; set; }
         public string IDurl { get; set; }
         public string CVurl { get; set; }
+        public string imgurl { get; set; }
         public int indemnity { get; set; }
-       
+        public DateTime DateCreated { get; set; }
+
         [NotMapped]
         public IList<SelectListItem> programmelist { get; set; }
         [NotMapped]
@@ -288,6 +305,7 @@ namespace _18TWENTY8.Models
         public String popupmodalid { get; set; }
         public String recogurl { get; set; }
         public String logourl { get; set; }
+        public int order { get; set; }
 
 
 
@@ -317,6 +335,7 @@ namespace _18TWENTY8.Models
        
         public string fileurl { get; set; }
         public int WorkshopFileTypeID { get; set; }
+        public int fileorder { get; set; }
 
         public DateTime DateCreated { get; set; }
 
@@ -345,7 +364,8 @@ namespace _18TWENTY8.Models
         public string Videourl { get; set; }
         public string Modalpopupid { get; set; }
         public string imageurl { get; set; }
-
+        public string Shortstory { get; set; }
+        public int order { get; set; }
 
         public DateTime DateCreated { get; set; }
 
@@ -393,12 +413,14 @@ namespace _18TWENTY8.Models
        
         public String Expectationsonlittlesister { get; set; }
         public String Imageurl { get; set; }
-        public int ConfirmMentordurationQ { get; set; }
+        public bool ConfirmMentordurationQ { get; set; }
         public string CVUrl { get; set; }
         public string CertifiedID { get; set; }
         public int ProfileStatusID { get; set; }
         public String VerifCode { get; set; }
         public String VerifCodeComp { get; set; }
+        public String HobbiesOther { get; set; }
+        public String Additionasupportother { get; set; }
         public String verifiedRegistration { get; set; }
         public string profilestatusreason { get; set; }
         public DateTime DateCreated { get; set; }
@@ -429,6 +451,7 @@ namespace _18TWENTY8.Models
         public int VolunteerID { get; set; }
         public string QualificationDocname { get; set; }
         public string Qualificationurl { get; set; }
+        public int order { get; set; }
 
         public DateTime DateCreated { get; set; }
 
@@ -539,6 +562,7 @@ namespace _18TWENTY8.Models
         public string InteractionlevelDigComother { get; set; }
 
         public String EmergencyContactNameone { get; set; }
+        public String otherhobbies { get; set; }
         public String EmergencyContactNumberone { get; set; }
 
         public String EmergencyContactNametwo { get; set; }
@@ -557,7 +581,7 @@ namespace _18TWENTY8.Models
         public String VerifCodeComp { get; set; }
         public String verifiedRegistration { get; set; }
         public String Expectationsonlittlesister { get; set; }
-        public int ConfirmMenteedurationQ { get; set; }
+        public bool ConfirmMenteedurationQ { get; set; }
         public string profilestatusreason { get; set; }
         public DateTime DateCreated { get; set; }
         [NotMapped]

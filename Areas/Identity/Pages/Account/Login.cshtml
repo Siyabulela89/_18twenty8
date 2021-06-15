@@ -2,92 +2,91 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+	ViewData["Title"] = "Log in";
 }
-    <div role="main" class="main">
-        <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
-            <div class="container">
-                <div class="row">
+	<div role="main" class="main">
+		<section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+			<div class="container">
+				<div class="row">
 
-                    <div class="col-md-12 align-self-center p-static order-2 text-center">
-
-
-                    </div>
-
-                    <div class="col-md-12 align-self-center order-1">
+					<div class="col-md-12 align-self-center p-static order-2 text-center">
 
 
-                    </div>
-                </div>
-            </div>
-        </section>
+					</div>
 
-        <div class="container py-4">
-            <div class="col">
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Login to 18twenty8</strong></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
+					<div class="col-md-12 align-self-center order-1">
 
-                    <div class="featured-boxes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="featured-box featured-box-primary text-left mt-5">
-                                    <div class="box-content">
-                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Login to 18twenty8</h4>
-                                        <form id="frmSignIn" method="post" class="needs-validation">
-                                            <div class="form-row">
-                                                <div class="form-group col">
-                                                    <label class="font-weight-bold text-dark text-2">E-mail Address</label>
 
-                                                    <input asp-for="Input.Email" value="" class="form-control form-control-lg" required>
-                                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col">
+					</div>
+				</div>
+			</div>
+		</section>
 
-                                                    <label class="font-weight-bold text-dark text-2">Password</label>
-                                                    <input asp-for="Input.Password" value="" class="form-control form-control-lg" required>
-                                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-lg-6">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <label asp-for="Input.RememberMe">
-                                                            <input asp-for="Input.RememberMe" />
-                                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <button type="submit" class="btn btn-primary btn-with-arrow mb-2">Log in<span><i class="fas fa-chevron-right"></i></span></button>
-                                                </div>
-                                                <p>
-                                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                                                </p>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+		<div class="container py-4">
+			<div class="col">
+				<div class="row">
+					<div class="col text-center">
+						<h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Login to 18twenty8</strong></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
 
-                        </div>
+					<div class="featured-boxes">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="featured-box featured-box-primary text-left mt-5">
+									<div class="box-content">
+						   
+										<form id="frmSignIn" method="post" class="needs-validation">
+											<div class="form-row">
+												<div class="form-group col">
+													<label class="font-weight-bold text-dark text-2">E-mail Address</label>
 
-                    </div>
+													<input asp-for="Input.Email" value="" class="form-control form-control-lg" required>
+													<span asp-validation-for="Input.Email" class="text-danger"></span>
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col">
 
-                </div>
-            </div>
-        </div>
-    </div>
+													<label class="font-weight-bold text-dark text-2">Password</label>
+													<input asp-for="Input.Password" value="" class="form-control form-control-lg" required>
+													<span asp-validation-for="Input.Password" class="text-danger"></span>
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col-lg-6">
+													<div class="custom-control custom-checkbox">
+														<label asp-for="Input.RememberMe">
+															<input asp-for="Input.RememberMe" />
+															@Html.DisplayNameFor(m => m.Input.RememberMe)
+														</label>
+													</div>
+												</div>
+												<div class="form-group col-lg-6">
+													<button type="submit" class="btn btn-primary btn-with-arrow mb-2">Log in<span><i class="fas fa-chevron-right"></i></span></button>
+												</div>
+											   
+											  
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 
-        @section Scripts {
-            <partial name="_ValidationScriptsPartial" />
-        }
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+		@section Scripts {
+			<partial name="_ValidationScriptsPartial" />
+		}

@@ -200,7 +200,7 @@ p, a, span, li, strong, b {
 	letter-spacing: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header .header-nav-main nav > ul > li > a {
 		padding: 0 1.2rem !important;
 	}
@@ -285,7 +285,7 @@ p, a, span, li, strong, b {
 	color: #FFF !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-working-hours {
 		flex-wrap: wrap;
 		justify-content: center;

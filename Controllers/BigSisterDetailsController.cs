@@ -13,7 +13,7 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using Twilio.TwiML;
-
+using System.Drawing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 
@@ -31,6 +31,7 @@ using AutoMapper;
 using _18TWENTY8.Models.ViewModels.BigSister;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
+using Spire.Doc;
 
 namespace _18TWENTY8.Controllers
 {
@@ -89,7 +90,7 @@ namespace _18TWENTY8.Controllers
                 {
                     bigSisterDetail.verifiedRegistration = "Yes";
                     bigSisterDetail.ProfileStatusID = 4;
-                    bigSisterDetail.profilestatusreason = "Your profile is going through a review and vetting process with our administrators";
+                    bigSisterDetail.profilestatusreason = "We are reviewing your profile.";
 
 
                     try
@@ -279,6 +280,10 @@ namespace _18TWENTY8.Controllers
             ViewBag.UserID = userId;
             ViewBag.email = email;
             ViewBag.fullname = fullnames;
+            ViewBag.Errorid = "";
+            ViewBag.Errorqa = "";
+            ViewBag.Errorcv = "";
+            ViewBag.Errorpc = "";
 
 
             bool has = _context.BigSisterDetail.Any(x => x.UserID == userId);
@@ -309,6 +314,7 @@ namespace _18TWENTY8.Controllers
 
                 var bg = new BigSisterDetail()
                 {
+                    
                     Infosbig = listint,
                     Addsupbig = supdoc,
                     UserID=userId
@@ -328,9 +334,30 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Big Sister (Mentor)")]
         public async Task<IActionResult> Create(BigSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
+            long filelentghCID = CID.Length/1000000;
+            long filelentghpc = pc.Length / 1000000;
+            long filelentghCV = CV.Length / 1000000;
+
+            ViewBag.UserID = bgs.UserID;
+            ViewBag.email = bgs.email;
+            ViewBag.fullname = bgs.Name;
 
             // get first 6 digits as a valid date
-
+            var listint = _context.InformationInterest.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.InformationofInterestID.ToString()
+            }).ToList();
+            var supdoc = _context.AdditionalSupportBig.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.AdditionalSupportBigID.ToString()
+            }).ToList();
+            List<InteractionLevel> listtime = new List<InteractionLevel>();
+            listtime = _context.InteractionLevel.ToList();
+            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
             var id_date = bgs.IDPassport.Substring(4, 2);
             var id_month = bgs.IDPassport.Substring(2, 2);
@@ -381,27 +408,125 @@ namespace _18TWENTY8.Controllers
                 EmergencyContactNametwo = bgs.EmergencyContactNametwo,
                 EmergencyContactNumberone = bgs.EmergencyContactNumberone,
                 EmergencyContactNumbertwo = bgs.EmergencyContactNumbertwo,
+                HobbiesOther=bgs.HobbiesOther,
                    PostalCode = bgs.PostalCode,
-                   UserID = bgs.UserID
+                   UserID = bgs.UserID,
+                     Infosbig = listint,
+                Addsupbig = supdoc
+            
 
 
 
 
-        };
+            };
+
+            var extension = Path.GetExtension(pc.FileName).ToLower();
+            if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
+            {
+                ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
+                return View(Bigsister);
+            }
+                if (filelentghpc > 10)
+
+            {
+
+                ViewBag.Errorpc = "uploaded file is above the required size of 10mb";
+                return View(Bigsister);
+
+            }
+            else
+
+            {
+
+            }
+            if (filelentghCV > 10)
+
+            {
+
+                ViewBag.Errorcv = "uploaded file is above the required size of 10mb";
+                return View(Bigsister);
+
+            }
+            else
+
+            {
+
+            }
+
+            foreach (var formFile in QA)
+            {
+                if (formFile.Length > 0)
+                {
+                    var extensionf = Path.GetExtension(formFile.FileName).ToLower();
+                    if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf==".docx" || extensionf==".doc")
+                    {
 
 
-            unq2 = "CV"  + Guid.NewGuid() + CV.FileName;
-            string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofile))
+                    }
+                    else if((formFile.Length/1000000)>5)
+
+                    {
+                        ViewBag.Errorqa = "One or more uploaded files are above the required size of 5mb";
+                        return View(Bigsister);
+
+                    }
+                    else
+
+                    {
+                        ViewBag.Errorqa = "File format for qualifications is incorrect, we only accept qualifications in (pdf, word, png, jpg, jpeg) format";
+                        return View(Bigsister);
+
+                    }
+                }
+
+            }
+                    var extensionx = Path.GetExtension(CV.FileName).ToLower();
+            if (extensionx == ".png" || extensionx == ".jpg" || extensionx == ".gif" || extensionx == ".jpeg" || extensionx==".pdf")
+            {
+
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofile))
 
             {
                 CV.CopyTo(fs);
                 fs.Flush();
             }
-            Bigsister.CVUrl = unq2;
+                Bigsister.CVUrl = unq2;
+            }
+            else if (extension==".doc" || extension==".docx")
+            {
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "CV" + Guid.NewGuid() + ".pdf";
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + newname;
 
 
-            unq2 = "CID" + Guid.NewGuid() + CID.FileName;
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofile, FileFormat.PDF);
+                Bigsister.CVUrl = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorcv = "File format for the CV is incorrect, we only accept CVs in (pdf, word, png, jpg, jpeg) format";
+                return View(Bigsister);
+
+            }
+
+
+            var extensionid = Path.GetExtension(CID.FileName).ToLower();
+            if (extensionid == ".png" || extensionid == ".jpg" || extensionid == ".gif" || extensionid == ".jpeg" || extensionid == ".pdf")
+            {
+                unq2 = "CID" + Guid.NewGuid() + CID.FileName;
             string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
             using (FileStream fs = System.IO.File.Create(pathtofiled))
 
@@ -409,8 +534,37 @@ namespace _18TWENTY8.Controllers
                 CID.CopyTo(fs);
                 fs.Flush();
             }
+                Bigsister.CertifiedID = unq2;
+            }
+            else if (extensionid == ".doc" || extensionid == ".docx")
+            {
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "ID" + Guid.NewGuid() + ".pdf";
+                string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + newname;
 
-            Bigsister.CertifiedID = unq2;
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiled, FileFormat.PDF);
+                Bigsister.CertifiedID = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorid = "File format for the Certified ID is incorrect, we only accept Certified IDs in (pdf, word, png, jpg, jpeg) format";
+                return View(Bigsister);
+
+            }
+
+
 
             unq2 = "pc"+Guid.NewGuid() +pc.FileName;
             string pathtofileds = path_Root1 + "\\Uploads\\ProimagesBigsis\\" + unq2;
@@ -454,6 +608,7 @@ namespace _18TWENTY8.Controllers
 
 
                     });
+                    await _context.SaveChangesAsync();
 
                 }
 
@@ -475,24 +630,58 @@ namespace _18TWENTY8.Controllers
                 {
                     if (formFile.Length > 0)
                     {
-                        unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
-                        string pathtofiles = path_Root1 + "\\Uploads\\Qualifications\\" + unq1;
-                        using (FileStream fs = System.IO.File.Create(pathtofiles))
-
+                        var extensionf = Path.GetExtension(formFile.FileName).ToLower();
+                        if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf == ".docx" || extensionf == ".doc")
                         {
-                            formFile.CopyTo(fs);
-                            fs.Flush();
+                            unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
+                            string pathtofiles = path_Root1 + "\\Uploads\\Qualifications\\" + unq1;
+                            using (FileStream fs = System.IO.File.Create(pathtofiles))
+
+                            {
+                                formFile.CopyTo(fs);
+                                fs.Flush();
+                            }
+                            _context.BigSisterAcademic.Add(new BigSisterAcademic()
+                            {
+                                BigSisterUserID = Bigsister.BigSisterDetailID,
+                                DateCreated = DateTime.Now,
+                                QualificationDocname = formFile.FileName,
+                                Qualificationurl = unq1
+
+
+                            }); ;
+                            await _context.SaveChangesAsync();
                         }
-                        _context.BigSisterAcademic.Add(new BigSisterAcademic()
+                        else
+
                         {
-                            BigSisterUserID = Bigsister.BigSisterDetailID,
-                            DateCreated = DateTime.Now,
-                            QualificationDocname = formFile.FileName,
-                            Qualificationurl = unq1
+                            unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
+                            string conv = path_Root1 + "\\Uploads\\Conv\\" + unq1;
+                            string newname = "Qual" + Guid.NewGuid() + ".pdf";
+                            string pathtofiled = path_Root1 + "\\Uploads\\Qualifications\\" + newname;
 
 
-                        }); ;
-                        await _context.SaveChangesAsync();
+                            using (FileStream fs = System.IO.File.Create(conv))
+
+                            {
+                                formFile.CopyTo(fs);
+                                fs.Flush();
+                            }
+                            Document doc = new Document();
+                            doc.LoadFromFile(conv);
+                            doc.SaveToFile(pathtofiled, FileFormat.PDF);
+                            _context.BigSisterAcademic.Add(new BigSisterAcademic()
+                            {
+                                BigSisterUserID = Bigsister.BigSisterDetailID,
+                                DateCreated = DateTime.Now,
+                                QualificationDocname = formFile.FileName,
+                                Qualificationurl = newname
+
+
+                            }); ;
+                            await _context.SaveChangesAsync();
+
+                        }
                       
                     }
                    
@@ -511,6 +700,29 @@ namespace _18TWENTY8.Controllers
         // GET: BigSisterDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var listint = _context.InformationInterest.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.InformationofInterestID.ToString()
+            }).ToList();
+            var supdoc = _context.AdditionalSupportBig.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.AdditionalSupportBigID.ToString()
+            }).ToList();
+            List<InteractionLevel> listtime = new List<InteractionLevel>();
+            listtime = _context.InteractionLevel.ToList();
+
+            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
+
+            var bg = new BigSisterDetail()
+            {
+                Infosbig = listint,
+                Addsupbig = supdoc,
+             
+            };
             if (id == null)
             {
                 return NotFound();

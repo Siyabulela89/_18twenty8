@@ -304,7 +304,7 @@ html.dark {
 	z-index: 3 !important;
 }
 
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	.z-index-mobile-0 {
 		z-index: 0 !important;
 	}
@@ -376,7 +376,7 @@ html.dark {
 }
 
 /* Width */
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	.w-auto-mobile {
 		width: auto !important;
 	}
@@ -448,7 +448,7 @@ html.dark {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.col-lg-1-5 {
 		@include flexbox(0, 0, 20%);
 	}

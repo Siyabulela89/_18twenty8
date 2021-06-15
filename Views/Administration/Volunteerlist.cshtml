@@ -1,0 +1,511 @@
+﻿@model IEnumerable<object>
+
+@{
+    List<_18TWENTY8.Models.Volunteerdetail> VD = Model.ToList()[0] as List<_18TWENTY8.Models.Volunteerdetail>;
+    List<_18TWENTY8.Models.VolunteerAcademic> VA = Model.ToList()[1] as List<_18TWENTY8.Models.VolunteerAcademic>;
+    List<_18TWENTY8.Models.CommitteesStorage> CS = Model.ToList()[2] as List<_18TWENTY8.Models.CommitteesStorage>;
+    List<_18TWENTY8.Models.ProgrammesStorage> PS = Model.ToList()[3] as List<_18TWENTY8.Models.ProgrammesStorage>;
+    List<_18TWENTY8.Models.Daysofweekstorage> DAW = Model.ToList()[4] as List<_18TWENTY8.Models.Daysofweekstorage>;
+    List<_18TWENTY8.Models.Committees> CC = Model.ToList()[5] as List<_18TWENTY8.Models.Committees>;
+    List<_18TWENTY8.Models.Daysofweek> DD = Model.ToList()[6] as List<_18TWENTY8.Models.Daysofweek>;
+    List<_18TWENTY8.Models.Programmes> PP = Model.ToList()[7] as List<_18TWENTY8.Models.Programmes>;
+    List<_18TWENTY8.Models.Province> P = Model.ToList()[8] as List<_18TWENTY8.Models.Province>;
+    List<_18TWENTY8.Models.Time> TT = Model.ToList()[9] as List<_18TWENTY8.Models.Time>;
+    List<_18TWENTY8.Models.OptionalBool> OB = Model.ToList()[10] as List<_18TWENTY8.Models.OptionalBool>;
+
+
+
+
+
+}
+
+
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-4">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 style="color:#a62237" class="font-weight-normal mb-5"><strong class="font-weight-extra-bold">Volunteer or Work</strong><strong class="font-weight-extra-bold"></strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container py-2">
+    @foreach (var item in VD)
+    {
+        <div class="row">
+            <div class="modal fade" id="largeModal_@item.VolunteerID" tabindex="5" role="dialog" aria-labelledby="largeModalLabel_@item.VolunteerID" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Volunteer Profile</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row container">
+                                <div class="col-md-2" style="margin-top:20px;">
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <div class="profile-image-outer-container">
+                                            <div class="profile-image-inner-container bg-color-primary">
+                                                <img src="~/Uploads/VoluImg/@item.imgurl">
+
+                                            </div>
+
+                                        </div>
+                                        @*<div class="profile-image-inner-container bg-color-primary">
+                    <label style="cursor: pointer;">
+                        <span for="file" class="profile-image-button bg-color-dark">
+                            <i class="fas fa-camera text-light"></i>
+                        </span>
+                    </label>
+                    <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+
+                </div>
+                <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <form asp-action="Detail" role="form" class="needs-validation" enctype="multipart/form-data">
+
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+
+                                                <div class="col-lg-12 litte-sister-profile-wrapper">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="overflow-hidden mb-1">
+                                                                <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">@item.Fullnames</strong>'s Teamworthiness</h2>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="accordion" id="accordion">
+                                                        <div class="card card-default">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title m-0">
+                                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1One">
+                                                                        Personal Information
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapse1One" class="collapse">
+                                                                <div class="card-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Fullnames</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of birth</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.DOB.ToString("yyyy MMM dd")</p>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-default">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title m-0">
+                                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Two">
+                                                                        Contact Information
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapse1Two" class="collapse">
+                                                                <div class="card-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email address</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.email</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell number</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.cellnumber</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Address</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Postaladdressline1</p> <br />
+                                                                            <p>@item.Postaladdressline2</p><br />
+                                                                            <br />
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Postalcode</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@P.Where(x => x.ProvinceID == item.Province).SingleOrDefault().Provincename</p>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="card card-default">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title m-0">
+                                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Three">
+                                                                        Application questions
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapse1Three" class="collapse">
+                                                                <div class="card-body">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Occupation</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Occupation</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Employer</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Employer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Hours the candidate is willing to put for programmes ever week</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Hoursweekforprogramme (hours)</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">previouse experience in other programmes</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.previousexperienceinotherorgasvolunteer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What the candidate is willing to offer in the programme</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.describewhyyouofferedtovolunteer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Hobbies the candidate is interested in</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.describehobbies</p>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Programmes the candidate is interested in</label>
+                                                                        <div class="col-lg-12">
+                                                                            <ul class="list list-icons">
+                                                                                @foreach (var items in PS.Where(x => x.VolunteerID == item.VolunteerID))
+                                                                                {
+
+                                                                                    <li><i class="fas fa-check"></i>@PP.Where(x => x.ProgrammeID == items.ProgrammeID).SingleOrDefault().Description</li>
+
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Other programmes the candidate is interested in</label>
+                                                                        <div class="col-lg-12">
+                                                                            <p>@item.Otherintprogrammes</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Days in a week the candidate is available to volunteer</label>
+                                                                        <div class="col-lg-12">
+                                                                            <ul class="list list-icons">
+                                                                                @foreach (var items in DAW.Where(x => x.VolunteerID == item.VolunteerID))
+                                                                                {
+
+                                                                                    <li><i class="fas fa-check"></i>@DD.Where(x => x.DayID == items.DayID).SingleOrDefault().Description</li>
+
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                        <div class="card card-default">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title m-0">
+                                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1Four">
+                                                                        Documents
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapse1Four" class="collapse">
+                                                                <div class="card-body">
+                                                                    <table class="table table-sm table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">#</th>
+                                                                                <th scope="col">Document Name</th>
+                                                                                <th scope="col">Created</th>
+                                                                                <th scope="col">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tbl-sister-documents">
+                                                                            <tr>
+                                                                                <th scope="col">#</th>
+                                                                                <th scope="col">Certified ID</th>
+                                                                                <th scope="col">@item.DateCreated</th>
+                                                                                <th scope="col"><a data-toggle="modal" data-target="#ModelCertID_@item.VolunteerID" href="#">View</a></th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="col">#</th>
+                                                                                <th scope="col">CV</th>
+                                                                                <th scope="col">@item.DateCreated</th>
+                                                                                <th scope="col"><a data-toggle="modal" data-target="#ModalCv_@item.VolunteerID" href="#">View</a></th>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <th scope="col">#</th>
+                                                                                <th scope="col">Qualifications</th>
+                                                                                <th scope="col">@item.DateCreated</th>
+                                                                                <th scope="col"><a data-toggle="modal" data-target="#AcademicTranscript_@item.VolunteerID" href="#">View</a></th>
+                                                                            </tr>
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+        <div class="container py-2">
+
+
+
+            <div class="row">
+                <div class="modal fade" id="ModalCv_@item.VolunteerID" style="z-index:1100;" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="largeModalLabel">CV</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="~/Uploads/CV/@item.CVurl" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="modal fade" id="ModelCertID_@item.VolunteerID" style="z-index:1100;" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="largeModalLabel">Certified ID</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="~/Uploads/CertifiedID/@item.IDurl" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="modal fade" id="AcademicTranscript_@item.VolunteerID" style="z-index:1100;" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="largeModalLabel">Academic Transcript</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        @foreach(var itemd in VA.Where(x=> x.VolunteerID==item.VolunteerID))
+                                        {
+                                            <iframe class="embed-responsive-item" src="~/Uploads/Qualifications/@itemd.Qualificationurl" allowfullscreen></iframe>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      
+    }
+</div>
+
+
+<div class="row">
+    <div class="col-lg-2">
+        <aside class="sidebar">
+
+            <h5 class="font-weight-semi-bold pt-4">Administration</h5>
+            <ul class="nav nav-list flex-column mb-5">
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryApplicant">View FAP applicants</a></li>
+          
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryCapture">Capture FAP opportunities </a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="DetailsBurs">All FAP opportunities  </a></li>
+
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="Volunteerlist">Teamworthy</a></li>
+
+
+
+            </ul>
+        </aside>
+    </div>
+    <div class="col-lg-10">
+
+
+        <div role="main" class="main shop py-4">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+
+                        <div class="featured-boxes">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="featured-box featured-box-primary text-left mt-2">
+                                        <div class="box-content">
+                                            <form method="post" action="">
+                                                <table class="shop_table cart">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th class="product-name">
+                                                                Full Names
+                                                            </th>
+                                                            <th class="product-name">
+                                                                Date registered
+                                                            </th>
+                                                            <th class="product-name">
+                                                                View profile
+                                                            </th>
+
+
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        @foreach (var item in VD)
+                                                        {
+                                                            <tr class="cart_table_item">
+
+                                                                <td class="product-name">
+                                                                    @item.Fullnames
+                                                                </td>
+                                                                <td class="product-name">
+                                                                    @item.DateCreated.ToString("yyyy MMM dd")
+                                                                </td>
+                                                                <td class="product-name">
+                                                                    <a href="#" data-toggle="modal" data-target="#largeModal_@item.VolunteerID" class="btn btn-primary btn-with-arrow mb-2">View Profile<span><i class="fas fa-chevron-right"></i></span></a>
+                                                                </td>
+
+
+                                                            </tr>
+                                                        }
+
+
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

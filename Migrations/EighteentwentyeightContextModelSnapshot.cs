@@ -141,6 +141,8 @@ namespace _18TWENTY8.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Additionasupportother");
+
                     b.Property<string>("AddressStreet");
 
                     b.Property<string>("AddressStreetlinetwo");
@@ -153,7 +155,7 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("CertifiedID");
 
-                    b.Property<int>("ConfirmMentordurationQ");
+                    b.Property<bool>("ConfirmMentordurationQ");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -174,6 +176,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<int>("EverbeenamentorQ");
 
                     b.Property<string>("Expectationsonlittlesister");
+
+                    b.Property<string>("HobbiesOther");
 
                     b.Property<string>("IDPassport");
 
@@ -388,6 +392,37 @@ namespace _18TWENTY8.Migrations
                     b.ToTable("Daysofweekstorage");
                 });
 
+            modelBuilder.Entity("_18TWENTY8.Models.EMessage", b =>
+                {
+                    b.Property<int>("mesid")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contact");
+
+                    b.Property<string>("From");
+
+                    b.Property<string>("Fromemail");
+
+                    b.Property<bool>("IsHtml");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Subject");
+
+                    b.Property<string>("content");
+
+                    b.Property<string>("np");
+
+                    b.Property<string>("nt");
+
+                    b.Property<string>("to");
+
+                    b.HasKey("mesid");
+
+                    b.ToTable("EMessage");
+                });
+
             modelBuilder.Entity("_18TWENTY8.Models.FinancialSupport", b =>
                 {
                     b.Property<int>("FinancialSupportID")
@@ -461,9 +496,13 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("Modalpopupid");
 
+                    b.Property<string>("Shortstory");
+
                     b.Property<string>("Videourl");
 
                     b.Property<string>("imageurl");
+
+                    b.Property<int>("order");
 
                     b.Property<string>("pdfstoryurl");
 
@@ -575,7 +614,7 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("CertifiedID");
 
-                    b.Property<int>("ConfirmMenteedurationQ");
+                    b.Property<bool>("ConfirmMenteedurationQ");
 
                     b.Property<string>("CurrentStudyQ");
 
@@ -636,6 +675,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<string>("email");
 
                     b.Property<string>("howdidyouhearaboutQ");
+
+                    b.Property<string>("otherhobbies");
 
                     b.Property<string>("prefferedMenteedetails");
 
@@ -796,6 +837,8 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("logourl");
 
+                    b.Property<int>("order");
+
                     b.Property<string>("popupmodalid");
 
                     b.Property<string>("recogurl");
@@ -855,6 +898,8 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<int>("VolunteerID");
 
+                    b.Property<int>("order");
+
                     b.HasKey("VolunteerAcademicID");
 
                     b.ToTable("VolunteerAcademic");
@@ -869,6 +914,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<string>("CVurl");
 
                     b.Property<DateTime>("DOB");
+
+                    b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Employer");
 
@@ -904,6 +951,8 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("home_businesscontact");
 
+                    b.Property<string>("imgurl");
+
                     b.Property<int>("indemnity");
 
                     b.Property<string>("previousexperienceinotherorgasvolunteer");
@@ -928,6 +977,8 @@ namespace _18TWENTY8.Migrations
                     b.Property<int>("WorkshopFileTypeID");
 
                     b.Property<string>("WorkshopTitle");
+
+                    b.Property<int>("fileorder");
 
                     b.Property<string>("fileurl");
 

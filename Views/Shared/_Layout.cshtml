@@ -12,10 +12,10 @@
 
     <meta name="keywords" content="18twenty8" />
     <meta name="description" content="18twenty8">
-    <meta name="author" content="okler.net">
+    <meta name="author" content="Moseboadiragroup">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
     <!-- Mobile Metas -->
@@ -108,9 +108,14 @@
                     <div class="header-row">
                         <div class="header-column">
                             <div class="header-row">
-                                <div class="header-logo">
+                                <div class="logophone">
                                     <a asp-controller="Home" asp-action="Index">
                                         <img style="padding-left:5px;padding-top:15px" alt="18twenty8" width="220" height="100" src="~/img/18twenty8logo.png">
+                                    </a>
+                                </div>
+                                <div class="header-logo logophones">
+                                    <a asp-controller="Home" asp-action="Index">
+                                        <img style="padding-left:2px;padding-top:5px" alt="18twenty8" width="110" height="50" src="~/img/18twenty8logo.png">
                                     </a>
                                 </div>
                             </div>
@@ -118,34 +123,37 @@
                         <div class="header-column justify-content-end">
                             <div class="header-row">
                                 <div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-main-dark-text order-2 order-lg-1">
-                                    <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-3 header-nav-main-sub-effect-1">
+                                    <div class="header-nav-main header-nav-main-mobile header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-6 header-nav-main-sub-effect-1">
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class=""> <a href="@Url.Action("Index", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexHome" ? "class=active" : "" )>Home</a></li>
                                                 <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                    <a href="#" class="dropdown-item dropdown-toggle">
                                                         Programmes
                                                     </a>
-                                                    <ul style="background-color:white" class="dropdown-menu">
+                                                    <ul style="background-color:white" class="dropdown-menu" href="#">
 
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexWorkshops" ? "class=active" : "" )>Workshops</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("LeadershipCamp", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "LeadershipCampWorkshops" ? "class=active" : "" )>Leadership Camp</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("FinancialAssistance", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Financial Assistance</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Bigsisternetwork", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Big Sister Network</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Bam", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "BamWorkshops" ? "class=active" : "" )>BAM Forum</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexWorkshops" ? "class=active" : "" )>Workshops</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("LeadershipCamp", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "LeadershipCampWorkshops" ? "class=active" : "" )>Leadership Camp</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("FinancialAssistance", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Financial Assistance</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Bigsisternetwork", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "FinancialAssistanceWorkshops" ? "class=active" : "" )>Big Sister Network</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Bam", "Workshops",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "BamWorkshops" ? "class=active" : "" )>BAM Forum</a></li>
                                                     </ul>
 
                                                 </li>
                                                 <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                    <a class="dropdown-item dropdown-toggle" href="##">
                                                         About Us
                                                     </a>
                                                     <ul style="background-color:white" class="dropdown-menu">
 
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Directors", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Directors</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "Graduates",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexGraduates" ? "class=active" : "" )>Graduates</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("Index", "RecognitionLetters",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexRecognition" ? "class=active" : "" )>Recognition Letters</a></li>
-                                                        <li style="text-decoration:none;background-color:white" class=""> <a href="@Url.Action("StatusofWomen", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Status of Women</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Directors", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Directors</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "Graduates",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexGraduates" ? "class=active" : "" )>Graduates</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "RecognitionLetters",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexRecognition" ? "class=active" : "" )>Recognition Letters</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("StatusofWomen", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "DirectorsHome" ? "class=active" : "" )>Status of Women</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Index", "PressPublicities",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexPressPublicities" ? "class=active" : "")>Press and Publicity</a></li>
+                                                        <li style="text-decoration:none;background-color:white"> <a class="dropdown-item" href="@Url.Action("Contact", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "ContactHome" ? "class=active" : "")>Contact Us</a></li>
+
 
                                                     </ul>
 
@@ -156,34 +164,46 @@
 
 
                                                 <li class=""> <a href="@Url.Action("BBBEE", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "indexsPressPublicities" ? "class=active" : "")>BBBEE</a></li>
-                                                <li class=""> <a href="@Url.Action("Index", "PressPublicities",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "IndexPressPublicities" ? "class=active" : "")>Press and Publicity</a></li>
-                                                <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "VolunteerHome" ? "class=active" : "" )>Volunteer or work with us</a></li>
-                                                <li class=""> <a href="@Url.Action("Contact", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "ContactHome" ? "class=active" : "")>Contact Us</a></li>
-                                                <li class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                                <li class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                                 <li class=""> <a href="@Url.Action("VolunteerWork", "Home",null)" @(ViewContext.RouteData.Values["Action"].ToString() + ViewContext.RouteData.Values["Controller"].ToString() == "VolunteerHome" ? "class=active" : "" )>Volunteer or work with us</a></li>
+
+                                                @*<li class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>*@
                                             </ul>
                                         </nav>
+
+
                                     </div>
+                                    <ul class="logophone align-items-center" style="margin-top:15px;  white-space: nowrap; display:inline-block" class="">
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                        <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
                                     <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
                                         <i class="fas fa-bars"></i>
                                     </button>
+                                    <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2 imageipad">
+                                        <img style="height:100px; width:160px" src="~/img/Anniversary/102.png" />
+
+                                    </div>
                                 </div>
                                 <div class="header-nav-features header-nav-features-light header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
 
-                                    <div class="header-nav-feature header-nav-features-cart d-inline-flex ml-2">
-                                        <img style="height:90px; width:150px" src="~/img/Anniversary/102.png" />
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <ul class="logophones col-6" style="margin-top:-30px; z-index:999999; margin-left:-20px;  white-space: nowrap; display:inline-block">
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-facebook"><a href="http://www.facebook.com/18twenty8" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-twitter"><a href="http://www.twitter.com/18twenty8" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li style=" float:left; list-style-type:none;padding:8px; " class="social-icons-youtube"><a href="http://www.youtube.com/18twenty8" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                </ul>
             </div>
-
+          
         </header>
-
+      
         <section>
             @RenderBody()
         </section>
@@ -200,12 +220,12 @@
                             Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise) | PBO Reg No.: 930 036 859<br />
                             96 on Fourth Street, Parkmore, Sandton, 2196, South Africa<br />
                             Tel: +27 11 064 4810 | Cell: +27 60 798 7683<br />
-                            18twenty8® is a Registered Trademark.
+                            18twenty8® is a Registered Trademark
                         </p>
-                        <p style="color:black; padding-left:200px;padding-right:200px" class="text-4 footertextpp">
-                            Girls Education and Mentoring Initiative NPC T/A <strong>18twenty8®</strong><br />
+                        <p style="color:black;" class="text-3 footertextpp">
+                            <strong>18twenty8®</strong><br />
                             Reg. No.: 2011/002737/08 | NPO Reg No.: 088-821 | Level 1 BBBEE Contributor (Exempted Micro Enterprise)<br /> Cell: +27 60 798 7683
-                            18twenty8® is a Registered Trademark.
+                            18twenty8® is a Registered Trademark
                         </p>
 
                         <div class="text-center ">
@@ -213,7 +233,7 @@
                             </ul>
                         </div>
                     </div>
-                  
+
 
                 </div>
 
@@ -260,6 +280,7 @@
     <script src="~/js/datatables.js"></script>
     <script src="~/js/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="~/vendor/jquery.countdown/jquery.countdown.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -288,73 +309,71 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ9HGo6EexEKnW_UHgjoLN5AtL-7EaAw"></script>
 
     <!-- Application Scripts -->
-
-
     @*<script>
 
-        /*
-        Map Settings
+            /*
+            Map Settings
 
-            Find the Latitude and Longitude of your address:
-                - https://www.latlong.net/
-                - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+                Find the Latitude and Longitude of your address:
+                    - https://www.latlong.net/
+                    - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
-        */
+            */
 
-        // Map Markers
-        var mapMarkers = [{
-            address: "18twenty8 , Sandton",
-            html: "<strong>Sandton Office</strong><br> 18twenty8",
-            icon: {
-                image: "/img/pin-light.png",
-                iconsize: [26, 46],
-                iconanchor: [12, 46]
-            },
-            popup: true
-        }];
+            // Map Markers
+            var mapMarkers = [{
+                address: "18twenty8 , Sandton",
+                html: "<strong>Sandton Office</strong><br> 18twenty8",
+                icon: {
+                    image: "/img/pin-light.png",
+                    iconsize: [26, 46],
+                    iconanchor: [12, 46]
+                },
+                popup: true
+            }];
 
-        // Map Initial Location
-        var initLatitude = -26.1008;
-        var initLongitude = 28.0389;
+            // Map Initial Location
+            var initLatitude = -26.1008;
+            var initLongitude = 28.0389;
 
-        // Map Extended Settings
-        var mapSettings = {
-            controls: {
-                draggable: (($.browser.mobile) ? false : true),
-                panControl: true,
-                zoomControl: true,
-                mapTypeControl: true,
-                scaleControl: true,
-                streetViewControl: true,
-                overviewMapControl: true
-            },
-            scrollwheel: false,
-            markers: mapMarkers,
-            latitude: initLatitude,
-            longitude: initLongitude,
-            zoom: 12
-        };
+            // Map Extended Settings
+            var mapSettings = {
+                controls: {
+                    draggable: (($.browser.mobile) ? false : true),
+                    panControl: true,
+                    zoomControl: true,
+                    mapTypeControl: true,
+                    scaleControl: true,
+                    streetViewControl: true,
+                    overviewMapControl: true
+                },
+                scrollwheel: false,
+                markers: mapMarkers,
+                latitude: initLatitude,
+                longitude: initLongitude,
+                zoom: 12
+            };
 
-        var map = $('#googlemaps').gMap(mapSettings),
-            mapRef = $('#googlemaps').data('gMap.reference');
+            var map = $('#googlemaps').gMap(mapSettings),
+                mapRef = $('#googlemaps').data('gMap.reference');
 
-        // Map text-center At
-        var mapCenterAt = function (options, e) {
-            e.preventDefault();
-            $('#googlemaps').gMap("centerAt", options);
-        }
+            // Map text-center At
+            var mapCenterAt = function (options, e) {
+                e.preventDefault();
+                $('#googlemaps').gMap("centerAt", options);
+            }
 
-        // Styles from https://snazzymaps.com/
-        var styles = [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }];
+            // Styles from https://snazzymaps.com/
+            var styles = [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 20 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 21 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 16 }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }, { "lightness": 17 }] }];
 
-        var styledMap = new google.maps.StyledMapType(styles, {
-            name: 'Styled Map'
-        });
+            var styledMap = new google.maps.StyledMapType(styles, {
+                name: 'Styled Map'
+            });
 
-        mapRef.mapTypes.set('map_style', styledMap);
-        mapRef.setMapTypeId('map_style');
+            mapRef.mapTypes.set('map_style', styledMap);
+            mapRef.setMapTypeId('map_style');
 
-    </script>*@
+        </script>*@
     <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

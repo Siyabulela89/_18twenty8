@@ -100,7 +100,7 @@
 }
 
 /* Thumb Info Custom Blog */
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.thumb-info-blog-custom img {
 		max-width: 120px;
 		margin-bottom: 10px !important;
@@ -212,7 +212,7 @@
 	z-index: 3;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.special-menu p {
 		padding-bottom: 35px;
 	}

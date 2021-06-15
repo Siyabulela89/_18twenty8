@@ -513,7 +513,7 @@ html.photography-demo-2 {
 		height: calc( 100vh - 174px );
 	}
 
-	@media (min-width: 992px) {
+	@media (min-width: 1214px) {
 		#header {
 			&.transparent-header {
 				.header-nav-main {
@@ -713,7 +713,7 @@ html.photography-demo-2 {
 		}
 	}
 
-	@media (max-width: 991px) {
+	@media (max-width: 1213px) {
 		#header {
 			.header-nav-main {
 				padding: 0 30px;

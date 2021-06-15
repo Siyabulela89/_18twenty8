@@ -16,7 +16,7 @@
 }
 
 // Logo
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header.header-narrow {
 		.header-nav.header-nav-stripe {
 			position: relative;
@@ -84,7 +84,7 @@
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.logo-default {
 		display: none !important;
 	}
@@ -122,7 +122,7 @@ html.sticky-header-active {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html {
 		#header.header-semi-transparent-light .header-body {
 			transition: transform 0.3s ease;
@@ -527,7 +527,7 @@ html.sticky-header-active {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.section-custom-construction-2 {
 		overflow: hidden;
 		position: relative;
@@ -552,7 +552,7 @@ html.sticky-header-active {
 }
 
 // Section Background
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	section.section.section-background {
 		background-size: auto 100%;
 		background-repeat: no-repeat;
@@ -661,7 +661,7 @@ html.sticky-header-active {
 
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#footer {
 		margin-top: 0;
 

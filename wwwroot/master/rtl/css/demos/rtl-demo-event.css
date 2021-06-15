@@ -174,7 +174,7 @@ i.custom-long-arrow-right:after {
 /*
 * Rev Slider
 */
-@media (min-width: 991px) {
+@media (min-width: 1510px) {
 	.slider-container {
 		height: 100vh !important;
 	}
@@ -355,7 +355,7 @@ i.custom-long-arrow-right:after {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.is-table-row {
 		display: table;
 	}
@@ -367,7 +367,7 @@ i.custom-long-arrow-right:after {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.is-table-row {
 		display: block;
 	}
@@ -793,7 +793,7 @@ i.custom-long-arrow-right:after {
 	color: #93949a !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#footer {
 		text-align: center;
 	}

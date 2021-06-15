@@ -394,7 +394,7 @@ html.ie .forcefullwidth_wrapper_tp_banner {
 }
 
 /* Responsive */
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 
 	.slider-contact-form {
 	    margin: 0;
@@ -441,7 +441,7 @@ html.boxed {
 }
 
 /* Side Header - Full Screen Slider Height On Mobile */
-@media(max-width: 991px) {
+@media(max-width: 1213px) {
 	html.side-header {
 		.slider-container.fullscreen-slider,
 		.slider-container.fullscreen-slider + .tp-fullwidth-forcer {

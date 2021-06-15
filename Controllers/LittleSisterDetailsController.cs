@@ -24,6 +24,8 @@ using _18TWENTY8.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
+using Spire.Doc;
+
 
 namespace _18TWENTY8.Controllers
 {
@@ -83,6 +85,10 @@ namespace _18TWENTY8.Controllers
             ViewBag.UserID = userId;
             ViewBag.email = email;
             ViewBag.fullname = fullnames;
+            ViewBag.Errorid = "";
+            ViewBag.Errorqa = "";
+            ViewBag.Errorcv = "";
+            ViewBag.Errorpc = "";
 
 
             bool has = _context.LittleSisterDetail.Any(x => x.UserID == userId);
@@ -132,9 +138,33 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Create(LittleSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
+
+            long filelentghCID = CID.Length / 1000000;
+            long filelentghpc = pc.Length / 1000000;
+            long filelentghCV = CV.Length / 1000000;
+            ViewBag.UserID = bgs.UserID;
+            ViewBag.email = bgs.email;
+            ViewBag.fullname = bgs.Name;
+
             var id_date = bgs.IDPassport.Substring(4, 2);
             var id_month = bgs.IDPassport.Substring(2, 2);
             var id_year = bgs.IDPassport.Substring(0, 2);
+            var listint = _context.InformationInterest.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.InformationofInterestID.ToString()
+            }).ToList();
+            var supdoc = _context.AdditionalSupportBig.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.AdditionalSupportBigID.ToString()
+            }).ToList();
+            List<InteractionLevel> listtime = new List<InteractionLevel>();
+            listtime = _context.InteractionLevel.ToList();
+
+            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
             var fullDate = id_year + id_month + id_date;
             CultureInfo provider = CultureInfo.InvariantCulture;
@@ -180,36 +210,163 @@ namespace _18TWENTY8.Controllers
                 EmergencyContactNametwo = bgs.EmergencyContactNametwo,
                 EmergencyContactNumberone = bgs.EmergencyContactNumberone,
                 EmergencyContactNumbertwo = bgs.EmergencyContactNumbertwo,
+                otherhobbies=bgs.otherhobbies,
                 PostalCode = bgs.PostalCode,
-                UserID = bgs.UserID
-
+                UserID = bgs.UserID,
+            
+                Infosbig = listint
+              
 
 
 
             };
 
 
-            unq2 = "CV" + Guid.NewGuid() + CV.FileName;
-            string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofile))
+            var extension = Path.GetExtension(CV.FileName).ToLower();
+            if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
+            {
+                ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
+                return View(LittleSister);
+            }
+            if (filelentghCID > 10)
 
             {
-                CV.CopyTo(fs);
-                fs.Flush();
+
+                ViewBag.Errorid = "uploaded file is above the required size of 10mb";
+                return View(LittleSister);
+
             }
-            LittleSister.CVurl = unq2;
-
-
-            unq2 = "CID" + Guid.NewGuid() + CID.FileName;
-            string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiled))
+            else
 
             {
-                CID.CopyTo(fs);
-                fs.Flush();
+
+            }
+            if (filelentghCV > 10)
+
+            {
+
+                ViewBag.Errorcv = "uploaded file is above the required size of 10mb";
+                return View(LittleSister);
+
+            }
+            else
+
+            {
+
             }
 
-            LittleSister.CertifiedID = unq2;
+            foreach (var formFile in QA)
+            {
+                if (formFile.Length > 0)
+                {
+                    var extensionf = Path.GetExtension(formFile.FileName).ToLower();
+                    if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf == ".docx" || extensionf == ".doc")
+                    {
+
+
+                    }
+                    else if ((formFile.Length / 1000000) > 5)
+
+                    {
+                        ViewBag.Errorqa = "One or more uploaded files are above the required size of 5mb";
+                        return View(LittleSister);
+
+                    }
+                    else
+
+                    {
+                        ViewBag.Errorqa = "File format for qualifications is incorrect, we only accept qualifications in (pdf, word, png, jpg, jpeg) format";
+                        return View(LittleSister);
+
+                    }
+                }
+
+            }
+            var extensionx = Path.GetExtension(CV.FileName).ToLower();
+            if (extensionx == ".png" || extensionx == ".jpg" || extensionx == ".gif" || extensionx == ".jpeg" || extensionx == ".pdf")
+            {
+
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofile))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                LittleSister.CVurl = unq2;
+            }
+            else if (extension == ".doc" || extension == ".docx")
+            {
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "CV" + Guid.NewGuid() + ".pdf";
+                string pathtofile = path_Root1 + "\\Uploads\\CV\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofile, FileFormat.PDF);
+                LittleSister.CVurl = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorcv = "File format for the CV is incorrect, we only accept CVs in (pdf, word, png, jpg, jpeg) format";
+                return View(LittleSister);
+
+            }
+
+
+            var extensionid = Path.GetExtension(CID.FileName).ToLower();
+            if (extensionid == ".png" || extensionid == ".jpg" || extensionid == ".gif" || extensionid == ".jpeg" || extensionid == ".pdf")
+            {
+                unq2 = "CID" + Guid.NewGuid() + CID.FileName;
+                string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiled))
+
+                {
+                    CID.CopyTo(fs);
+                    fs.Flush();
+                }
+                LittleSister.CertifiedID = unq2;
+            }
+            else if (extensionid == ".doc" || extensionid == ".docx")
+            {
+                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
+                string newname = "ID" + Guid.NewGuid() + ".pdf";
+                string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + newname;
+
+
+                using (FileStream fs = System.IO.File.Create(conv))
+
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
+                Document doc = new Document();
+                doc.LoadFromFile(conv);
+                doc.SaveToFile(pathtofiled, FileFormat.PDF);
+                LittleSister.CertifiedID = newname;
+
+            }
+            else
+
+            {
+                ViewBag.Errorid = "File format for the Certified ID is incorrect, we only accept Certified IDs in (pdf, word, png, jpg, jpeg) format";
+                return View(LittleSister);
+
+            }
+
+
 
             unq2 = "pc" + Guid.NewGuid() + pc.FileName;
             string pathtofileds = path_Root1 + "\\Uploads\\ProimagesLilsis\\" + unq2;
@@ -238,7 +395,7 @@ namespace _18TWENTY8.Controllers
                 TwilioClient.Init(accountSid, authToken);
 
                 var message = MessageResource.Create(
-                    body: "Thank you on your application for the Little Sister program, your verification code is " + LittleSister.VerifCode + " please enter the code on the verification page to complete your registration",
+                    body: "The verification code to complete your 18twenty8 Little Sister registration is " + LittleSister.VerifCode,
                     from: new Twilio.Types.PhoneNumber("+17605482821"),
                     to: new Twilio.Types.PhoneNumber(number)
                 );
@@ -256,29 +413,63 @@ namespace _18TWENTY8.Controllers
 
                 }
 
-              
+
                 foreach (var formFile in QA)
                 {
                     if (formFile.Length > 0)
                     {
-                        unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
-                        string pathtofiles = path_Root1 + "\\Uploads\\Qualifications\\" + unq1;
-                        using (FileStream fs = System.IO.File.Create(pathtofiles))
-
+                        var extensionf = Path.GetExtension(formFile.FileName).ToLower();
+                        if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf == ".docx" || extensionf == ".doc")
                         {
-                            formFile.CopyTo(fs);
-                            fs.Flush();
+                            unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
+                            string pathtofiles = path_Root1 + "\\Uploads\\Qualifications\\" + unq1;
+                            using (FileStream fs = System.IO.File.Create(pathtofiles))
+
+                            {
+                                formFile.CopyTo(fs);
+                                fs.Flush();
+                            }
+                            _context.LittleSisterAcademic.Add(new LittleSisterAcademic()
+                            {
+                                LittleSisterUserID = LittleSister.LittleSisterDetailID,
+                                DateCreated = DateTime.Now,
+                                QualificationDocname = formFile.FileName,
+                                Qualificationurl = unq1
+
+
+                            }); ;
+                            await _context.SaveChangesAsync();
                         }
-                        _context.LittleSisterAcademic.Add(new LittleSisterAcademic()
+                        else
+
                         {
-                            LittleSisterUserID = LittleSister.LittleSisterDetailID,
-                            DateCreated = DateTime.Now,
-                            QualificationDocname = formFile.FileName,
-                            Qualificationurl = unq1
+                            unq1 = "Qual" + Guid.NewGuid() + formFile.FileName;
+                            string conv = path_Root1 + "\\Uploads\\Conv\\" + unq1;
+                            string newname = "Qual" + Guid.NewGuid() + ".pdf";
+                            string pathtofiled = path_Root1 + "\\Uploads\\Qualifications\\" + newname;
 
 
-                        }); ;
-                        await _context.SaveChangesAsync();
+                            using (FileStream fs = System.IO.File.Create(conv))
+
+                            {
+                                formFile.CopyTo(fs);
+                                fs.Flush();
+                            }
+                            Document doc = new Document();
+                            doc.LoadFromFile(conv);
+                            doc.SaveToFile(pathtofiled, FileFormat.PDF);
+                            _context.LittleSisterAcademic.Add(new LittleSisterAcademic()
+                            {
+                                LittleSisterUserID = LittleSister.LittleSisterDetailID,
+                                DateCreated = DateTime.Now,
+                                QualificationDocname = formFile.FileName,
+                                Qualificationurl = newname
+
+
+                            }); ;
+                            await _context.SaveChangesAsync();
+
+                        }
 
                     }
 
@@ -328,7 +519,7 @@ namespace _18TWENTY8.Controllers
                 {
                     LittleSisterDetail.verifiedRegistration = "Yes";
                     LittleSisterDetail.ProfileStatusID = 5;
-                    LittleSisterDetail.profilestatusreason = "Your profile is going through a review and vetting process with our administrators";
+                    LittleSisterDetail.profilestatusreason = "We are reviewing your profile.";
 
 
                     try

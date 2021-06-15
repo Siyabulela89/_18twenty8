@@ -302,7 +302,7 @@
 		.owl-nav {
 			.owl-prev {
 			    left: 75px;
-			    @media(max-width: 991px) {
+			    @media(max-width: 1213px) {
 			    	left: 40px;
 			    }
 			    @media(max-width: 767px) {
@@ -311,7 +311,7 @@
 			}
 			.owl-next {
 			    right: 75px;
-			    @media(max-width: 991px) {
+			    @media(max-width: 1213px) {
 			    	right: 40px;
 			    }
 			    @media(max-width: 767px) {
@@ -691,7 +691,7 @@
 }
 
 /* Responsive */
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 
 	.carousel-areas {
 		.owl-carousel {

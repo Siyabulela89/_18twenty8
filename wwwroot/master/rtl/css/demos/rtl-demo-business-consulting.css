@@ -18,7 +18,7 @@ h2 {
 	margin: 0 0 15px 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-sm-margin-top {
 		margin-top: 20px;
 	}
@@ -67,7 +67,7 @@ h2 {
 	border-width: 2px;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 1510px) {
 	.custom-md-border-top {
 		border-top: 1px solid rgba(255, 255, 255, 0.12);
 	}
@@ -78,7 +78,7 @@ h2 {
 	margin-top: -177px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-position-1 {
 		margin-top: 0;
 		background: #101019;
@@ -170,7 +170,7 @@ h2 {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.owl-carousel.custom-dots-position-2 .owl-dots {
 		max-width: 970px;
 	}
@@ -268,7 +268,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 /*
 * Rev Slider
 */
-@media (min-width: 991px) {
+@media (min-width: 1510px) {
 	.slider-container {
 		height: 100vh !important;
 	}
@@ -305,7 +305,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 	margin-bottom: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.looking-for .looking-for-box h2 {
 		font-size: 2em;
 	}
@@ -326,7 +326,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 	border-color: #FFF !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-call-to-action span:nth-child(2) {
 		font-size: 1rem;
 	}
@@ -381,7 +381,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 	font-size: 45px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-content-grid:before {
 		content: none;
 	}
@@ -454,7 +454,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 	transition: ease transform 300ms;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.col-md-12 .feature-box.feature-box-style-2.custom-feature-box .feature-box-info {
 		padding-left: 115px;
 	}
@@ -739,7 +739,7 @@ html.sticky-header-active #header.header-effect-shrink .header-body {
 	opacity: 0.5;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.owl-carousel.custom-both-sides-shadow .owl-stage-outer:before, .owl-carousel.custom-both-sides-shadow .owl-stage-outer:after {
 		box-shadow: none;
 	}

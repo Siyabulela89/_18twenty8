@@ -119,13 +119,13 @@ section {
 }
 
 .custom-margin-3 {
-	@media (min-width: 992px) and (max-width: 1199px) {
+	@media (min-width: 1214px) and (max-width: 1199px) {
 	    margin-top: 28px;
 	}
 }
 
 .custom-margin-4-sm {
-	@media (max-width: 991px) {
+	@media (max-width: 1213px) {
 		margin-bottom: 30px;
 	}
 }
@@ -431,7 +431,7 @@ html {
 		border-top: 1px solid #5c5d61;
 		border-bottom: 1px solid $color-quaternary;
 
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			border-bottom: 0;
 		}
 	}
@@ -454,7 +454,7 @@ html {
 						color: $color-light !important;
 						transition: ease color 300ms;
 
-						@media (min-width: 992px) and (max-width: 1060px) {
+						@media (min-width: 1214px) and (max-width: 1060px) {
 							padding: 10px 9px;
 						}
 
@@ -468,7 +468,7 @@ html {
 								border-bottom: 3px solid #CCC;
 								width: 100%;
 
-								@media (max-width: 991px) {
+								@media (max-width: 1213px) {
 									bottom: 0;
 									border-width: 2px;
 								}
@@ -496,7 +496,7 @@ html {
 	}
 
 	&:not(.sticky-header-active) {
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			#header {
 				.header-body {
 					background: $color-quaternary;
@@ -507,7 +507,7 @@ html {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header {
 		.header-nav-main {
 			nav {
@@ -573,11 +573,11 @@ html {
 	    &._left {
 	    	left: 6%;
 
-			@media (min-width: 992px) and (max-width: 1199px) {
+			@media (min-width: 1214px) and (max-width: 1199px) {
 				left: 0%;
 			}
 
-			@media (max-width: 991px) {
+			@media (max-width: 1213px) {
 				left: 11.2%;
 			}
 	    }
@@ -608,7 +608,7 @@ svg#curved-line-1 {
 		opacity: 0.3;
 	}
 
-	@media (min-width: 992px) and (max-width: 1199px) {
+	@media (min-width: 1214px) and (max-width: 1199px) {
 		width: 107.4%;
 	    transform: scale(1.13);
 	    @include if-rtl() {
@@ -639,7 +639,7 @@ svg#curved-line-1 {
 		    line-height: 14px;
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			> div:nth-child(1), div:nth-child(2) {
 				margin-bottom: 30px;
 			}
@@ -665,7 +665,7 @@ svg#curved-line-1 {
 	&._big {
 		width: 90%;
 
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			position: static;
 		}
 	}
@@ -673,7 +673,7 @@ svg#curved-line-1 {
 	&._small {
 	    #{$left}: 0;
 
-		@media (max-width: 991px) {
+		@media (max-width: 1213px) {
 			#{$left}: auto;
 			#{$right}: 25px;
 			bottom: 0;
@@ -681,7 +681,7 @@ svg#curved-line-1 {
 		}
 	}
 
-	@media (max-width: 1199px) and (min-width: 992px) {
+	@media (max-width: 1199px) and (min-width: 1214px) {
 		bottom: 111px;
 
 		&._small {

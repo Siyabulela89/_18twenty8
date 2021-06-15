@@ -6,7 +6,7 @@
 	content: "\f064";
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header.header-narrow .header-nav.header-nav-stripe {
 		position: relative;
 		z-index: 3;
@@ -49,7 +49,7 @@
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.logo-default {
 		display: none !important;
 	}
@@ -78,7 +78,7 @@ html.sticky-header-active #header.header-semi-transparent-light .header-body {
 	background: rgba(255, 255, 255, 0.8) !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	html #header.header-semi-transparent-light .header-body {
 		transition: transform 0.3s ease;
 		transform: translate3d(0, 25px, 0);
@@ -419,7 +419,7 @@ html.sticky-header-active #header.header-semi-transparent-light .header-body {
 	z-index: 2;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.section-custom-construction-2 {
 		overflow: hidden;
 		position: relative;
@@ -443,7 +443,7 @@ html.sticky-header-active #header.header-semi-transparent-light .header-body {
 	font-size: 20px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	section.section.section-background {
 		background-size: auto 100%;
 		background-repeat: no-repeat;
@@ -554,7 +554,7 @@ html.sticky-header-active #header.header-semi-transparent-light .header-body {
 	color: #ababab;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#footer {
 		margin-top: 0;
 	}

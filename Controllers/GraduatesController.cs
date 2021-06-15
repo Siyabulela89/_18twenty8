@@ -27,7 +27,7 @@ namespace _18TWENTY8.Models
         // GET: Graduates
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Graduates.ToListAsync());
+            return View(await _context.Graduates.OrderBy(x=> x.order).ToListAsync());
         }
 
         // GET: Graduates/Details/5

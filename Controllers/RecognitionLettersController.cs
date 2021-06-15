@@ -27,7 +27,7 @@ namespace _18TWENTY8.Controllers
         // GET: RecognitionLetters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.RecognitionLetters.ToListAsync());
+            return View(await _context.RecognitionLetters.OrderBy(x=>x.order).ToListAsync());
         }
 
         // GET: RecognitionLetters/Details/5

@@ -11,6 +11,8 @@ using Twilio.Types;
 using Twilio.TwiML;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Mail;
+using System.Net;
 
 namespace _18TWENTY8.Controllers
 {
@@ -25,13 +27,16 @@ namespace _18TWENTY8.Controllers
            
         }
         public IConfiguration _Configuration { get; }
+        [BindProperty]
+        public EMessage Messages { get; set; }
         public IActionResult Index()
         {
            
 
         List<object> listfor = new List<object>
-            {  _context.Workshops.ToList(),
-                    _context.WorkshopsupportDocType.ToList()
+            {  _context.Workshops.OrderBy(x=> x.fileorder).ToList(),
+                    _context.WorkshopsupportDocType.ToList(),
+                    _context.Graduates.Where(x=> x.order==3 || x.order==8 || x.order==9 || x.order==1).ToList()
 
 
             };
@@ -44,14 +49,55 @@ namespace _18TWENTY8.Controllers
             return View();
 
         }
+        public IActionResult Countdown()
+        {
+
+            return View();
+
+        }
+        public IActionResult Thankyoucontact()
+        {
+
+            return View();
+
+        }
         public IActionResult StatusofWomen()
         {
 
             return View();
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendMessage(EMessage ems)
+        {
+            var body = "<p><strong>Email From:<strong/> {0} {1}</p><p><strong>Message:<strong/></p><p>{2}</p> <p><strong>Contact number:<strong/> </p><p>{3}</p>";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress("siyabulela@sinqe.co.za"));  // replace with valid value 
+            message.From = new MailAddress("web@18twenty8.org");  // replace with valid value
+            message.Subject = "Web Enquiry " + ems.Name;
+            message.Body = string.Format(body, ems.From, ems.Fromemail, ems.content, ems.Contact );
+            message.IsBodyHtml = true;
 
-        
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "Web@18twenty8.org",  // replace with valid value
+                    Password = "Web4321!"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.18twenty8.org";
+                smtp.Port = 587;
+                smtp.EnableSsl = false;
+                await smtp.SendMailAsync(message);
+
+            }
+            return RedirectToAction("Thankyoucontact");
+        }
+
+
         public IActionResult RecognitionLetters()
         {
 

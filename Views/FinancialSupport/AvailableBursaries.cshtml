@@ -72,11 +72,17 @@
                                 @item.QualifyingCriteria <br />
                                 @if (App.Any(x => x.BursaryID == item.BursaryID))
                                 {<input type="submit" disabled value="Already applied" class="btn btn-modern btn-dark" />
-                                }else
-                                { 
-                                <form asp-route-UserID="@ViewBag.UserID" asp-route-BursID="@item.BursaryID" asp-controller="FinancialSupport" asp-action="CreateBursaryApp" role="form" class="needs-validation" enctype="multipart/form-data">
-                                    <input type="submit" value="Apply" class="btn btn-modern btn-dark" />
-                                </form>
+                                }
+                                else if (item.BursaryTypeID == 2)
+                                {
+                                    <a href="@item.externallink" target="_blank" type="submit" value="External Bursary" class="btn btn-modern btn-dark">External Application</a>
+                                }
+                                else
+                                {
+                                    <form asp-route-UserID="@ViewBag.UserID" asp-route-BursID="@item.BursaryID" asp-controller="FinancialSupport" asp-action="CreateBursaryApp" role="form" class="needs-validation" enctype="multipart/form-data">
+                                        <input type="submit" value="Apply" class="btn btn-modern btn-dark" />
+                                    </form>
+
                                 }
                             </div>
 

@@ -96,10 +96,13 @@
          
             <h5 class="font-weight-semi-bold pt-4">Administration</h5>
             <ul class="nav nav-list flex-column mb-5">
-                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryApplicant" >View Bursary Applications</a></li>
-                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryCapture">Capture Bursaries</a></li>
-                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="DetailsBurs">View Bursary list</a></li>
-                
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryApplicant">View FAP applicants</a></li>
+
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="BursaryCapture">Capture FAP opportunities </a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="DetailsBurs">All FAP opportunities  </a></li>
+
+                <li class="nav-item"><a class="nav-link" asp-controller="Administration" asp-action="Volunteerlist">Teamworthy</a></li>
+
 
             </ul>
            </aside>
@@ -109,16 +112,16 @@
         <div class="tabs tabs-bottom tabs-center tabs-simple">
             <ul class="nav nav-tabs">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#tabsNavigationSimple1" data-toggle="tab">Pending profile approval (Little Sister)</a>
+                    <a class="nav-link" href="#tabsNavigationSimple1" data-toggle="tab">Little Sisters pending approval</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tabsNavigationSimple2" data-toggle="tab">Pending profile approval (Big Sister)</a>
+                    <a class="nav-link" href="#tabsNavigationSimple2" data-toggle="tab">Big Sisters pending approval</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tabsNavigationSimple3" data-toggle="tab">Pending assignments</a>
+                    <a class="nav-link" href="#tabsNavigationSimple3" data-toggle="tab">Unmatched</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tabsNavigationSimple4" data-toggle="tab">Assigned Sister</a>
+                    <a class="nav-link" href="#tabsNavigationSimple4" data-toggle="tab">Matched</a>
                 </li>
               
             </ul>

@@ -85,7 +85,7 @@ section.section {
 	border: 10px solid $color-light;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 1510px) {
 	.custom-image-position-2 {
 		position: absolute;
 		max-width: 90%;
@@ -100,7 +100,7 @@ section.section {
 }
 
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	.custom-section-padding-1 {
 		padding-top: 150px !important;
 		padding-bottom: 70px !important;
@@ -111,14 +111,14 @@ section.section {
 	}
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 1214px) and (max-width: 1199px) {
 	.custom-section-padding-1 {
 		padding-top: 150px !important;
 		padding-bottom: 2.3rem !important;
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-sm-margin-bottom-1 {
 		margin-bottom: 45px;
 	}
@@ -183,7 +183,7 @@ section.section {
 }
 
 // Custom Image Pos
-@media(min-width: 992px) and (max-width: 1199px) {
+@media(min-width: 1214px) and (max-width: 1199px) {
 	.custom-image-pos-1 {
 	    position: relative;
 	    left: -60px;
@@ -290,7 +290,7 @@ section.section {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1214px) {
 	#header.header-floating-icons {
 		background: transparent;
 		height: 0;
@@ -390,7 +390,7 @@ section.section {
 	}
 }
 
-@media (min-width: 992px) and (max-width: 1281px) {
+@media (min-width: 1214px) and (max-width: 1281px) {
 	#header.header-floating-icons {
 		.header-row {
 			#{$left}: -19px;
@@ -415,7 +415,7 @@ section.section {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	#header.header-floating-icons {
 		position: absolute;
 		top: 60px;
@@ -510,7 +510,7 @@ section.section {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-about-me-links {
 		&:after {
 			width: 100vw;
@@ -559,7 +559,7 @@ section.section {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	.custom-nav-button {
 		&.custom-divisors {
 			&:before, &:after {
@@ -772,7 +772,7 @@ section.custom-timeline {
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1213px) {
 	section.custom-timeline {
 	    width: calc(100% - 30px);
 	    margin: 0 0 0 20px;
@@ -1275,7 +1275,7 @@ section.custom-timeline {
 	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1511px) {
 	#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu > .dropdown-menu {
 		right: auto;
 	}

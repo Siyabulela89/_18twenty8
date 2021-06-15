@@ -65,6 +65,7 @@ namespace FSTC.Controllers
                 return View("ListUsers");
             }
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminLanding()
         {
             var posts = _context.LittleSisterDetail
@@ -87,7 +88,7 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
 
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminBursaryApplicant(String userID)
         {
             int ApplicationStatusid = _context.FinancialSupport.Where(x => x.UserID == userID).SingleOrDefault().ApplicationStatusID;
@@ -144,7 +145,7 @@ namespace FSTC.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AdminBursaryCreate(int Appstatus,string reason, string reasons, string userID)
         {
@@ -209,6 +210,7 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
 
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult BursaryApplicant()
         {
 
@@ -228,19 +230,74 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
 
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Volunteerlist()
+        {
+
+
+
+
+            var Commitees = _context.Committees.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.CommitteeTypeID.ToString()
+            }).ToList();
+            var programmes = _context.Programmes.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.ProgrammeID.ToString()
+            }).ToList();
+            var daysofweek = _context.Daysofweek.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.DayID.ToString()
+            }).ToList();
+            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.ToContact = new SelectList(_context.Time, "TimeID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
+            var vd = new Volunteerdetail()
+            {
+                Commitees = Commitees,
+                programmelist = programmes,
+                Daysofweek = daysofweek,
+
+            };
+            List<object> listfor = new List<object>
+            {     _context.Volunteerdetail.ToList(),
+            _context.VolunteerAcademic.ToList(),
+            _context.CommitteesStorage.ToList(),
+            _context.ProgrammesStorage.ToList(),
+            _context.Daysofweekstorage.ToList(),
+            _context.Committees.ToList(),
+            _context.Daysofweek.ToList(),
+            _context.Programmes.ToList(),
+            _context.Province.ToList(),
+            _context.Time.ToList(),
+            _context.OptionalBool.ToList()
+
+
+
+
+
+
+            };
+            return View(listfor.ToList());
+
+        }
         public IActionResult AdminTakeup()
         {
 
             return View();
 
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult BursaryCapture()
         {
             ViewBag.BursType = new SelectList(_context.BursaryType, "BursaryTypeID", "Description");
             return View();
 
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> BursaryCapture(BursaryApplication BSA)
         {
@@ -251,6 +308,8 @@ namespace FSTC.Controllers
                 QualifyingCriteria = BSA.QualifyingCriteria,
                 ApplicationStartDate = BSA.ApplicationStartDate,
                 ApplicationEndDate = BSA.ApplicationEndDate,
+                BursaryTypeID=BSA.BursaryTypeID,
+                externallink=BSA.externallink,
             
 
                 DateCreated = DateTime.Now,
@@ -280,7 +339,7 @@ namespace FSTC.Controllers
         public IActionResult DetailsBurs()
         {
             List<object> listfor = new List<object>
-            {     _context.BursaryApplication.ToList(),
+            {     _context.BursaryApplication.Where(x=> x.ApplicationEndDate>=DateTime.Now).ToList(),
                   
 
 
