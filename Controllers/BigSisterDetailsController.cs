@@ -308,7 +308,7 @@ namespace _18TWENTY8.Controllers
                 List<InteractionLevel> listtime = new List<InteractionLevel>();
                 listtime = _context.InteractionLevel.ToList();
 
-                ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
                 ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
                 ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -355,7 +355,8 @@ namespace _18TWENTY8.Controllers
             }).ToList();
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -423,14 +424,20 @@ namespace _18TWENTY8.Controllers
             var extension = Path.GetExtension(pc.FileName).ToLower();
             if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
             {
-                ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
-                return View(Bigsister);
+                
             }
-                if (filelentghpc > 10)
+            else
+
+            {
+                ViewBag.Errorpc = "The uploaded file is on the incorrect format we only accept (png, jpg, gif and jpeg)";
+                return View(Bigsister);
+
+            }
+                if (filelentghpc > 2)
 
             {
 
-                ViewBag.Errorpc = "uploaded file is above the required size of 10mb";
+                ViewBag.Errorpc = "uploaded file is above the required size of 2mb";
                 return View(Bigsister);
 
             }
@@ -443,7 +450,7 @@ namespace _18TWENTY8.Controllers
 
             {
 
-                ViewBag.Errorcv = "uploaded file is above the required size of 10mb";
+                ViewBag.Errorcv = "uploaded file is above the required size of 2mb";
                 return View(Bigsister);
 
             }
@@ -494,7 +501,7 @@ namespace _18TWENTY8.Controllers
             }
                 Bigsister.CVUrl = unq2;
             }
-            else if (extension==".doc" || extension==".docx")
+            else if (extensionx==".doc" || extensionx==".docx")
             {
                 unq2 = "CV" + Guid.NewGuid() + CV.FileName;
                 string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
@@ -692,7 +699,7 @@ namespace _18TWENTY8.Controllers
 
 
             }
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             return View(bgs);
         }
@@ -713,7 +720,7 @@ namespace _18TWENTY8.Controllers
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
 
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 

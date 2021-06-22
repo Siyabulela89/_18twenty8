@@ -56,6 +56,7 @@
                 return response.json();
             })
             .then((response) => {
+                console.log(response)
                 renderDocTable(response);
             });
     }
@@ -66,7 +67,7 @@
                 <th scope="row">1</th>
                 <td>Curriculum Vitae (CV)</td>
                 <td>${response.profile.dateCreated}</td>
-                <td><a onclick="return false" data-doc-url="${response.profile.cvUrl}" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
+                <td><a onclick="return false" data-doc-url="${response.profile.cVurl}" class="btn-view-document" href="#"><i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;<a onclick="return false" class="btn-delete-document" href="#"><i class="fas fa-trash"></i></a></td>
             </tr>`;
 
         tableRow += `<tr>

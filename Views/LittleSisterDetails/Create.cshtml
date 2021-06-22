@@ -45,10 +45,15 @@
                                     <i class="fas fa-camera text-dark"></i>
                                 </span>
                             </div>
-                            <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+                            <input type="file" required class="profile-image-input" name="pc" id="pc" />
                         </div>
                         <h2 class="font-weight-normal text-7">My Little Sister Profile</h2>
+
                     </div>
+                    <br />
+                    <p style="color:red;" class="label-danger">@ViewBag.Errorpc</p>
+                    <p style="color:red;" id="filesz" class="label-danger"></p>
+
 
 
 
@@ -56,13 +61,21 @@
                 <div class="col-lg-12">
 
                     <div class="overflow-hidden mb-1">
-                        <h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">My Little</strong> Sister Profile</h2>
+
                     </div>
                     <div class="overflow-hidden mb-4 pb-3">
 
                     </div>
 
 
+                    <div class="form-group row">
+                        <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required">I confirm that I commit to being a Little Sister for no less than 12 months from the date of submission of this form</label>
+
+                        <div class="col-lg-4">
+
+                            <input asp-for="ConfirmMenteedurationQ" class="form-control" required type="checkbox">
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
                         <div class="col-lg-12">
@@ -88,6 +101,7 @@
                         <div class="col-lg-12">
                             <input asp-for="Phonenumber" class="form-control" required type="tel" maxlength="10" minlength="10" onblur="if(this.value == '') { this.value ='e.g. 0825660869'; }" onfocus="if(this.value =='e.g. 0825660869') { this.value = ''; }" value="e.g. 0825660869">
                         </div>
+                        <div class="col-lg-12"><p>Please ensure that your cell phone number is correct before you proceed, the number will be used to send you a verfication code to complete your registration.</p></div>
                     </div>
 
                     <div class="form-group row">
@@ -198,7 +212,7 @@
                                 <input asp-for="Infosbig[i].Selected" /> @Model.Infosbig[i].Text <br />
 
                             }
-                            
+
                         </div>
 
                     </div>
@@ -222,7 +236,7 @@
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
                         <div class="col-lg-12">
 
-                            <textarea asp-for="howdidyouhearaboutQ" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="about18Qj"></textarea>
+                            <textarea asp-for="Interactionlevelmeetother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="about18Qj"></textarea>
                         </div>
                     </div>
 
@@ -244,14 +258,6 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required">I confirm that I commit to being a Little Sister for no less than 12 months from the date of submission of this form</label>
-
-                        <div class="col-lg-4">
-
-                            <input asp-for="ConfirmMenteedurationQ" class="form-control" required type="checkbox">
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
                             <div class="input-append">
@@ -261,7 +267,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-exists">Select or change</span>
                                     <span class="fileupload-new">Select file</span>
                                     <input required type="file" name="CV" id="CV" />
                                 </span>
@@ -279,7 +285,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-exists">Select or change file</span>
                                     <span class="fileupload-new">Select file</span>
                                     <input required type="file" name="CID" id="CID" />
                                 </span>
@@ -297,7 +303,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-exists">Select or change multiple files</span>
                                     <span class="fileupload-new">Select file</span>
                                     <input required type="file" multiple name="QA" id="QA" />
                                 </span>
@@ -327,9 +333,31 @@
 
 
 <script>
+
     var loadFile = function (event) {
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
 
+
+    };
+
+
+
+
+</script>
+<script type="text/javascript">
+    $('#pc').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 4 || size < 0) {
+            $("#filesz").html('<b>' +
+                'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+        } else {
+           
+            loadFile(event);
+        }
+    });
+
+</script>

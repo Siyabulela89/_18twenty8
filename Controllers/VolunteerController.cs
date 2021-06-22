@@ -74,7 +74,7 @@ namespace _18TWENTY8.Controllers
                 Text = x.Description,
                 Value = x.DayID.ToString()
             }).ToList();
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.ToContact = new SelectList(_context.Time, "TimeID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
             var vd = new Volunteerdetail()
@@ -246,7 +246,7 @@ namespace _18TWENTY8.Controllers
                 Text = x.Description,
                 Value = x.DayID.ToString()
             }).ToList();
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.ToContact = new SelectList(_context.Time, "TimeID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
             var vd = new Volunteerdetail()

@@ -1,0 +1,103 @@
+﻿@model _18TWENTY8.Models.ConfidentialityStatement
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Confidentiality Statement</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="line-height-9 text-4 text-justify">
+            18twenty8® strives to ensure the protection of your personal information through responsible practices. <br /><br />
+            We deploy all efforts to protect the private nature of your personal information. Since we collect information about you using our website, we feel that it is important that you understand how we collect and use this information. This page summarises our personal information collection practices.
+        </p>
+        <br />
+        <h4>PERSONAL INFORMATION COLLECTION</h4>
+        <p class="line-height-9 text-4 text-justify">All personal information collected by 18twenty8® is done so exclusively with your consent, by means of a form submitted on our website, an email received from you or by telephone. No information is collected automatically.</p>
+        <br />
+        <h4>USE OF YOUR PERSONAL INFORMATION</h4>
+
+        <p class="line-height-9 text-4 text-justify">
+            The personal information collected is only used by 18twenty8® staff for the purposes defined at the time of the collection or a use that complies with these purposes. We do not share your information with any third parties.<br /><br />
+            As mentioned above, we use your personal information to appropriately process your requests and present you with the information you need to access. We also use all of the information you provide voluntarily in order to make your visits on our site possible. This information might, at a later time, allow us to add customised elements to our site or to plan its content more appropriately, based on user interests.<br /><br />
+            If you have granted us the permission to, we can use your personal information in order to send you newsletters, with the intent of keeping you up to date on our work.<br /><br />
+            At all times, the sender of an email prepared by 18twenty8® is easily identifiable, and reachable, via email or phone.
+        </p>
+        <br />
+        <h4>SHARING OF YOUR PERSONAL INFORMATION</h4>
+        <p class="line-height-9 text-4 text-justify">
+            We will not, under any circumstances, share your personal information with third parties or other individuals without your permission, including organisations, public or private companies except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. We can offer to add your address to an 18twenty8®  mailing list or list server if you request it. In this last case, you may, at any time, ask us to remove your name from such lists.<br /><br />
+            The only exception is if the law or a court order compels us to. We will share your information with government agencies if they need or request it.
+        </p>
+        <br />
+        <h4>STORAGE AND SAFETY OF YOUR PERSONAL INFORMATION</h4>
+
+        <p class="line-height-9 text-4 text-justify">
+            We store your file ourselves. In addition, we use and apply the appropriate security measures to preserve the confidentiality of your information.
+            18twenty8®  notably uses software to monitor traffic on its network in order to detect unauthorized attempts to download or change information, or to otherwise damage the site. This software receives and records the IP address of the computer used by the person visiting our website, the date and time of the visit and the pages viewed. We do not attempt to make the connection between these addresses and the identities of the individuals who visit our site, unless an intrusion or disruption attempt is detected.
+        </p>
+        <br />
+        <h4>LEGAL PROTECTION</h4>
+        <p class="line-height-9 text-4 text-justify">
+            All personal information you supply is protected according to the Protection of Personal Information Act, 4 of 2013 <strong>(“POPI“)</strong>.
+        </p>
+        <br />
+        <h4>QUALITY AND ACCESS TO YOUR PERSONAL INFORMATION</h4>
+        <p class="line-height-9 text-4 text-justify">We want to ensure that your personal information is accurate and up to date. You may, at any time, ask us to correct any personal information that you think is inaccurate or request us to remove your information by sending an email to info@18twenty8.org</p>
+        <br />
+        <h4>RETENTION OF INFORMATION</h4>
+        <p class="line-height-9 text-4 text-justify">
+            We retain personal information in accordance with the required retention periods in law or for legitimate business purposes. We may keep personal information indefinitely in a de-identified format for statistical purposes. This privacy policy also applies when we retain your personal information.
+        </p>
+        <br />
+        <h4>SECURITY BREACH</h4>
+        <p class="line-height-9 text-4 text-justify">
+            We will report any security breaches to the Information Regulator and to the individuals or companies involved. If you want to report any concerns about our privacy practices or if you suspect any breach regarding your personal information, kindly notify us by sending an email to info@18twenty8.org
+        </p>
+        <form asp-action="Confidentiality" asp-route-id="@ViewBag.id" asp-route-email="@ViewBag.email" asp-route-fullnames="@ViewBag.fullnames" asp-route-userId="@ViewBag.userId"  role="form" class="needs-validation" enctype="multipart/form-data">
+            <input hidden asp-for="userId" class="form-control" required type="text" value="@ViewBag.userId">
+            <div style="text-align:left;" class="form-group row">
+                <label class="col-lg-7 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please confirm that you have read, understood and accepted the above</label>
+                <div class="col-lg-5">
+
+                    <input asp-for="Accepted" class="form-control" required type="checkbox">
+                </div>
+
+            </div>
+            <div class="form-group row">
+              
+                <div class="form-group col-lg-12">
+                    <input type="submit" value="Save" class="btn btn-primary btn-modern float-left" data-loading-text="Submitting...">
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>

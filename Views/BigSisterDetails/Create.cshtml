@@ -48,16 +48,19 @@
                                 <span class="profile-image-button bg-color-dark">
                                     <i class="fas fa-camera text-dark"></i>
                                 </span>
-                                <p style="color:red">@ViewBag.Errorpc</p>
+
                             </div>
 
                             <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+
                         </div>
 
                         <h2 class="font-weight-normal text-7">My Big Sister Profile</h2>
 
                     </div>
-
+                    <br />
+                    <p style="color:red;" class="label-danger">@ViewBag.Errorpc</p>
+                    <p style="color:red;"  id="filesz" class="label-danger"></p>
 
 
                 </div>
@@ -68,7 +71,14 @@
 
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
+                        <div class="col-lg-4">
 
+                            <input asp-for="ConfirmMentordurationQ" class="form-control" required type="checkbox">
+                        </div>
+
+                    </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
                         <div class="col-lg-12">
@@ -91,11 +101,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
                         <div class="col-lg-12">
 
                             <input asp-for="Phonenumber" class="form-control" required type="tel" maxlength="10" minlength="10" onblur="if(this.value == '') { this.value ='e.g. 0825660869'; }" onfocus="if(this.value =='e.g. 0825660869') { this.value = ''; }" value="e.g. 0825660869">
                         </div>
+                        <div class="col-lg-12"><p>Please ensure that your cell phone number is correct before you proceed, the number will be used to send you a verfication code to complete your registration.</p></div>
                     </div>
 
                     <div class="form-group row">
@@ -107,7 +118,7 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
                         <div class="col-lg-8">
-                            <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
+                            <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" placeholder="Address line 2 (Parkmore, Sandton) ">
                         </div>
                         <div class="col-lg-4">
                             @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
@@ -141,13 +152,13 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How did you hear about 18twenty8?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="howdidyouhearabout" maxlength="5000" data-msg-required="This is field is required." rows="4"class="form-control" id="about18Q" required></textarea>
+                            <textarea asp-for="howdidyouhearabout" maxlength="5000" data-msg-required="This is field is required." rows="4" class="form-control" id="about18Q" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Tell us more about yourself (professional, academic and personal aspirations)</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="This is field is required." rows="4"class="form-control" id="messagere" required></textarea>
+                            <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="This is field is required." rows="4" class="form-control" id="messagere" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -160,7 +171,7 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above</label>
                         <div class="col-lg-9">
-                            <textarea asp-for="DetailsOnEverbeenMentorQ" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messaged"></textarea>
+                            <textarea asp-for="DetailsOnEverbeenMentorQ" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="messaged"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -174,25 +185,25 @@
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000"  rows="4"class="form-control" id="messagea"></textarea>
+                            <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000" rows="4" class="form-control" id="messagea"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What would your 28 year-old self say to your 18 year-old self?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="youngerselfQ" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messageu" required></textarea>
+                            <textarea asp-for="youngerselfQ" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="messageu" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What expectations do you have of your Little Sister?</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messagje" required></textarea>
+                            <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="messagje" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please provide details on the preferred university, degree programme and geographic area of Little Sister</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="prefferedstudentdetails" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="message" required></textarea>
+                            <textarea asp-for="prefferedstudentdetails" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="message" required></textarea>
                         </div>
                     </div>
 
@@ -206,13 +217,13 @@
                                 <input asp-for="Infosbig[i].Selected" /> @Model.Infosbig[i].Text <br />
 
                             }
-                            
+
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
                         <div class="col-lg-12">
-                            <textarea asp-for="HobbiesOther" maxlength="5000" data-msg-required="Please enter your message." rows="4"class="form-control" id="messhage" ></textarea>
+                            <textarea asp-for="HobbiesOther" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="messhage"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -262,14 +273,7 @@
                             <textarea asp-for="Additionasupportother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="message"></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
-                        <div class="col-lg-4">
 
-                            <input asp-for="ConfirmMentordurationQ" class="form-control" required type="checkbox">
-                        </div>
-
-                    </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV</label>
                         <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
@@ -280,8 +284,8 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
+                                    <span class="fileupload-exists">Select or change file</span>
+                                    @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required name="CV" id="CV" />
 
                                 </span>
@@ -289,7 +293,7 @@
 
                             </div>
                         </div>
-                        <p style="color:red">@ViewBag.Errorcv</p> 
+                        <p style="color:red">@ViewBag.Errorcv</p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
@@ -301,8 +305,8 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
+                                    <span class="fileupload-exists">Select or change</span>
+                                    @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required name="CID" id="CID" />
 
                                 </span>
@@ -310,7 +314,7 @@
 
                             </div>
                         </div>
-                        <p style="color:red"> @ViewBag.Errorid</p> 
+                        <p style="color:red"> @ViewBag.Errorid</p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Qualifications</label>
@@ -322,14 +326,14 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
+                                    <span class="fileupload-exists">Select or change multiple files</span>
+                                    @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required multiple name="QA" id="QA" />
                                 </span>
                                 <p id="sizedd"></p>
                             </div>
                         </div>
-                        <p style="color:red">@ViewBag.Errorqa</p> 
+                        <p style="color:red">@ViewBag.Errorqa</p>
                     </div>
 
                     <div class="form-group row">
@@ -358,9 +362,23 @@
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
-    $('#CID').bind('change', function () {
-        alert('This file size is: ' + this.files[0].size / 1024 / 1024 + "MiB");
+   
+</script>
+<script type="text/javascript">
+    $('#pc').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 4 || size < 0) {
+            $("#filesz").html('<b>' +
+                'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+        } else {
+         
+            loadFile(event);
+        }
     });
+
 </script>
 
 

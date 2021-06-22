@@ -38,7 +38,7 @@
                                 <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="btn btn-modern text-2 btn-secondary2">Sign in here if you already have an account</a>
                                 <div class="featured-box featured-box-primary text-left mt-5">
                                     <div class="box-content">
-
+                                        <p>Please note that your email address is your unique ID in 18twenty8 and will be used along with your password as your login credentials</p>
                                         <form asp-route-returnUrl="@Model.ReturnUrl" method="post" id="SignUp" class="needs-validation">
                                             <label class="text-danger">@ViewData["userex"]</label>
                                             <div class="form-row">

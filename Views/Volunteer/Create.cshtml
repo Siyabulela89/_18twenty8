@@ -38,244 +38,320 @@
         <form asp-action="Create" role="form" class="needs-validation" enctype="multipart/form-data">
             <div class="row">
 
-           
-                <div class="col-lg-3 mt-4 mt-lg-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="modal fade" id="largeModal" tabindex="5" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="container">
+                                        <p class="line-height-9 text-4 text-justify">
+                                            18twenty8® strives to ensure the protection of your personal information through responsible practices. <br /><br />
+                                            We deploy all efforts to protect the private nature of your personal information. Since we collect information about you using our website, we feel that it is important that you understand how we collect and use this information. This page summarises our personal information collection practices.
+                                        </p>
+                                        <br />
+                                        <h4>PERSONAL INFORMATION COLLECTION</h4>
+                                        <p class="line-height-9 text-4 text-justify">All personal information collected by 18twenty8® is done so exclusively with your consent, by means of a form submitted on our website, an email received from you or by telephone. No information is collected automatically.</p>
+                                        <br />
+                                        <h4>USE OF YOUR PERSONAL INFORMATION</h4>
 
-                    <div class="d-flex justify-content-center mb-4">
-                        <div class="profile-image-outer-container">
-                            <div class="profile-image-inner-container bg-color-primary">
-                                <img id="output" src="~/img/avatars/avatar.jpg">
-                                <span class="profile-image-button bg-color-dark">
-                                    <i class="fas fa-camera text-dark"></i>
-                                </span>
+                                        <p class="line-height-9 text-4 text-justify">
+                                            The personal information collected is only used by 18twenty8® staff for the purposes defined at the time of the collection or a use that complies with these purposes. We do not share your information with any third parties.<br /><br />
+                                            As mentioned above, we use your personal information to appropriately process your requests and present you with the information you need to access. We also use all of the information you provide voluntarily in order to make your visits on our site possible. This information might, at a later time, allow us to add customised elements to our site or to plan its content more appropriately, based on user interests.<br /><br />
+                                            If you have granted us the permission to, we can use your personal information in order to send you newsletters, with the intent of keeping you up to date on our work.<br /><br />
+                                            At all times, the sender of an email prepared by 18twenty8® is easily identifiable, and reachable, via email or phone.
+                                        </p>
+                                        <br />
+                                        <h4>SHARING OF YOUR PERSONAL INFORMATION</h4>
+                                        <p class="line-height-9 text-4 text-justify">
+                                            We will not, under any circumstances, share your personal information with third parties or other individuals without your permission, including organisations, public or private companies except when applicable by law. We do not sell, communicate or divulge your information to any mailing lists. We can offer to add your address to an 18twenty8®  mailing list or list server if you request it. In this last case, you may, at any time, ask us to remove your name from such lists.<br /><br />
+                                            The only exception is if the law or a court order compels us to. We will share your information with government agencies if they need or request it.
+                                        </p>
+                                        <br />
+                                        <h4>STORAGE AND SAFETY OF YOUR PERSONAL INFORMATION</h4>
+
+                                        <p class="line-height-9 text-4 text-justify">
+                                            We store your file ourselves. In addition, we use and apply the appropriate security measures to preserve the confidentiality of your information.
+                                            18twenty8®  notably uses software to monitor traffic on its network in order to detect unauthorized attempts to download or change information, or to otherwise damage the site. This software receives and records the IP address of the computer used by the person visiting our website, the date and time of the visit and the pages viewed. We do not attempt to make the connection between these addresses and the identities of the individuals who visit our site, unless an intrusion or disruption attempt is detected.
+                                        </p>
+                                        <br />
+                                        <h4>LEGAL PROTECTION</h4>
+                                        <p class="line-height-9 text-4 text-justify">
+                                            All personal information you supply is protected according to the Protection of Personal Information Act, 4 of 2013 <strong>(“POPI“)</strong>.
+                                        </p>
+                                        <br />
+                                        <h4>QUALITY AND ACCESS TO YOUR PERSONAL INFORMATION</h4>
+                                        <p class="line-height-9 text-4 text-justify">We want to ensure that your personal information is accurate and up to date. You may, at any time, ask us to correct any personal information that you think is inaccurate or request us to remove your information by sending an email to info@18twenty8.org</p>
+                                        <br />
+                                        <h4>RETENTION OF INFORMATION</h4>
+                                        <p class="line-height-9 text-4 text-justify">
+                                            We retain personal information in accordance with the required retention periods in law or for legitimate business purposes. We may keep personal information indefinitely in a de-identified format for statistical purposes. This privacy policy also applies when we retain your personal information.
+                                        </p>
+                                        <br />
+                                        <h4>SECURITY BREACH</h4>
+                                        <p class="line-height-9 text-4 text-justify">
+                                            We will report any security breaches to the Information Regulator and to the individuals or companies involved. If you want to report any concerns about our privacy practices or if you suspect any breach regarding your personal information, kindly notify us by sending an email to info@18twenty8.org
+                                        </p>
+
+
+                                       
+                                      
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
                         </div>
-                        @*<div class="profile-image-inner-container bg-color-primary">
-                <label style="cursor: pointer;">
-                    <span for="file" class="profile-image-button bg-color-dark">
-                        <i class="fas fa-camera text-light"></i>
-                    </span>
-                </label>
-                <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+                    </div>
+                    </div>
+                    <div class="col-lg-3 mt-4 mt-lg-0">
 
-            </div>
-            <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="profile-image-outer-container">
+                                <div class="profile-image-inner-container bg-color-primary">
+                                    <img id="output" src="~/img/avatars/avatar.png">
+                                    <span class="profile-image-button bg-color-dark">
+                                        <i class="fas fa-camera text-dark"></i>
+                                    </span>
+                                </div>
+                                <input type="file" required class="profile-image-input" name="pc" id="pc" onchange="loadFile(event)" />
+                            </div>
+                            @*<div class="profile-image-inner-container bg-color-primary">
+                        <label style="cursor: pointer;">
+                            <span for="file" class="profile-image-button bg-color-dark">
+                                <i class="fas fa-camera text-light"></i>
+                            </span>
+                        </label>
+                        <p><img id="output" width="200" src="~/img/avatars/avatar.jpg"></p>
+
+                    </div>
+                    <p><input type="file" class="profile-image-input" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>*@
+
+
+                        </div>
+
 
 
                     </div>
+                    <div class="col-lg-9">
+
+                        <div class="form-group row">
+                            <label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required">18twenty8 appreciates your interest in volunteering with us. We look forward to your service for the betterment of our beneficiaries and community. However, 18twenty8 will not be held responsible for anything that happens to you while offering your volunteer services to us:</label>
+                            <div class="col-lg-4">
 
 
+                                <input asp-for="indemnity" class="form-control" required type="checkbox">
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+
+
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
+                            <div class="col-lg-12">
+                                <input asp-for="Fullnames" class="form-control" required type="text" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of Birth</label>
+                            <div class="col-lg-12">
+                                <input id="MyDate" asp-for="DOB" required class="form-control" placeholder="dd/mm/yyyy" type="date" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                            <div class="col-lg-12">
+                                <input asp-for="email" class="form-control" required type="email" value="">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
+                            <div class="col-lg-12">
+
+                                <input asp-for="cellnumber" class="form-control" required type="tel" maxlength="10" minlength="10" onblur="if(this.value == '') { this.value ='e.g. 0825660869'; }" onfocus="if(this.value =='e.g. 0825660869') { this.value = ''; }" value="e.g. 0825660869">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
+                            <div class="col-lg-12">
+                                <input asp-for="Postaladdressline1" class="form-control" required type="text" value="" placeholder="Street (96 4th St)">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
+                            <div class="col-lg-8">
+                                <input asp-for="Postaladdressline2" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
+                            </div>
+                            <div class="col-lg-4">
+                                @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                            <div class="col-lg-12">
+                                <input asp-for="Postalcode" class="form-control" required type="text" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Occupation and Employer</label>
+                            <div class="col-lg-8">
+                                <input asp-for="Occupation" class="form-control" required type="text" value="" placeholder="Occupation">
+                            </div>
+                            <div class="col-lg-4">
+                                <input asp-for="Employer" class="form-control" required type="text" value="" placeholder="Employer">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Which programme(s) are you interested in? </label>
+                            <div class="col-lg-12">
+                                @for (int i = 0; i < Model.programmelist.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.programmelist[i].Value" />
+                                    <input asp-for="programmelist[i].Selected" /> @Model.programmelist[i].Text<br />
+
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many hours per week can you contribute to the programme(s)?</label>
+                            <div class="col-lg-12">
+                                <input asp-for="Hoursweekforprogramme" class="form-control" required type="number" value="" placeholder="e.g 20">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many days can you dedicate to the programme(s)?</label>
+                            <div class="col-lg-9">
+                                @for (int i = 0; i < Model.Daysofweek.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Daysofweek[i].Value" />
+                                    <input asp-for="Daysofweek[i].Selected" /> @Model.Daysofweek[i].Text <br />
+
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please indicate any previous work experience as a volunteer in other organisation/s: (with contact reference/s)</label>
+                            <div class="col-lg-12">
+
+                                <textarea asp-for="previousexperienceinotherorgasvolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
+
+
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe why you offered to volunteer at 18twenty8:</label>
+                            <div class="col-lg-12">
+                                <textarea asp-for="describewhyyouofferedtovolunteer" maxlength="5000" required data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Do you have a specific achievement or goal that you plan to accomplish through volunteer experience?</label>
+                            <div class="col-lg-12">
+                                <textarea asp-for="goaltoachieveinvolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe your hobbies & interests:</label>
+                            <div class="col-lg-12">
+                                <textarea asp-for="describehobbies" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
+                            </div>
+                        </div>
+                        <div style="text-align:left;" class="form-group row">
+                            <label class="col-lg-7 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please confirm that you have read, understood and accepted the below confidentiality statement</label>
+                            <div class="col-lg-5">
+                               
+                            <input asp-for="confidentiality" class="form-control" required type="checkbox">
+                            </div>
+                            <div class="col-lg-12">
+                                <a data-toggle="modal" data-target="#largeModal" class="btn btn-primary btn-with-arrow mb-2">View our confidentiality statement<span><i class="fas fa-chevron-right"></i></span></a>
+                            </div>
+
+                        </div>
+                     
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Select or change file</span>
+                                        @*<span class="fileupload-new">Select file</span>*@
+                                        <input type="file" name="CV" id="CV" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Select or change file</span>
+                                        @*<span class="fileupload-new">Select file</span>*@
+                                        <input type="file" name="CID" id="CID" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Qualifications</label>
+                            <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
+                                <div class="input-append">
+                                    <div class="uneditable-input">
+                                        <i class="fas fa-file fileupload-exists"></i>
+                                        <span class="fileupload-preview"></span>
+                                    </div>
+
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileupload-exists">Select or change multiple files</span>
+                                        @*<span class="fileupload-new">Select file</span>*@
+                                        <input type="file" multiple name="QA" id="QA" />
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+
+                            <div class="form-group col-lg-12">
+                                <input type="submit" value="Save" class="btn btn-primary btn-modern float-left" data-loading-text="Submitting...">
+                            </div>
+                        </div>
+
+
+                    </div>
 
                 </div>
-                <div class="col-lg-9">
-
-                    <div class="overflow-hidden mb-1">
-              
-                    </div>
-                    <div class="overflow-hidden mb-4 pb-3">
-          
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Fullnames" class="form-control" required type="text" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Date of Birth</label>
-                        <div class="col-lg-12">
-                            <input id="MyDate" asp-for="DOB" required class="form-control" placeholder="dd/mm/yyyy" type="date" value="">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
-                        <div class="col-lg-12">
-                            <input asp-for="email" class="form-control" required type="email" value="">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
-                        <div class="col-lg-12">
-
-                            <input asp-for="cellnumber" class="form-control" required type="tel" maxlength="10" minlength="10" onblur="if(this.value == '') { this.value ='e.g. 0825660869'; }" onfocus="if(this.value =='e.g. 0825660869') { this.value = ''; }" value="e.g. 0825660869">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Postaladdressline1" class="form-control" required type="text" value="" placeholder="Street (96 4th St)">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
-                        <div class="col-lg-8">
-                            <input asp-for="Postaladdressline2" class="form-control" required type="text" value="" placeholder="Address line 2 (Parkmore, Sandton) ">
-                        </div>
-                        <div class="col-lg-4">
-                            @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
-
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Postalcode" class="form-control" required type="text" value="">
-                        </div>
-                    </div>
-              
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Occupation and Employer</label>
-                        <div class="col-lg-8">
-                            <input asp-for="Occupation" class="form-control" required type="text" value="" placeholder="Occupation">
-                        </div>
-                        <div class="col-lg-4">
-                            <input asp-for="Employer" class="form-control" required type="text" value="" placeholder="Employer">
-                        </div>
-                    </div>
-                 
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Which programme(s) are you interested in? </label>
-                        <div class="col-lg-12">
-                            @for (int i = 0; i < Model.programmelist.Count; i++)
-                            {
-                                <input type="hidden" asp-for="@Model.programmelist[i].Value" />
-                                <input asp-for="programmelist[i].Selected" /> @Model.programmelist[i].Text<br />
-
-                            }
-                        </div>
-                    </div>
-          
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many hours per week can you contribute to the programme(s)?</label>
-                        <div class="col-lg-12">
-                            <input asp-for="Hoursweekforprogramme" class="form-control" required type="number" value="" placeholder="e.g 20">
-
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How many days can you dedicate to the programme(s)?</label>
-                        <div class="col-lg-9">
-                            @for (int i = 0; i < Model.Daysofweek.Count; i++)
-                            {
-                                <input type="hidden" asp-for="@Model.Daysofweek[i].Value" />
-                                <input asp-for="Daysofweek[i].Selected" /> @Model.Daysofweek[i].Text <br />
-
-                            }
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please indicate any previous work experience as a volunteer in other organisation/s: (with contact reference/s)</label>
-                        <div class="col-lg-12">
-                            
-                            <textarea asp-for="previousexperienceinotherorgasvolunteer" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
-
-
-
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe why you offered to volunteer at 18twenty8:</label>
-                        <div class="col-lg-12">
-                            <textarea asp-for="describewhyyouofferedtovolunteer" maxlength="5000" required data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Do you have a specific achievement or goal that you plan to accomplish through volunteer experience?</label>
-                        <div class="col-lg-12">
-                            <textarea asp-for="goaltoachieveinvolunteer"  maxlength="5000"  data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Briefly describe your hobbies & interests:</label>
-                        <div class="col-lg-12">
-                            <textarea asp-for="describehobbies" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
-                        </div>
-                    </div>
-                
-                    <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">18twenty8 appreciates your interest in volunteering with us. We look forward to your service for the betterment of our beneficiaries and community. However, 18twenty8 will not be held responsible for anything that happens to you while offering your volunteer services to us:</label>
-                        <div class="col-lg-12">
-
-                            @Html.DropDownListFor(m => m.indemnity, ViewBag.Option as SelectList, htmlAttributes: new { @class = "form-control" })
-
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload CV</label>
-                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
-                            <div class="input-append">
-                                <div class="uneditable-input">
-                                    <i class="fas fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-
-                                <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="CV" id="CV" />
-                                </span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
-                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
-                            <div class="input-append">
-                                <div class="uneditable-input">
-                                    <i class="fas fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-
-                                <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
-                                    <input type="file" name="CID" id="CID" />
-                                </span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Qualifications</label>
-                        <div class="fileupload col-lg-9  fileupload-new" data-provides="fileupload">
-                            <div class="input-append">
-                                <div class="uneditable-input">
-                                    <i class="fas fa-file fileupload-exists"></i>
-                                    <span class="fileupload-preview"></span>
-                                </div>
-
-                                <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Change</span>
-                                    <span class="fileupload-new">Select file</span>
-                                    <input type="file" multiple name="QA" id="QA" />
-                                </span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="form-group col-lg-9">
-
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Submitting...">
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </form>
+</form>
     </div>
 
 </div>

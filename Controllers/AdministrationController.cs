@@ -252,7 +252,7 @@ namespace FSTC.Controllers
                 Text = x.Description,
                 Value = x.DayID.ToString()
             }).ToList();
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.ToContact = new SelectList(_context.Time, "TimeID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
             var vd = new Volunteerdetail()
@@ -602,6 +602,7 @@ namespace FSTC.Controllers
 
             if (model.SisterType.Equals("Little", StringComparison.OrdinalIgnoreCase))
                 return Ok(await _sisterService.GetLittleSisterProfile(model.UserId));
+
 
             return BadRequest($"Please specify the correct sister type. (Options are either Big or Little)");
         }

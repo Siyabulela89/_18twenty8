@@ -162,7 +162,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @{var allowedStatus = new[] { 5, 11 };}
+                                                                    @{var allowedStatus = new[] {3, 5, 11 };}
                                                                     @foreach (var item in LS.Where(x => allowedStatus.Contains(x.ProfileStatusID)))
                                                                     {
                                                                         <tr class="cart_table_item">
@@ -239,7 +239,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @{var allowedStatuss = new[] { 4, 10 };}
+                                                                    @{var allowedStatuss = new[] { 1,4, 10 };}
                                                                     @foreach (var item in BS.Where(x => allowedStatuss.Contains(x.ProfileStatusID)))
                                                                     {
                                                                         <tr class="cart_table_item">

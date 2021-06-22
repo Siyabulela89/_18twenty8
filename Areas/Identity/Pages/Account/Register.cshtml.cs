@@ -151,14 +151,14 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     await _signInManager.SignInAsync(user, isPersistent: false);
                      if(Input.UserRole== "Big Sister (Mentor)")
                     {
-                        return RedirectToAction("create", "BigSisterDetails", new { email = Input.Email, userId = user.Id, fullnames = Input.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id, fullnames = Input.UserNamedisp, id = id });
 
                       
                     }
                      else if (Input.UserRole == "Little Sister (Mentee)")
                     {
                      
-                        return RedirectToAction("create", "LittleSisterDetails", new { email = Input.Email, userId = user.Id, fullnames = Input.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id, fullnames = Input.UserNamedisp, id = id });
 
                     }
                     else if (Input.UserRole == "Admin")
@@ -169,7 +169,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     else if (Input.UserRole == "Bursary Applicant")
                     {
                        
-                        return RedirectToAction("Create", "FinancialSupport", new { email = Input.Email, userId = user.Id,fullnames = Input.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id,fullnames = Input.UserNamedisp, id=id });
 
                     }
                     return RedirectToPage("./Register", new { ReturnUrl = returnUrl, id = id });

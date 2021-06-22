@@ -197,6 +197,10 @@ namespace _18TWENTY8.Controllers
             var extension = Path.GetExtension(pc.FileName).ToLower();
             if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
             {
+             
+            }
+            else
+            {
                 ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
                 return View(FinancialS);
             }

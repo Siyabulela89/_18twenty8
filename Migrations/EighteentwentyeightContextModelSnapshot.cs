@@ -364,6 +364,21 @@ namespace _18TWENTY8.Migrations
                     b.ToTable("CommitteesStorage");
                 });
 
+            modelBuilder.Entity("_18TWENTY8.Models.ConfidentialityStatement", b =>
+                {
+                    b.Property<int>("ConfStatementID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Accepted");
+
+                    b.Property<string>("userId");
+
+                    b.HasKey("ConfStatementID");
+
+                    b.ToTable("ConfidentialityStatement");
+                });
+
             modelBuilder.Entity("_18TWENTY8.Models.Daysofweek", b =>
                 {
                     b.Property<int>("DayID")
@@ -953,7 +968,7 @@ namespace _18TWENTY8.Migrations
 
                     b.Property<string>("imgurl");
 
-                    b.Property<int>("indemnity");
+                    b.Property<bool>("indemnity");
 
                     b.Property<string>("previousexperienceinotherorgasvolunteer");
 

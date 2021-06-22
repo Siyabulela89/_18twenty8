@@ -24,6 +24,15 @@ namespace _18TWENTY8.Models
         public string np { get; set; }
         public string nt { get; set; }
     }
+    public class ConfidentialityStatement
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ConfStatementID { get; set; }
+        public string userId { get; set; }
+        public bool Accepted { get; set; }
+
+    }
     public class Volunteerdetail
     {
         [Key]
@@ -51,7 +60,8 @@ namespace _18TWENTY8.Models
         public string IDurl { get; set; }
         public string CVurl { get; set; }
         public string imgurl { get; set; }
-        public int indemnity { get; set; }
+        public bool indemnity { get; set; }
+        public bool confidentiality { get; set; }
         public DateTime DateCreated { get; set; }
 
         [NotMapped]

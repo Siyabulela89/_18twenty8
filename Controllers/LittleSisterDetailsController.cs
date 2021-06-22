@@ -113,7 +113,7 @@ namespace _18TWENTY8.Controllers
                 List<InteractionLevel> listtime = new List<InteractionLevel>();
                 listtime = _context.InteractionLevel.ToList();
 
-                ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
                 ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
                 ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -162,7 +162,7 @@ namespace _18TWENTY8.Controllers
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
 
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -222,17 +222,28 @@ namespace _18TWENTY8.Controllers
             };
 
 
-            var extension = Path.GetExtension(CV.FileName).ToLower();
+            var extension = Path.GetExtension(pc.FileName).ToLower();
             if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
+            {
+               
+            }
+            else if(filelentghpc>3)
+            {
+                ViewBag.Errorpc = "file too big";
+                return View(LittleSister);
+
+            }
+            else
             {
                 ViewBag.Errorpc = "incorrect image format, please note that we only accept (png, jpg, gif, and jpeg image file formats)";
                 return View(LittleSister);
+
             }
-            if (filelentghCID > 10)
+            if (filelentghCID > 2)
 
             {
 
-                ViewBag.Errorid = "uploaded file is above the required size of 10mb";
+                ViewBag.Errorid = "uploaded file is above the required size of 2mb";
                 return View(LittleSister);
 
             }
@@ -241,11 +252,11 @@ namespace _18TWENTY8.Controllers
             {
 
             }
-            if (filelentghCV > 10)
+            if (filelentghCV > 2)
 
             {
 
-                ViewBag.Errorcv = "uploaded file is above the required size of 10mb";
+                ViewBag.Errorcv = "uploaded file is above the required size of 2mb";
                 return View(LittleSister);
 
             }
@@ -265,10 +276,10 @@ namespace _18TWENTY8.Controllers
 
 
                     }
-                    else if ((formFile.Length / 1000000) > 5)
+                    else if ((formFile.Length / 1000000) > 2)
 
                     {
-                        ViewBag.Errorqa = "One or more uploaded files are above the required size of 5mb";
+                        ViewBag.Errorqa = "One or more uploaded files are above the required size of 2mb";
                         return View(LittleSister);
 
                     }
@@ -296,7 +307,7 @@ namespace _18TWENTY8.Controllers
                 }
                 LittleSister.CVurl = unq2;
             }
-            else if (extension == ".doc" || extension == ".docx")
+            else if (extensionx == ".doc" || extensionx == ".docx")
             {
                 unq2 = "CV" + Guid.NewGuid() + CV.FileName;
                 string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
@@ -340,7 +351,7 @@ namespace _18TWENTY8.Controllers
             }
             else if (extensionid == ".doc" || extensionid == ".docx")
             {
-                unq2 = "CV" + Guid.NewGuid() + CV.FileName;
+                unq2 = "CV" + Guid.NewGuid() + CID.FileName;
                 string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
                 string newname = "ID" + Guid.NewGuid() + ".pdf";
                 string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + newname;
@@ -349,7 +360,7 @@ namespace _18TWENTY8.Controllers
                 using (FileStream fs = System.IO.File.Create(conv))
 
                 {
-                    CV.CopyTo(fs);
+                    CID.CopyTo(fs);
                     fs.Flush();
                 }
                 Document doc = new Document();
@@ -480,7 +491,7 @@ namespace _18TWENTY8.Controllers
 
 
             }
-            ViewBag.Option = new SelectList(_context.OptionalBool, "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             return View(bgs);
         }

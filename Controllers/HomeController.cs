@@ -11,8 +11,9 @@ using Twilio.Types;
 using Twilio.TwiML;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
+
 
 namespace _18TWENTY8.Controllers
 {
@@ -74,7 +75,7 @@ namespace _18TWENTY8.Controllers
             var body = "<p><strong>Email From:<strong/> {0} {1}</p><p><strong>Message:<strong/></p><p>{2}</p> <p><strong>Contact number:<strong/> </p><p>{3}</p>";
             var message = new MailMessage();
             message.To.Add(new MailAddress("siyabulela@sinqe.co.za"));  // replace with valid value 
-            message.From = new MailAddress("web@18twenty8.org");  // replace with valid value
+            message.From = new MailAddress("Admin@18twenty8.org");  // replace with valid value
             message.Subject = "Web Enquiry " + ems.Name;
             message.Body = string.Format(body, ems.From, ems.Fromemail, ems.content, ems.Contact );
             message.IsBodyHtml = true;
@@ -84,12 +85,12 @@ namespace _18TWENTY8.Controllers
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = "Web@18twenty8.org",  // replace with valid value
-                    Password = "Web4321!"  // replace with valid value
+                    UserName = "admin@18twenty8.org",  // replace with valid value
+                    Password = "Admin4321!"  // replace with valid value
                 };
                 smtp.Credentials = credential;
-                smtp.Host = "smtp.18twenty8.org";
-                smtp.Port = 587;
+                smtp.Host = "mail.18twenty8.org";
+                smtp.Port = 25;
                 smtp.EnableSsl = false;
                 await smtp.SendMailAsync(message);
 
@@ -117,6 +118,76 @@ namespace _18TWENTY8.Controllers
             return View();
 
         }
+        public async Task<IActionResult> ConfidentialityStatement(string email, string userId, string fullnames,int id)
+        {
+            bool has = _context.ConfidentialityStatement.Any(x => x.userId == userId);
+            if (has == true)
+            {
+
+                if (id == 1)
+                {
+                    return RedirectToAction("Create", "LittleSisterDetails", new { email = email, userId = userId, fullnames = fullnames, id = id });
+                }
+                else if (id == 2)
+                {
+                    return RedirectToAction("Create", "BigSisterDetails", new { email = email, userId = userId, fullnames = fullnames, id = id });
+
+                }
+                else if (id == 3)
+                {
+                    return RedirectToAction("Create", "FinancialSupport", new { email = email, userId = userId, fullnames = fullnames, id = id });
+                }
+            }
+            ViewBag.email = email;
+            ViewBag.userId = userId;
+            ViewBag.fullnames = fullnames;
+            ViewBag.id = id;
+
+
+            return View();
+
+        }
+
+        [HttpPost]  
+       [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Confidentiality(ConfidentialityStatement CS, string email, string userId, string fullnames, int id)
+        {
+          
+
+            var Confistatement = new ConfidentialityStatement()
+            {
+                userId = CS.userId,
+                Accepted = CS.Accepted
+            };
+            if (ModelState.IsValid)
+            {
+               
+                _context.Add(Confistatement);
+                await _context.SaveChangesAsync();
+                if (id == 1)
+                {
+                    return RedirectToAction("Create", "LittleSisterDetails", new { email = email, userId = userId, fullnames = fullnames, id = id });
+                }
+                else if (id == 2)
+                {
+                    return RedirectToAction("Create", "BigSisterDetails", new { email = email, userId = userId, fullnames = fullnames, id = id });
+
+                }
+                else if (id == 3)
+                {
+                    return RedirectToAction("Create", "FinancialSupport", new { email = email, userId = userId, fullnames = fullnames, id = id });
+                }
+            }
+
+
+
+
+
+            return View();
+
+        }
+
 
 
         public IActionResult About()

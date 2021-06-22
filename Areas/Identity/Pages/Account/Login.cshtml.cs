@@ -89,11 +89,11 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     if (Userman.Contains("Big Sister (Mentor)"))
                     {
 
-                        return RedirectToAction("create", "BigSisterDetails", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp, id=2});
                     }
                     else if (Userman.Contains("Little Sister (Mentee)"))
                     {
-                        return RedirectToAction("create", "LittleSisterDetails", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp, id=1 });
                   
 
                     }
@@ -104,7 +104,7 @@ namespace _18TWENTY8.Areas.Identity.Pages.Account
                     }
                     else if (Userman.Contains("Bursary Applicant"))
                     {
-                        return RedirectToAction("Create", "FinancialSupport", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp });
+                        return RedirectToAction("ConfidentialityStatement", "Home", new { email = Input.Email, userId = user.Id, fullnames = user.UserNamedisp,id=3 });
 
                     }
                 }
