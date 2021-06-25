@@ -25,7 +25,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
 using Spire.Doc;
-
+using _18TWENTY8.Models.ViewModels.LittleSister;
 
 namespace _18TWENTY8.Controllers
 {
@@ -34,16 +34,17 @@ namespace _18TWENTY8.Controllers
         private readonly EighteentwentyeightContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
-    
         private readonly IMapper _mapper;
         private readonly SisterService _sisterService;
-        public LittleSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config, IMapper mapper)
+        public LittleSisterDetailsController(IHostingEnvironment host
+            , EighteentwentyeightContext context
+            , UserManager<ApplicationUser> userManager
+            , IConfiguration Config, IMapper mapper)
         {
             _Configuration = Config;
             _userManager = userManager;
             _context = context;
-
-            this._mapper = mapper;
+            _mapper = mapper;
             _sisterService = new SisterService(_context, _mapper);
             _host = host;
         }
@@ -113,14 +114,14 @@ namespace _18TWENTY8.Controllers
                 List<InteractionLevel> listtime = new List<InteractionLevel>();
                 listtime = _context.InteractionLevel.ToList();
 
-                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
                 ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
                 ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
                 var bg = new LittleSisterDetail()
                 {
                     Infosbig = listint,
-                 
+
                 };
 
 
@@ -134,7 +135,7 @@ namespace _18TWENTY8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-    
+
         [Authorize(Roles = "Little Sister (Mentee)")]
         public async Task<IActionResult> Create(LittleSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
@@ -162,7 +163,7 @@ namespace _18TWENTY8.Controllers
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
 
-            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -210,12 +211,12 @@ namespace _18TWENTY8.Controllers
                 EmergencyContactNametwo = bgs.EmergencyContactNametwo,
                 EmergencyContactNumberone = bgs.EmergencyContactNumberone,
                 EmergencyContactNumbertwo = bgs.EmergencyContactNumbertwo,
-                otherhobbies=bgs.otherhobbies,
+                otherhobbies = bgs.otherhobbies,
                 PostalCode = bgs.PostalCode,
                 UserID = bgs.UserID,
-            
+
                 Infosbig = listint
-              
+
 
 
 
@@ -225,9 +226,9 @@ namespace _18TWENTY8.Controllers
             var extension = Path.GetExtension(pc.FileName).ToLower();
             if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
             {
-               
+
             }
-            else if(filelentghpc>3)
+            else if (filelentghpc > 3)
             {
                 ViewBag.Errorpc = "file too big";
                 return View(LittleSister);
@@ -491,11 +492,11 @@ namespace _18TWENTY8.Controllers
 
 
             }
-            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             return View(bgs);
         }
-   
+
         public async Task<IActionResult> Verifytwof(int? id)
         {
 
@@ -541,14 +542,14 @@ namespace _18TWENTY8.Controllers
                             BigApproveID = 4,
                             LittleApproveID = 4,
                             LittleSisterID = _userManager.GetUserId(User),
-                         
+
                             DateCreated = DateTime.Now,
-                            AssignSisterStatusID=1
+                            AssignSisterStatusID = 1
 
 
 
-                        }) ;
-            
+                        });
+
                         await _context.SaveChangesAsync();
                     }
                     catch (DbUpdateConcurrencyException)
@@ -575,18 +576,20 @@ namespace _18TWENTY8.Controllers
             return View(LittleSisterDetail);
         }
         // GET: LittleSisterDetails/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
+            ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
+            ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
-            var littleSisterDetail = await _context.LittleSisterDetail.FindAsync(id);
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+
+            var profile = await _sisterService.GetLittleSisterProfile(id);
+            var littleSisterDetail = await _context.LittleSisterDetail.FindAsync(profile.Profile.LittleSisterDetailID);
             if (littleSisterDetail == null)
-            {
                 return NotFound();
-            }
+
             return View(littleSisterDetail);
         }
 
@@ -595,33 +598,17 @@ namespace _18TWENTY8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LittleSisterDetailID,UserID,Name,Surname,Nickname,IDPassport,DateofBirth,email,Phonenumber,physicaladdress,AlternateContact,howdidyouhearaboutQ,CurrentStudyQ,BackgroundQ,EverbeenamenteeQ,EmergencyContactNameone,EmergencyContactNumberone,EmergencyContactNametwo,EmergencyContactNumbertwo,DetailsOnEverbeenMenteeQ,ArrestedConvictedQ,DetailsArrestedConvictedQ,InformationofInterest,Interactionlevelmeet,InteractionlevelDigCom,prefferedMenteedetails,CVurl,Imageurl,Expectationsonlittlesister,ConfirmMenteedurationQ,DateCreated")] LittleSisterDetail littleSisterDetail)
+        // public async Task<IActionResult> Edit(string id, [Bind("LittleSisterDetailID,UserID,Name,Surname,Nickname,IDPassport,DateofBirth,email,Phonenumber,physicaladdress,AlternateContact,howdidyouhearaboutQ,CurrentStudyQ,BackgroundQ,EverbeenamenteeQ,EmergencyContactNameone,EmergencyContactNumberone,EmergencyContactNametwo,EmergencyContactNumbertwo,DetailsOnEverbeenMenteeQ,ArrestedConvictedQ,DetailsArrestedConvictedQ,InformationofInterest,Interactionlevelmeet,InteractionlevelDigCom,prefferedMenteedetails,CVurl,Imageurl,Expectationsonlittlesister,ConfirmMenteedurationQ,DateCreated")] LittleSisterDetail littleSisterDetail)
+        public async Task<IActionResult> Edit(string id, UpdateLittleSisterModel model)
         {
-            if (id != littleSisterDetail.LittleSisterDetailID)
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(littleSisterDetail);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LittleSisterDetailExists(littleSisterDetail.LittleSisterDetailID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
+            model.UserID = id;
+            var littleSisterDetail = await _sisterService.UpdateLittleSisterProfile(model);
+            if (!string.IsNullOrEmpty(littleSisterDetail.UserID))
+                return RedirectToAction("Details", new { id = littleSisterDetail.UserID });
+
             return View(littleSisterDetail);
         }
 

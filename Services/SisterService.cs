@@ -41,18 +41,42 @@ namespace _18TWENTY8.Services
             if (model.Role.Equals("Little Sister (Mentee)", StringComparison.OrdinalIgnoreCase))
             {
                 sisterAssign.LittleApproveID = status;
-                if (sisterAssign.BigApproveID == 3 && status==3)
+                if (sisterAssign.BigApproveID == 3 && status == 3)
                     sisterAssign.AssignSisterStatusID = 2;
-                
+
             }
             else if (model.Role.Equals("Big Sister (Mentor)", StringComparison.OrdinalIgnoreCase))
             {
                 sisterAssign.BigApproveID = status;
-                if (sisterAssign.LittleApproveID ==3 && status == 3)
+                if (sisterAssign.LittleApproveID == 3 && status == 3)
                     sisterAssign.AssignSisterStatusID = 2;
             }
-    
+
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<LittleSisterDetail> UpdateLittleSisterProfile(UpdateLittleSisterModel model)
+        {
+            var existingProfile = await _context.LittleSisterDetail.FirstOrDefaultAsync(s => s.UserID.Equals(model.UserID));
+
+            if (existingProfile == null)
+                throw new Exception($"Little Sister not found: UserId - {model.UserID}");
+
+            _mapper.Map(model, existingProfile);
+
+            return await _context.SaveChangesAsync() > 0 ? existingProfile : new LittleSisterDetail();
+        }
+
+        public async Task<BigSisterDetail> UpdateBigSisterProfile(UpdateBigSisterModel model)
+        {
+            var existingProfile = await _context.BigSisterDetail.FirstOrDefaultAsync(s => s.UserID.Equals(model.UserID));
+
+            if (existingProfile == null)
+                throw new Exception($"Big Sister not found: UserId - {model.UserID}");
+
+            _mapper.Map(model, existingProfile);
+
+            return await _context.SaveChangesAsync() > 0 ? existingProfile : new BigSisterDetail();
         }
         public async Task<bool> AssignBigSisterToLittleSister(AssignSisterViewModel model)
         {
@@ -125,22 +149,22 @@ namespace _18TWENTY8.Services
             {
                 littleProfile.Profile.AssignedSister = $"{assignedBigSister.Name} {assignedBigSister.Surname}";
                 littleProfile.Profile.AssignedSisterId = assignedBigSister.UserID;
-             
-               
+
+
             }
             littleProfile.Profile.AssignedSisterStatus = assignStatus.description;
             littleProfile.Profile.SisterAssignId = sisterAssignment.SisAssID;
-            littleProfile.Profile.Interactionlevelmeetd = Interaction.Description;
-            littleProfile.Profile.InteractionlevelDigComd = Interactiondigi.Description;
-            littleProfile.Profile.ProfileStatus = profileStatus.Description;
+            littleProfile.Profile.Interactionlevelmeetd = Interaction?.Description;
+            littleProfile.Profile.InteractionlevelDigComd = Interactiondigi?.Description;
+            littleProfile.Profile.ProfileStatus = profileStatus?.Description;
             littleProfile.Profile.SisterAssignStatus = assignStatus.description;
             littleProfile.Profile.LittleApproveID = sisterAssignment.LittleApproveID;
             littleProfile.Profile.BigApproveID = sisterAssignment.BigApproveID;
             littleProfile.Profile.SisterStatus = assignStatus.description;
-            littleProfile.Profile.EverBeenAMenteed = Menteed.Description;
-  
-    
-        littleProfile.Profile.PreviouslyArrestedOrConvictedd = Convicted.Description;
+            littleProfile.Profile.EverBeenAMenteed = Menteed?.Description;
+
+
+            littleProfile.Profile.PreviouslyArrestedOrConvictedd = Convicted?.Description;
 
 
             return littleProfile;
