@@ -1,176 +1,300 @@
 ﻿@model _18TWENTY8.Models.LittleSisterDetail
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@{
-    ViewData["Title"] = "Edit";
-}
+<div role="main" class="main">
 
-<h2>Edit</h2>
+    <section class="page-header page-header-modern bg-color-light-scale-1 border-0 m-0 page-header-md">
+        <div class="container">
+            <div class="row">
 
-<h4>LittleSisterDetail</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="LittleSisterDetailID" />
-            <div class="form-group">
-                <label asp-for="UserID" class="control-label"></label>
-                <input asp-for="UserID" class="form-control" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+
+                </div>
+
+                <div class="col-md-12 align-self-center order-1">
+
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </section>
+    <section>
+        <div class="container py-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 style="color:#a62237" class="font-weight-normal mb-5">Complete your profile and be mentored by a Big Sister</h2>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nickname" class="control-label"></label>
-                <input asp-for="Nickname" class="form-control" />
-                <span asp-validation-for="Nickname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IDPassport" class="control-label"></label>
-                <input asp-for="IDPassport" class="form-control" />
-                <span asp-validation-for="IDPassport" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateofBirth" class="control-label"></label>
-                <input asp-for="DateofBirth" class="form-control" />
-                <span asp-validation-for="DateofBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phonenumber" class="control-label"></label>
-                <input asp-for="Phonenumber" class="form-control" />
-                <span asp-validation-for="Phonenumber" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="physicaladdress" class="control-label"></label>
-                <input asp-for="physicaladdress" class="form-control" />
-                <span asp-validation-for="physicaladdress" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="AlternateContact" class="control-label"></label>
-                <input asp-for="AlternateContact" class="form-control" />
-                <span asp-validation-for="AlternateContact" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="howdidyouhearaboutQ" class="control-label"></label>
-                <input asp-for="howdidyouhearaboutQ" class="form-control" />
-                <span asp-validation-for="howdidyouhearaboutQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CurrentStudyQ" class="control-label"></label>
-                <input asp-for="CurrentStudyQ" class="form-control" />
-                <span asp-validation-for="CurrentStudyQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BackgroundQ" class="control-label"></label>
-                <input asp-for="BackgroundQ" class="form-control" />
-                <span asp-validation-for="BackgroundQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EverbeenamenteeQ" class="control-label"></label>
-                <input asp-for="EverbeenamenteeQ" class="form-control" />
-                <span asp-validation-for="EverbeenamenteeQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactNameone" class="control-label"></label>
-                <input asp-for="EmergencyContactNameone" class="form-control" />
-                <span asp-validation-for="EmergencyContactNameone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactNumberone" class="control-label"></label>
-                <input asp-for="EmergencyContactNumberone" class="form-control" />
-                <span asp-validation-for="EmergencyContactNumberone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactNametwo" class="control-label"></label>
-                <input asp-for="EmergencyContactNametwo" class="form-control" />
-                <span asp-validation-for="EmergencyContactNametwo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactNumbertwo" class="control-label"></label>
-                <input asp-for="EmergencyContactNumbertwo" class="form-control" />
-                <span asp-validation-for="EmergencyContactNumbertwo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DetailsOnEverbeenMenteeQ" class="control-label"></label>
-                <input asp-for="DetailsOnEverbeenMenteeQ" class="form-control" />
-                <span asp-validation-for="DetailsOnEverbeenMenteeQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ArrestedConvictedQ" class="control-label"></label>
-                <input asp-for="ArrestedConvictedQ" class="form-control" />
-                <span asp-validation-for="ArrestedConvictedQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DetailsArrestedConvictedQ" class="control-label"></label>
-                <input asp-for="DetailsArrestedConvictedQ" class="form-control" />
-                <span asp-validation-for="DetailsArrestedConvictedQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InformationofInterest" class="control-label"></label>
-                <input asp-for="InformationofInterest" class="form-control" />
-                <span asp-validation-for="InformationofInterest" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Interactionlevelmeet" class="control-label"></label>
-                <input asp-for="Interactionlevelmeet" class="form-control" />
-                <span asp-validation-for="Interactionlevelmeet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InteractionlevelDigCom" class="control-label"></label>
-                <input asp-for="InteractionlevelDigCom" class="form-control" />
-                <span asp-validation-for="InteractionlevelDigCom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="prefferedMenteedetails" class="control-label"></label>
-                <input asp-for="prefferedMenteedetails" class="form-control" />
-                <span asp-validation-for="prefferedMenteedetails" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CVurl" class="control-label"></label>
-                <input asp-for="CVurl" class="form-control" />
-                <span asp-validation-for="CVurl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Imageurl" class="control-label"></label>
-                <input asp-for="Imageurl" class="form-control" />
-                <span asp-validation-for="Imageurl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Expectationsonlittlesister" class="control-label"></label>
-                <input asp-for="Expectationsonlittlesister" class="form-control" />
-                <span asp-validation-for="Expectationsonlittlesister" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmMenteedurationQ" class="control-label"></label>
-                <input asp-for="ConfirmMenteedurationQ" class="form-control" />
-                <span asp-validation-for="ConfirmMenteedurationQ" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </section>
+
+    <div class="container py-2">
+        <form asp-action="Edit" role="form" class="needs-validation" enctype="multipart/form-data">
+            <div class="row">
+                <!--<input hidden asp-for="UserID" class="form-control" required type="text" value="@ViewBag.UserID">-->
+                <div class="col-lg-3 mt-4 mt-lg-0">
+
+                    <div class="d-flex justify-content-center mb-4">
+                        <div class="profile-image-outer-container">
+                            <div class="profile-image-inner-container bg-color-primary">
+                                <img id="output" src="~/img/avatars/avatar.png">
+                                <span class="profile-image-button bg-color-dark">
+                                    <i class="fas fa-camera text-dark"></i>
+                                </span>
+                            </div>
+                            <input type="file" required class="profile-image-input" name="pc" id="pc" />
+                        </div>
+                    </div>
+                    <br />
+                    <!--<p style="color:red;" class="label-danger">@ViewBag.Errorpc</p>-->
+                    <p style="color:red;" id="filesz" class="label-danger"></p>
+
+
+
+
+                </div>
+                <div class="col-lg-9">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7"><strong class="font-weight-extra-bold">My Little</strong> Sister Profile</h2>
+                    </div>
+                    <div class="overflow-hiddenpb-3">
+                        <p class="mb-0">Please update your little sister profile by filling in the details below.</p>
+                    </div>
+
+
+                    <div class="form-group row">
+                        @*<label class="col-lg-8 font-weight-bold text-dark col-form-label form-control-label text-2 required">I confirm that I commit to being a Little Sister for no less than 12 months from the date of submission of this form</label>*@
+
+                        <div class="col-lg-4">
+
+                            @*<input asp-for="ConfirmMenteedurationQ" class="form-control" required type="checkbox">*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Full Names</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Name" class="form-control" required type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">ID Number</label>
+                        <div class="col-lg-12">
+                            <input asp-for="IDPassport" class="form-control" required type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email</label>
+                        <div class="col-lg-12">
+                            <input asp-for="email" class="form-control" required type="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
+                        <div class="col-lg-12">
+                            <input asp-for="Phonenumber" class="form-control" required type="tel" maxlength="10" minlength="10">
+                        </div>
+                        <div class="col-lg-12"><p>Please ensure that your cell phone number is correct before you proceed, the number will be used to send you a verfication code to complete your registration.</p></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Physical Address</label>
+                        <div class="col-lg-12">
+                            <input asp-for="AddressStreet" class="form-control" required type="text" placeholder="Street (96 4th St)">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2"></label>
+                        <div class="col-lg-8">
+                            <input asp-for="AddressStreetlinetwo" class="form-control" required type="text" placeholder="Address line 2 (Parkmore, Sandton) ">
+                        </div>
+                        <div class="col-lg-4">
+                            @Html.DropDownListFor(m => m.Province, ViewBag.Province as SelectList, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Postal Code</label>
+                        <div class="col-lg-12">
+                            <input asp-for="PostalCode" class="form-control" required type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 1</label>
+                        <div class="col-lg-8">
+                            <input asp-for="EmergencyContactNumberone" class="form-control" required type="text" placeholder="Phone Number">
+                        </div>
+                        <div class="col-lg-4">
+                            <input asp-for="EmergencyContactNameone" class="form-control" required type="text" placeholder="Name of Person">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Emergency Contact 2</label>
+                        <div class="col-lg-8">
+                            <input asp-for="EmergencyContactNumbertwo" class="form-control" required type="text" placeholder="Phone Number">
+                        </div>
+                        <div class="col-lg-4">
+                            <input asp-for="EmergencyContactNametwo" class="form-control" required type="text" placeholder="Name of Person">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">How did you hear about 18twenty8?</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="howdidyouhearaboutQ" maxlength="5000" data-msg-required="This field is required." rows="4" class="form-control" id="about18Q" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Details about your current study programme, year of study and where you are studying</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="CurrentStudyQ" maxlength="5000" data-msg-required="This field is required." rows="4" class="form-control" id="mdessage" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please provide details on the preferred profession, industry sector and geographic area of Big Sister</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="prefferedMenteedetails" maxlength="5000" data-msg-required="This field is required." rows="4" class="form-control" id="megssage" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Tell us more about yourself (personal, academic and professional aspirations)</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="This field is required." rows="4" class="form-control" id="mesjsage" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been a mentee?</label>
+                        <div class="col-lg-12">
+                            @Html.DropDownListFor(m => m.EverbeenamenteeQ, ViewBag.Option as SelectList, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the above question.</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="DetailsOnEverbeenMenteeQ" maxlength="5000" rows="4" class="form-control" id="mdfessage"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Have you ever been arrested or convicted of a crime?</label>
+                        <div class="col-lg-12">
+                            @Html.DropDownListFor(m => m.ArrestedConvictedQ, ViewBag.Option as SelectList, htmlAttributes: new { @class = "form-control" })
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the above question.</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="meslsage"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">What expectations do you have of your Big Sister?</label>
+                        <div class="col-lg-12">
+                            <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="This field is required." rows="4" class="form-control" id="mesgsage" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Hobbies (Please select all applicable options)</label>
+                        <div class="col-lg-12">
+
+                            @*@for (int i = 0; i < Model.Infosbig.Count; i++)
+                                {
+                                    <input type="hidden" asp-for="@Model.Infosbig[i].Value" />
+                                    <input asp-for="Infosbig[i].Selected" /> @Model.Infosbig[i].Text <br />
+
+                                }*@
+
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
+                        <div class="col-lg-12">
+
+                            <textarea asp-for="otherhobbies" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="about18gQk"></textarea>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">IN-PERSON MEETINGS: Our Big Sisters require varying levels of interaction with their Little Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Big Sister: </label>
+                        <div class="col-lg-12">
+
+                            @Html.DropDownListFor(m => m.Interactionlevelmeet, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
+                        <div class="col-lg-12">
+
+                            <textarea asp-for="Interactionlevelmeetother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="about18Qj"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">COMMUNICATION: I anticipate being able to call / email / message my Big Sister:</label>
+                        <div class="col-lg-12">
+
+                            @Html.DropDownListFor(m => m.InteractionlevelDigCom, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please give details if you chose other</label>
+                        <div class="col-lg-12">
+
+                            <textarea asp-for="InteractionlevelDigComother" maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" id="about18Qk"></textarea>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="form-group col-lg-9">
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Submitting...">
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </form>
     </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script type="text/javascript">
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+
+
+    };
+    $('#pc').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 4 || size < 0) {
+            $("#filesz").html('<b>' +
+                'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+        } else {
+
+            loadFile(event);
+        }
+    });
+
+</script>
+
 

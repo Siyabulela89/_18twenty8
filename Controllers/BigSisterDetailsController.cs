@@ -32,6 +32,7 @@ using _18TWENTY8.Models.ViewModels.BigSister;
 using Microsoft.AspNetCore.Authorization;
 using System.Globalization;
 using Spire.Doc;
+using _18TWENTY8.Services;
 
 namespace _18TWENTY8.Controllers
 {
@@ -40,16 +41,23 @@ namespace _18TWENTY8.Controllers
         private readonly EighteentwentyeightContext _context;
         private UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
-   
-        public BigSisterDetailsController(IHostingEnvironment host, EighteentwentyeightContext context, UserManager<ApplicationUser> userManager, IConfiguration Config)
+        private readonly IMapper _mapper;
+        private readonly SisterService _sisterService;
+
+        public BigSisterDetailsController(IHostingEnvironment host
+            , EighteentwentyeightContext context
+            , UserManager<ApplicationUser> userManager
+            , IConfiguration Config, IMapper mapper)
         {
             _Configuration = Config;
-               _userManager = userManager;
+            _userManager = userManager;
             _context = context;
             _host = host;
+            _mapper = mapper;
+            _sisterService = new SisterService(_context, _mapper);
         }
         public IConfiguration _Configuration { get; }
-      
+
         [Authorize(Roles = "Big Sister (Mentor)")]
         public IActionResult IncorrectCode(int? id)
         {
@@ -76,7 +84,7 @@ namespace _18TWENTY8.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Verifytwof(int id, BigSisterDetail bigSisterDetail)
         {
-            
+
 
 
             if (id != bigSisterDetail.BigSisterDetailID)
@@ -86,7 +94,7 @@ namespace _18TWENTY8.Controllers
 
             if (ModelState.IsValid)
             {
-                if(bigSisterDetail.VerifCodeComp==bigSisterDetail.VerifCode)
+                if (bigSisterDetail.VerifCodeComp == bigSisterDetail.VerifCode)
                 {
                     bigSisterDetail.verifiedRegistration = "Yes";
                     bigSisterDetail.ProfileStatusID = 4;
@@ -94,21 +102,21 @@ namespace _18TWENTY8.Controllers
 
 
                     try
-                {
-                    _context.Update(bigSisterDetail);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BigSisterDetailExists(bigSisterDetail.BigSisterDetailID))
                     {
-                        return NotFound();
+                        _context.Update(bigSisterDetail);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!BigSisterDetailExists(bigSisterDetail.BigSisterDetailID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
-                }
                     return RedirectToAction("Details", new { id = bigSisterDetail.UserID });
                 }
                 else
@@ -142,7 +150,7 @@ namespace _18TWENTY8.Controllers
 
             var bigSisterDetail = await _context.BigSisterDetail.FirstOrDefaultAsync(m => m.UserID == id);
             ViewBag.EvMentor = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.EverbeenamentorQ).SingleOrDefault().Description;
-            ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).SingleOrDefault().Description;
+            ViewBag.ProStatus = _context.ProfileStatus.Where(x => x.ProfileStatusID == bigSisterDetail.ProfileStatusID).SingleOrDefault()?.Description;
             ViewBag.Conv = _context.OptionalBool.Where(x => x.YesNoID == bigSisterDetail.ArrestedConvictedQ).SingleOrDefault().Description;
 
 
@@ -163,24 +171,24 @@ namespace _18TWENTY8.Controllers
                 //ViewBag.AssignedLittleSister = littleSister.Name + " " + littleSister.Surname;
                 //ViewBag.AssignedLittleSisterId = littleSister.UserID;
 
-   
+
                 foreach (var assign in bigSisterAssignments)
                 {
                     var littleSisterDetail = _context.LittleSisterDetail.FirstOrDefault(l => l.UserID == assign.LittleSisterID);
-        
+
                     var littleSisterFullname = littleSisterDetail.Name + " " + littleSisterDetail.Surname;
                     var bigAssign = new BigSisterAssignmentViewModel
                     {
                         AssignSisterStatusID = assign.SisAssID,
                         AssignBigApproveID = assign.BigApproveID,
-                        AssignLittleApproveID=assign.LittleApproveID,
-                        AssignedLittleSisterId =  assign.LittleSisterID,
+                        AssignLittleApproveID = assign.LittleApproveID,
+                        AssignedLittleSisterId = assign.LittleSisterID,
                         AssignedLittleSister = littleSisterFullname
 
                     };
 
                     assignments.Add(bigAssign);
-                   
+
                 }
 
 
@@ -273,7 +281,7 @@ namespace _18TWENTY8.Controllers
 
         [Authorize(Roles = "Big Sister (Mentor)")]
         // GET: BigSisterDetails/Create
-        public IActionResult Create(string email,string userId, string fullnames)
+        public IActionResult Create(string email, string userId, string fullnames)
 
         {
 
@@ -289,7 +297,7 @@ namespace _18TWENTY8.Controllers
             bool has = _context.BigSisterDetail.Any(x => x.UserID == userId);
             if (has == true)
             {
-                return RedirectToAction("Details", new { id = userId});
+                return RedirectToAction("Details", new { id = userId });
             }
             else
 
@@ -308,23 +316,23 @@ namespace _18TWENTY8.Controllers
                 List<InteractionLevel> listtime = new List<InteractionLevel>();
                 listtime = _context.InteractionLevel.ToList();
 
-                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+                ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
                 ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
                 ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
                 var bg = new BigSisterDetail()
                 {
-                    
+
                     Infosbig = listint,
                     Addsupbig = supdoc,
-                    UserID=userId
+                    UserID = userId
                 };
-           
 
-            return View(bg);
+
+                return View(bg);
             }
         }
-        
+
 
         // POST: BigSisterDetails/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -334,7 +342,7 @@ namespace _18TWENTY8.Controllers
         [Authorize(Roles = "Big Sister (Mentor)")]
         public async Task<IActionResult> Create(BigSisterDetail bgs, IFormFile CV, IFormFile CID, IFormFile pc, IEnumerable<IFormFile> QA)
         {
-            long filelentghCID = CID.Length/1000000;
+            long filelentghCID = CID.Length / 1000000;
             long filelentghpc = pc.Length / 1000000;
             long filelentghCV = CV.Length / 1000000;
 
@@ -356,7 +364,7 @@ namespace _18TWENTY8.Controllers
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
 
-            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -364,13 +372,13 @@ namespace _18TWENTY8.Controllers
             var id_month = bgs.IDPassport.Substring(2, 2);
             var id_year = bgs.IDPassport.Substring(0, 2);
 
-            var fullDate = id_year+ id_month + id_date;
+            var fullDate = id_year + id_month + id_date;
             CultureInfo provider = CultureInfo.InvariantCulture;
 
-             DateTime DateOB = DateTime.ParseExact(fullDate, "yyMMdd", provider);
-    
+            DateTime DateOB = DateTime.ParseExact(fullDate, "yyMMdd", provider);
+
             string path_Root1 = _host.WebRootPath;
- 
+
             string unq1;
             String unq2;
             var filePath = Path.GetTempFileName();
@@ -409,12 +417,12 @@ namespace _18TWENTY8.Controllers
                 EmergencyContactNametwo = bgs.EmergencyContactNametwo,
                 EmergencyContactNumberone = bgs.EmergencyContactNumberone,
                 EmergencyContactNumbertwo = bgs.EmergencyContactNumbertwo,
-                HobbiesOther=bgs.HobbiesOther,
-                   PostalCode = bgs.PostalCode,
-                   UserID = bgs.UserID,
-                     Infosbig = listint,
+                HobbiesOther = bgs.HobbiesOther,
+                PostalCode = bgs.PostalCode,
+                UserID = bgs.UserID,
+                Infosbig = listint,
                 Addsupbig = supdoc
-            
+
 
 
 
@@ -424,7 +432,7 @@ namespace _18TWENTY8.Controllers
             var extension = Path.GetExtension(pc.FileName).ToLower();
             if (extension == ".png" || extension == ".jpg" || extension == ".gif" || extension == ".jpeg" || extension == ".gif")
             {
-                
+
             }
             else
 
@@ -433,7 +441,7 @@ namespace _18TWENTY8.Controllers
                 return View(Bigsister);
 
             }
-                if (filelentghpc > 2)
+            if (filelentghpc > 2)
 
             {
 
@@ -465,12 +473,12 @@ namespace _18TWENTY8.Controllers
                 if (formFile.Length > 0)
                 {
                     var extensionf = Path.GetExtension(formFile.FileName).ToLower();
-                    if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf==".docx" || extensionf==".doc")
+                    if (extensionf == ".png" || extensionf == ".jpg" || extensionf == ".gif" || extensionf == ".jpeg" || extensionf == ".pdf" || extensionf == ".docx" || extensionf == ".doc")
                     {
 
 
                     }
-                    else if((formFile.Length/1000000)>5)
+                    else if ((formFile.Length / 1000000) > 5)
 
                     {
                         ViewBag.Errorqa = "One or more uploaded files are above the required size of 5mb";
@@ -487,21 +495,21 @@ namespace _18TWENTY8.Controllers
                 }
 
             }
-                    var extensionx = Path.GetExtension(CV.FileName).ToLower();
-            if (extensionx == ".png" || extensionx == ".jpg" || extensionx == ".gif" || extensionx == ".jpeg" || extensionx==".pdf")
+            var extensionx = Path.GetExtension(CV.FileName).ToLower();
+            if (extensionx == ".png" || extensionx == ".jpg" || extensionx == ".gif" || extensionx == ".jpeg" || extensionx == ".pdf")
             {
 
                 unq2 = "CV" + Guid.NewGuid() + CV.FileName;
                 string pathtofile = path_Root1 + "\\Uploads\\CV\\" + unq2;
                 using (FileStream fs = System.IO.File.Create(pathtofile))
 
-            {
-                CV.CopyTo(fs);
-                fs.Flush();
-            }
+                {
+                    CV.CopyTo(fs);
+                    fs.Flush();
+                }
                 Bigsister.CVUrl = unq2;
             }
-            else if (extensionx==".doc" || extensionx==".docx")
+            else if (extensionx == ".doc" || extensionx == ".docx")
             {
                 unq2 = "CV" + Guid.NewGuid() + CV.FileName;
                 string conv = path_Root1 + "\\Uploads\\Conv\\" + unq2;
@@ -534,13 +542,13 @@ namespace _18TWENTY8.Controllers
             if (extensionid == ".png" || extensionid == ".jpg" || extensionid == ".gif" || extensionid == ".jpeg" || extensionid == ".pdf")
             {
                 unq2 = "CID" + Guid.NewGuid() + CID.FileName;
-            string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
-            using (FileStream fs = System.IO.File.Create(pathtofiled))
+                string pathtofiled = path_Root1 + "\\Uploads\\CertifiedID\\" + unq2;
+                using (FileStream fs = System.IO.File.Create(pathtofiled))
 
-            {
-                CID.CopyTo(fs);
-                fs.Flush();
-            }
+                {
+                    CID.CopyTo(fs);
+                    fs.Flush();
+                }
                 Bigsister.CertifiedID = unq2;
             }
             else if (extensionid == ".doc" || extensionid == ".docx")
@@ -573,7 +581,7 @@ namespace _18TWENTY8.Controllers
 
 
 
-            unq2 = "pc"+Guid.NewGuid() +pc.FileName;
+            unq2 = "pc" + Guid.NewGuid() + pc.FileName;
             string pathtofileds = path_Root1 + "\\Uploads\\ProimagesBigsis\\" + unq2;
             using (FileStream fs = System.IO.File.Create(pathtofileds))
 
@@ -589,7 +597,7 @@ namespace _18TWENTY8.Controllers
                 _context.Add(Bigsister);
                 await _context.SaveChangesAsync();
                 int ids = Bigsister.BigSisterDetailID;
-                Bigsister.VerifCode = "18t" + Bigsister.Name.Substring(1,3) +unq2.Substring(1,3)+ ids;
+                Bigsister.VerifCode = "18t" + Bigsister.Name.Substring(1, 3) + unq2.Substring(1, 3) + ids;
                 Bigsister.verifiedRegistration = "No";
                 _context.Update(Bigsister);
                 await _context.SaveChangesAsync();
@@ -630,7 +638,7 @@ namespace _18TWENTY8.Controllers
 
                     });
                     await _context.SaveChangesAsync();
-                  
+
                 }
 
                 foreach (var formFile in QA)
@@ -689,9 +697,9 @@ namespace _18TWENTY8.Controllers
                             await _context.SaveChangesAsync();
 
                         }
-                      
+
                     }
-                   
+
                 }
                 return RedirectToAction("Verifytwof", new { id = Bigsister.BigSisterDetailID });
 
@@ -699,14 +707,17 @@ namespace _18TWENTY8.Controllers
 
 
             }
-            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             return View(bgs);
         }
 
         // GET: BigSisterDetails/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest();
+            
             var listint = _context.InformationInterest.Select(x => new SelectListItem()
             {
                 Text = x.Description,
@@ -720,7 +731,7 @@ namespace _18TWENTY8.Controllers
             List<InteractionLevel> listtime = new List<InteractionLevel>();
             listtime = _context.InteractionLevel.ToList();
 
-            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x=> x.YesNoID), "YesNoID", "Description");
+            ViewBag.Option = new SelectList(_context.OptionalBool.OrderByDescending(x => x.YesNoID), "YesNoID", "Description");
             ViewBag.Intlevel = new SelectList(_context.InteractionLevel, "InteractionLevelID", "Description");
             ViewBag.Province = new SelectList(_context.Province, "ProvinceID", "Provincename");
 
@@ -728,18 +739,15 @@ namespace _18TWENTY8.Controllers
             {
                 Infosbig = listint,
                 Addsupbig = supdoc,
-             
-            };
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var bigSisterDetail = await _context.BigSisterDetail.FindAsync(id);
+            };
+           
+
+            var bigSisProfile = await _sisterService.GetBigSisterProfile(id);
+            var bigSisterDetail = await _context.BigSisterDetail.FindAsync(bigSisProfile.Profile.BigSisterDetailID);
             if (bigSisterDetail == null)
-            {
                 return NotFound();
-            }
+            
             return View(bigSisterDetail);
         }
 
@@ -748,35 +756,21 @@ namespace _18TWENTY8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BigSisterDetailID,Name,Surname,Nickname,IDPassport,DateofBirth,email,Phonenumber,physicaladdress,AlternateContact,howdidyouhearabout,BackgroundQ,EverbeenamentorQ,DetailsOnEverbeenMentorQ,ArrestedConvictedQ,DetailsArrestedConvictedQ,InformationofInterest,Interactionlevelmeet,InteractionlevelDigCom,prefferedstudentdetails,youngerselfQ,AdditionalSupport,Expectationsonlittlesister,ConfirmMentordurationQ,DateCreated")] BigSisterDetail bigSisterDetail)
+        public async Task<IActionResult> Edit(string id, UpdateBigSisterModel model)
         {
-            if (id != bigSisterDetail.BigSisterDetailID)
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrEmpty(id)) 
+                return BadRequest();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(bigSisterDetail);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BigSisterDetailExists(bigSisterDetail.BigSisterDetailID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
+            model.UserID = id;
+            var bigSisterDetail = await _sisterService.UpdateBigSisterProfile(model);
+            if (!string.IsNullOrEmpty(bigSisterDetail.UserID))
+                return RedirectToAction("Details", new { id = bigSisterDetail.UserID });
+
             return View(bigSisterDetail);
+
         }
+
+
 
         // GET: BigSisterDetails/Delete/5
         public async Task<IActionResult> Delete(int? id)

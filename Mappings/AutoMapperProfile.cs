@@ -18,6 +18,8 @@ namespace _18TWENTY8.Mappings
             CreateMap<LittleSisterDetail, LittleSisterDetailViewModel>();
             CreateMap<LittleSisterAcademic, LittleSisterAcademicViewModel>();
             CreateMap<InformationInterest, SisterInformationOfInterestViewModel>();
+            CreateMap<UpdateLittleSisterModel, LittleSisterDetail>();
+            CreateMap<UpdateBigSisterModel, BigSisterDetail>();
         }
     }
 }
