@@ -152,13 +152,13 @@ namespace _18TWENTY8.Controllers
         public async Task<IActionResult> Create(FinancialSupport fins, IFormFile CV, IFormFile CID, IFormFile pc, IFormFile POR,IFormFile QA, IFormFile QA2, IFormFile CVV)
         {
 
-            long filelentghCID = CID.Length / 1000000;
-            long filelentghpc = pc.Length / 1000000;
-            long filelentghCV = CV.Length / 1000000;
-            long filelentghCVV = CVV.Length / 1000000;
-            long filelentghPOR = POR.Length / 1000000;
-            long filelentghQA = QA.Length / 1000000;
-            long filelentghQA2 = QA2.Length / 1000000;
+            Decimal filelentghCID = (CID.Length / 1000000);
+            Decimal filelentghpc = pc.Length / 1000000;
+            Decimal filelentghCV = CV.Length / 1000000;
+            Decimal filelentghCVV = CVV.Length / 1000000;
+            Decimal filelentghPOR = POR.Length / 1000000;
+            Decimal filelentghQA = QA.Length / 1000000;
+            Decimal filelentghQA2 = QA2.Length / 1000000;
 
             var id_date = fins.IdNr_Passport.Substring(4, 2);
             var id_month = fins.IdNr_Passport.Substring(2, 2);
@@ -465,7 +465,7 @@ namespace _18TWENTY8.Controllers
             {
 
                 var extensionv = Path.GetExtension(CVV.FileName).ToLower();
-                if ((extensionv == ".mpeg-4" || extensionv == ".mov" || extensionv == ".mp4" || extensionv == ".3gp") && (filelentghCVV >12))
+                if ((extensionv == ".mpeg-4" || extensionv == ".mov" || extensionv == ".mp4" || extensionv == ".3gp"))
                 {
 
                    
