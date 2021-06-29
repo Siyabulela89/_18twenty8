@@ -127,14 +127,28 @@ namespace _18TWENTY8.Controllers
             ViewBag.Errorcvv = "";
             ViewBag.Errorpc = "";
             ViewBag.Errorpor = "";
-
+            bool hasl = _context.Loggedinbefore.Any(x => x.userId == userId);
             bool has = _context.FinancialSupport.Any(x => x.UserID == userId);
-            if (has == true)
+            if (has == true && hasl == true)
             {
-                return RedirectToAction("Details", new { id = userId });
+                string wel = "Welcome back";
+                return RedirectToAction("Details", new { id = userId, wel = wel });
+            }
+            else if (has == true)
+            {
+                string numb = _context.FinancialSupport.SingleOrDefault().CellphoneNr;
+                string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Financial Application Support registration.";
+                string returnurlcon = "FinancialSupport";
+                string returnurlact = "Details";
+                var Loggedin = new Loggedinbefore()
+                {
+                    userId = userId
+                };
+                _context.Add(Loggedin);
+                _context.SaveChangesAsync();
+                return RedirectToAction("Administration", "Welcome", new { id = userId, sms = sms, con = returnurlcon, act = returnurlact, number= numb });
             }
             else
-
             {
                 return View();
             }
@@ -533,9 +547,10 @@ namespace _18TWENTY8.Controllers
             }
         }
         //[Authorize(Roles = "Bursary Applicant")]
-        public IActionResult Details(string id)
+        public IActionResult Details(string id, string wel)
 
         {
+            ViewBag.Wel = wel;
          var finsupport  = _context.FinancialSupport.FirstOrDefault(x => x.UserID == id);
            
           var Appstatusprofile = _context.ApplicationStatus.FirstOrDefault(x => x.ApplicationStatusID == finsupport.ApplicationStatusID);
@@ -616,7 +631,7 @@ namespace _18TWENTY8.Controllers
                             throw;
                         }
                     }
-                    return RedirectToAction("Details", new { id = financialSupport.UserID });
+                    return RedirectToAction("Create", new { email = financialSupport.Email, userId = financialSupport.UserID, fullnames = financialSupport.Name });
                 }
                 else
                 {

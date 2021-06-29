@@ -117,7 +117,7 @@ namespace _18TWENTY8.Controllers
                             throw;
                         }
                     }
-                    return RedirectToAction("Details", new { id = bigSisterDetail.UserID });
+                    return RedirectToAction("Create", new { email = bigSisterDetail.email,  userId= bigSisterDetail.UserID, fullnames= bigSisterDetail.Name });
                 }
                 else
                 {
@@ -140,8 +140,9 @@ namespace _18TWENTY8.Controllers
 
 
         [Authorize(Roles = "Big Sister (Mentor)")]// GET: BigSisterDetails/Details/5
-        public async Task<IActionResult> Details(string? id)
+        public async Task<IActionResult> Details(string? id, string wel)
         {
+            ViewBag.Wel = wel;
             if (id == null)
                 return NotFound();
 
@@ -292,15 +293,30 @@ namespace _18TWENTY8.Controllers
             ViewBag.Errorqa = "";
             ViewBag.Errorcv = "";
             ViewBag.Errorpc = "";
-
+            bool hasl = _context.Loggedinbefore.Any(x => x.userId == userId);
+            
 
             bool has = _context.BigSisterDetail.Any(x => x.UserID == userId);
-            if (has == true)
+            if (has == true && hasl==true)
             {
-                return RedirectToAction("Details", new { id = userId });
+                string wel = "Welcome back";
+                return RedirectToAction("Details", new { id = userId, wel=wel });
+            }
+            else if(has==true)
+            {
+                string numb = _context.BigSisterDetail.SingleOrDefault().Phonenumber;
+                string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Big Sister (Mentor) registration. your profile will go through evaluation, and we will revert back to you as soon as possible upon successful registration";
+                string returnurlcon = "BigSisterDetails";
+                string returnurlact = "Details";
+                var Loggedin = new Loggedinbefore()
+                {
+                    userId = userId
+                };
+                _context.Add(Loggedin);
+                _context.SaveChangesAsync();
+                return RedirectToAction("Administration","Welcome", new { id = userId, sms=sms, con=returnurlcon,act=returnurlact, number = numb });
             }
             else
-
             {
 
                 var listint = _context.InformationInterest.Select(x => new SelectListItem()

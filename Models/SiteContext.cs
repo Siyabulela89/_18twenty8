@@ -33,7 +33,15 @@ namespace _18TWENTY8.Models
         public bool Accepted { get; set; }
 
     }
-    public class Volunteerdetail
+    public class Loggedinbefore
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int LoggedinBID { get; set; }
+        public string userId { get; set; }
+
+    }
+        public class Volunteerdetail
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

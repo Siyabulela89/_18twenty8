@@ -63,8 +63,9 @@ namespace _18TWENTY8.Controllers
         }
         // GET: LittleSisterDetails/Details/5
         [Authorize(Roles = "Little Sister (Mentee)")]
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string id, string wel)
         {
+            ViewBag.Wel = wel;
             if (string.IsNullOrEmpty(id))
                 return BadRequest($"Little Sister ID not provided");
 
@@ -91,14 +92,28 @@ namespace _18TWENTY8.Controllers
             ViewBag.Errorcv = "";
             ViewBag.Errorpc = "";
 
-
+            bool hasl = _context.Loggedinbefore.Any(x => x.userId == userId);
             bool has = _context.LittleSisterDetail.Any(x => x.UserID == userId);
-            if (has == true)
+            if (has == true && hasl == true)
             {
-                return RedirectToAction("Details", new { id = userId });
+                string wel = "Welcome back";
+                return RedirectToAction("Details", new { id = userId, wel = wel });
+            }
+            else if (has == true)
+            {
+                string numb = _context.LittleSisterDetail.SingleOrDefault().Phonenumber;
+                string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Little Sister (Mentee) registration. your profile will go through evaluation, and we will revert back to you as soon as possible upon successful approval";
+                string returnurlcon = "LittleSisterDetails";
+                string returnurlact = "Details";
+                var Loggedin = new Loggedinbefore()
+                {
+                    userId = userId
+                };
+                _context.Add(Loggedin);
+                _context.SaveChangesAsync();
+                return RedirectToAction("Administration", "Welcome", new { id = userId, sms = sms, con = returnurlcon, act = returnurlact, number = numb });
             }
             else
-
             {
 
                 var listint = _context.InformationInterest.Select(x => new SelectListItem()
@@ -563,7 +578,7 @@ namespace _18TWENTY8.Controllers
                             throw;
                         }
                     }
-                    return RedirectToAction("Details", new { id = LittleSisterDetail.UserID });
+                    return RedirectToAction("Create", new { email = LittleSisterDetail.email, userId = LittleSisterDetail.UserID, fullnames = LittleSisterDetail.Name });
                 }
                 else
                 {

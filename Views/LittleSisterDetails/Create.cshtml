@@ -272,6 +272,7 @@
                                     <input required type="file" name="CV" id="CV" />
                                 </span>
                                 <p style="color:red">@ViewBag.Errorcv</p>
+                                <p id="vCV" style="color:red"></p>
                             </div>
                         </div>
                     </div>
@@ -290,6 +291,8 @@
                                     <input required type="file" name="CID" id="CID" />
                                 </span>
                                 <p style="color:red"> @ViewBag.Errorid</p>
+                             
+                                <p id="vCID" style="color:red"></p>
                             </div>
                         </div>
                     </div>
@@ -308,6 +311,7 @@
                                     <input required type="file" multiple name="QA" id="QA" />
                                 </span>
                                 <p style="color:red">@ViewBag.Errorqa</p>
+                                <p id="vQA" style="color:red"></p>
 
                             </div>
                         </div>
@@ -355,8 +359,56 @@
             $("#filesz").html('<b>' +
                 'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
         } else {
-           
+
             loadFile(event);
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CID').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCID").html('<b>' +
+                'Your uploaded Certified ID must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CV').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCV").html('<b>' +
+                'Your uploaded CV must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#QA').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vQA").html('<b>' +
+                'Your uploaded latest Academic transcript must not be bigger than 2mb' + '</b>');
+        } else {
+
+
         }
     });
 

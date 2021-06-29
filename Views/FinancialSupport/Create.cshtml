@@ -125,6 +125,7 @@
 
                             </div>
                             <p style="color:red">@ViewBag.Errorcv</p>
+                            <p id="vCV" style="color:red"></p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -144,6 +145,7 @@
 
                             </div>
                             <p style="color:red">@ViewBag.Errorid</p>
+                            <p id="vCID" style="color:red"></p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -163,6 +165,7 @@
 
                             </div>
                             <p style="color:red">@ViewBag.Errorqa</p>
+                            <p id="vQA" style="color:red"></p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -183,6 +186,7 @@
                             </div>
                         </div>
                         <p style="color:red">@ViewBag.Errorqa2</p>
+                        <p id="vQA2" style="color:red"></p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload 1 minute video explaining who you are, what you are studying, how the funding will help you, how you will use your qualification to help others and why you approached 18twenty8 to assist.</label>
@@ -202,7 +206,7 @@
                             </div>
                         </div>
                         <p style="color:red">@ViewBag.Errorcvv</p>
-                        <p id="fileszz" style="color:red"></p>
+                        <p id="vCVV" style="color:red"></p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload proof of registration</label>
@@ -222,6 +226,7 @@
                             </div>
                         </div>
                         <p style="color:red">@ViewBag.Errorpor</p>
+                        <p id="vPOR" style="color:red"></p>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-lg-9">
@@ -282,11 +287,91 @@
             (this.files[0].size / 1024 / 1024).toFixed(2);
 
         if (size > 5 || size < 0) {
-            $("#fileszz").html('<b>' +
+            $("#vCVV").html('<b>' +
                 'Your uploaded video must not be bigger than 5mb' + '</b>');
         } else {
           
          
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#QA').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vQA").html('<b>' +
+                'Your uploaded latest Academic transcript must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#QA2').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vQA2").html('<b>' +
+                'Your uploaded fees statement must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CID').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCID").html('<b>' +
+                'Your uploaded Certified ID must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CV').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCV").html('<b>' +
+                'Your uploaded CV must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#POR').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vPOR").html('<b>' +
+                'Your uploaded Proof of Registration must not be bigger than 2mb' + '</b>');
+        } else {
+
+
         }
     });
 

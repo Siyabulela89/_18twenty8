@@ -289,11 +289,12 @@
                                     <input type="file" required name="CV" id="CV" />
 
                                 </span>
-                                <p id="size"></p>
+
 
                             </div>
                         </div>
                         <p style="color:red">@ViewBag.Errorcv</p>
+                        <p id="vCV" style="color:red"></p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Certified ID</label>
@@ -312,9 +313,11 @@
                                 </span>
                                 <p id="sized"></p>
 
+
                             </div>
                         </div>
                         <p style="color:red"> @ViewBag.Errorid</p>
+                        <p id="vCID" style="color:red"></p>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">Upload Qualifications</label>
@@ -330,10 +333,11 @@
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required multiple name="QA" id="QA" />
                                 </span>
-                                <p id="sizedd"></p>
+
                             </div>
                         </div>
                         <p style="color:red">@ViewBag.Errorqa</p>
+                        <p id="vQA" style="color:red"></p>
                     </div>
 
                     <div class="form-group row">
@@ -376,6 +380,54 @@
         } else {
          
             loadFile(event);
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CID').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCID").html('<b>' +
+                'Your uploaded Certified ID must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#CV').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vCV").html('<b>' +
+                'Your uploaded CV must not be bigger than 2mb' + '</b>');
+        } else {
+
+
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    $('#QA').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 2 || size < 0) {
+            $("#vQA").html('<b>' +
+                'Your uploaded latest Academic transcript must not be bigger than 2mb' + '</b>');
+        } else {
+
+
         }
     });
 

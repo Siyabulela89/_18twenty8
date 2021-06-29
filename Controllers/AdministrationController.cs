@@ -14,6 +14,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
+using Twilio.TwiML;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FSTC.Controllers
 {
@@ -30,15 +36,18 @@ namespace FSTC.Controllers
         public AdministrationController(RoleManager<ApplicationRole> roleManager
             , UserManager<ApplicationUser> userManager
             , ILogger<AdministrationController> logger
+            , IConfiguration Config
             , EighteentwentyeightContext context, IMapper mapper)
         {
             _context = context;
             this._mapper = mapper;
             _sisterService = new SisterService(_context, _mapper);
+            _Configuration = Config;
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.logger = logger;
         }
+        public IConfiguration _Configuration { get; }
 
         public async Task<IActionResult> DeleteUser(string id)
         {
@@ -231,6 +240,30 @@ namespace FSTC.Controllers
 
         }
         [Authorize(Roles = "Admin")]
+
+        public IActionResult WelcomeRegistration(string  userId, string sms, string con, string act, string numb)
+        {
+
+            ViewBag.Con = con;
+            ViewBag.Act = act;
+            ViewBag.Id = userId;
+            ViewBag.message = sms;
+            ViewBag.wel = "Welcome";
+            string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
+            string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
+            TwilioClient.Init(accountSid, authToken);
+
+            var message = MessageResource.Create(
+                body: sms,
+                from: new Twilio.Types.PhoneNumber("+17605482821"),
+                to: new Twilio.Types.PhoneNumber(numb)
+            );
+
+
+            return View();
+
+
+        }
         public IActionResult Volunteerlist()
         {
 

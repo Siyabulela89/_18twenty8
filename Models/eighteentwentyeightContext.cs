@@ -21,7 +21,9 @@ namespace _18TWENTY8.Models
         public DbSet<Time> Time { get; set; }
         public DbSet<EMessage> EMessage { get; set; }
         public DbSet<ConfidentialityStatement> ConfidentialityStatement { get; set; }
+        public DbSet<Loggedinbefore> Loggedinbefore { get; set; }
         
+
         public DbSet<VolunteerAcademic> VolunteerAcademic { get; set; }
         public DbSet<Volunteerdetail> Volunteerdetail { get; set; }
         public DbSet<Committees> Committees { get; set; }
