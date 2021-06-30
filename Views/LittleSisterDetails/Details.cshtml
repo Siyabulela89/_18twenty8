@@ -245,7 +245,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
                                             <div class="col-lg-12">
                                                 <p>@Model.Profile.Phonenumber</p>
                                             </div>
@@ -311,7 +311,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about yourself (professional, academic and personal aspirations)</label>
                                             <div class="col-lg-12">
                                                 <p>@Model.Profile.BackgroundQ</p>
 
@@ -325,7 +325,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the above question..</label>
                                             <div class="col-lg-9">
                                                 <p>@Model.Profile.DetailsOnEverbeenMenteeQ</p>
 
@@ -340,7 +340,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you have answered yes to the above question.</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the above question..</label>
                                             <div class="col-lg-12">
                                                 <p>@Model.Profile.DetailsArrestedConvictedQ</p>
                                             </div>
@@ -360,7 +360,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Hobbies (Please select all applicable options)</label>
                                             <div class="col-lg-12">
                                                 <ul class="list list-icons">
                                                     @foreach (var interest in Model.InformationOfInterest)
@@ -373,7 +373,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">IN-PERSON MEETINGS: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
                                             <div class="col-lg-12">
                                                 <p>@Model.Profile.Interactionlevelmeetd</p>
 
@@ -381,7 +381,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
+                                            <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">COMMUNICATION: I anticipate being able to call / email / message my Big Sister: </label>
                                             <div class="col-lg-12">
 
                                                 <p>@Model.Profile.InteractionlevelDigComd</p>
@@ -390,7 +390,7 @@
 
                                         <div class="form-group row">
                                             <label style="font-size: .8em !important;" class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">
-                                                I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form @if (Model.Profile.ConfirmMenteedurationQ == 1)
+                                                I confirm that I commit to being a Little Sister for no less than 12 months from the date of submission of this form @if (Model.Profile.ConfirmMenteedurationQ == 1)
                                                 {<i style="font-size:14px; color:green" class="fas fa-check-circle"></i>}
                                                 else
                                                 { <i style="font-size:14px; color:red" class="fas fa-times-circle"></i>}

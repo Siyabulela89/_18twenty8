@@ -77,7 +77,7 @@ namespace _18TWENTY8.Controllers
 
 
             List<object> listfor = new List<object>
-            {     _context.BursaryApplication.ToList(),
+            {     _context.BursaryApplication.Where(x=> x.ApplicationEndDate> DateTime.Now).ToList(),
             _context.BursaryApplicationCandidate.Where(x=> x.UserID==UserID).ToList()
 
 
@@ -136,7 +136,7 @@ namespace _18TWENTY8.Controllers
             }
             else if (has == true)
             {
-                string numb = _context.FinancialSupport.SingleOrDefault().CellphoneNr;
+                string numb = _context.FinancialSupport.Where(x=> x.UserID==userId).SingleOrDefault().CellphoneNr;
                 string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Financial Application Support registration.";
                 string returnurlcon = "FinancialSupport";
                 string returnurlact = "Details";
@@ -146,7 +146,7 @@ namespace _18TWENTY8.Controllers
                 };
                 _context.Add(Loggedin);
                 _context.SaveChangesAsync();
-                return RedirectToAction("Administration", "Welcome", new { id = userId, sms = sms, con = returnurlcon, act = returnurlact, number= numb });
+                return RedirectToAction("WelcomeRegistration","Administration",  new { id = userId, sms = sms, con = returnurlcon, act = returnurlact, number= numb });
             }
             else
             {

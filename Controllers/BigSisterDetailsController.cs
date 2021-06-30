@@ -304,8 +304,8 @@ namespace _18TWENTY8.Controllers
             }
             else if(has==true)
             {
-                string numb = _context.BigSisterDetail.SingleOrDefault().Phonenumber;
-                string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Big Sister (Mentor) registration. your profile will go through evaluation, and we will revert back to you as soon as possible upon successful registration";
+                string numb = _context.BigSisterDetail.Where(x => x.UserID == userId).SingleOrDefault().Phonenumber;
+                string sms = "Welcome " + fullnames + " and thank you for your completion of the 18twenty8 Big Sister (Mentor) registration. Your profile will go through evaluation, and we will revert back to you as soon as possible upon successful registration";
                 string returnurlcon = "BigSisterDetails";
                 string returnurlact = "Details";
                 var Loggedin = new Loggedinbefore()
@@ -314,7 +314,7 @@ namespace _18TWENTY8.Controllers
                 };
                 _context.Add(Loggedin);
                 _context.SaveChangesAsync();
-                return RedirectToAction("Administration","Welcome", new { id = userId, sms=sms, con=returnurlcon,act=returnurlact, number = numb });
+                return RedirectToAction("WelcomeRegistration", "Administration", new { id = userId, sms=sms, con=returnurlcon,act=returnurlact, number = numb });
             }
             else
             {

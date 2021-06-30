@@ -60,7 +60,7 @@
                     </div>
                     <br />
                     <p style="color:red;" class="label-danger">@ViewBag.Errorpc</p>
-                    <p style="color:red;"  id="filesz" class="label-danger"></p>
+                    <p style="color:red;" id="filesz" class="label-danger"></p>
 
 
                 </div>
@@ -284,7 +284,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required name="CV" id="CV" />
 
@@ -306,7 +306,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change</span>
+                                    <span class="fileupload-exists">choose or change</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required name="CID" id="CID" />
 
@@ -329,7 +329,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change multiple files</span>
+                                    <span class="fileupload-exists">choose or change multiple files</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input type="file" required multiple name="QA" id="QA" />
                                 </span>
@@ -366,7 +366,7 @@
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
-   
+
 </script>
 <script type="text/javascript">
     $('#pc').on('change', function () {
@@ -377,9 +377,25 @@
         if (size > 4 || size < 0) {
             $("#filesz").html('<b>' +
                 'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+            $('#pc').val("");
         } else {
-         
-            loadFile(event);
+            var image = document.getElementById("pc").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("pc").focus();
+                    document.getElementById("filesz").innerHTML = "Please note that we only accept  jpg, png and jpeg document types.";
+                    $('#pc').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("filesz").innerHTML = "";
+                    loadFile(event);
+                }
+
+            }
+
+
         }
     });
 
@@ -393,8 +409,23 @@
         if (size > 2 || size < 0) {
             $("#vCID").html('<b>' +
                 'Your uploaded Certified ID must not be bigger than 2mb' + '</b>');
+            $('#CID').val("");
         } else {
+            var image = document.getElementById("CID").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("CID").focus();
+                    document.getElementById("vCID").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#CID').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vCID").innerHTML = "";
 
+                }
+
+            }
 
         }
     });
@@ -409,9 +440,23 @@
         if (size > 2 || size < 0) {
             $("#vCV").html('<b>' +
                 'Your uploaded CV must not be bigger than 2mb' + '</b>');
+            $('#CV').val("");
         } else {
+            var image = document.getElementById("CV").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("CV").focus();
+                    document.getElementById("vCV").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#CV').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vCV").innerHTML = "";
 
+                }
 
+            }
         }
     });
 
@@ -425,8 +470,23 @@
         if (size > 2 || size < 0) {
             $("#vQA").html('<b>' +
                 'Your uploaded latest Academic transcript must not be bigger than 2mb' + '</b>');
+            $('#QA').val("");
         } else {
+            var image = document.getElementById("QA").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("QA").focus();
+                    document.getElementById("vQA").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#QA').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vQA").innerHTML = "";
 
+                }
+
+            }
 
         }
     });

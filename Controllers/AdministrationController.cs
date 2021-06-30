@@ -239,24 +239,24 @@ namespace FSTC.Controllers
             return View(listfor.ToList());
 
         }
-        [Authorize(Roles = "Admin")]
+        
 
-        public IActionResult WelcomeRegistration(string  userId, string sms, string con, string act, string numb)
+        public IActionResult WelcomeRegistration(string  id, string sms, string con, string act, string number)
         {
 
             ViewBag.Con = con;
             ViewBag.Act = act;
-            ViewBag.Id = userId;
+            ViewBag.Id = id;
             ViewBag.message = sms;
             ViewBag.wel = "Welcome";
             string accountSid = _Configuration.GetSection("TwilioApp").GetValue<string>("ACCOUNT_SID");
             string authToken = _Configuration.GetSection("TwilioApp").GetValue<string>("AuthToken");
             TwilioClient.Init(accountSid, authToken);
-
+            String numbers = "+27" + number.Substring(1);
             var message = MessageResource.Create(
                 body: sms,
                 from: new Twilio.Types.PhoneNumber("+17605482821"),
-                to: new Twilio.Types.PhoneNumber(numb)
+                to: new Twilio.Types.PhoneNumber(numbers)
             );
 
 

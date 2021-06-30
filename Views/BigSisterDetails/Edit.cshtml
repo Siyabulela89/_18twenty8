@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Contact number(Cell)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Cell phone number</label>
                         <div class="col-lg-12">
 
                             <input asp-for="Phonenumber" class="form-control" required type="tel" maxlength="10" minlength="10">
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about your background (Proffesional, academic, personal and professional aspirations)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Tell us more about yourself (professional, academic and personal aspirations)</label>
                         <div class="col-lg-12">
                             <textarea asp-for="BackgroundQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
                         </div>
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you ahave answered yes to the above question.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above.</label>
                         <div class="col-lg-9">
                             <textarea asp-for="DetailsOnEverbeenMentorQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
                         </div>
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you ahave answered yes to the above question.</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">Please provide details if you answered yes to the question above.</label>
                         <div class="col-lg-12">
                             <textarea asp-for="DetailsArrestedConvictedQ" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message"></textarea>
                         </div>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have about your Little Sister?</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2">What expectations do you have of your Little Sister?</label>
                         <div class="col-lg-12">
                             <textarea asp-for="Expectationsonlittlesister" maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" id="message" required></textarea>
                         </div>
@@ -207,7 +207,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Information of interests(Please select all applicable options)</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Hobbies (Please select all applicable options)</label>
                         <div class="col-lg-12">
 
                             @*@for (int i = 0; i < Model.Infosbig.Count; i++)
@@ -220,27 +220,27 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">IN-PERSON MEETINGS: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to meet my Little Sister:</label>
                         <div class="col-lg-12">
 
                             @Html.DropDownListFor(m => m.Interactionlevelmeet, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">If you have selected other on the above question please give us details</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please give details if you chose other</label>
                         <div class="col-lg-12">
                             <input asp-for="Interactionlevelmeetother" class="form-control" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">INTERACTION LEVEL: Our Little Sisters require varying levels of interaction with their Big Sisters. In order to accurately and realistically assess your availability, please take transportation time, your lifestyle, family, social, academic and work obligations into consideration when answering the following question. I anticipate being able to phone / email / text my Little Sister: </label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">COMMUNICATION: I anticipate being able to call / email / message my Big Sister: </label>
                         <div class="col-lg-12">
 
                             @Html.DropDownListFor(m => m.InteractionlevelDigCom, ViewBag.IntLevel as SelectList, htmlAttributes: new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">If you have selected other on the above question please give us details</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required">Please give details if you chose other</label>
                         <div class="col-lg-12">
                             <input asp-for="InteractionlevelDigComother" class="form-control" type="text" value="">
                         </div>
@@ -259,7 +259,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I can commit to being a Big Sister for no less than 12 months from the date of submission of this form</label>
+                        <label class="col-lg-12 font-weight-bold text-dark col-form-label form-control-label text-2 required"> I confirm that I commit to being a Little Sister for no less than 12 months from the date of submission of this form</label>
                         <div class="col-lg-12">
 
                             @Html.DropDownListFor(m => m.ConfirmMentordurationQ, ViewBag.Option as SelectList, htmlAttributes: new { @class = "form-control" })

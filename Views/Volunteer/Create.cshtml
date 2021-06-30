@@ -294,9 +294,9 @@
                                     </div>
 
                                     <span class="btn btn-default btn-file">
-                                        <span class="fileupload-exists">Select or change file</span>
+                                        <span class="fileupload-exists">choose or change file</span>
                                         @*<span class="fileupload-new">Select file</span>*@
-                                        <input type="file" name="CV" id="CV" />
+                                        <input type="file"  required name="CV" id="CV" />
                                     </span>
 
                                 </div>
@@ -312,9 +312,9 @@
                                     </div>
 
                                     <span class="btn btn-default btn-file">
-                                        <span class="fileupload-exists">Select or change file</span>
+                                        <span class="fileupload-exists">choose or change file</span>
                                         @*<span class="fileupload-new">Select file</span>*@
-                                        <input type="file" name="CID" id="CID" />
+                                        <input type="file"  required name="CID" id="CID" />
                                     </span>
 
                                 </div>
@@ -330,9 +330,9 @@
                                     </div>
 
                                     <span class="btn btn-default btn-file">
-                                        <span class="fileupload-exists">Select or change multiple files</span>
+                                        <span class="fileupload-exists">choose or change multiple files</span>
                                         @*<span class="fileupload-new">Select file</span>*@
-                                        <input type="file" multiple name="QA" id="QA" />
+                                        <input type="file" required multiple name="QA" id="QA" />
                                     </span>
 
                                 </div>
@@ -366,6 +366,39 @@
     };
 
    
+
+</script>
+<script type="text/javascript">
+    $('#pc').on('change', function () {
+
+        const size =
+            (this.files[0].size / 1024 / 1024).toFixed(2);
+
+        if (size > 4 || size < 0) {
+            $("#filesz").html('<b>' +
+                'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+            $('#pc').val("");
+        } else {
+            var image = document.getElementById("pc").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("pc").focus();
+                    document.getElementById("filesz").innerHTML = "Please note that we only accept  jpg, png and jpeg document types.";
+                    $('#pc').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("filesz").innerHTML = "";
+                    loadFile(event);
+                }
+
+            }
+
+
+
+        }
+    });
 
 </script>
 <script>

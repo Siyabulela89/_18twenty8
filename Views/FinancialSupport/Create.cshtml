@@ -118,9 +118,9 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
-                                    <input type="file" name="CV" id="CV" />
+                                    <input required type="file" name="CV" id="CV" />
                                 </span>
 
                             </div>
@@ -138,9 +138,9 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
-                                    <input type="file" name="CID" id="CID" />
+                                    <input required type="file" name="CID" id="CID" />
                                 </span>
 
                             </div>
@@ -158,7 +158,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input required type="file" name="QA" id="QA" />
                                 </span>
@@ -178,7 +178,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input required type="file" name="QA2" id="QA2" />
                                 </span>
@@ -198,7 +198,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input required type="file" name="CVV" id="CVV" />
                                 </span>
@@ -218,7 +218,7 @@
                                 </div>
 
                                 <span class="btn btn-default btn-file">
-                                    <span class="fileupload-exists">Select or change file</span>
+                                    <span class="fileupload-exists">choose or change file</span>
                                     @*<span class="fileupload-new">Select file</span>*@
                                     <input required type="file" name="POR" id="POR" />
                                 </span>
@@ -272,9 +272,26 @@
         if (size > 4 || size < 0) {
             $("#filesz").html('<b>' +
                 'Your uploaded profile picture must not be bigger than 4mb' + '</b>');
+            $('#pc').val("");
         } else {
-        
-            loadFile(event);
+            var image = document.getElementById("pc").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("pc").focus();
+                    document.getElementById("filesz").innerHTML = "Please note that we only accept  jpg, png and jpeg document types.";
+                    $('#pc').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("filesz").innerHTML = "";
+                    loadFile(event);
+                }
+
+            }
+
+
+         
         }
     });
 
@@ -289,7 +306,24 @@
         if (size > 5 || size < 0) {
             $("#vCVV").html('<b>' +
                 'Your uploaded video must not be bigger than 5mb' + '</b>');
+            $('#CVV').val("");
         } else {
+            var image = document.getElementById("CVV").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.mp4|\.MP4)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("CVV").focus();
+                    document.getElementById("vCVV").innerHTML = "Please note that we only accept mp4 document types.";
+                    $('#CVV').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vCVV").innerHTML = "";
+
+                }
+
+            }
+
           
          
         }
@@ -305,8 +339,23 @@
         if (size > 2 || size < 0) {
             $("#vQA").html('<b>' +
                 'Your uploaded latest Academic transcript must not be bigger than 2mb' + '</b>');
+            $('#QA').val("");
         } else {
+            var image = document.getElementById("QA").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("QA").focus();
+                    document.getElementById("vQA").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#QA').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vQA").innerHTML = "";
 
+                }
+
+            }
 
         }
     });
@@ -321,8 +370,24 @@
         if (size > 2 || size < 0) {
             $("#vQA2").html('<b>' +
                 'Your uploaded fees statement must not be bigger than 2mb' + '</b>');
+            $('#QA2').val("");
         } else {
 
+            var image = document.getElementById("QA2").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("QA2").focus();
+                    document.getElementById("vQA2").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#QA2').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vQA2").innerHTML = "";
+
+                }
+
+            }
 
         }
     });
@@ -337,8 +402,23 @@
         if (size > 2 || size < 0) {
             $("#vCID").html('<b>' +
                 'Your uploaded Certified ID must not be bigger than 2mb' + '</b>');
+            $('#CID').val("");
         } else {
+            var image = document.getElementById("CID").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("CID").focus();
+                    document.getElementById("vCID").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#CID').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vCID").innerHTML = "";
 
+                }
+
+            }
 
         }
     });
@@ -353,9 +433,23 @@
         if (size > 2 || size < 0) {
             $("#vCV").html('<b>' +
                 'Your uploaded CV must not be bigger than 2mb' + '</b>');
+            $('#CV').val("");
         } else {
+            var image = document.getElementById("CV").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("CV").focus();
+                    document.getElementById("vCV").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#CV').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vCV").innerHTML = "";
 
+                }
 
+            }
         }
     });
 
@@ -369,9 +463,24 @@
         if (size > 2 || size < 0) {
             $("#vPOR").html('<b>' +
                 'Your uploaded Proof of Registration must not be bigger than 2mb' + '</b>');
+            $('#POR').val("");
         } else {
 
+            var image = document.getElementById("POR").value;
+            if (image != '') {
+                var checkimg = image.toLowerCase();
+                if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.pdf|\.PDF|\.doc|\.DOC|\.docx|\.DOCX)$/)) { // validation of file extension using regular expression before file upload
+                    document.getElementById("POR").focus();
+                    document.getElementById("vPOR").innerHTML = "Please note that we only accept pdf, jpg, png, jpeg, pdf and word document types.";
+                    $('#POR').val("");
+                    return false;
+                }
+                else {
+                    document.getElementById("vPOR").innerHTML = "";
 
+                }
+
+            }
         }
     });
 
